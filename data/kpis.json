@@ -1,24 +1,24 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-26T13:24:16Z",
+  "generated_at": "2026-06-26T21:07:32Z",
   "period": {
     "month": 6,
     "year": 2026,
     "label": "Junho 2026"
   },
   "running": {
-    "total_distance_km": 31.6,
-    "total_sessions": 3,
-    "avg_pace_min_km": 5.7,
-    "avg_heart_rate_bpm": null,
-    "max_heart_rate_bpm": null,
-    "total_elevation_m": 287,
+    "total_distance_km": 36.7,
+    "total_sessions": 4,
+    "avg_pace_min_km": 5.68,
+    "avg_heart_rate_bpm": 150,
+    "max_heart_rate_bpm": 173,
+    "total_elevation_m": 375,
     "longest_run_km": 14.0,
-    "sessions_per_week": 0.8,
+    "sessions_per_week": 1.1,
     "guardrail": {
       "metric": "acute_chronic_ratio",
-      "value": 0.0,
-      "status": "unknown",
+      "value": 0.43,
+      "status": "ok",
       "threshold_warning": 1.3,
       "threshold_danger": 1.5,
       "label": "Razão carga aguda/crônica",
@@ -26,8 +26,8 @@
     }
   },
   "strength": {
-    "total_sessions": 9,
-    "sessions_per_week": 2.4,
+    "total_sessions": 11,
+    "sessions_per_week": 3.0,
     "focus": "lower_body"
   }
 }

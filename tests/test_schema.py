@@ -69,7 +69,7 @@ def test_weekly_plan_shape_if_present():
     if not path.exists():
         pytest.skip("weekly_plan.json ainda não gerado")
     d = json.loads(path.read_text())
-    assert d["schema_version"] == "1.0"
+    assert d["schema_version"] in {"1.0", "2.0"}
     assert len(d["days"]) == 7
     valid = {"run", "strength", "rest"}
     for day in d["days"]:

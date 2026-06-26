@@ -1,54 +1,29 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "generated_at": "2026-06-26T14:00:00Z",
-  "week_of": "2026-06-29",
-  "summary": "Semana de retomada da base aeróbica. Após ~2 semanas sem corrida, o foco é voltar a correr com volume leve em Z2 antes de reintroduzir treinos de qualidade — construindo rumo à meia de Pomerode (16 semanas).",
+  "week_of": "2026-06-22",
+  "week_label": "22–28 jun 2026",
+  "summary": "Semana de retomada da corrida. Você manteve a academia firme e voltou a correr (5 km hoje) — o guardrail segue saudável, então liberei um trote mais longo no sábado antes de fechar a semana com descanso.",
+  "indicators": [
+    { "label": "Corridas na semana", "value": "1 feita + 1 prevista", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "0,43 · saudável", "status": "ok" },
+    { "label": "FC média (corrida)", "value": "150 bpm", "status": "ok" }
+  ],
   "days": [
-    {
-      "day": "Seg",
-      "items": [
-        { "type": "strength", "title": "Academia · Treino A", "detail": "Pernas + tríceps — Leg Press e Extensora com amplitude controlada (≤90°)" }
-      ]
-    },
-    {
-      "day": "Ter",
-      "items": [
-        { "type": "run", "title": "Corrida fácil", "detail": "6 km em Z2 (~5:50/km), conversa confortável" }
-      ]
-    },
-    {
-      "day": "Qua",
-      "items": [
-        { "type": "strength", "title": "Academia · Treino B", "detail": "Posterior/costas/peito — baixo impacto no joelho, ideal antes do longão" }
-      ]
-    },
-    {
-      "day": "Qui",
-      "items": [
-        { "type": "run", "title": "Corrida fácil", "detail": "8 km em Z2, sem forçar o pace" }
-      ]
-    },
-    {
-      "day": "Sex",
-      "items": [
-        { "type": "rest", "title": "Descanso", "detail": "Recuperação total — mobilidade leve opcional" }
-      ]
-    },
-    {
-      "day": "Sáb",
-      "items": [
-        { "type": "run", "title": "Long run", "detail": "12 km em ritmo confortável — retomando a distância" }
-      ]
-    },
-    {
-      "day": "Dom",
-      "items": [
-        { "type": "rest", "title": "Descanso ativo", "detail": "Bike leve ou caminhada opcional" }
-      ]
-    }
+    { "day": "Seg", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
+    { "day": "Ter", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
+    { "day": "Qua", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
+    { "day": "Qui", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
+    { "day": "Sex", "items": [ { "type": "run", "title": "Corrida 5 km", "detail": "FC média 153 bpm — feita", "done": true } ] },
+    { "day": "Sáb", "items": [ { "type": "run", "title": "Trote longo leve", "detail": "8 km em Z2 (~5:50/km), confortável", "done": false } ] },
+    { "day": "Dom", "items": [ { "type": "rest", "title": "Descanso", "detail": "Recuperação — mobilidade leve opcional", "done": false } ] }
+  ],
+  "adaptations": [
+    "Você correu hoje (26/06, 5 km). Como foi um dia em que você costuma fazer academia, o coach registrou a corrida, recalculou a carga (ACWR 0,43, saudável) e manteve o sábado como trote leve — sem empilhar intensidade.",
+    "Sua última corrida não foi 'há duas semanas': você fez 14 km em 13/06 e 5 km hoje. Os indicadores agora refletem isso."
   ],
   "coaches": {
-    "running": "Você ficou ~2 semanas sem correr, então nada de intervalado ainda — primeiro reconstruímos a base. Total de ~26 km na semana, dentro da regra dos 10%. Impacto controlado vem antes de velocidade. Se o corpo responder bem, na próxima semana volta uma sessão de qualidade.",
-    "strength": "Da sua academia (DUE FitClub), encaixei Treino A na segunda e Treino B na quarta. Decisão técnica: deixei o Treino C de fora esta semana — Hack Machine a 80 kg e a mesa flexora em drop até a falha são os exercícios de maior estresse no joelho, e empilhar isso com a retomada da corrida é risco desnecessário. Volta quando a corrida estabilizar. No Leg Press e na Extensora, segura a amplitude em ~90° de flexão para proteger o joelho sem perder estímulo."
+    "running": "Bom te ver correndo de novo. Com 5 km hoje e o guardrail em 0,43, dá pra fazer um trote um pouco mais longo no sábado (8 km, leve). Nada de intervalado ainda — a base primeiro. Domingo descansa.",
+    "strength": "A academia foi consistente a semana toda. Como a corrida está voltando, vou aliviar o volume de perna pesada na próxima semana para o joelho não acumular carga de corrida + agachamento ao mesmo tempo."
   }
 }

@@ -8,6 +8,28 @@ description: Analisa os dados reais de corrida do Strava (data/activities.json, 
 Coach de corrida do RunForrestRun. Analisa o histórico real do Strava e produz o
 plano semanal de corrida, integrado ao `data/weekly_plan.json`.
 
+**Versão:** 1.0
+
+## Comportamento adaptativo (o sistema)
+
+O coach não é um plano fixo — é um loop que reage ao que foi feito:
+
+```
+Você treina → registra no Strava
+   → job de atualização busca os dados (strava_fetch + normalize)
+   → running-coach + strength-coach releem as atividades
+   → reavaliam carga (guardrail ACWR), comparam previsto x realizado
+   → regeram data/weekly_plan.json: plano, indicadores e análise se ajustam
+```
+
+Regras de adaptação:
+- **Corri num dia de força (ou vice-versa):** o coach não ignora — registra a
+  atividade real, recalcula o ACWR e ajusta os dias seguintes para não acumular carga.
+- **Pulei um treino:** redistribui sem tentar compensar tudo de uma vez (respeita os 10%).
+- **Guardrail subiu para warning/danger:** reduz volume/intensidade da semana e prioriza recuperação.
+- O campo `adaptations[]` do `weekly_plan.json` registra, em linguagem clara, o que mudou e por quê.
+- O `schema_version` do `weekly_plan.json` é `2.0` (inclui `indicators`, `adaptations` e `done` por item).
+
 ## Contexto do atleta
 - **38 anos · 108 kg.** Intermediário, já completou uma meia maratona (21 km).
 - **Histórico ortopédico:** cirurgia de LCA (ligamento cruzado anterior) + sutura

@@ -1,26 +1,38 @@
-// Aba Plano Semanal: a leitura do coach sobre o treino + o plano da semana (com datas).
+// Caixa "Coach da semana": análise + indicadores + plano que se adapta ao que foi feito.
 import { fmtDate, dayDate } from "../data/loaders.js";
 
 export default function WeeklyPlan({ plan }) {
   if (!plan) {
     return (
-      <section className="block wrap">
-        <p className="eyebrow">Coach</p>
+      <div className="week-coach">
+        <p className="eyebrow">Coach da semana</p>
         <h2>Plano sendo gerado</h2>
         <p className="lead">
-          O coach ainda não publicou a análise e o plano desta semana. Aparece aqui
-          assim que rodar sobre os treinos mais recentes.
+          O coach ainda não publicou a análise desta semana. Aparece aqui assim que
+          a próxima atualização do Strava rodar.
         </p>
-      </section>
+      </div>
     );
   }
 
   const c = plan.coaches || {};
 
   return (
-    <section className="block wrap">
-      <p className="eyebrow">Coach · semana de {fmtDate(plan.week_of)}</p>
-      <h2>A leitura do coach</h2>
+    <div className="week-coach">
+      <p className="eyebrow">Coach da semana · {plan.week_label || fmtDate(plan.week_of)}</p>
+      <h2>O que o coach diz</h2>
+      <p className="lead">{plan.summary}</p>
+
+      {plan.indicators?.length > 0 && (
+        <div className="indicators">
+          {plan.indicators.map((ind, i) => (
+            <div className={`indicator ${ind.status || ""}`} key={i}>
+              <div className="ind-value">{ind.value}</div>
+              <div className="ind-label">{ind.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {(c.running || c.strength) && (
         <div className="coach-notes">
@@ -39,9 +51,16 @@ export default function WeeklyPlan({ plan }) {
         </div>
       )}
 
-      <h3 className="plan-subtitle">Plano da semana</h3>
-      <p className="lead">{plan.summary}</p>
+      {plan.adaptations?.length > 0 && (
+        <div className="adaptations">
+          <div className="adapt-title">🔄 Como o coach se adaptou</div>
+          <ul>
+            {plan.adaptations.map((a, i) => <li key={i}>{a}</li>)}
+          </ul>
+        </div>
+      )}
 
+      <h3 className="plan-subtitle">Plano da semana</h3>
       <div className="plan-grid">
         {plan.days.map((d, i) => (
           <div className="day" key={d.day}>
@@ -50,8 +69,8 @@ export default function WeeklyPlan({ plan }) {
               <div className="chip rest">Livre</div>
             ) : (
               d.items.map((it, idx) => (
-                <div className={`chip ${it.type}`} key={idx}>
-                  {it.title}
+                <div className={`chip ${it.type} ${it.done ? "done" : ""}`} key={idx}>
+                  {it.done ? "✓ " : ""}{it.title}
                   {it.detail ? <span className="c-detail">{it.detail}</span> : null}
                 </div>
               ))
@@ -64,7 +83,8 @@ export default function WeeklyPlan({ plan }) {
         <span><i style={{ background: "linear-gradient(135deg,#e0f2fe,#dbeafe)" }} /> Corrida</span>
         <span><i style={{ background: "#fff1e6" }} /> Força</span>
         <span><i style={{ background: "#f1f5f9" }} /> Descanso</span>
+        <span><i style={{ background: "#dcfce7" }} /> ✓ Feito</span>
       </div>
-    </section>
+    </div>
   );
 }

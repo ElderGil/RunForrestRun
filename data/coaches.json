@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T14:00:00Z",
+  "coaches": [
+    {
+      "id": "running-coach",
+      "name": "Running Coach",
+      "emoji": "🏃",
+      "version": "1.0",
+      "tagline": "Coach de corrida adaptativo",
+      "summary": "Lê suas corridas do Strava a cada atualização e monta o plano rumo à meia de Pomerode e à maratona. Reage ao que você realmente fez: se um treino sai do previsto, o plano e os indicadores se ajustam.",
+      "config": [
+        { "label": "Guardrail", "value": "Razão carga aguda/crônica (ACWR)" },
+        { "label": "Progressão", "value": "Regra dos 10% por semana" },
+        { "label": "Base", "value": "Z2 aeróbico; qualidade só com guardrail saudável" },
+        { "label": "Fonte de dados", "value": "Strava · atualização diária" }
+      ]
+    },
+    {
+      "id": "strength-coach",
+      "name": "Strength Coach",
+      "emoji": "🏋️",
+      "version": "1.0",
+      "tagline": "Coach de força adaptativo",
+      "summary": "Integra o programa de academia (A/B/C) ao calendário de corrida, equilibrando carga e recuperação. Ajusta o volume de força conforme a semana de corrida e sinaliza, com justificativa técnica, o que mudar.",
+      "config": [
+        { "label": "Programa", "value": "Academia A/B/C" },
+        { "label": "Regra", "value": "Força pesada de perna longe dos treinos duros de corrida" },
+        { "label": "Prioridade", "value": "Controle de carga e amplitude de joelho" },
+        { "label": "Fonte de dados", "value": "Strava · atualização diária" }
+      ]
+    }
+  ]
+}

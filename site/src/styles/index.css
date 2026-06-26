@@ -171,6 +171,54 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
 .q-table th:first-child, .q-table td:first-child { text-align: left; font-weight: 700; }
 .q-table tr:last-child td { border-bottom: none; }
 
+/* ---- Coach profiles ---- */
+.coaches { margin-bottom: 2.5rem; }
+.coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.3rem; }
+.coach-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.3rem 1.25rem; box-shadow: var(--shadow);
+}
+.coach-head { display: flex; align-items: center; gap: 0.7rem; }
+.coach-emoji {
+  font-size: 1.35rem; width: 46px; height: 46px; flex-shrink: 0;
+  display: grid; place-items: center; border-radius: 12px;
+  background-image: var(--grad); filter: saturate(0.95);
+}
+.coach-name { font-weight: 800; letter-spacing: -0.01em; }
+.coach-version {
+  font-size: 0.72rem; font-weight: 700; color: var(--blue);
+  background: #e0f2fe; padding: 0.05rem 0.4rem; border-radius: 999px; vertical-align: middle;
+}
+.coach-role { color: var(--text-dim); font-size: 0.82rem; }
+.coach-summary { font-size: 0.9rem; margin-top: 0.8rem; color: var(--text); }
+.coach-config { margin-top: 0.9rem; border-top: 1px solid var(--border); padding-top: 0.7rem; }
+.cfg-row { display: flex; gap: 0.7rem; padding: 0.28rem 0; font-size: 0.83rem; }
+.cfg-row dt { color: var(--text-dim); flex: 0 0 38%; }
+.cfg-row dd { font-weight: 600; }
+
+/* ---- Week coach box ---- */
+.week-coach { border-top: 1px solid var(--border); padding-top: 2.2rem; }
+.indicators { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin-top: 1.3rem; }
+.indicator {
+  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--text-dim);
+  border-radius: var(--radius-sm); padding: 0.9rem 1rem; box-shadow: var(--shadow);
+}
+.indicator.ok { border-left-color: var(--ok); }
+.indicator.warning { border-left-color: var(--warn); }
+.indicator.danger { border-left-color: var(--danger); }
+.ind-value { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; }
+.ind-label { color: var(--text-dim); font-size: 0.8rem; margin-top: 0.1rem; }
+
+.adaptations {
+  margin-top: 1.5rem; background: #f6f9ff; border: 1px solid #dbeafe;
+  border-radius: var(--radius); padding: 1.2rem 1.3rem;
+}
+.adapt-title { font-weight: 700; }
+.adaptations ul { margin: 0.6rem 0 0 0; padding-left: 1.1rem; }
+.adaptations li { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 0.4rem; line-height: 1.5; }
+
+.chip.done { opacity: 0.78; }
+
 /* ---- Coach analysis ---- */
 .coach-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.3rem; }
 .coach-note {

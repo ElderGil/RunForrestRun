@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-26T13:24:16Z",
+  "generated_at": "2026-06-26T21:07:32Z",
   "activities": [
     {
       "id": "11665837342",
@@ -2277,8 +2277,8 @@
       "distance_km": 5.02,
       "duration_min": 27.0,
       "pace_min_km": 5.38,
-      "avg_heart_rate_bpm": null,
-      "max_heart_rate_bpm": null,
+      "avg_heart_rate_bpm": 152,
+      "max_heart_rate_bpm": 168,
       "elevation_m": 16,
       "name": "Morning Run"
     },
@@ -2289,8 +2289,8 @@
       "distance_km": 14.02,
       "duration_min": 82.0,
       "pace_min_km": 5.85,
-      "avg_heart_rate_bpm": null,
-      "max_heart_rate_bpm": null,
+      "avg_heart_rate_bpm": 144,
+      "max_heart_rate_bpm": 169,
       "elevation_m": 105,
       "name": "Longuinho"
     },
@@ -2353,6 +2353,42 @@
       "max_heart_rate_bpm": null,
       "elevation_m": 0,
       "name": "Morning Weight Training"
+    },
+    {
+      "id": "19068530700",
+      "date": "2026-06-24",
+      "type": "Strength",
+      "distance_km": 0.0,
+      "duration_min": 75.1,
+      "pace_min_km": null,
+      "avg_heart_rate_bpm": null,
+      "max_heart_rate_bpm": null,
+      "elevation_m": 0,
+      "name": "Morning Weight Training"
+    },
+    {
+      "id": "19068530770",
+      "date": "2026-06-25",
+      "type": "Strength",
+      "distance_km": 0.0,
+      "duration_min": 44.2,
+      "pace_min_km": null,
+      "avg_heart_rate_bpm": null,
+      "max_heart_rate_bpm": null,
+      "elevation_m": 0,
+      "name": "Morning Weight Training"
+    },
+    {
+      "id": "19072774440",
+      "date": "2026-06-26",
+      "type": "Run",
+      "distance_km": 5.03,
+      "duration_min": 28.2,
+      "pace_min_km": 5.61,
+      "avg_heart_rate_bpm": 153,
+      "max_heart_rate_bpm": 173,
+      "elevation_m": 88,
+      "name": "Morning Run"
     }
   ]
 }
