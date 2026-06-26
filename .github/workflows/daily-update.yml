@@ -1,22 +1,21 @@
 name: Daily Strava Update
 
 # ADR-004: cron 11h Brasília (14h UTC) — depois do treino da manhã.
+# Faz só o ETL e commita os JSONs na main; o push dispara o deploy (pages.yml),
+# mantendo dados e site em sincronia sem acoplar o deploy aos Secrets do Strava.
 on:
   schedule:
     - cron: "0 14 * * *"
-  workflow_dispatch: # atualização manual fora do cron
+  workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: daily-update
   cancel-in-progress: false
 
 jobs:
-  # 1) ETL: busca incremental + normalização + commit dos JSONs na main
   etl:
     runs-on: ubuntu-latest
     steps:
@@ -42,44 +41,10 @@ jobs:
       - name: Normalize and calculate KPIs
         run: python etl/normalize.py
 
-      - name: Commit updated data
+      - name: Commit updated data (triggers pages.yml deploy)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
           git diff --cached --quiet || git commit -m "data: update activities $(date -u +%Y-%m-%d)"
           git push
-
-  # 2) Deploy: só roda se o ETL passou. Build Vite + publica no GitHub Pages.
-  deploy:
-    needs: etl
-    if: success()
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main # pega os JSONs recém-commitados
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-          cache-dependency-path: site/package-lock.json
-
-      - name: Install & build
-        working-directory: site
-        run: |
-          npm ci
-          npm run build
-
-      - uses: actions/configure-pages@v5
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site/dist
-
-      - id: deployment
-        uses: actions/deploy-pages@v4

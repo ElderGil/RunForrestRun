@@ -71,21 +71,33 @@ a URL pública `/RunForrestRun/data/*.json` é servida com o app.
 
 ---
 
-### 4. Deploy condicional
+### 4. Dois workflows desacoplados (atualizado)
 
-**O deploy só roda se o ETL for bem-sucedido.**
+Decisão original acoplava o deploy ao sucesso do ETL no mesmo workflow. Problema:
+o deploy passaria a depender dos Secrets do Strava — se o ETL falhasse (ou os
+Secrets não existissem ainda), o site nunca publicaria, inclusive mudanças de
+layout. Separado em dois workflows:
 
-Página e dados são tratados como unidade atômica — não faz sentido republicar a página com dados desatualizados. Mudanças de layout ou componentes chegam ao ar junto com dados novos.
+- **`pages.yml`** — build + deploy do site. Dispara em `push` para `main` que
+  toque em `site/**` ou `data/**`, e via `workflow_dispatch`. **Não usa Secrets.**
+- **`daily-update.yml`** — só o ETL (cron 14h UTC): busca incremental, normaliza
+  e commita os JSONs na `main`. Esse commit (em `data/**`) **dispara o `pages.yml`**.
+
+A atomicidade dado↔site é preservada de forma indireta: todo refresh de dados
+gera um commit que republica o site com os dados novos. E mudanças de layout
+publicam sozinhas, sem depender do Strava.
 
 ```yaml
+# daily-update.yml
 jobs:
-  etl:
-    # busca dados, gera JSONs, faz commit
-  
-  deploy:
-    needs: etl          # só roda se etl passar
-    if: success()
-    # build React + publica gh-pages
+  etl:            # busca incremental, normaliza, commita data/ → dispara pages.yml
+
+# pages.yml
+on:
+  push: { branches: [main], paths: ["site/**", "data/**"] }
+  workflow_dispatch:
+jobs:
+  deploy:         # npm ci + build + upload-pages-artifact + deploy-pages
 ```
 
 ---
