@@ -46,18 +46,28 @@ Implementado via `continue-on-error: false` e job de retry com `sleep 1800`.
 
 ---
 
-### 3. Branch de deploy
+### 3. Método de deploy
 
-**Branch dedicada `gh-pages`**
+**GitHub Pages via GitHub Actions (artifact-based) — atualizado.**
 
-O build do React (arquivos estáticos gerados pelo Vite) é publicado em uma branch separada `gh-pages`. A branch `main` contém exclusivamente código fonte — sem artefatos gerados misturados.
+Decisão original era publicar numa branch `gh-pages`. Substituída pelo método
+oficial atual do GitHub Pages: o build do Vite é enviado como *Pages artifact*
+(`actions/upload-pages-artifact`) e publicado por `actions/deploy-pages`, sem
+branch órfã e com autenticação via OIDC.
 
-**Regra crítica:** a branch `gh-pages` é gerada e sobrescrita pelo workflow a cada deploy. Nunca editar manualmente — qualquer mudança manual será perdida no próximo run.
+**Rationale da mudança:** é o método recomendado pelo GitHub hoje, evita manter
+uma branch de build, e o deploy fica atômico e rastreável no próprio run. A
+branch `main` continua contendo exclusivamente código fonte + os JSONs de dados.
+
+**Configuração necessária:** em *Settings → Pages → Build and deployment*, a
+*Source* deve ser **GitHub Actions** (não "Deploy from a branch"). A `data/`
+viaja junto: o `vite.config.js` copia os JSONs para `dist/data/` no build, então
+a URL pública `/RunForrestRun/data/*.json` é servida com o app.
 
 | Branch | Conteúdo |
 |---|---|
-| `main` | Código fonte (ETL, React, docs, ADRs) |
-| `gh-pages` | Build estático gerado pelo Vite (output do CI) |
+| `main` | Código fonte (ETL, React, docs, ADRs) + JSONs versionados em `/data` |
+| — | Sem branch de build; o artifact é publicado direto pelo Actions |
 
 ---
 
@@ -113,11 +123,11 @@ Job: etl
 Job: deploy (somente se etl = success)
     1. Checkout da main (com JSONs atualizados)
     2. Setup Node
-    3. npm install
-    4. npm run build (Vite → /site/dist/)
-    5. Publicar /site/dist/ na branch gh-pages
+    3. npm ci (em /site)
+    4. npm run build (Vite → /site/dist/, com /data copiado para dist/data)
+    5. upload-pages-artifact (site/dist) → deploy-pages
     ↓
-GitHub Pages serve a branch gh-pages
+GitHub Pages serve o artifact em https://eldergil.github.io/RunForrestRun/
 ```
 
 ---
