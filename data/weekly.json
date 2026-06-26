@@ -1,1010 +1,695 @@
-[
-  {
-    "week": "2024-W24",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 45.61,
-    "strength_count": 0,
-    "walk_km": 20.53,
-    "other_count": 0,
-    "total_elevation_m": 541.4,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2024-W25",
-    "run_km": 4.63,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 4.66,
-    "other_count": 0,
-    "total_elevation_m": 69.8,
-    "avg_pace_s_per_km": 460.4,
-    "avg_pace_str": "7:40"
-  },
-  {
-    "week": "2024-W26",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 14.23,
-    "other_count": 0,
-    "total_elevation_m": 100.1,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2024-W27",
-    "run_km": 9.71,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 5.02,
-    "other_count": 0,
-    "total_elevation_m": 42.3,
-    "avg_pace_s_per_km": 359.1,
-    "avg_pace_str": "5:59"
-  },
-  {
-    "week": "2024-W28",
-    "run_km": 5.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 46.1,
-    "avg_pace_s_per_km": 350.4,
-    "avg_pace_str": "5:50"
-  },
-  {
-    "week": "2024-W29",
-    "run_km": 5.03,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 21.3,
-    "avg_pace_s_per_km": 366.4,
-    "avg_pace_str": "6:06"
-  },
-  {
-    "week": "2024-W30",
-    "run_km": 5.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 19.1,
-    "avg_pace_s_per_km": 356.1,
-    "avg_pace_str": "5:56"
-  },
-  {
-    "week": "2024-W31",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 55.01,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 456.2,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2024-W32",
-    "run_km": 5.01,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 18.6,
-    "avg_pace_s_per_km": 352.1,
-    "avg_pace_str": "5:52"
-  },
-  {
-    "week": "2024-W36",
-    "run_km": 8.56,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 19.7,
-    "avg_pace_s_per_km": 387.8,
-    "avg_pace_str": "6:27"
-  },
-  {
-    "week": "2024-W37",
-    "run_km": 3.07,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 9.9,
-    "avg_pace_s_per_km": 306.9,
-    "avg_pace_str": "5:06"
-  },
-  {
-    "week": "2024-W38",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 36.84,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 201,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2024-W47",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 1.78,
-    "other_count": 0,
-    "total_elevation_m": 0,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2024-W51",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 47.71,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 243,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W04",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 44.44,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 464.8,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W06",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 5.72,
-    "other_count": 0,
-    "total_elevation_m": 56.1,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W07",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 8.84,
-    "other_count": 0,
-    "total_elevation_m": 89.6,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W09",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 56.44,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 458.6,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W10",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 52.37,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 468.5,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W12",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 44.45,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 882.3,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2025-W13",
-    "run_km": 5.06,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 90,
-    "avg_pace_s_per_km": 368.9,
-    "avg_pace_str": "6:08"
-  },
-  {
-    "week": "2025-W14",
-    "run_km": 19.12,
-    "run_count": 4,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 157.1,
-    "avg_pace_s_per_km": 373.8,
-    "avg_pace_str": "6:13"
-  },
-  {
-    "week": "2025-W15",
-    "run_km": 10.06,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 151.4,
-    "avg_pace_s_per_km": 381.9,
-    "avg_pace_str": "6:21"
-  },
-  {
-    "week": "2025-W16",
-    "run_km": 16.03,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 187.2,
-    "avg_pace_s_per_km": 352.9,
-    "avg_pace_str": "5:52"
-  },
-  {
-    "week": "2025-W17",
-    "run_km": 20.65,
-    "run_count": 4,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 290.7,
-    "avg_pace_s_per_km": 356.9,
-    "avg_pace_str": "5:56"
-  },
-  {
-    "week": "2025-W18",
-    "run_km": 26.19,
-    "run_count": 4,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 156.4,
-    "avg_pace_s_per_km": 361.2,
-    "avg_pace_str": "6:01"
-  },
-  {
-    "week": "2025-W19",
-    "run_km": 16.47,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 234.0,
-    "avg_pace_s_per_km": 369.9,
-    "avg_pace_str": "6:09"
-  },
-  {
-    "week": "2025-W22",
-    "run_km": 21.57,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 346.9,
-    "avg_pace_s_per_km": 368.2,
-    "avg_pace_str": "6:08"
-  },
-  {
-    "week": "2025-W23",
-    "run_km": 11.24,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 151.6,
-    "avg_pace_s_per_km": 350.6,
-    "avg_pace_str": "5:50"
-  },
-  {
-    "week": "2025-W24",
-    "run_km": 18.11,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 188.7,
-    "avg_pace_s_per_km": 341.3,
-    "avg_pace_str": "5:41"
-  },
-  {
-    "week": "2025-W25",
-    "run_km": 8.01,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 56.7,
-    "avg_pace_s_per_km": 351.9,
-    "avg_pace_str": "5:51"
-  },
-  {
-    "week": "2025-W26",
-    "run_km": 5.67,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 87.7,
-    "avg_pace_s_per_km": 357.9,
-    "avg_pace_str": "5:57"
-  },
-  {
-    "week": "2025-W27",
-    "run_km": 23.32,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 238.9,
-    "avg_pace_s_per_km": 340.1,
-    "avg_pace_str": "5:40"
-  },
-  {
-    "week": "2025-W28",
-    "run_km": 5.71,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 59.7,
-    "avg_pace_s_per_km": 354.7,
-    "avg_pace_str": "5:54"
-  },
-  {
-    "week": "2025-W29",
-    "run_km": 11.89,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 151.2,
-    "avg_pace_s_per_km": 341.0,
-    "avg_pace_str": "5:41"
-  },
-  {
-    "week": "2025-W30",
-    "run_km": 10.62,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 183.3,
-    "avg_pace_s_per_km": 331.9,
-    "avg_pace_str": "5:31"
-  },
-  {
-    "week": "2025-W31",
-    "run_km": 11.72,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 168.6,
-    "avg_pace_s_per_km": 337.9,
-    "avg_pace_str": "5:37"
-  },
-  {
-    "week": "2025-W32",
-    "run_km": 24.84,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 187.6,
-    "avg_pace_s_per_km": 342.1,
-    "avg_pace_str": "5:42"
-  },
-  {
-    "week": "2025-W33",
-    "run_km": 23.48,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 248.1,
-    "avg_pace_s_per_km": 340.4,
-    "avg_pace_str": "5:40"
-  },
-  {
-    "week": "2025-W34",
-    "run_km": 29.02,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 447.9,
-    "avg_pace_s_per_km": 339.7,
-    "avg_pace_str": "5:39"
-  },
-  {
-    "week": "2025-W35",
-    "run_km": 7.11,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 55,
-    "avg_pace_s_per_km": 331.9,
-    "avg_pace_str": "5:31"
-  },
-  {
-    "week": "2025-W36",
-    "run_km": 20.55,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 202.2,
-    "avg_pace_s_per_km": 329.8,
-    "avg_pace_str": "5:29"
-  },
-  {
-    "week": "2025-W37",
-    "run_km": 23.09,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 222.3,
-    "avg_pace_s_per_km": 324.4,
-    "avg_pace_str": "5:24"
-  },
-  {
-    "week": "2025-W38",
-    "run_km": 27.33,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 272.2,
-    "avg_pace_s_per_km": 329.6,
-    "avg_pace_str": "5:29"
-  },
-  {
-    "week": "2025-W39",
-    "run_km": 34.81,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 197.3,
-    "avg_pace_s_per_km": 333.5,
-    "avg_pace_str": "5:33"
-  },
-  {
-    "week": "2025-W40",
-    "run_km": 23.68,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 237.2,
-    "avg_pace_s_per_km": 343.9,
-    "avg_pace_str": "5:43"
-  },
-  {
-    "week": "2025-W41",
-    "run_km": 15.47,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 195.1,
-    "avg_pace_s_per_km": 308.9,
-    "avg_pace_str": "5:08"
-  },
-  {
-    "week": "2025-W42",
-    "run_km": 11.44,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 89.0,
-    "avg_pace_s_per_km": 313.9,
-    "avg_pace_str": "5:13"
-  },
-  {
-    "week": "2025-W43",
-    "run_km": 42.31,
-    "run_count": 4,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 294.9,
-    "avg_pace_s_per_km": 327.7,
-    "avg_pace_str": "5:27"
-  },
-  {
-    "week": "2025-W44",
-    "run_km": 10.1,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 75.2,
-    "avg_pace_s_per_km": 321.0,
-    "avg_pace_str": "5:21"
-  },
-  {
-    "week": "2025-W45",
-    "run_km": 19.57,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 174.1,
-    "avg_pace_s_per_km": 328.9,
-    "avg_pace_str": "5:28"
-  },
-  {
-    "week": "2025-W46",
-    "run_km": 28.27,
-    "run_count": 4,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 164.0,
-    "avg_pace_s_per_km": 310.6,
-    "avg_pace_str": "5:10"
-  },
-  {
-    "week": "2025-W47",
-    "run_km": 5.03,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 28.4,
-    "avg_pace_s_per_km": 296.0,
-    "avg_pace_str": "4:56"
-  },
-  {
-    "week": "2025-W48",
-    "run_km": 5.04,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 23.8,
-    "avg_pace_s_per_km": 325.5,
-    "avg_pace_str": "5:25"
-  },
-  {
-    "week": "2025-W49",
-    "run_km": 10.08,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 60.5,
-    "avg_pace_s_per_km": 324.2,
-    "avg_pace_str": "5:24"
-  },
-  {
-    "week": "2025-W50",
-    "run_km": 9.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 18.9,
-    "avg_pace_s_per_km": 330.0,
-    "avg_pace_str": "5:30"
-  },
-  {
-    "week": "2025-W51",
-    "run_km": 15.07,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 65.6,
-    "avg_pace_s_per_km": 344.2,
-    "avg_pace_str": "5:44"
-  },
-  {
-    "week": "2025-W52",
-    "run_km": 5.03,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 29.6,
-    "avg_pace_s_per_km": 320.8,
-    "avg_pace_str": "5:20"
-  },
-  {
-    "week": "2026-W01",
-    "run_km": 15.24,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 133.4,
-    "avg_pace_s_per_km": 324.3,
-    "avg_pace_str": "5:24"
-  },
-  {
-    "week": "2026-W02",
-    "run_km": 10.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 41.9,
-    "avg_pace_s_per_km": 315.3,
-    "avg_pace_str": "5:15"
-  },
-  {
-    "week": "2026-W03",
-    "run_km": 16.11,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 0,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 78.4,
-    "avg_pace_s_per_km": 360.1,
-    "avg_pace_str": "6:00"
-  },
-  {
-    "week": "2026-W04",
-    "run_km": 13.1,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 4,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 62.6,
-    "avg_pace_s_per_km": 343.9,
-    "avg_pace_str": "5:43"
-  },
-  {
-    "week": "2026-W05",
-    "run_km": 5.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 27.8,
-    "avg_pace_s_per_km": 370.2,
-    "avg_pace_str": "6:10"
-  },
-  {
-    "week": "2026-W06",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 3,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 0,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2026-W07",
-    "run_km": 5.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 28.4,
-    "avg_pace_s_per_km": 331.9,
-    "avg_pace_str": "5:31"
-  },
-  {
-    "week": "2026-W08",
-    "run_km": 11.25,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 93.9,
-    "avg_pace_s_per_km": 349.1,
-    "avg_pace_str": "5:49"
-  },
-  {
-    "week": "2026-W09",
-    "run_km": 24.2,
-    "run_count": 3,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 170.1,
-    "avg_pace_s_per_km": 349.5,
-    "avg_pace_str": "5:49"
-  },
-  {
-    "week": "2026-W10",
-    "run_km": 17.45,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 77.6,
-    "avg_pace_s_per_km": 347.4,
-    "avg_pace_str": "5:47"
-  },
-  {
-    "week": "2026-W11",
-    "run_km": 14.45,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 68.2,
-    "avg_pace_s_per_km": 346.1,
-    "avg_pace_str": "5:46"
-  },
-  {
-    "week": "2026-W12",
-    "run_km": 16.31,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 117.4,
-    "avg_pace_s_per_km": 358.1,
-    "avg_pace_str": "5:58"
-  },
-  {
-    "week": "2026-W13",
-    "run_km": 6.03,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 3,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 33,
-    "avg_pace_s_per_km": 341.6,
-    "avg_pace_str": "5:41"
-  },
-  {
-    "week": "2026-W14",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 0,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2026-W15",
-    "run_km": 16.03,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 107,
-    "avg_pace_s_per_km": 343.1,
-    "avg_pace_str": "5:43"
-  },
-  {
-    "week": "2026-W16",
-    "run_km": 5.02,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 24,
-    "avg_pace_s_per_km": 324.8,
-    "avg_pace_str": "5:24"
-  },
-  {
-    "week": "2026-W17",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 1,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 0,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2026-W18",
-    "run_km": 5.12,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 26,
-    "avg_pace_s_per_km": 354.2,
-    "avg_pace_str": "5:54"
-  },
-  {
-    "week": "2026-W19",
-    "run_km": 17.58,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 80,
-    "avg_pace_s_per_km": 362.0,
-    "avg_pace_str": "6:02"
-  },
-  {
-    "week": "2026-W20",
-    "run_km": 13.05,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 3,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 64,
-    "avg_pace_s_per_km": 337.9,
-    "avg_pace_str": "5:37"
-  },
-  {
-    "week": "2026-W21",
-    "run_km": 16.16,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 67,
-    "avg_pace_s_per_km": 336.6,
-    "avg_pace_str": "5:36"
-  },
-  {
-    "week": "2026-W22",
-    "run_km": 15.03,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 63,
-    "avg_pace_s_per_km": 323.2,
-    "avg_pace_str": "5:23"
-  },
-  {
-    "week": "2026-W23",
-    "run_km": 12.6,
-    "run_count": 1,
-    "ride_km": 0,
-    "strength_count": 1,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 166.2,
-    "avg_pace_s_per_km": 353.0,
-    "avg_pace_str": "5:53"
-  },
-  {
-    "week": "2026-W24",
-    "run_km": 19.04,
-    "run_count": 2,
-    "ride_km": 0,
-    "strength_count": 3,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 121,
-    "avg_pace_s_per_km": 337.0,
-    "avg_pace_str": "5:37"
-  },
-  {
-    "week": "2026-W25",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 3,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 0,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  },
-  {
-    "week": "2026-W26",
-    "run_km": 0,
-    "run_count": 0,
-    "ride_km": 0,
-    "strength_count": 2,
-    "walk_km": 0,
-    "other_count": 0,
-    "total_elevation_m": 0,
-    "avg_pace_s_per_km": null,
-    "avg_pace_str": null
-  }
-]
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T13:24:16Z",
+  "weeks": [
+    {
+      "week_start": "2025-06-23",
+      "week_label": "23 Jun",
+      "running": {
+        "distance_km": 5.7,
+        "avg_pace_min_km": 5.96,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-06-30",
+      "week_label": "30 Jun",
+      "running": {
+        "distance_km": 23.3,
+        "avg_pace_min_km": 5.67,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-07-07",
+      "week_label": "07 Jul",
+      "running": {
+        "distance_km": 5.7,
+        "avg_pace_min_km": 5.91,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-07-14",
+      "week_label": "14 Jul",
+      "running": {
+        "distance_km": 11.9,
+        "avg_pace_min_km": 5.68,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-07-21",
+      "week_label": "21 Jul",
+      "running": {
+        "distance_km": 10.6,
+        "avg_pace_min_km": 5.53,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-07-28",
+      "week_label": "28 Jul",
+      "running": {
+        "distance_km": 11.7,
+        "avg_pace_min_km": 5.63,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-08-04",
+      "week_label": "04 Ago",
+      "running": {
+        "distance_km": 24.8,
+        "avg_pace_min_km": 5.7,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-08-11",
+      "week_label": "11 Ago",
+      "running": {
+        "distance_km": 23.5,
+        "avg_pace_min_km": 5.67,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-08-18",
+      "week_label": "18 Ago",
+      "running": {
+        "distance_km": 29.0,
+        "avg_pace_min_km": 5.66,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-08-25",
+      "week_label": "25 Ago",
+      "running": {
+        "distance_km": 7.1,
+        "avg_pace_min_km": 5.53,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-09-01",
+      "week_label": "01 Set",
+      "running": {
+        "distance_km": 20.5,
+        "avg_pace_min_km": 5.5,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-09-08",
+      "week_label": "08 Set",
+      "running": {
+        "distance_km": 23.1,
+        "avg_pace_min_km": 5.4,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-09-15",
+      "week_label": "15 Set",
+      "running": {
+        "distance_km": 27.3,
+        "avg_pace_min_km": 5.49,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-09-22",
+      "week_label": "22 Set",
+      "running": {
+        "distance_km": 34.8,
+        "avg_pace_min_km": 5.56,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-09-29",
+      "week_label": "29 Set",
+      "running": {
+        "distance_km": 23.7,
+        "avg_pace_min_km": 5.73,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-10-06",
+      "week_label": "06 Out",
+      "running": {
+        "distance_km": 15.5,
+        "avg_pace_min_km": 5.14,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-10-13",
+      "week_label": "13 Out",
+      "running": {
+        "distance_km": 11.4,
+        "avg_pace_min_km": 5.23,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-10-20",
+      "week_label": "20 Out",
+      "running": {
+        "distance_km": 42.3,
+        "avg_pace_min_km": 5.46,
+        "sessions": 4,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-10-27",
+      "week_label": "27 Out",
+      "running": {
+        "distance_km": 10.1,
+        "avg_pace_min_km": 5.35,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-11-03",
+      "week_label": "03 Nov",
+      "running": {
+        "distance_km": 19.6,
+        "avg_pace_min_km": 5.48,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-11-10",
+      "week_label": "10 Nov",
+      "running": {
+        "distance_km": 28.3,
+        "avg_pace_min_km": 5.17,
+        "sessions": 4,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-11-17",
+      "week_label": "17 Nov",
+      "running": {
+        "distance_km": 5.0,
+        "avg_pace_min_km": 4.93,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-11-24",
+      "week_label": "24 Nov",
+      "running": {
+        "distance_km": 5.0,
+        "avg_pace_min_km": 5.42,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-12-01",
+      "week_label": "01 Dez",
+      "running": {
+        "distance_km": 10.1,
+        "avg_pace_min_km": 5.41,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-12-08",
+      "week_label": "08 Dez",
+      "running": {
+        "distance_km": 9.0,
+        "avg_pace_min_km": 5.5,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-12-15",
+      "week_label": "15 Dez",
+      "running": {
+        "distance_km": 15.1,
+        "avg_pace_min_km": 5.73,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-12-22",
+      "week_label": "22 Dez",
+      "running": {
+        "distance_km": 5.0,
+        "avg_pace_min_km": 5.35,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2025-12-29",
+      "week_label": "29 Dez",
+      "running": {
+        "distance_km": 15.2,
+        "avg_pace_min_km": 5.4,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2026-01-05",
+      "week_label": "05 Jan",
+      "running": {
+        "distance_km": 10.0,
+        "avg_pace_min_km": 5.25,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2026-01-12",
+      "week_label": "12 Jan",
+      "running": {
+        "distance_km": 16.1,
+        "avg_pace_min_km": 6.0,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 0
+      }
+    },
+    {
+      "week_start": "2026-01-19",
+      "week_label": "19 Jan",
+      "running": {
+        "distance_km": 13.1,
+        "avg_pace_min_km": 5.73,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 4
+      }
+    },
+    {
+      "week_start": "2026-01-26",
+      "week_label": "26 Jan",
+      "running": {
+        "distance_km": 5.0,
+        "avg_pace_min_km": 6.17,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-02-02",
+      "week_label": "02 Fev",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
+      }
+    },
+    {
+      "week_start": "2026-02-09",
+      "week_label": "09 Fev",
+      "running": {
+        "distance_km": 5.0,
+        "avg_pace_min_km": 5.53,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-02-16",
+      "week_label": "16 Fev",
+      "running": {
+        "distance_km": 11.2,
+        "avg_pace_min_km": 5.81,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-02-23",
+      "week_label": "23 Fev",
+      "running": {
+        "distance_km": 24.2,
+        "avg_pace_min_km": 5.82,
+        "sessions": 3,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-03-02",
+      "week_label": "02 Mar",
+      "running": {
+        "distance_km": 17.4,
+        "avg_pace_min_km": 5.79,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-03-09",
+      "week_label": "09 Mar",
+      "running": {
+        "distance_km": 14.4,
+        "avg_pace_min_km": 5.77,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-03-16",
+      "week_label": "16 Mar",
+      "running": {
+        "distance_km": 16.3,
+        "avg_pace_min_km": 5.97,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-03-23",
+      "week_label": "23 Mar",
+      "running": {
+        "distance_km": 6.0,
+        "avg_pace_min_km": 5.69,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
+      }
+    },
+    {
+      "week_start": "2026-03-30",
+      "week_label": "30 Mar",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-04-06",
+      "week_label": "06 Abr",
+      "running": {
+        "distance_km": 16.0,
+        "avg_pace_min_km": 5.71,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-04-13",
+      "week_label": "13 Abr",
+      "running": {
+        "distance_km": 5.0,
+        "avg_pace_min_km": 5.41,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-04-20",
+      "week_label": "20 Abr",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 1
+      }
+    },
+    {
+      "week_start": "2026-04-27",
+      "week_label": "27 Abr",
+      "running": {
+        "distance_km": 5.1,
+        "avg_pace_min_km": 5.9,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-05-04",
+      "week_label": "04 Mai",
+      "running": {
+        "distance_km": 17.6,
+        "avg_pace_min_km": 6.03,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-05-11",
+      "week_label": "11 Mai",
+      "running": {
+        "distance_km": 13.1,
+        "avg_pace_min_km": 5.63,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
+      }
+    },
+    {
+      "week_start": "2026-05-18",
+      "week_label": "18 Mai",
+      "running": {
+        "distance_km": 16.2,
+        "avg_pace_min_km": 5.61,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-05-25",
+      "week_label": "25 Mai",
+      "running": {
+        "distance_km": 15.0,
+        "avg_pace_min_km": 5.38,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-06-01",
+      "week_label": "01 Jun",
+      "running": {
+        "distance_km": 12.6,
+        "avg_pace_min_km": 5.88,
+        "sessions": 1,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 1
+      }
+    },
+    {
+      "week_start": "2026-06-08",
+      "week_label": "08 Jun",
+      "running": {
+        "distance_km": 19.0,
+        "avg_pace_min_km": 5.62,
+        "sessions": 2,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
+      }
+    },
+    {
+      "week_start": "2026-06-15",
+      "week_label": "15 Jun",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
+      }
+    },
+    {
+      "week_start": "2026-06-22",
+      "week_label": "22 Jun",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    }
+  ]
+}

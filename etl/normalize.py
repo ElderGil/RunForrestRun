@@ -1,242 +1,267 @@
-"""Normalize raw Strava data into KPI JSONs consumed by the site."""
+"""Normalize raw Strava data into the versioned JSON contract (ADR-003).
+
+Emits four files in /data/, each with `schema_version` and `generated_at`:
+- activities.json   raw-ish per-activity list (coaches consume this)
+- kpis.json         current-month KPIs + guardrail (Hero / Corrida / Força)
+- weekly.json       weekly aggregates, last 12 months (evolution chart)
+- quarterly.json    per-quarter aggregates since Jun/2024 (Histórico)
+
+Pace is stored as decimal min/km (5:25 -> 5.42). Formatting is the page's job.
+No location fields are ever emitted (ADR-003 rule 5).
+"""
+
+from __future__ import annotations
 
 import json
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent.parent / "data"
+SCHEMA_VERSION = "1.0"
 
-SPORT_GROUPS = {
-    "Run": ["Run", "TrailRun", "VirtualRun"],
-    "Ride": ["Ride", "VirtualRide", "MountainBikeRide", "GravelRide", "EBikeRide"],
-    "Strength": ["WeightTraining", "Crossfit", "Workout"],
-    "Walk": ["Walk", "Hike"],
-}
+# ADR-001: only these sport types are kept.
+RUN_TYPES = {"Run", "TrailRun", "VirtualRun"}
+STRENGTH_TYPES = {"WeightTraining", "Crossfit", "Workout"}
+RIDE_TYPES = {"Ride", "VirtualRide", "MountainBikeRide", "GravelRide", "EBikeRide"}
 
-HR_ZONES = [
-    {"label": "Z1 Recovery", "min": 0, "max": 118},
-    {"label": "Z2 Aerobic", "min": 119, "max": 147},
-    {"label": "Z3 Tempo", "min": 148, "max": 162},
-    {"label": "Z4 Threshold", "min": 163, "max": 177},
-    {"label": "Z5 VO2max", "min": 178, "max": 999},
-]
+MONTHS_PT = ["", "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+             "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+MONTHS_PT_SHORT = ["", "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+                   "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
 
 
-def sport_group(sport_type: str) -> str:
-    for group, types in SPORT_GROUPS.items():
-        if sport_type in types:
-            return group
-    return "Other"
+def now_iso() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def pace_str(avg_speed_ms: float) -> str:
-    """Convert m/s to min/km string."""
-    if not avg_speed_ms or avg_speed_ms <= 0:
+def kind(sport_type: str) -> str | None:
+    if sport_type in RUN_TYPES:
+        return "Run"
+    if sport_type in STRENGTH_TYPES:
+        return "Strength"
+    if sport_type in RIDE_TYPES:
+        return "Ride"
+    return None
+
+
+def parse_date(raw: dict) -> str:
+    """Return YYYY-MM-DD. Tolerates the malformed local-time seed format."""
+    s = raw.get("start_date_local") or raw.get("start_date") or "2000-01-01"
+    return s[:10]
+
+
+def parse_dt(date_str: str) -> datetime:
+    return datetime.strptime(date_str, "%Y-%m-%d")
+
+
+def pace_decimal(distance_m: float, moving_s: float) -> float | None:
+    """min/km as decimal (e.g. 5:25 -> 5.42). None when not runnable."""
+    if not distance_m or distance_m <= 0 or not moving_s:
         return None
-    seconds_per_km = 1000 / avg_speed_ms
-    m, s = divmod(int(seconds_per_km), 60)
-    return f"{m}:{s:02d}"
+    seconds_per_km = moving_s / (distance_m / 1000)
+    return round(seconds_per_km / 60, 2)
 
 
-def pace_seconds(avg_speed_ms: float) -> float:
-    if not avg_speed_ms or avg_speed_ms <= 0:
-        return None
-    return 1000 / avg_speed_ms
+# --- activities.json ---------------------------------------------------------
+
+def build_activities(raw_list: list[dict]) -> list[dict]:
+    out = []
+    for raw in raw_list:
+        k = kind(raw.get("sport_type", raw.get("type", "")))
+        if k is None:
+            continue
+        dist_m = raw.get("distance", 0) or 0
+        moving_s = raw.get("moving_time", 0) or 0
+        out.append({
+            "id": str(raw["id"]),
+            "date": parse_date(raw),
+            "type": k,
+            "distance_km": round(dist_m / 1000, 2),
+            "duration_min": round(moving_s / 60, 1),
+            "pace_min_km": pace_decimal(dist_m, moving_s) if k == "Run" else None,
+            "avg_heart_rate_bpm": round(raw["average_heartrate"]) if raw.get("average_heartrate") else None,
+            "max_heart_rate_bpm": round(raw["max_heartrate"]) if raw.get("max_heartrate") else None,
+            "elevation_m": round(raw.get("total_elevation_gain", 0) or 0),
+            "name": raw.get("name", ""),
+        })
+    out.sort(key=lambda a: a["date"])
+    return out
 
 
-def iso_week(date_str: str) -> str:
-    """Return ISO week label like '2025-W23'."""
-    dt = datetime.fromisoformat(date_str[:10])
-    return dt.strftime("%G-W%V")
+# --- weekly.json -------------------------------------------------------------
+
+def week_monday(d: datetime) -> datetime:
+    return d - timedelta(days=d.weekday())
 
 
-def iso_month(date_str: str) -> str:
-    return date_str[:7]
-
-
-def normalize_activity(raw: dict) -> dict:
-    sport = raw.get("sport_type", raw.get("type", "Unknown"))
-    group = sport_group(sport)
-    distance_km = raw.get("distance", 0) / 1000
-    moving_s = raw.get("moving_time", 0)
-    avg_speed = raw.get("average_speed", 0)
-
-    act = {
-        "id": raw["id"],
-        "name": raw.get("name", ""),
-        "sport_type": sport,
-        "sport_group": group,
-        "start_date": raw.get("start_date_local", raw.get("start_date", "")),
-        "distance_km": round(distance_km, 3),
-        "moving_time_s": moving_s,
-        "elapsed_time_s": raw.get("elapsed_time", 0),
-        "elevation_gain_m": raw.get("total_elevation_gain", 0),
-        "avg_speed_ms": avg_speed,
-        "max_speed_ms": raw.get("max_speed", 0),
-        "avg_hr": raw.get("average_heartrate"),
-        "max_hr": raw.get("max_heartrate"),
-        "avg_cadence": raw.get("average_cadence"),
-        "calories": raw.get("calories", raw.get("kilojoules", 0)),
-        "suffer_score": raw.get("suffer_score"),
-        "kudos": raw.get("kudos_count", 0),
-        "pr_count": raw.get("pr_count", 0),
-        "achievement_count": raw.get("achievement_count", 0),
-        "week": iso_week(raw.get("start_date_local", raw.get("start_date", "2000-01-01"))),
-        "month": iso_month(raw.get("start_date_local", raw.get("start_date", "2000-01-01"))),
-    }
-
-    if group == "Run" and avg_speed > 0:
-        act["pace_str"] = pace_str(avg_speed)
-        act["pace_s_per_km"] = round(pace_seconds(avg_speed), 1)
-
-    return act
-
-
-def build_weekly(activities: list[dict]) -> list[dict]:
-    weeks: dict[str, dict] = defaultdict(lambda: {
-        "run_km": 0, "run_count": 0, "ride_km": 0, "strength_count": 0,
-        "walk_km": 0, "other_count": 0, "total_elevation_m": 0,
-        "avg_pace_s_sum": 0, "avg_pace_s_count": 0,
+def build_weekly(activities: list[dict], months: int = 12) -> list[dict]:
+    cutoff = datetime.now() - timedelta(days=months * 30 + 7)
+    buckets: dict[str, dict] = defaultdict(lambda: {
+        "run_dist": 0.0, "run_pace_sum": 0.0, "run_pace_n": 0,
+        "run_sessions": 0, "hr_sum": 0.0, "hr_n": 0, "strength": 0,
     })
 
     for a in activities:
-        w = weeks[a["week"]]
-        g = a["sport_group"]
-        if g == "Run":
-            w["run_km"] += a["distance_km"]
-            w["run_count"] += 1
-            if a.get("pace_s_per_km"):
-                w["avg_pace_s_sum"] += a["pace_s_per_km"]
-                w["avg_pace_s_count"] += 1
-        elif g == "Ride":
-            w["ride_km"] += a["distance_km"]
-        elif g == "Strength":
-            w["strength_count"] += 1
-        elif g == "Walk":
-            w["walk_km"] += a["distance_km"]
-        else:
-            w["other_count"] += 1
-        w["total_elevation_m"] += a["elevation_gain_m"]
+        d = parse_dt(a["date"])
+        if d < cutoff:
+            continue
+        wk = week_monday(d).strftime("%Y-%m-%d")
+        b = buckets[wk]
+        if a["type"] == "Run":
+            b["run_dist"] += a["distance_km"]
+            b["run_sessions"] += 1
+            if a["pace_min_km"]:
+                b["run_pace_sum"] += a["pace_min_km"]
+                b["run_pace_n"] += 1
+            if a["avg_heart_rate_bpm"]:
+                b["hr_sum"] += a["avg_heart_rate_bpm"]
+                b["hr_n"] += 1
+        elif a["type"] == "Strength":
+            b["strength"] += 1
 
-    result = []
-    for week, data in sorted(weeks.items()):
-        avg_pace_s = None
-        if data["avg_pace_s_count"] > 0:
-            avg_pace_s = round(data["avg_pace_s_sum"] / data["avg_pace_s_count"], 1)
-            m, s = divmod(int(avg_pace_s), 60)
-            avg_pace_str = f"{m}:{s:02d}"
-        else:
-            avg_pace_str = None
-
-        result.append({
-            "week": week,
-            "run_km": round(data["run_km"], 2),
-            "run_count": data["run_count"],
-            "ride_km": round(data["ride_km"], 2),
-            "strength_count": data["strength_count"],
-            "walk_km": round(data["walk_km"], 2),
-            "other_count": data["other_count"],
-            "total_elevation_m": round(data["total_elevation_m"], 1),
-            "avg_pace_s_per_km": avg_pace_s,
-            "avg_pace_str": avg_pace_str,
+    weeks = []
+    for wk in sorted(buckets):
+        b = buckets[wk]
+        d = parse_dt(wk)
+        weeks.append({
+            "week_start": wk,
+            "week_label": f"{d.day:02d} {MONTHS_PT_SHORT[d.month]}",
+            "running": {
+                "distance_km": round(b["run_dist"], 1),
+                "avg_pace_min_km": round(b["run_pace_sum"] / b["run_pace_n"], 2) if b["run_pace_n"] else None,
+                "sessions": b["run_sessions"],
+                "avg_heart_rate_bpm": round(b["hr_sum"] / b["hr_n"]) if b["hr_n"] else None,
+            },
+            "strength": {"sessions": b["strength"]},
         })
+    return weeks
 
-    return result
+
+# --- quarterly.json ----------------------------------------------------------
+
+def quarter_of(month: int) -> int:
+    return (month - 1) // 3 + 1
 
 
-def build_monthly(activities: list[dict]) -> list[dict]:
-    months: dict[str, dict] = defaultdict(lambda: {
-        "run_km": 0, "run_count": 0, "ride_km": 0, "strength_count": 0,
-        "total_elevation_m": 0, "long_run_km": 0,
-        "avg_hr_sum": 0, "avg_hr_count": 0,
+def build_quarterly(activities: list[dict]) -> list[dict]:
+    buckets: dict[tuple, dict] = defaultdict(lambda: {
+        "run_dist": 0.0, "run_pace_sum": 0.0, "run_pace_n": 0,
+        "run_sessions": 0, "longest": 0.0, "strength": 0,
     })
-
     for a in activities:
-        m = months[a["month"]]
-        g = a["sport_group"]
-        if g == "Run":
-            m["run_km"] += a["distance_km"]
-            m["run_count"] += 1
-            if a["distance_km"] > m["long_run_km"]:
-                m["long_run_km"] = a["distance_km"]
-        elif g == "Ride":
-            m["ride_km"] += a["distance_km"]
-        elif g == "Strength":
-            m["strength_count"] += 1
-        m["total_elevation_m"] += a["elevation_gain_m"]
-        if a.get("avg_hr"):
-            m["avg_hr_sum"] += a["avg_hr"]
-            m["avg_hr_count"] += 1
+        d = parse_dt(a["date"])
+        key = (d.year, quarter_of(d.month))
+        b = buckets[key]
+        if a["type"] == "Run":
+            b["run_dist"] += a["distance_km"]
+            b["run_sessions"] += 1
+            b["longest"] = max(b["longest"], a["distance_km"])
+            if a["pace_min_km"]:
+                b["run_pace_sum"] += a["pace_min_km"]
+                b["run_pace_n"] += 1
+        elif a["type"] == "Strength":
+            b["strength"] += 1
 
-    result = []
-    for month, data in sorted(months.items()):
-        avg_hr = round(data["avg_hr_sum"] / data["avg_hr_count"], 1) if data["avg_hr_count"] else None
-        result.append({
-            "month": month,
-            "run_km": round(data["run_km"], 2),
-            "run_count": data["run_count"],
-            "ride_km": round(data["ride_km"], 2),
-            "strength_count": data["strength_count"],
-            "total_elevation_m": round(data["total_elevation_m"], 1),
-            "long_run_km": round(data["long_run_km"], 2),
-            "avg_hr": avg_hr,
+    quarters = []
+    for (year, q) in sorted(buckets):
+        b = buckets[(year, q)]
+        start_month = (q - 1) * 3 + 1
+        end_month = start_month + 2
+        last_day = (datetime(year + (end_month // 12), (end_month % 12) + 1, 1)
+                    - timedelta(days=1)).day
+        quarters.append({
+            "label": f"Q{q} {year}",
+            "period": {
+                "start": f"{year}-{start_month:02d}-01",
+                "end": f"{year}-{end_month:02d}-{last_day:02d}",
+            },
+            "running": {
+                "total_distance_km": round(b["run_dist"], 1),
+                "avg_pace_min_km": round(b["run_pace_sum"] / b["run_pace_n"], 2) if b["run_pace_n"] else None,
+                "total_sessions": b["run_sessions"],
+                "longest_run_km": round(b["longest"], 1),
+            },
+            "strength": {"total_sessions": b["strength"]},
         })
+    return quarters
 
-    return result
 
+# --- kpis.json (current month + guardrail) -----------------------------------
 
-def build_kpis(activities: list[dict], weekly: list[dict], monthly: list[dict]) -> dict:
-    runs = [a for a in activities if a["sport_group"] == "Run"]
+def acute_chronic_ratio(activities: list[dict], ref: datetime) -> dict:
+    """ACWR using running distance as load proxy.
 
-    # Last 4 weeks
-    recent_weeks = weekly[-4:] if len(weekly) >= 4 else weekly
-    recent_run_km = sum(w["run_km"] for w in recent_weeks)
-    avg_weekly_km = round(recent_run_km / len(recent_weeks), 2) if recent_weeks else 0
+    acute   = last 7 days total km
+    chronic = avg weekly km over the last 28 days
+    """
+    runs = [(parse_dt(a["date"]), a["distance_km"]) for a in activities if a["type"] == "Run"]
+    acute = sum(km for d, km in runs if (ref - d).days < 7)
+    chronic_total = sum(km for d, km in runs if (ref - d).days < 28)
+    chronic_weekly = chronic_total / 4 if chronic_total else 0
+    ratio = round(acute / chronic_weekly, 2) if chronic_weekly else 0.0
 
-    # Best long run ever
-    long_run_km = max((a["distance_km"] for a in runs), default=0)
-
-    # Recent pace (last 5 runs)
-    recent_runs = sorted(runs, key=lambda a: a["start_date"], reverse=True)[:5]
-    paces = [a["pace_s_per_km"] for a in recent_runs if a.get("pace_s_per_km")]
-    avg_pace_s = round(sum(paces) / len(paces), 1) if paces else None
-    if avg_pace_s:
-        m, s = divmod(int(avg_pace_s), 60)
-        avg_pace_str = f"{m}:{s:02d}"
+    warning, danger = 1.3, 1.5
+    if ratio == 0 or chronic_weekly == 0:
+        status = "unknown"
+    elif ratio >= danger:
+        status = "danger"
+    elif ratio >= warning:
+        status = "warning"
     else:
-        avg_pace_str = None
-
-    # Consistency: weeks with at least 1 run, in last 12 weeks
-    last_12 = weekly[-12:] if len(weekly) >= 12 else weekly
-    active_weeks = sum(1 for w in last_12 if w["run_count"] > 0)
-    consistency_pct = round(active_weeks / len(last_12) * 100) if last_12 else 0
-
-    # Total ever
-    total_run_km = round(sum(a["distance_km"] for a in runs), 2)
-    total_runs = len(runs)
+        status = "ok"
 
     return {
-        "as_of": datetime.now().isoformat(timespec="seconds"),
-        "avg_weekly_run_km": avg_weekly_km,
-        "avg_pace_str": avg_pace_str,
-        "avg_pace_s_per_km": avg_pace_s,
-        "long_run_km": round(long_run_km, 2),
-        "consistency_pct_12w": consistency_pct,
-        "active_weeks_of_12": active_weeks,
-        "total_run_km": total_run_km,
-        "total_run_count": total_runs,
-        "goal_half_marathon": {
-            "event": "Meia Maratona Pomerode",
-            "date": "2026-10-17",
-            "distance_km": 21.1,
+        "metric": "acute_chronic_ratio",
+        "value": ratio,
+        "status": status,
+        "threshold_warning": warning,
+        "threshold_danger": danger,
+        "label": "Razão carga aguda/crônica",
+        "description": "Compara o volume da última semana com a média das últimas 4. "
+                       "Acima de 1.3 o risco de lesão sobe — o guardrail prioriza saúde sobre velocidade.",
+    }
+
+
+def build_kpis(activities: list[dict]) -> dict:
+    ref = datetime.now()
+    cur_y, cur_m = ref.year, ref.month
+    month_acts = [a for a in activities if a["date"][:7] == f"{cur_y}-{cur_m:02d}"]
+    runs = [a for a in month_acts if a["type"] == "Run"]
+    strength = [a for a in month_acts if a["type"] == "Strength"]
+
+    # weeks elapsed in current month (for sessions/week)
+    weeks_elapsed = max(ref.day / 7, 1)
+
+    paces = [a["pace_min_km"] for a in runs if a["pace_min_km"]]
+    hrs = [a["avg_heart_rate_bpm"] for a in runs if a["avg_heart_rate_bpm"]]
+    max_hrs = [a["max_heart_rate_bpm"] for a in runs if a["max_heart_rate_bpm"]]
+
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "generated_at": now_iso(),
+        "period": {"month": cur_m, "year": cur_y, "label": f"{MONTHS_PT[cur_m]} {cur_y}"},
+        "running": {
+            "total_distance_km": round(sum(a["distance_km"] for a in runs), 1),
+            "total_sessions": len(runs),
+            "avg_pace_min_km": round(sum(paces) / len(paces), 2) if paces else None,
+            "avg_heart_rate_bpm": round(sum(hrs) / len(hrs)) if hrs else None,
+            "max_heart_rate_bpm": max(max_hrs) if max_hrs else None,
+            "total_elevation_m": round(sum(a["elevation_m"] for a in runs)),
+            "longest_run_km": round(max((a["distance_km"] for a in runs), default=0), 1),
+            "sessions_per_week": round(len(runs) / weeks_elapsed, 1),
+            "guardrail": acute_chronic_ratio(activities, ref),
         },
-        "goal_marathon": {
-            "event": "Maratona",
-            "date": "2027-12-31",
-            "distance_km": 42.2,
+        "strength": {
+            "total_sessions": len(strength),
+            "sessions_per_week": round(len(strength) / weeks_elapsed, 1),
+            "focus": "lower_body",
         },
     }
+
+
+def wrap(payload, key: str):
+    return {"schema_version": SCHEMA_VERSION, "generated_at": now_iso(), key: payload}
 
 
 def main():
@@ -245,34 +270,30 @@ def main():
         print("activities_raw.json not found — run strava_fetch.py first")
         return
 
-    print("Loading raw activities...")
     raw = json.loads(raw_path.read_text())
-    print(f"  {len(raw)} raw activities")
+    print(f"Loaded {len(raw)} raw activities")
 
-    print("Normalizing activities...")
-    activities = [normalize_activity(a) for a in raw]
-    (DATA_DIR / "activities.json").write_text(json.dumps(activities, indent=2))
-
-    print("Building weekly summaries...")
+    activities = build_activities(raw)
     weekly = build_weekly(activities)
-    (DATA_DIR / "weekly.json").write_text(json.dumps(weekly, indent=2))
+    quarterly = build_quarterly(activities)
+    kpis = build_kpis(activities)
 
-    print("Building monthly summaries...")
-    monthly = build_monthly(activities)
-    (DATA_DIR / "monthly.json").write_text(json.dumps(monthly, indent=2))
+    (DATA_DIR / "activities.json").write_text(
+        json.dumps(wrap(activities, "activities"), indent=2, ensure_ascii=False))
+    (DATA_DIR / "weekly.json").write_text(
+        json.dumps(wrap(weekly, "weeks"), indent=2, ensure_ascii=False))
+    (DATA_DIR / "quarterly.json").write_text(
+        json.dumps(wrap(quarterly, "quarters"), indent=2, ensure_ascii=False))
+    (DATA_DIR / "kpis.json").write_text(
+        json.dumps(kpis, indent=2, ensure_ascii=False))
 
-    print("Calculating KPIs...")
-    kpis = build_kpis(activities, weekly, monthly)
-    (DATA_DIR / "kpis.json").write_text(json.dumps(kpis, indent=2))
-
+    g = kpis["running"]["guardrail"]
     print("Done.")
-    print(f"  Activities: {len(activities)}")
-    print(f"  Weeks: {len(weekly)}")
-    print(f"  Months: {len(monthly)}")
-    print(f"  Avg weekly km (last 4w): {kpis['avg_weekly_run_km']}")
-    print(f"  Avg pace (last 5 runs): {kpis['avg_pace_str']}")
-    print(f"  Long run: {kpis['long_run_km']} km")
-    print(f"  Consistency (12w): {kpis['consistency_pct_12w']}%")
+    print(f"  Kept activities (Run/Strength/Ride): {len(activities)}")
+    print(f"  Weeks (12mo): {len(weekly)} | Quarters: {len(quarterly)}")
+    print(f"  Current month: {kpis['period']['label']} — "
+          f"{kpis['running']['total_sessions']} runs, {kpis['running']['total_distance_km']} km")
+    print(f"  Guardrail ACWR: {g['value']} ({g['status']})")
 
 
 if __name__ == "__main__":

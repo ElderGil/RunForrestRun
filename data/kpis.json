@@ -1,21 +1,33 @@
 {
-  "as_of": "2026-06-25T21:28:11",
-  "avg_weekly_run_km": 7.91,
-  "avg_pace_str": "5:34",
-  "avg_pace_s_per_km": 334.7,
-  "long_run_km": 21.22,
-  "consistency_pct_12w": 75,
-  "active_weeks_of_12": 9,
-  "total_run_km": 951.66,
-  "total_run_count": 137,
-  "goal_half_marathon": {
-    "event": "Meia Maratona Pomerode",
-    "date": "2026-10-17",
-    "distance_km": 21.1
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T13:24:16Z",
+  "period": {
+    "month": 6,
+    "year": 2026,
+    "label": "Junho 2026"
   },
-  "goal_marathon": {
-    "event": "Maratona",
-    "date": "2027-12-31",
-    "distance_km": 42.2
+  "running": {
+    "total_distance_km": 31.6,
+    "total_sessions": 3,
+    "avg_pace_min_km": 5.7,
+    "avg_heart_rate_bpm": null,
+    "max_heart_rate_bpm": null,
+    "total_elevation_m": 287,
+    "longest_run_km": 14.0,
+    "sessions_per_week": 0.8,
+    "guardrail": {
+      "metric": "acute_chronic_ratio",
+      "value": 0.0,
+      "status": "unknown",
+      "threshold_warning": 1.3,
+      "threshold_danger": 1.5,
+      "label": "Razão carga aguda/crônica",
+      "description": "Compara o volume da última semana com a média das últimas 4. Acima de 1.3 o risco de lesão sobe — o guardrail prioriza saúde sobre velocidade."
+    }
+  },
+  "strength": {
+    "total_sessions": 9,
+    "sessions_per_week": 2.4,
+    "focus": "lower_body"
   }
 }

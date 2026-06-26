@@ -78,30 +78,60 @@ Pipeline ETL em Python rodando diariamente via cron no GitHub Actions. Credencia
 
 ---
 
+## Estratégia de Busca — Incremental
+
+**Decisão:** a busca é **incremental**, não um full-fetch diário.
+
+O arquivo `data/activities_raw.json`, versionado no Git, é o **store de
+registro** (onde os dados já baixados ficam). A cada run, o `strava_fetch.py`:
+
+1. Lê o store existente e descobre o `start_date` mais recente já armazenado
+2. Busca na Strava apenas atividades posteriores a esse timestamp, com uma
+   janela de sobreposição de 2 dias (`after = último - 48h`) para capturar
+   atividades editadas após o registro
+3. Faz merge no store deduplicando por `id` (a versão recém-baixada vence,
+   refletindo edições)
+4. Em um checkout limpo sem store, faz **backfill** desde junho de 2024
+
+**Rationale:** respeita o rate limit da Strava (100 req/15min, 1000/dia),
+torna o run diário barato e mantém a coerência com o princípio "dados como
+código" — o repositório é o banco de dados. Os campos de localização são
+removidos antes de gravar no store (ADR-003, regra 5).
+
+O `normalize.py` consome o store e regera os JSONs agregados a cada run
+(agregação é determinística e barata; não há estado incremental nela).
+
+---
+
 ## Fluxo do Pipeline
 
 ```
-GitHub Actions (cron: meia-noite UTC)
+GitHub Actions (cron: 11h Brasília — ver ADR-004)
     ↓
 strava_fetch.py
     → Autentica via OAuth com token em GitHub Secrets
-    → Busca atividades desde junho de 2024
-    → Filtra por tipo: Run, WeightTraining, Ride
+    → Lê data/activities_raw.json (store versionado)
+    → Busca incremental: só atividades após o último timestamp (+overlap 48h)
+    → Remove campos de localização
+    → Merge dedup por id → grava o store atualizado
     ↓
 normalize.py
-    → Calcula KPIs por atividade
-    → Agrega por semana, mês e quarter
+    → Mantém só Run / WeightTraining / Ride
+    → Calcula KPIs por atividade (pace decimal, sem localização)
+    → Agrega por semana (12 meses) e quarter (desde jun/2024)
+    → Calcula o guardrail KPI (razão carga aguda/crônica)
     → Aplica schema versionado (ver ADR-003)
     ↓
 Commit automático em /data/
-    → activities.json
+    → activities_raw.json   (store bruto)
+    → activities.json       (normalizado — base dos coaches)
     → kpis.json
     → weekly.json
     → quarterly.json
     ↓
 GitHub Pages serve os JSONs
     ↓
-index.html lê e renderiza os dados
+site React lê e renderiza os dados
 ```
 
 ---

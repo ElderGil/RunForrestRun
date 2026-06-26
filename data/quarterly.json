@@ -1,0 +1,150 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T13:24:16Z",
+  "quarters": [
+    {
+      "label": "Q2 2024",
+      "period": {
+        "start": "2024-04-01",
+        "end": "2024-06-30"
+      },
+      "running": {
+        "total_distance_km": 4.6,
+        "avg_pace_min_km": 7.67,
+        "total_sessions": 1,
+        "longest_run_km": 4.6
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q3 2024",
+      "period": {
+        "start": "2024-07-01",
+        "end": "2024-09-30"
+      },
+      "running": {
+        "total_distance_km": 41.4,
+        "avg_pace_min_km": 5.97,
+        "total_sessions": 9,
+        "longest_run_km": 5.0
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q4 2024",
+      "period": {
+        "start": "2024-10-01",
+        "end": "2024-12-31"
+      },
+      "running": {
+        "total_distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "total_sessions": 0,
+        "longest_run_km": 0.0
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q1 2025",
+      "period": {
+        "start": "2025-01-01",
+        "end": "2025-03-31"
+      },
+      "running": {
+        "total_distance_km": 10.1,
+        "avg_pace_min_km": 6.27,
+        "total_sessions": 2,
+        "longest_run_km": 5.1
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q2 2025",
+      "period": {
+        "start": "2025-04-01",
+        "end": "2025-06-30"
+      },
+      "running": {
+        "total_distance_km": 168.1,
+        "avg_pace_min_km": 6.01,
+        "total_sessions": 29,
+        "longest_run_km": 10.1
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q3 2025",
+      "period": {
+        "start": "2025-07-01",
+        "end": "2025-09-30"
+      },
+      "running": {
+        "total_distance_km": 259.5,
+        "avg_pace_min_km": 5.6,
+        "total_sessions": 33,
+        "longest_run_km": 20.7
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q4 2025",
+      "period": {
+        "start": "2025-10-01",
+        "end": "2025-12-31"
+      },
+      "running": {
+        "total_distance_km": 199.1,
+        "avg_pace_min_km": 5.38,
+        "total_sessions": 27,
+        "longest_run_km": 21.2
+      },
+      "strength": {
+        "total_sessions": 0
+      }
+    },
+    {
+      "label": "Q1 2026",
+      "period": {
+        "start": "2026-01-01",
+        "end": "2026-03-31"
+      },
+      "running": {
+        "total_distance_km": 149.2,
+        "avg_pace_min_km": 5.77,
+        "total_sessions": 21,
+        "longest_run_km": 11.0
+      },
+      "strength": {
+        "total_sessions": 26
+      }
+    },
+    {
+      "label": "Q2 2026",
+      "period": {
+        "start": "2026-04-01",
+        "end": "2026-06-30"
+      },
+      "running": {
+        "total_distance_km": 119.6,
+        "avg_pace_min_km": 5.68,
+        "total_sessions": 15,
+        "longest_run_km": 14.0
+      },
+      "strength": {
+        "total_sessions": 25
+      }
+    }
+  ]
+}
