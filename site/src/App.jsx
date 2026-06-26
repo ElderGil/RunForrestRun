@@ -1,0 +1,71 @@
+import { useEffect, useState } from "react";
+import {
+  loadKPIs, loadWeekly, loadQuarterly, loadWeeklyPlan, fmtDate,
+} from "./data/loaders.js";
+import Hero from "./components/Hero.jsx";
+import RunningSection from "./components/RunningSection.jsx";
+import StrengthSection from "./components/StrengthSection.jsx";
+import HistorySection from "./components/HistorySection.jsx";
+import WeeklyPlan from "./components/WeeklyPlan.jsx";
+
+export default function App() {
+  const [tab, setTab] = useState("jornada");
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    Promise.all([loadKPIs(), loadWeekly(), loadQuarterly()])
+      .then(([kpis, weekly, quarterly]) => {
+        // weekly_plan.json é opcional — ainda pode não existir
+        loadWeeklyPlan()
+          .then((plan) => setData({ kpis, weekly: weekly.weeks, quarterly: quarterly.quarters, plan }))
+          .catch(() => setData({ kpis, weekly: weekly.weeks, quarterly: quarterly.quarters, plan: null }));
+      })
+      .catch((e) => setError(e.message));
+  }, []);
+
+  if (error) return <div className="error">Erro ao carregar os dados: {error}</div>;
+  if (!data) return <div className="loading">Carregando dados do Strava…</div>;
+
+  return (
+    <>
+      <nav className="nav">
+        <div className="nav-inner">
+          <div className="brand">RunForrestRun <span>🏃</span></div>
+          <div className="tabs">
+            <button className={`tab ${tab === "jornada" ? "active" : ""}`} onClick={() => setTab("jornada")}>
+              Jornada
+            </button>
+            <button className={`tab ${tab === "plano" ? "active" : ""}`} onClick={() => setTab("plano")}>
+              Plano semanal
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {tab === "jornada" ? (
+        <main>
+          <Hero kpis={data.kpis} />
+          <RunningSection kpis={data.kpis} weeks={data.weekly} />
+          <StrengthSection kpis={data.kpis} />
+          <HistorySection quarters={data.quarterly} />
+        </main>
+      ) : (
+        <main>
+          <WeeklyPlan plan={data.plan} />
+        </main>
+      )}
+
+      <footer>
+        <div className="wrap">
+          <p>
+            Dados reais do <a href="https://www.strava.com/" target="_blank" rel="noopener">Strava</a>,
+            atualizados diariamente via GitHub Actions ·{" "}
+            <a href="https://github.com/ElderGil/RunForrestRun" target="_blank" rel="noopener">código aberto</a>
+          </p>
+          <p className="updated">Atualizado em {fmtDate(data.kpis.generated_at)}</p>
+        </div>
+      </footer>
+    </>
+  );
+}

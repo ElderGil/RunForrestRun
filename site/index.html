@@ -1,80 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RunForrestRun 🏃 — Jornada até a Maratona</title>
-  <meta name="description" content="Documentação pública da jornada de treinamento do Elder até uma maratona completa, com dados reais do Strava." />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-</head>
-<body>
-  <header class="hero">
-    <h1>RunForrestRun <span class="emoji">🏃</span></h1>
-    <p class="tagline">Documentando a jornada até a maratona — com dados, como um projeto de software.</p>
-    <p class="updated" id="updated">Carregando dados…</p>
-  </header>
-
-  <main>
-    <!-- Objetivos / countdown -->
-    <section class="goals">
-      <div class="goal-card" id="goal-half">
-        <span class="goal-label">Meia Maratona — Pomerode</span>
-        <span class="goal-date">17/18 out 2026</span>
-        <span class="goal-countdown" data-target="2026-10-17"></span>
-        <span class="goal-sub">21,1 km</span>
-      </div>
-      <div class="goal-card primary" id="goal-full">
-        <span class="goal-label">Maratona Completa</span>
-        <span class="goal-date">até dez 2027</span>
-        <span class="goal-countdown" data-target="2027-12-31"></span>
-        <span class="goal-sub">42,2 km</span>
-      </div>
-    </section>
-
-    <!-- KPIs -->
-    <section class="kpis" id="kpis"></section>
-
-    <!-- Charts -->
-    <section class="chart-block">
-      <h2>Volume semanal de corrida (km)</h2>
-      <p class="chart-hint">Base da periodização — carga de treino ao longo do tempo.</p>
-      <div class="chart-wrap"><canvas id="weeklyChart"></canvas></div>
-    </section>
-
-    <section class="chart-block">
-      <h2>Evolução do pace médio (min/km)</h2>
-      <p class="chart-hint">Mais baixo = mais rápido. Média por semana de corrida.</p>
-      <div class="chart-wrap"><canvas id="paceChart"></canvas></div>
-    </section>
-
-    <section class="chart-block">
-      <h2>Volume mensal por modalidade (km)</h2>
-      <p class="chart-hint">Corrida vs. bike — visão macro da consistência.</p>
-      <div class="chart-wrap"><canvas id="monthlyChart"></canvas></div>
-    </section>
-
-    <section class="chart-block">
-      <h2>Long run mais longo por mês (km)</h2>
-      <p class="chart-hint">Preparação específica — a distância vai subindo rumo aos 42 km.</p>
-      <div class="chart-wrap"><canvas id="longRunChart"></canvas></div>
-    </section>
-
-    <section class="chart-block">
-      <h2>Treinos de força por semana</h2>
-      <p class="chart-hint">Musculação com foco em pernas — suporte para a corrida.</p>
-      <div class="chart-wrap"><canvas id="strengthChart"></canvas></div>
-    </section>
-  </main>
-
-  <footer>
-    <p>
-      Dados reais do <a href="https://www.strava.com/" target="_blank" rel="noopener">Strava</a>,
-      atualizados diariamente via GitHub Actions.
-      Código aberto em <a href="https://github.com/ElderGil/RunForrestRun" target="_blank" rel="noopener">GitHub</a>.
-    </p>
-  </footer>
-
-  <script src="charts.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RunForrestRun 🏃 — Jornada até a maratona</title>
+    <meta name="description" content="Jornada de treinamento do Elder até uma maratona completa, documentada com dados reais do Strava — como um projeto de software." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

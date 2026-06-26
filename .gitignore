@@ -5,6 +5,10 @@ __pycache__/
 venv/
 .env
 
+# Node / Vite
+node_modules/
+site/dist/
+
 # OS
 .DS_Store
 
