@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T14:00:00Z",
+  "athlete": {
+    "age": 38,
+    "weight_kg": 108,
+    "notes": "Cirurgia de LCA + sutura de menisco no joelho esquerdo (2021) — impacto e carga no joelho são o eixo do planejamento."
+  },
+  "coaches": [
+    {
+      "id": "running-coach",
+      "name": "Running Coach",
+      "emoji": "🏃",
+      "role": "Coach de corrida",
+      "summary": "Analisa os dados reais do Strava e monta o plano de corrida rumo à meia de Pomerode e à maratona. Saúde antes de velocidade — ainda mais a 108 kg e com joelho reconstruído.",
+      "focus": [
+        "Define e monitora o guardrail (razão carga aguda/crônica)",
+        "Progressão de volume pela regra dos 10%",
+        "Prioriza base aeróbica em Z2; qualidade só com guardrail ok"
+      ]
+    },
+    {
+      "id": "strength-coach",
+      "name": "Strength Coach",
+      "emoji": "🏋️",
+      "role": "Coach de força",
+      "summary": "Integra o programa de academia (DUE FitClub A/B/C) ao calendário de corrida, equilibrando volume e recuperação. Sinaliza, com justificativa técnica, o que ajustar — especialmente no joelho operado.",
+      "focus": [
+        "Encaixa os Treinos A/B/C longe dos treinos duros de corrida",
+        "Controla amplitude/carga de joelho (Hack, Leg Press, Pêndulo)",
+        "Isquiotibiais fortes como proteção do LCA"
+      ]
+    }
+  ]
+}

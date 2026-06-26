@@ -1,12 +1,14 @@
 // Aba Plano Semanal (PRD §4 / §7): calendário unificado corrida + força + descanso,
 // gerado pelos agentes running-coach e strength-coach. Adapta quando treinos não são
 // executados conforme planejado.
-import { fmtDate } from "../data/loaders.js";
+import { fmtDate, dayDate } from "../data/loaders.js";
+import CoachProfiles from "./CoachProfiles.jsx";
 
-export default function WeeklyPlan({ plan }) {
+export default function WeeklyPlan({ plan, coaches }) {
   if (!plan) {
     return (
       <section className="block wrap">
+        <CoachProfiles coaches={coaches} />
         <p className="eyebrow">Plano semanal</p>
         <h2>Plano sendo gerado</h2>
         <p className="lead">
@@ -19,14 +21,16 @@ export default function WeeklyPlan({ plan }) {
 
   return (
     <section className="block wrap">
+      <CoachProfiles coaches={coaches} />
+
       <p className="eyebrow">Plano semanal · semana de {fmtDate(plan.week_of)}</p>
       <h2>Calendário de treinos</h2>
       <p className="lead">{plan.summary}</p>
 
       <div className="plan-grid">
-        {plan.days.map((d) => (
+        {plan.days.map((d, i) => (
           <div className="day" key={d.day}>
-            <div className="d-name">{d.day}</div>
+            <div className="d-name">{d.day} <span className="d-date">{dayDate(plan.week_of, i)}</span></div>
             {d.items.length === 0 ? (
               <div className="chip rest">Livre</div>
             ) : (

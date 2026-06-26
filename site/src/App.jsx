@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  loadKPIs, loadWeekly, loadQuarterly, loadWeeklyPlan, fmtDate,
+  loadKPIs, loadWeekly, loadQuarterly, loadWeeklyPlan, loadCoaches, fmtDate,
 } from "./data/loaders.js";
 import Hero from "./components/Hero.jsx";
 import RunningSection from "./components/RunningSection.jsx";
@@ -15,11 +15,11 @@ export default function App() {
 
   useEffect(() => {
     Promise.all([loadKPIs(), loadWeekly(), loadQuarterly()])
-      .then(([kpis, weekly, quarterly]) => {
-        // weekly_plan.json é opcional — ainda pode não existir
-        loadWeeklyPlan()
-          .then((plan) => setData({ kpis, weekly: weekly.weeks, quarterly: quarterly.quarters, plan }))
-          .catch(() => setData({ kpis, weekly: weekly.weeks, quarterly: quarterly.quarters, plan: null }));
+      .then(async ([kpis, weekly, quarterly]) => {
+        // weekly_plan.json e coaches.json são opcionais
+        const plan = await loadWeeklyPlan().catch(() => null);
+        const coaches = await loadCoaches().catch(() => null);
+        setData({ kpis, weekly: weekly.weeks, quarterly: quarterly.quarters, plan, coaches });
       })
       .catch((e) => setError(e.message));
   }, []);
@@ -52,7 +52,7 @@ export default function App() {
         </main>
       ) : (
         <main>
-          <WeeklyPlan plan={data.plan} />
+          <WeeklyPlan plan={data.plan} coaches={data.coaches} />
         </main>
       )}
 

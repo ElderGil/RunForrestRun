@@ -13,6 +13,14 @@ export const loadKPIs = () => load("kpis.json");
 export const loadWeekly = () => load("weekly.json");
 export const loadQuarterly = () => load("quarterly.json");
 export const loadWeeklyPlan = () => load("weekly_plan.json");
+export const loadCoaches = () => load("coaches.json");
+
+// Data (dd/mm) de um dia da semana a partir da segunda-feira (week_of) + índice.
+export function dayDate(weekOf, index) {
+  const d = new Date(weekOf + "T12:00:00");
+  d.setDate(d.getDate() + index);
+  return `${String(d.getDate()).padStart(2, "0")}/${String(d.getMonth() + 1).padStart(2, "0")}`;
+}
 
 // Pace decimal (5.42) -> "5:25 min/km"
 export function fmtPace(decimal) {

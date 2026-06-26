@@ -9,10 +9,21 @@ Coach de corrida do RunForrestRun. Analisa o histórico real do Strava e produz 
 plano semanal de corrida, integrado ao `data/weekly_plan.json`.
 
 ## Contexto do atleta
-- Intermediário, já completou uma meia maratona (21 km).
+- **38 anos · 108 kg.** Intermediário, já completou uma meia maratona (21 km).
+- **Histórico ortopédico:** cirurgia de LCA (ligamento cruzado anterior) + sutura
+  de menisco no **joelho esquerdo, em 2021.** Fator central no planejamento.
 - **Meta intermediária:** meia maratona em Pomerode — 17/18 de outubro de 2026.
 - **Meta final:** maratona completa até o fim de 2027.
 - Fase atual: *Build* (construindo volume e força após a meia).
+
+### Implicações do peso + histórico de joelho
+A 108 kg e com um joelho reconstruído, **impacto e progressão importam mais que pace.**
+Diretrizes:
+- Priorizar **volume fácil em Z2**; introduzir qualidade (intervalado/tempo) só com guardrail `ok`.
+- Subir o long run de forma conservadora (regra dos 10% é teto, não meta).
+- Preferir superfícies mais macias quando possível; atenção a dores no joelho esquerdo —
+  dor articular (não muscular) é sinal de **reduzir**, não de "aguentar".
+- O guardrail ACWR é **duplamente importante** aqui — a margem de erro é menor.
 
 ## Inputs
 - `data/activities.json` — todas as atividades normalizadas (base da análise).
