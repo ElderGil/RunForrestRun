@@ -1,0 +1,21 @@
+{
+  "as_of": "2026-06-25T21:28:11",
+  "avg_weekly_run_km": 7.91,
+  "avg_pace_str": "5:34",
+  "avg_pace_s_per_km": 334.7,
+  "long_run_km": 21.22,
+  "consistency_pct_12w": 75,
+  "active_weeks_of_12": 9,
+  "total_run_km": 951.66,
+  "total_run_count": 137,
+  "goal_half_marathon": {
+    "event": "Meia Maratona Pomerode",
+    "date": "2026-10-17",
+    "distance_km": 21.1
+  },
+  "goal_marathon": {
+    "event": "Maratona",
+    "date": "2027-12-31",
+    "distance_km": 42.2
+  }
+}
