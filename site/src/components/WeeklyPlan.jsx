@@ -42,7 +42,7 @@ export default function WeeklyPlan({ plan }) {
       </div>
 
       <div className="legend">
-        <span><i style={{ background: "linear-gradient(135deg,#f3e8ff,#fce7f3)" }} /> Corrida</span>
+        <span><i style={{ background: "linear-gradient(135deg,#e0f2fe,#dbeafe)" }} /> Corrida</span>
         <span><i style={{ background: "#fff1e6" }} /> Força</span>
         <span><i style={{ background: "#f1f5f9" }} /> Descanso</span>
       </div>

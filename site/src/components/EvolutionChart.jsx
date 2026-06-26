@@ -19,7 +19,7 @@ export default function EvolutionChart({ weeks }) {
         <ComposedChart data={data} margin={{ top: 10, right: 8, bottom: 0, left: -10 }}>
           <defs>
             <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#a855f7" stopOpacity={0.95} />
+              <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.95} />
               <stop offset="100%" stopColor="#fb923c" stopOpacity={0.7} />
             </linearGradient>
           </defs>
@@ -37,7 +37,7 @@ export default function EvolutionChart({ weeks }) {
           />
           <Legend wrapperStyle={{ fontSize: 12 }} />
           <Bar yAxisId="km" dataKey="km" name="Volume" fill="url(#barGrad)" radius={[4, 4, 0, 0]} maxBarSize={22} />
-          <Line yAxisId="pace" type="monotone" dataKey="pace" name="Pace" stroke="#7c3aed" strokeWidth={2.5} dot={false} connectNulls />
+          <Line yAxisId="pace" type="monotone" dataKey="pace" name="Pace" stroke="#2563eb" strokeWidth={2.5} dot={false} connectNulls />
         </ComposedChart>
       </ResponsiveContainer>
     </div>

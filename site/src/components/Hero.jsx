@@ -9,13 +9,8 @@ export default function Hero({ kpis }) {
     <header className="hero wrap">
       <p className="eyebrow">{kpis.period.label} · resumo do mês</p>
       <h1>
-        1% melhor <span className="gradient-text">toda semana</span>,<br />
-        rumo à maratona.
+        Running <span className="gradient-text">Coach</span>
       </h1>
-      <p className="sub">
-        Documentando uma jornada real de treinamento com dados do Strava — do jeito
-        que um engenheiro documenta um projeto de software. Tudo visível, tudo explicado.
-      </p>
 
       <span className="goal-line">
         <span className="goal-dot" />
