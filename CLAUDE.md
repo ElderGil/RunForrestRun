@@ -150,11 +150,15 @@ RunForrestRun/
 - [x] GitHub Actions: CI (testes+build) e deploy diário via Pages Actions
 - [x] Testes: ETL e contrato de schema (15 testes, pytest)
 
+- [x] Pages configurado como "GitHub Actions"; site React no ar
+- [x] Sistema de coach adaptativo (perfis + caixa semanal que reage aos treinos)
+- [x] Automação diária via **routine do Claude** (busca Strava sem Secrets) — ver `docs/automation-runbook.md`
+
 ### Pendente ⏳
-- [ ] Configurar Pages como "GitHub Actions" + cadastrar Secrets do Strava
+- [ ] Pré-aprovar as ferramentas da routine ("Run now" 1x) para não pausar em permissões
+- [ ] Jornada: trazer últimas atividades no resumo + histórico mensal (2026) / trimestral (2024-25)
 - [ ] Guardrail KPI definitivo após análise do histórico real pelo running-coach
-- [ ] Automatizar geração semanal do `weekly_plan.json` pelos coaches
-- [ ] Monitorar expiração do refresh token do Strava (alerta proativo)
+- [ ] Monitorar expiração da conexão Strava (alerta proativo)
 
 ---
 

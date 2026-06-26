@@ -12,9 +12,27 @@ O pipeline do RunForrestRun precisa rodar automaticamente todos os dias: buscar 
 
 Requisitos:
 - Dados atualizados antes do final do dia, para consulta à tarde/noite
-- Credenciais protegidas em GitHub Secrets
-- Falhas tratadas com retry antes de notificar
-- Deploy atômico com os dados — página e dados sempre em sincronia
+- Sem expor credenciais do Strava
+- Deploy mantém página e dados em sincronia
+
+---
+
+## ⚠️ Atualização (2026-06-26) — busca via conexão Claude, não GitHub Actions
+
+A decisão original fazia o ETL no GitHub Actions com OAuth do Strava em Secrets.
+**Substituída:** a busca do Strava passou a ser feita por uma **routine agendada do
+Claude** (cron diário ~11h local), que usa a conexão Strava já existente — **sem
+Secrets, sem OAuth, sem gerenciar refresh token**. Ver `docs/automation-runbook.md`.
+
+Divisão atual de responsabilidades:
+- **Routine do Claude (diária):** busca incremental no Strava (MCP) + enriquece HR +
+  `merge_strava.py` + `normalize.py` + regera o `weekly_plan.json` como coach +
+  commita em `data/`. O commit dispara o deploy.
+- **GitHub Actions:** apenas `ci.yml` (testes + build em PRs/push) e `pages.yml`
+  (build Vite + publish no Pages a cada push em `site/**` ou `data/**`).
+
+O workflow `daily-update.yml` (ETL com Secrets) foi **removido**. As seções abaixo
+ficam como registro histórico da decisão original.
 
 ---
 
