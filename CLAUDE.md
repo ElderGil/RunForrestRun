@@ -142,19 +142,19 @@ RunForrestRun/
 - [x] Integração Strava conectada no Cowork
 - [x] Integração GitHub conectada no Cowork
 - [x] CLAUDE.md criado
-
-### Em andamento 🔄
-- [ ] PRD — definir escopo formal da página e dos dados
+- [x] PRD — escopo formal da página e dos dados
+- [x] ADR-001..004 (ETL incremental, stack React, schema, GitHub Actions)
+- [x] ETL: busca incremental + normalização (schema ADR-003, guardrail ACWR)
+- [x] Site: React + Vite + Recharts, light mode, abas Jornada/Plano Semanal
+- [x] Skills: running-coach e strength-coach + `weekly_plan.json`
+- [x] GitHub Actions: CI (testes+build) e deploy diário via Pages Actions
+- [x] Testes: ETL e contrato de schema (15 testes, pytest)
 
 ### Pendente ⏳
-- [ ] ADR-001: Arquitetura do ETL
-- [ ] ADR-002: Stack da página
-- [ ] ADR-003: Schema de dados
-- [ ] ETL: busca e normalização de dados Strava
-- [ ] Site: página de visualização
-- [ ] Skills: running-coach e strength-coach
-- [ ] GitHub Actions: automação diária
-- [ ] Testes: ETL e schema
+- [ ] Configurar Pages como "GitHub Actions" + cadastrar Secrets do Strava
+- [ ] Guardrail KPI definitivo após análise do histórico real pelo running-coach
+- [ ] Automatizar geração semanal do `weekly_plan.json` pelos coaches
+- [ ] Monitorar expiração do refresh token do Strava (alerta proativo)
 
 ---
 
@@ -184,9 +184,12 @@ export STRAVA_REFRESH_TOKEN=...
 python strava_fetch.py
 python normalize.py
 
-# Servir o site localmente
+# Servir o site localmente (React + Vite; serve /data automaticamente)
 cd ../site
-python -m http.server 8000
+npm install && npm run dev   # http://localhost:5173
+
+# Rodar os testes
+cd .. && python -m pytest tests/ -q
 ```
 
 ---

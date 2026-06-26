@@ -5,47 +5,51 @@
 **Objetivo final:** correr uma maratona completa até o final de 2027.
 **Objetivo intermediário:** meia maratona em Pomerode — outubro de 2026.
 
-🔗 **Página ao vivo:** https://eldergil.github.io/RunForrestRun/site/
+🔗 **Página ao vivo:** https://eldergil.github.io/RunForrestRun/
 
 ## Como funciona
 
 ```
-Strava API → ETL (Python) → JSON versionado → GitHub Pages (Chart.js)
+Strava API → ETL (Python, incremental) → JSON versionado → React/Vite → GitHub Pages
 ```
 
-Um workflow do GitHub Actions roda diariamente à meia-noite (BRT), busca as
-atividades do Strava, recalcula os KPIs e commita os JSONs atualizados. A
-página é 100% estática — sem servidor, sem banco de dados.
+Um workflow do GitHub Actions roda diariamente às 11h (BRT), busca **só as
+atividades novas** do Strava (incremental), recalcula os KPIs, commita os JSONs
+e publica o site. A página é estática e orientada a dados — sem servidor.
 
 ## Estrutura
 
 | Pasta | O quê |
 |---|---|
-| `etl/` | `strava_fetch.py` (busca) e `normalize.py` (KPIs) |
-| `data/` | JSONs normalizados versionados (`activities`, `weekly`, `monthly`, `kpis`) |
-| `site/` | Página estática (`index.html`, `style.css`, `charts.js`) |
+| `etl/` | `strava_fetch.py` (busca incremental) e `normalize.py` (KPIs + guardrail) |
+| `data/` | JSONs versionados (`activities`, `weekly`, `quarterly`, `kpis`, `weekly_plan`) |
+| `site/` | App React + Vite + Recharts (`src/`) |
+| `skills/` | `running-coach` e `strength-coach` (geram o plano semanal) |
 | `docs/` | PRD e ADRs (decisões técnicas registradas) |
-| `.github/workflows/` | Automação diária |
+| `tests/` | Testes de ETL e contrato de schema (pytest) |
+| `.github/workflows/` | CI (testes + build) e automação diária |
 
 ## Rodar localmente
 
 ```bash
-# Servir a página (a partir da raiz do repo, para o site achar /data)
-python3 -m http.server 8000
-# abrir http://localhost:8000/site/
+# Site (Vite serve /data automaticamente em dev)
+cd site && npm install && npm run dev   # http://localhost:5173
 
-# Reprocessar KPIs a partir do dump bruto
+# Reprocessar KPIs a partir do store bruto
 python3 etl/normalize.py
 
 # Atualizar dados do Strava (requer credenciais)
 export STRAVA_CLIENT_ID=... STRAVA_CLIENT_SECRET=... STRAVA_REFRESH_TOKEN=...
 python3 etl/strava_fetch.py && python3 etl/normalize.py
+
+# Testes
+python3 -m pytest tests/ -q
 ```
 
 ## KPIs acompanhados
 
-Pace médio · volume semanal/mensal · long run mais longo · consistência ·
-treinos de força · elevação acumulada.
+Pace médio · volume semanal · long run mais longo · consistência · FC média/máx ·
+elevação · treinos de força · **guardrail** (razão carga aguda/crônica).
 
 ---
 
