@@ -171,32 +171,18 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
 .q-table th:first-child, .q-table td:first-child { text-align: left; font-weight: 700; }
 .q-table tr:last-child td { border-bottom: none; }
 
-/* ---- Coach profiles ---- */
-.coaches { margin-bottom: 2.5rem; }
-.athlete-card {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 0.9rem;
-  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--blue);
-  border-radius: var(--radius); padding: 1rem 1.2rem; box-shadow: var(--shadow); margin-top: 1.2rem;
-}
-.athlete-facts { font-size: 1.05rem; }
-.athlete-note { color: var(--text-dim); font-size: 0.88rem; }
-.coach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
-.coach-card {
+/* ---- Coach analysis ---- */
+.coach-notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.3rem; }
+.coach-note {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1.3rem 1.25rem; box-shadow: var(--shadow);
+  border-radius: var(--radius); padding: 1.2rem 1.25rem; box-shadow: var(--shadow);
+  border-top: 3px solid var(--blue);
 }
-.coach-head { display: flex; align-items: center; gap: 0.7rem; }
-.coach-emoji {
-  font-size: 1.4rem; width: 44px; height: 44px; flex-shrink: 0;
-  display: grid; place-items: center; border-radius: 12px;
-  background-image: var(--grad); filter: saturate(0.9);
-}
-.coach-name { font-weight: 800; letter-spacing: -0.01em; }
-.coach-role { color: var(--text-dim); font-size: 0.82rem; }
-.coach-summary { font-size: 0.9rem; margin-top: 0.7rem; }
-.coach-focus { list-style: none; margin-top: 0.7rem; display: flex; flex-direction: column; gap: 0.35rem; }
-.coach-focus li { color: var(--text-dim); font-size: 0.84rem; padding-left: 1.1rem; position: relative; }
-.coach-focus li::before { content: "→"; position: absolute; left: 0; color: var(--blue); }
+.coach-note.strength { border-top-color: var(--orange); }
+.cn-head { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; letter-spacing: -0.01em; }
+.cn-head span { font-size: 1.2rem; }
+.coach-note p { color: var(--text-dim); font-size: 0.9rem; margin-top: 0.6rem; line-height: 1.55; }
+.plan-subtitle { font-size: 1.15rem; font-weight: 700; margin-top: 2.2rem; }
 
 /* ---- Weekly plan ---- */
 .plan-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.7rem; margin-top: 1.5rem; }

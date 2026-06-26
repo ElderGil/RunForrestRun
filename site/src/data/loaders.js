@@ -13,7 +13,6 @@ export const loadKPIs = () => load("kpis.json");
 export const loadWeekly = () => load("weekly.json");
 export const loadQuarterly = () => load("quarterly.json");
 export const loadWeeklyPlan = () => load("weekly_plan.json");
-export const loadCoaches = () => load("coaches.json");
 
 // Data (dd/mm) de um dia da semana a partir da segunda-feira (week_of) + índice.
 export function dayDate(weekOf, index) {
