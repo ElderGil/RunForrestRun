@@ -25,7 +25,10 @@ export function fmtPace(decimal) {
 
 export function fmtDate(iso) {
   if (!iso) return "";
-  return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
+  // Datas sem hora (YYYY-MM-DD) são fixadas ao meio-dia para evitar
+  // que o fuso horário empurre para o dia anterior.
+  const d = iso.length === 10 ? new Date(iso + "T12:00:00") : new Date(iso);
+  return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 }
 
 export function daysUntil(isoDate) {

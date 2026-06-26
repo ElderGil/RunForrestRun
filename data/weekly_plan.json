@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T14:00:00Z",
+  "week_of": "2026-06-29",
+  "summary": "Semana de retomada da base aeróbica. Após ~2 semanas sem corrida, o foco é voltar a correr com volume leve em Z2 antes de reintroduzir treinos de qualidade — construindo rumo à meia de Pomerode (16 semanas).",
+  "days": [
+    {
+      "day": "Seg",
+      "items": [
+        { "type": "strength", "title": "Força · trem inferior", "detail": "Agachamento, terra romeno, afundo — base de pernas" }
+      ]
+    },
+    {
+      "day": "Ter",
+      "items": [
+        { "type": "run", "title": "Corrida fácil", "detail": "6 km em Z2 (~5:50/km), conversa confortável" }
+      ]
+    },
+    {
+      "day": "Qua",
+      "items": [
+        { "type": "strength", "title": "Força · superior + core", "detail": "Puxadas, supino, prancha — manutenção" }
+      ]
+    },
+    {
+      "day": "Qui",
+      "items": [
+        { "type": "run", "title": "Corrida fácil", "detail": "8 km em Z2, sem forçar o pace" }
+      ]
+    },
+    {
+      "day": "Sex",
+      "items": [
+        { "type": "rest", "title": "Descanso", "detail": "Recuperação total — mobilidade leve opcional" }
+      ]
+    },
+    {
+      "day": "Sáb",
+      "items": [
+        { "type": "run", "title": "Long run", "detail": "12 km em ritmo confortável — retomando a distância" }
+      ]
+    },
+    {
+      "day": "Dom",
+      "items": [
+        { "type": "rest", "title": "Descanso ativo", "detail": "Bike leve ou caminhada opcional" }
+      ]
+    }
+  ],
+  "coaches": {
+    "running": "Você ficou ~2 semanas sem correr, então nada de intervalado ainda — primeiro reconstruímos a base. Total de ~26 km na semana, dentro da regra dos 10%. Se o corpo responder bem, na próxima semana voltamos com uma sessão de qualidade.",
+    "strength": "Mantive 2 sessões: trem inferior na segunda (longe do long run de sábado) e superior+core na quarta. Nada pesado de perna depois de quinta para chegar inteiro no longão."
+  }
+}
