@@ -67,7 +67,7 @@ RunForrestRun/
 │       ├── 002-page-stack.md
 │       └── 003-data-schema.md
 ├── etl/
-│   ├── strava_fetch.py        # Busca dados da Strava API
+│   ├── merge_strava.py        # Ingestão incremental do Strava (via routine)
 │   ├── normalize.py           # Normaliza e calcula KPIs
 │   └── requirements.txt
 ├── data/
@@ -175,26 +175,21 @@ RunForrestRun/
 ## Como Rodar Localmente
 
 ```bash
-# Instalar dependências do ETL
-cd etl
-pip install -r requirements.txt
+# Instalar dependências do ETL (pytest)
+cd etl && pip install -r requirements.txt && cd ..
 
-# Configurar credenciais Strava (variáveis de ambiente)
-export STRAVA_CLIENT_ID=...
-export STRAVA_CLIENT_SECRET=...
-export STRAVA_REFRESH_TOKEN=...
-
-# Rodar ETL
-python strava_fetch.py
-python normalize.py
+# Reprocessar os JSONs a partir do store bruto
+python etl/normalize.py
 
 # Servir o site localmente (React + Vite; serve /data automaticamente)
-cd ../site
-npm install && npm run dev   # http://localhost:5173
+cd site && npm install && npm run dev   # http://localhost:5173
 
 # Rodar os testes
 cd .. && python -m pytest tests/ -q
 ```
+
+> A busca do Strava roda na **routine diária do Claude** (sem Secrets) —
+> `merge_strava.py` + `normalize.py`. Ver `docs/automation-runbook.md`.
 
 ---
 

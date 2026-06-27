@@ -12,8 +12,17 @@ async function load(name) {
 export const loadKPIs = () => load("kpis.json");
 export const loadWeekly = () => load("weekly.json");
 export const loadQuarterly = () => load("quarterly.json");
+export const loadMonthly = () => load("monthly.json");
+export const loadActivities = () => load("activities.json");
 export const loadWeeklyPlan = () => load("weekly_plan.json");
 export const loadCoaches = () => load("coaches.json");
+
+// "26/06" curto a partir de YYYY-MM-DD
+export function shortDate(iso) {
+  if (!iso) return "";
+  const [, m, d] = iso.split("-");
+  return `${d}/${m}`;
+}
 
 // Data (dd/mm) de um dia da semana a partir da segunda-feira (week_of) + índice.
 export function dayDate(weekOf, index) {

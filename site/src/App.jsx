@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import {
-  loadKPIs, loadWeekly, loadQuarterly, loadWeeklyPlan, loadCoaches, fmtDate,
+  loadKPIs, loadWeekly, loadQuarterly, loadMonthly, loadActivities,
+  loadWeeklyPlan, loadCoaches, fmtDate,
 } from "./data/loaders.js";
 import Hero from "./components/Hero.jsx";
+import RecentActivities from "./components/RecentActivities.jsx";
 import RunningSection from "./components/RunningSection.jsx";
 import StrengthSection from "./components/StrengthSection.jsx";
 import HistorySection from "./components/HistorySection.jsx";
@@ -15,12 +17,15 @@ export default function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    Promise.all([loadKPIs(), loadWeekly(), loadQuarterly()])
-      .then(async ([kpis, weekly, quarterly]) => {
+    Promise.all([loadKPIs(), loadWeekly(), loadQuarterly(), loadMonthly(), loadActivities()])
+      .then(async ([kpis, weekly, quarterly, monthly, activities]) => {
         // weekly_plan.json e coaches.json são opcionais
         const plan = await loadWeeklyPlan().catch(() => null);
         const coaches = await loadCoaches().catch(() => null);
-        setData({ kpis, weekly: weekly.weeks, quarterly: quarterly.quarters, plan, coaches });
+        setData({
+          kpis, weekly: weekly.weeks, quarterly: quarterly.quarters,
+          monthly: monthly.months, activities: activities.activities, plan, coaches,
+        });
       })
       .catch((e) => setError(e.message));
   }, []);
@@ -47,9 +52,10 @@ export default function App() {
       {tab === "jornada" ? (
         <main>
           <Hero kpis={data.kpis} />
+          <RecentActivities activities={data.activities} />
           <RunningSection kpis={data.kpis} weeks={data.weekly} />
           <StrengthSection kpis={data.kpis} />
-          <HistorySection quarters={data.quarterly} />
+          <HistorySection monthly={data.monthly} quarters={data.quarterly} />
         </main>
       ) : (
         <main>
@@ -64,7 +70,7 @@ export default function App() {
         <div className="wrap">
           <p>
             Dados reais do <a href="https://www.strava.com/" target="_blank" rel="noopener">Strava</a>,
-            atualizados diariamente via GitHub Actions ·{" "}
+            atualizados diariamente ·{" "}
             <a href="https://github.com/ElderGil/RunForrestRun" target="_blank" rel="noopener">código aberto</a>
           </p>
           <p className="updated">Atualizado em {fmtDate(data.kpis.generated_at)}</p>

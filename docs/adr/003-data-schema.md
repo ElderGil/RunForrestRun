@@ -107,8 +107,34 @@ Agregações semanais dos últimos 12 meses. Usado pelo gráfico de evolução.
 
 ---
 
+### `data/monthly.json`
+Agregação mensal do **ano corrente**. Usado pelos cards mensais do Histórico
+(2026 mês a mês). Adicionado em 2026-06 (compatível — arquivo novo, não altera os existentes).
+
+```json
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-06-26T00:00:00Z",
+  "months": [
+    {
+      "month": "2026-06",
+      "label": "Jun",
+      "run_km": 36.7,
+      "run_count": 4,
+      "longest_run_km": 14.0,
+      "avg_pace_min_km": 5.68,
+      "avg_heart_rate_bpm": 150,
+      "elevation_m": 287,
+      "strength_sessions": 5
+    }
+  ]
+}
+```
+
+---
+
 ### `data/quarterly.json`
-Resumo por quarter desde junho de 2024. Usado pela seção Histórico.
+Resumo por quarter desde junho de 2024. Usado pela tabela do Histórico (2024–2025).
 
 ```json
 {

@@ -187,6 +187,53 @@ def build_quarterly(activities: list[dict]) -> list[dict]:
     return quarters
 
 
+# --- monthly.json (cards, ano corrente) --------------------------------------
+
+MONTH_LABELS_PT = MONTHS_PT_SHORT  # reuse
+
+
+def build_monthly(activities: list[dict], year: int) -> list[dict]:
+    buckets: dict[int, dict] = defaultdict(lambda: {
+        "run_dist": 0.0, "run_pace_sum": 0.0, "run_pace_n": 0,
+        "run_sessions": 0, "longest": 0.0, "strength": 0,
+        "hr_sum": 0.0, "hr_n": 0, "elev": 0.0,
+    })
+    for a in activities:
+        d = parse_dt(a["date"])
+        if d.year != year:
+            continue
+        b = buckets[d.month]
+        if a["type"] == "Run":
+            b["run_dist"] += a["distance_km"]
+            b["run_sessions"] += 1
+            b["longest"] = max(b["longest"], a["distance_km"])
+            b["elev"] += a["elevation_m"]
+            if a["pace_min_km"]:
+                b["run_pace_sum"] += a["pace_min_km"]
+                b["run_pace_n"] += 1
+            if a["avg_heart_rate_bpm"]:
+                b["hr_sum"] += a["avg_heart_rate_bpm"]
+                b["hr_n"] += 1
+        elif a["type"] == "Strength":
+            b["strength"] += 1
+
+    months = []
+    for m in sorted(buckets):
+        b = buckets[m]
+        months.append({
+            "month": f"{year}-{m:02d}",
+            "label": MONTH_LABELS_PT[m],
+            "run_km": round(b["run_dist"], 1),
+            "run_count": b["run_sessions"],
+            "longest_run_km": round(b["longest"], 1),
+            "avg_pace_min_km": round(b["run_pace_sum"] / b["run_pace_n"], 2) if b["run_pace_n"] else None,
+            "avg_heart_rate_bpm": round(b["hr_sum"] / b["hr_n"]) if b["hr_n"] else None,
+            "elevation_m": round(b["elev"]),
+            "strength_sessions": b["strength"],
+        })
+    return months
+
+
 # --- kpis.json (current month + guardrail) -----------------------------------
 
 def acute_chronic_ratio(activities: list[dict], ref: datetime) -> dict:
@@ -276,6 +323,7 @@ def main():
     activities = build_activities(raw)
     weekly = build_weekly(activities)
     quarterly = build_quarterly(activities)
+    monthly = build_monthly(activities, datetime.now().year)
     kpis = build_kpis(activities)
 
     (DATA_DIR / "activities.json").write_text(
@@ -284,6 +332,8 @@ def main():
         json.dumps(wrap(weekly, "weeks"), indent=2, ensure_ascii=False))
     (DATA_DIR / "quarterly.json").write_text(
         json.dumps(wrap(quarterly, "quarters"), indent=2, ensure_ascii=False))
+    (DATA_DIR / "monthly.json").write_text(
+        json.dumps(wrap(monthly, "months"), indent=2, ensure_ascii=False))
     (DATA_DIR / "kpis.json").write_text(
         json.dumps(kpis, indent=2, ensure_ascii=False))
 

@@ -16,7 +16,7 @@ O coach não é um plano fixo — é um loop que reage ao que foi feito:
 
 ```
 Você treina → registra no Strava
-   → job de atualização busca os dados (strava_fetch + normalize)
+   → routine diária busca os dados (merge_strava + normalize)
    → running-coach + strength-coach releem as atividades
    → reavaliam carga (guardrail ACWR), comparam previsto x realizado
    → regeram data/weekly_plan.json: plano, indicadores e análise se ajustam

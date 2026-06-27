@@ -21,7 +21,7 @@ e publica o site. A página é estática e orientada a dados — sem servidor.
 
 | Pasta | O quê |
 |---|---|
-| `etl/` | `strava_fetch.py` (busca incremental) e `normalize.py` (KPIs + guardrail) |
+| `etl/` | `merge_strava.py` (ingestão incremental) e `normalize.py` (KPIs + guardrail) |
 | `data/` | JSONs versionados (`activities`, `weekly`, `quarterly`, `kpis`, `weekly_plan`) |
 | `site/` | App React + Vite + Recharts (`src/`) |
 | `skills/` | `running-coach` e `strength-coach` (geram o plano semanal) |
@@ -35,16 +35,16 @@ e publica o site. A página é estática e orientada a dados — sem servidor.
 # Site (Vite serve /data automaticamente em dev)
 cd site && npm install && npm run dev   # http://localhost:5173
 
-# Reprocessar KPIs a partir do store bruto
+# Reprocessar os JSONs a partir do store bruto
 python3 etl/normalize.py
-
-# Atualizar dados do Strava (requer credenciais)
-export STRAVA_CLIENT_ID=... STRAVA_CLIENT_SECRET=... STRAVA_REFRESH_TOKEN=...
-python3 etl/strava_fetch.py && python3 etl/normalize.py
 
 # Testes
 python3 -m pytest tests/ -q
 ```
+
+A busca de dados do Strava é feita por uma **routine diária do Claude** (sem
+Secrets), que usa a conexão Strava e roda `etl/merge_strava.py` + `etl/normalize.py`.
+Ver [`docs/automation-runbook.md`](docs/automation-runbook.md).
 
 ## KPIs acompanhados
 

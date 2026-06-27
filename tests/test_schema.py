@@ -17,7 +17,7 @@ def load(name):
     return json.loads((DATA / name).read_text())
 
 
-@pytest.mark.parametrize("name", ["kpis.json", "weekly.json", "quarterly.json", "activities.json"])
+@pytest.mark.parametrize("name", ["kpis.json", "weekly.json", "quarterly.json", "monthly.json", "activities.json"])
 def test_has_version_and_timestamp(name):
     d = load(name)
     assert d["schema_version"] == "1.0"
@@ -46,6 +46,15 @@ def test_weekly_shape_and_pace_is_decimal():
         assert pace is None or isinstance(pace, (int, float))
         # pace decimal, nunca string "5:25"
         assert not isinstance(pace, str)
+
+
+def test_monthly_shape():
+    months = load("monthly.json")["months"]
+    for m in months:
+        assert m["month"].startswith("2026-")
+        assert "label" in m and "run_km" in m and "longest_run_km" in m
+        pace = m["avg_pace_min_km"]
+        assert pace is None or isinstance(pace, (int, float))
 
 
 def test_quarterly_chronological_labels():

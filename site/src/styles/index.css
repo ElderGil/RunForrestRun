@@ -92,7 +92,7 @@ a:hover { text-decoration: underline; }
 .tab.active { color: #fff; background-image: var(--grad); }
 
 /* ---- Hero ---- */
-.hero { padding: 3.5rem 0 1.5rem; }
+.hero { padding-top: 3.5rem; padding-bottom: 1.5rem; }
 .hero h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
 .hero .sub { color: var(--text-dim); font-size: 1.08rem; margin-top: 0.7rem; max-width: 40rem; }
 .hero .goal-line {
@@ -116,7 +116,7 @@ a:hover { text-decoration: underline; }
 .metric .l { color: var(--text-dim); font-size: 0.85rem; margin-top: 0.15rem; }
 
 /* ---- Sections ---- */
-section.block { padding: 2.5rem 0; }
+section.block { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 section.block h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; }
 section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42rem; }
 
@@ -170,6 +170,39 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
 .q-table th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); background: #fbfafc; }
 .q-table th:first-child, .q-table td:first-child { text-align: left; font-weight: 700; }
 .q-table tr:last-child td { border-bottom: none; }
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ---- Recent activities ---- */
+.act-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.act {
+  display: flex; align-items: center; gap: 0.85rem;
+  background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--border);
+  border-radius: var(--radius-sm); padding: 0.8rem 1rem; box-shadow: var(--shadow);
+}
+.act.run { border-left-color: var(--blue); }
+.act.strength { border-left-color: var(--orange); }
+.act.ride { border-left-color: var(--sky); }
+.act-icon { font-size: 1.25rem; flex-shrink: 0; }
+.act-main { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.act-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.act-date { color: var(--text-dim); font-size: 0.8rem; }
+.act-stats { display: flex; align-items: baseline; gap: 0.7rem; flex-shrink: 0; font-size: 0.85rem; color: var(--text-dim); }
+.act-stats b { color: var(--text); font-size: 0.95rem; }
+
+/* ---- Monthly cards (2026) ---- */
+.month-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.9rem; margin-top: 1.3rem; }
+.month-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.1rem 1.1rem; box-shadow: var(--shadow);
+}
+.mc-head { display: flex; align-items: baseline; justify-content: space-between; }
+.mc-label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.82rem; }
+.mc-runs { color: var(--text-dim); font-size: 0.78rem; }
+.mc-km { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; margin-top: 0.3rem; }
+.mc-km small { font-size: 0.85rem; font-weight: 600; color: var(--text-dim); }
+.mc-bar { height: 6px; border-radius: 999px; background: var(--border); margin: 0.5rem 0 0.6rem; overflow: hidden; }
+.mc-bar i { display: block; height: 100%; background-image: var(--grad); border-radius: 999px; }
+.mc-foot { display: flex; flex-wrap: wrap; gap: 0.6rem; color: var(--text-dim); font-size: 0.78rem; }
 
 /* ---- Coach profiles ---- */
 .coaches { margin-bottom: 2.5rem; }
@@ -262,4 +295,9 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0 3rem; color: var(-
   .day { min-height: auto; }
   .tabs .tab { padding: 0.4rem 0.65rem; font-size: 0.85rem; }
   .brand span { display: none; }
+  /* atividade: métricas embaixo do nome para o nome não truncar */
+  .act { flex-wrap: wrap; }
+  .act-main { flex: 1 1 calc(100% - 2.1rem); }
+  .act-name { white-space: normal; }
+  .act-stats { width: 100%; padding-left: 2.1rem; margin-top: 0.25rem; }
 }

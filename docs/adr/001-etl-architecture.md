@@ -83,15 +83,18 @@ Pipeline ETL em Python rodando diariamente via cron no GitHub Actions. Credencia
 **Decisão:** a busca é **incremental**, não um full-fetch diário.
 
 O arquivo `data/activities_raw.json`, versionado no Git, é o **store de
-registro** (onde os dados já baixados ficam). A cada run, o `strava_fetch.py`:
+registro** (onde os dados já baixados ficam). A cada run da routine diária:
 
 1. Lê o store existente e descobre o `start_date` mais recente já armazenado
-2. Busca na Strava apenas atividades posteriores a esse timestamp, com uma
-   janela de sobreposição de 2 dias (`after = último - 48h`) para capturar
-   atividades editadas após o registro
-3. Faz merge no store deduplicando por `id` (a versão recém-baixada vence,
-   refletindo edições)
+2. Busca na Strava (conexão do Claude) apenas atividades posteriores a esse
+   timestamp; corridas são enriquecidas com HR (`get_activity_performance`)
+3. `etl/merge_strava.py` converte para o schema do store e faz merge
+   deduplicando por `id` (a versão recém-baixada vence, refletindo edições)
 4. Em um checkout limpo sem store, faz **backfill** desde junho de 2024
+
+> **Nota (2026-06):** a busca passou a usar a **conexão Strava do Claude** numa
+> routine agendada — sem OAuth/Secrets. O antigo `strava_fetch.py` (OAuth) foi
+> removido. Ver ADR-004 e `docs/automation-runbook.md`.
 
 **Rationale:** respeita o rate limit da Strava (100 req/15min, 1000/dia),
 torna o run diário barato e mantém a coerência com o princípio "dados como
@@ -106,13 +109,14 @@ O `normalize.py` consome o store e regera os JSONs agregados a cada run
 ## Fluxo do Pipeline
 
 ```
-GitHub Actions (cron: 11h Brasília — ver ADR-004)
+Routine diária do Claude (cron: 11h Brasília — ver ADR-004)
     ↓
-strava_fetch.py
-    → Autentica via OAuth com token em GitHub Secrets
+busca via conexão Strava (MCP) + HR por atividade
     → Lê data/activities_raw.json (store versionado)
-    → Busca incremental: só atividades após o último timestamp (+overlap 48h)
-    → Remove campos de localização
+    → Busca incremental: só atividades após o último timestamp
+    ↓
+etl/merge_strava.py
+    → Converte para o schema do store, remove localização
     → Merge dedup por id → grava o store atualizado
     ↓
 normalize.py
