@@ -23,10 +23,20 @@ from pathlib import Path
 
 PRIVATE = Path(__file__).parent.parent / "data" / "private"
 OUT = PRIVATE / "health.json"
-ICLOUD_HAE = (
-    Path.home()
-    / "Library/Mobile Documents/com~apple~CloudDocs/HealthAutoExport"
-)
+
+# Onde o app Health Auto Export pode depositar o JSON (sincronizado pro Mac).
+# Cobrimos iCloud Drive e os mounts de nuvem de terceiros (Google Drive, Dropbox,
+# OneDrive vivem sob ~/Library/CloudStorage). A descoberta pega o arquivo mais novo.
+CLOUD_ROOTS = [
+    Path.home() / "Library/Mobile Documents/com~apple~CloudDocs",  # iCloud Drive
+    Path.home() / "Library/CloudStorage",                          # Google Drive / Dropbox / OneDrive
+]
+HAE_GLOBS = [
+    "**/HealthAutoExport*.json",       # nome padrão dos arquivos do app
+    "**/HealthAutoExport/**/*.json",   # ou dentro de uma pasta HealthAutoExport
+    "**/Health Auto Export/**/*.json",
+    "**/HealthMetrics*.json",
+]
 
 # Métrica do Health Auto Export -> campo normalizado (valores escalares).
 SIMPLE = {
@@ -90,11 +100,16 @@ def merge_into(out_path: Path, records: dict) -> tuple[int, int]:
 
 
 def _discover() -> Path | None:
-    files = sorted(
-        glob.glob(str(ICLOUD_HAE / "**" / "*.json"), recursive=True),
-        key=os.path.getmtime,
-    )
-    return Path(files[-1]) if files else None
+    """Acha o export mais recente do Health Auto Export em qualquer nuvem montada."""
+    candidates: list[str] = []
+    for root in CLOUD_ROOTS:
+        if not root.exists():
+            continue
+        for pat in HAE_GLOBS:
+            candidates.extend(glob.glob(str(root / pat), recursive=True))
+    if not candidates:
+        return None
+    return Path(max(set(candidates), key=os.path.getmtime))
 
 
 def main(argv: list[str]) -> int:

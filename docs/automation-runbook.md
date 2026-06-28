@@ -30,10 +30,11 @@ executa. Não usa Secrets do Strava: a busca é feita pela **conexão Strava do 
    python etl/merge_health.py   # sono/recuperação/peso do Apple Health (no-op se não houver export)
    ```
 
-   > `merge_health.py` lê o JSON mais recente que o app **Health Auto Export** (iOS)
-   > deposita no iCloud Drive (`~/Library/Mobile Documents/com~apple~CloudDocs/HealthAutoExport/`)
-   > e grava `data/private/health.json` (privado). Se a ponte ainda não estiver
-   > configurada no iPhone, o comando é um no-op e a routine segue normal.
+   > `merge_health.py` acha o JSON mais recente do app **Health Auto Export** (iOS) em
+   > qualquer nuvem montada no Mac — iCloud Drive **ou** Google Drive/Dropbox/OneDrive
+   > (`~/Library/CloudStorage/...`) — e grava `data/private/health.json` (privado).
+   > Setup atual: export → **Google Drive**. Se a ponte ainda não estiver configurada no
+   > iPhone, o comando é um no-op e a routine segue normal.
 
 5. **Reavaliar como coach e regerar o plano rolante.** Ler `skills/running-coach/SKILL.md`,
    `skills/strength-coach/SKILL.md` e os artifacts privados `data/private/athlete.json` e
