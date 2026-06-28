@@ -16,3 +16,8 @@ site/dist/
 .claude/
 .idea/
 .vscode/
+
+# Dados pessoais/médicos do atleta — NUNCA versionar (repo é público).
+# Fonte de verdade local para os coaches; o build do site não copia subpastas
+# de /data, então também nunca vai para a página. Ver docs/privacy.
+data/private/

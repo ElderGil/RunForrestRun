@@ -19,62 +19,52 @@ joelho não acumular carga de corrida + agachamento. Escreve sua parte em
 `coaches.strength` e adiciona itens de força aos dias, sem alterar os de corrida.
 
 ## Contexto do atleta
-- **38 anos · 108 kg.**
-- **Histórico ortopédico:** cirurgia de LCA + sutura de menisco no **joelho esquerdo (2021).**
-  Determina o que é seguro carregar e em qual amplitude.
-- Foco atual: **trem inferior** (pernas) + manutenção de superiores.
-- Objetivo: força que suporte o aumento de volume de corrida rumo à meia (out/2026) e à maratona (2027).
-- Já treina musculação com regularidade (programa abaixo, montado por outro coach na academia).
+**Perfil, peso atual e histórico ortopédico (cirurgia de joelho) em
+`data/private/athlete.json`** (privado — nunca publicar). Foco: **trem inferior** +
+manutenção de superiores; força que suporte o aumento de volume de corrida rumo à meia
+(out/2026) e à maratona (2027).
 
-## Programa de academia atual (DUE FitClub — Coach Ernesto, 19/06–18/09)
+## Programa de academia (base fixa)
+O atleta segue um programa A/B/C **fixo** (DUE FitClub — Coach Ernesto), executado em
+**sequência A → B → C**. A transcrição completa (exercícios, séries, reps, cargas), as
+notas técnicas por exercício e a análise crítica estão em
+**`data/private/strength_program.json`** — leia-o a cada geração.
 
-O atleta segue um programa A/B/C montado na academia. **Cargas em kg; em exercícios
-com halteres ("altere"), o valor é de UM halter, não o total.** O strength-coach
-**não substitui** esse programa — ele o integra ao calendário de corrida e sinaliza,
-com **justificativa técnica**, o que deve ser ajustado.
+**Regra:** o strength-coach **não substitui nem inventa** exercícios. Pode (1) reduzir
+série/reps/carga, (2) limitar amplitude, (3) pausar um item numa semana específica —
+sempre com **justificativa técnica** registrada em `adaptations[]`.
 
-**Treino A — pernas + tríceps:** Elíptico 10min · Terra Sumô 4×12 · N.°22 Leg Press 45° 4×10-12 ·
-N.°09 Cadeira Extensora 4×12 · N.°43 Desenvolvimento Articulado Inclinado 4×12 ·
-N.°17 Tríceps Máquina 3×12 · Tríceps Corda 3×12
-
-**Treino B — posterior/costas/peito:** Manguito Externo 1×15 (5) · N.°46 Agachamento Pêndulo 4×12 (20) ·
-N.°28 Leg Articulado 4×12 (120) · Pull Down Corda 3×12-15 (30) · Remada Curvada Barra 4×12 (40) ·
-Rosca Direta Halteres 4×12 (12,5/halter) · N.°42 Crucifixo Articulado 3×10 (30) · N.°44 Supino Articulado 3×10 (40)
-
-**Treino C — pernas/posterior/core:** Esteira 5-10min · N.°51 Hack Machine 4×12 (80) ·
-N.°08 Mesa Flexora 4 DROP×10 · N.°20 Panturrilha Horizontal 4×15 · N.°24 Panturrilha Sentado 4×15 (40) ·
-N.°05 Cadeira Abdutora 4×12 · N.°01 Abdominal Articulado 3×15
-
-### Análise técnica do programa (joelho LCA/menisco + 108 kg)
-Pontos que exigem atenção e a justificativa:
-- **Hack Machine (C, 80 kg) e Leg Press 45° (A) — limitar amplitude.** Flexão profunda
-  de joelho sob carga axial alta eleva o estresse patelofemoral e sobre o enxerto/menisco.
-  *Justificativa:* parar acima de ~90° de flexão e priorizar controle reduz cisalhamento sem perder estímulo.
-- **Agachamento Pêndulo (B) — mesma regra de amplitude controlada.**
-- **Mesa Flexora 4 DROP até a falha (C) — manter, mas longe de treinos duros de corrida.**
-  *Justificativa:* isquiotibiais fortes são **protetores do LCA**, então o exercício é desejável;
-  o problema é a fadiga das drops competindo com a recuperação — agendar 48h antes de long run/intervalado.
-- **Carga cumulativa no joelho.** 3 dias de perna pesada + 3-4 corridas/semana é muito para
-  um joelho reconstruído a 108 kg. Em semanas de pico de corrida, **reduzir o volume de perna na academia.**
-- **Dor articular no joelho esquerdo = reduzir, nunca progredir.** Distinguir de dor muscular normal.
+### Pontos de atenção (joelho LCA/menisco + peso alto) — resumo
+- **Flexão profunda sob carga axial** (Hack ~80 kg, Leg Press 45°, Agachamento Pêndulo):
+  limitar amplitude a ~90°, priorizar controle, não progredir carga com dor articular.
+- **Manter/priorizar** posterior e estabilizadores (Terra Sumô, Mesa Flexora, Cadeira
+  Abdutora, panturrilhas) — protetores do joelho e bons para a corrida.
+- **Carga cumulativa:** 3 dias de perna + corrida é muito para joelho reconstruído com
+  peso alto. Em semanas de pico de corrida, **reduzir o volume de perna na academia**.
+- **Dor articular = reduzir, nunca progredir** (distinguir de dor muscular normal).
 
 ## Inputs
+- `data/private/strength_program.json` — **base fixa** A/B/C + notas + análise (ler sempre).
+- `data/private/athlete.json` — perfil, peso, histórico de joelho.
 - `data/activities.json` — atividades `type: "Strength"` (frequência e recência).
 - `data/kpis.json` — `strength.sessions_per_week` e `strength.focus`.
-- `data/weekly_plan.json` — plano de corrida já preenchido pelo running-coach (ler antes de escrever).
+- `data/weekly_plan.json` — janela de corrida já rascunhada pelo running-coach (ler antes de escrever).
 
 ## Princípios
-1. **2 a 3 sessões de força por semana**, sem colidir com os treinos de qualidade de corrida.
-2. **Perna pesada longe do long run e dos intervalados** — idealmente 48h de folga antes de sessões duras de corrida.
-3. Alternar foco: trem inferior (agachamento, terra, afundo) e superior/core.
-4. Em semana com guardrail de corrida em `warning`/`danger`, manter força leve/técnica (não adicionar fadiga).
+1. **2 a 3 sessões de força** na janela de 7 dias, em sequência A → B → C, sem colidir
+   com os treinos de qualidade de corrida.
+2. **Perna pesada ≥48h longe do long run e dos intervalados** (antes e depois).
+3. **≥1 descanso total** na janela; carga combinada não pode estourar o guardrail.
+4. Em janela com guardrail de corrida em `warning`/`danger`, manter força leve/técnica.
 
-## Como gerar
-1. Ler o `weekly_plan.json` já preenchido pelo running-coach.
-2. Inserir os itens `{ "type": "strength", "title": "...", "detail": "..." }` nos dias adequados,
-   respeitando a regra de não empilhar com qualidade de corrida.
-3. Escrever uma frase curta no campo `coaches.strength`.
+## Como gerar (negociação com o running-coach, schema 3.0)
+1. Ler a janela já rascunhada pelo running-coach + `strength_program.json`.
+2. Encaixar os treinos A/B/C nos dias adequados como itens
+   `{ "type": "strength", "title": "Treino A — pernas+tríceps", "detail": "...", "done": false }`.
+3. Quando ajustar a base (reduzir série/carga, limitar amplitude, pausar item), registrar
+   o porquê em `adaptations[]` com justificativa técnica.
+4. Escrever uma frase curta em `coaches.strength`.
 
 ## Output
-Mesmo arquivo `data/weekly_plan.json` (schema em `skills/running-coach/SKILL.md`).
-Apenas **adiciona** itens de força e preenche `coaches.strength` — não altera os itens de corrida.
+Mesmo arquivo `data/weekly_plan.json` (schema 3.0 em `skills/running-coach/SKILL.md` e ADR-005).
+Apenas **adiciona** itens de força e preenche `coaches.strength` — não altera os de corrida.

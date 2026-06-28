@@ -24,6 +24,20 @@ export function shortDate(iso) {
   return `${d}/${m}`;
 }
 
+// ISO local "YYYY-MM-DD" de hoje (sem deslocamento de fuso).
+export function isoToday() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+// Rótulo curto do dia da semana em pt-BR, capitalizado e sem ponto: "Seg", "Dom".
+export function weekdayShort(iso) {
+  if (!iso) return "";
+  const d = new Date(iso + "T12:00:00");
+  const s = d.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "");
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 // Data (dd/mm) de um dia da semana a partir da segunda-feira (week_of) + índice.
 export function dayDate(weekOf, index) {
   const d = new Date(weekOf + "T12:00:00");

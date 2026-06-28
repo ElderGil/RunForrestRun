@@ -78,9 +78,30 @@ def test_weekly_plan_shape_if_present():
     if not path.exists():
         pytest.skip("weekly_plan.json ainda não gerado")
     d = json.loads(path.read_text())
-    assert d["schema_version"] in {"1.0", "2.0"}
+    assert d["schema_version"] in {"1.0", "2.0", "3.0"}
     assert len(d["days"]) == 7
     valid = {"run", "strength", "rest"}
     for day in d["days"]:
         for item in day["items"]:
             assert item["type"] in valid
+
+    if d["schema_version"] == "3.0":
+        # Plano rolante (ADR-005): janela de 7 dias consecutivos a partir de window_start.
+        from datetime import date, timedelta
+
+        assert {"window_start", "window_end"} <= d.keys()
+        start = date.fromisoformat(d["window_start"])
+        assert d["window_end"] == (start + timedelta(days=6)).isoformat()
+        for i, day in enumerate(d["days"]):
+            assert day["date"] == (start + timedelta(days=i)).isoformat()
+            assert day["status"] in {"planned", "done", "missed"}
+
+
+def test_weekly_plan_has_no_personal_data():
+    """O plano é público: nunca pode vazar peso/medidas/idade (ficam em data/private/)."""
+    path = DATA / "weekly_plan.json"
+    if not path.exists():
+        pytest.skip("weekly_plan.json ainda não gerado")
+    blob = path.read_text().lower()
+    for term in ("109", "108 kg", "bmi", "imc", "gordura visceral", "cirurgia", "lca"):
+        assert term not in blob, f"possível vazamento de dado pessoal: {term!r}"

@@ -28,24 +28,25 @@ Regras de adaptação:
 - **Pulei um treino:** redistribui sem tentar compensar tudo de uma vez (respeita os 10%).
 - **Guardrail subiu para warning/danger:** reduz volume/intensidade da semana e prioriza recuperação.
 - O campo `adaptations[]` do `weekly_plan.json` registra, em linguagem clara, o que mudou e por quê.
-- O `schema_version` do `weekly_plan.json` é `2.0` (inclui `indicators`, `adaptations` e `done` por item).
+- O `schema_version` do `weekly_plan.json` é `3.0` — **plano rolante de 7 dias** (ver ADR-005).
 
 ## Contexto do atleta
-- **38 anos · 108 kg.** Intermediário, já completou uma meia maratona (21 km).
-- **Histórico ortopédico:** cirurgia de LCA (ligamento cruzado anterior) + sutura
-  de menisco no **joelho esquerdo, em 2021.** Fator central no planejamento.
+**Perfil, peso atual e histórico ortopédico ficam em `data/private/athlete.json`**
+(arquivo local privado — nunca publicar). Leia-o a cada geração. Resumo para o plano:
+- Intermediário, já completou uma meia maratona (21 km).
 - **Meta intermediária:** meia maratona em Pomerode — 17/18 de outubro de 2026.
 - **Meta final:** maratona completa até o fim de 2027.
 - Fase atual: *Build* (construindo volume e força após a meia).
 
-### Implicações do peso + histórico de joelho
-A 108 kg e com um joelho reconstruído, **impacto e progressão importam mais que pace.**
-Diretrizes:
+### Implicações de peso + histórico de joelho (ler `athlete.json`)
+Com o peso atual (categoria obeso) e um joelho com LCA reconstruído, **impacto e
+progressão importam mais que pace.** Diretrizes:
 - Priorizar **volume fácil em Z2**; introduzir qualidade (intervalado/tempo) só com guardrail `ok`.
 - Subir o long run de forma conservadora (regra dos 10% é teto, não meta).
-- Preferir superfícies mais macias quando possível; atenção a dores no joelho esquerdo —
-  dor articular (não muscular) é sinal de **reduzir**, não de "aguentar".
+- Preferir superfícies mais macias quando possível; dor **articular** (não muscular) no
+  joelho é sinal de **reduzir**, não de "aguentar".
 - O guardrail ACWR é **duplamente importante** aqui — a margem de erro é menor.
+- Reduzir gordura corporal é alavanca central (alivia carga no joelho e melhora a corrida).
 
 ## Inputs
 - `data/activities.json` — todas as atividades normalizadas (base da análise).
@@ -62,41 +63,44 @@ dias ÷ média semanal dos últimos 28 dias.
 - `ok` < 1.3 · `warning` 1.3–1.5 · `danger` ≥ 1.5
 - Se `warning`/`danger`, o plano da semana **reduz volume e intensidade** e prioriza recuperação.
 
-## Como gerar o plano
-1. Ler os inputs e calcular: média semanal recente, último long run, pace médio, status do guardrail.
-2. Estruturar a semana (segunda a domingo) com tipos de treino:
-   - **easy** (Z2, base aeróbica), **long** (long run, ~30% do volume),
-     **interval/tempo** (1 sessão de qualidade no máximo, se guardrail = ok),
-     **rest** (descanso).
-3. Distância do long run sobe gradualmente rumo aos 21 km (meia) e depois 42 km (maratona).
-4. Respeitar dias de força do strength-coach — não empilhar qualidade de corrida com perna pesada.
-5. Escrever uma frase curta de orientação no campo `coaches.running`.
+## Como gerar o plano (janela rolante de 7 dias)
+1. Ler os inputs + `data/private/athlete.json`; calcular média semanal recente, último
+   long run, pace médio e status do guardrail.
+2. Montar a **janela = hoje + próximos 6 dias** (7 entradas, datas consecutivas). Para
+   cada dia já passado/atual, marcar `status` e `done` comparando com `activities.json`.
+3. Tipos de treino: **easy** (Z2, base aeróbica), **long** (~30% do volume),
+   **interval/tempo** (no máx. 1 sessão de qualidade, só se guardrail = ok), **rest**.
+4. Long run sobe gradualmente rumo aos 21 km (meia) e depois 42 km (maratona).
+5. **Negociar com o strength-coach** (ver a SKILL dele): perna pesada ≥48h longe de
+   long run/qualidade; ≥1 descanso total na janela; não empilhar carga.
+6. Escrever uma frase curta em `coaches.running` e registrar conflitos resolvidos em
+   `adaptations[]`.
 
-## Output — `data/weekly_plan.json`
+## Output — `data/weekly_plan.json` (schema 3.0, ver ADR-005)
 ```json
 {
-  "schema_version": "1.0",
-  "generated_at": "ISO-8601",
-  "week_of": "YYYY-MM-DD",          // segunda-feira da semana
-  "summary": "frase de contexto da semana",
+  "schema_version": "3.0",
+  "generated_at": "ISO-8601 Z",
+  "window_start": "YYYY-MM-DD",     // = hoje
+  "window_end": "YYYY-MM-DD",       // = hoje + 6
+  "summary": "frase de contexto",
+  "indicators": [ { "label": "...", "value": "...", "status": "ok|warning|danger" } ],
   "days": [
     {
-      "day": "Seg",
-      "items": [
-        { "type": "run|strength|rest", "title": "curto", "detail": "distância/intensidade" }
-      ]
+      "date": "YYYY-MM-DD",
+      "weekday": "Seg",
+      "status": "planned|done|missed",
+      "items": [ { "type": "run|strength|rest", "title": "curto", "detail": "...", "done": false } ]
     }
-    // ... 7 dias (Seg..Dom)
+    // ... exatamente 7 dias, datas consecutivas a partir de window_start
   ],
-  "coaches": {
-    "running": "orientação do running-coach",
-    "strength": "preenchido pelo strength-coach"
-  }
+  "adaptations": [ "o que mudou e por quê" ],
+  "coaches": { "running": "...", "strength": "preenchido pelo strength-coach" }
 }
 ```
 
 Regras: `type` da corrida é sempre `"run"` na UI (o detalhe diz se é fácil/longo/intervalado).
-Nunca incluir localização. O plano se adapta: se um treino planejado não foi executado
-(comparar com `activities.json` na próxima geração), redistribuir a carga sem compensar tudo de uma vez.
+Nunca incluir localização nem dado pessoal. O plano se adapta: o que não foi executado é
+redistribuído sem compensar tudo de uma vez (respeita os 10%).
 
-Ver `skills/strength-coach/SKILL.md` — os dois coaches escrevem no mesmo `weekly_plan.json`.
+Ver `skills/strength-coach/SKILL.md` — os dois coaches negociam o mesmo `weekly_plan.json`.

@@ -29,24 +29,28 @@ executa. Não usa Secrets do Strava: a busca é feita pela **conexão Strava do 
    python etl/normalize.py
    ```
 
-5. **Reavaliar como coach e regerar o plano.** Ler `skills/running-coach/SKILL.md` e
-   `skills/strength-coach/SKILL.md` e, com base nos dados atualizados
+5. **Reavaliar como coach e regerar o plano rolante.** Ler `skills/running-coach/SKILL.md`,
+   `skills/strength-coach/SKILL.md` e os artifacts privados `data/private/athlete.json` e
+   `data/private/strength_program.json`. Com base nos dados atualizados
    (`data/activities.json`, `data/kpis.json`, `data/weekly.json`), **regerar
-   `data/weekly_plan.json`** (schema 2.0):
-   - Atualizar `indicators` (corridas na semana, guardrail ACWR, FC média).
-   - Marcar `done: true` nos dias já realizados; ajustar os dias futuros.
-   - Se uma atividade saiu do previsto (ex.: corrida em dia de força), registrar em
-     `adaptations[]` o que mudou e por quê, e recalcular a carga.
-   - Atualizar `coaches.running` e `coaches.strength`.
-   - No início de uma nova semana (segunda), criar o plano da semana seguinte.
-   - **Nunca** expor dados pessoais (peso, histórico médico) no `weekly_plan.json` —
-     isso é contexto interno das skills, não conteúdo de página.
+   `data/weekly_plan.json`** no **schema 3.0 — janela rolante de 7 dias (ADR-005)**:
+   - Janela = `window_start` (hoje) … `window_end` (hoje+6); 7 dias consecutivos com
+     `date`, `weekday`, `status` e `items`. A janela **desliza todo dia** — não há mais
+     "criar a semana na segunda".
+   - Marcar `status: done` / `done: true` nos dias já realizados (comparar com `activities.json`).
+   - **Negociação dos coaches:** A/B/C em sequência sem trocar exercícios (só reduzir
+     série/carga, limitar amplitude ou pausar com justificativa); perna pesada ≥48h de
+     long run/qualidade; ≥1 descanso total; carga dentro do guardrail ACWR.
+   - Registrar em `adaptations[]` o que mudou e por quê; atualizar `indicators`,
+     `coaches.running` e `coaches.strength`.
+   - **Nunca** expor dados pessoais (peso, idade, medidas, histórico médico) no
+     `weekly_plan.json` — eles vivem só em `data/private/` (gitignored).
 
 6. **Validar e commitar:**
    ```bash
    python -m pytest tests/ -q
    git add data/
-   git commit -m "data: update activities $(date -u +%Y-%m-%d)"
+   git commit -m "data: daily update"   # sem $(...) — substituição de comando trava o job agendado em permissão
    git push
    ```
    O push em `data/**` dispara o workflow `pages.yml`, que rebuilda e publica o site.

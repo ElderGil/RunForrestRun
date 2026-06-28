@@ -1,29 +1,79 @@
 {
-  "schema_version": "2.0",
-  "generated_at": "2026-06-28T22:50:00Z",
-  "week_of": "2026-06-22",
-  "week_label": "22–28 jun 2026",
-  "summary": "Semana fechada com chave de ouro: academia firme de segunda a quinta e duas corridas — 5 km na sexta e o longão de 8 km no domingo. O guardrail segue saudável (ACWR 1,17), então a base de corrida está voltando no ritmo certo, sem empilhar carga.",
+  "schema_version": "3.0",
+  "generated_at": "2026-06-28T23:20:00Z",
+  "window_start": "2026-06-28",
+  "window_end": "2026-07-04",
+  "summary": "Plano rolante de 7 dias. Você fechou o longão de 8 km hoje; a partir daqui os coaches encaixaram a academia A/B/C em sequência e duas corridas fáceis, mantendo a perna pesada longe do próximo longão e um dia de descanso total. O guardrail segue saudável.",
   "indicators": [
-    { "label": "Corridas na semana", "value": "2 feitas (5 km + 8 km)", "status": "ok" },
+    { "label": "Corridas (7 dias)", "value": "1 feita + 2 previstas", "status": "ok" },
     { "label": "Guardrail (ACWR)", "value": "1,17 · saudável", "status": "ok" },
-    { "label": "FC média (corrida)", "value": "150 bpm", "status": "ok" }
+    { "label": "Força (7 dias)", "value": "3 sessões · A·B·C", "status": "ok" }
   ],
   "days": [
-    { "day": "Seg", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
-    { "day": "Ter", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
-    { "day": "Qua", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
-    { "day": "Qui", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
-    { "day": "Sex", "items": [ { "type": "run", "title": "Corrida 5 km", "detail": "FC média 153 bpm — feita", "done": true } ] },
-    { "day": "Sáb", "items": [ { "type": "rest", "title": "Descanso", "detail": "Longão adiado para domingo", "done": true } ] },
-    { "day": "Dom", "items": [ { "type": "run", "title": "Trote longo 8 km", "detail": "Z2 ~5:50/km, FC média 147 bpm — feita", "done": true } ] }
+    {
+      "date": "2026-06-28",
+      "weekday": "Dom",
+      "status": "done",
+      "items": [
+        { "type": "run", "title": "Longão 8 km", "detail": "Z2 ~5:50/km, FC média 147 — feito", "done": true }
+      ]
+    },
+    {
+      "date": "2026-06-29",
+      "weekday": "Seg",
+      "status": "planned",
+      "items": [
+        { "type": "strength", "title": "Treino A — pernas+tríceps", "detail": "Pós-longão: -1 série de perna; Leg Press amplitude ≤90°", "done": false }
+      ]
+    },
+    {
+      "date": "2026-06-30",
+      "weekday": "Ter",
+      "status": "planned",
+      "items": [
+        { "type": "run", "title": "Corrida fácil 5 km", "detail": "Z2 confortável, conversando", "done": false }
+      ]
+    },
+    {
+      "date": "2026-07-01",
+      "weekday": "Qua",
+      "status": "planned",
+      "items": [
+        { "type": "strength", "title": "Treino B — posterior/costas/peito", "detail": "Pouca carga axial no joelho — bom dia pós-corrida", "done": false }
+      ]
+    },
+    {
+      "date": "2026-07-02",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        { "type": "strength", "title": "Treino C — pernas/posterior/core", "detail": "Hack amplitude ≤90°; última perna pesada antes do longão (48h)", "done": false }
+      ]
+    },
+    {
+      "date": "2026-07-03",
+      "weekday": "Sex",
+      "status": "planned",
+      "items": [
+        { "type": "rest", "title": "Descanso total", "detail": "Mobilidade leve opcional — recuperação pré-longão", "done": false }
+      ]
+    },
+    {
+      "date": "2026-07-04",
+      "weekday": "Sáb",
+      "status": "planned",
+      "items": [
+        { "type": "run", "title": "Longão 9 km", "detail": "Z2 ~5:50/km, progressivo (+~10% sobre 8 km)", "done": false }
+      ]
+    }
   ],
   "adaptations": [
-    "O longão leve estava previsto para sábado, mas você correu no domingo (28/06): 8,0 km a ~5:50/km, FC média 147 bpm, terminando forte. O coach moveu a sessão para o dia real e recalculou a carga — ACWR 1,17, ainda na faixa saudável.",
-    "Duas corridas na semana (5 km + 8 km, 13,1 km no total) confirmam a retomada da base. FC média estável (~150 bpm) para um volume maior é bom sinal de eficiência."
+    "Longão saiu no domingo (8 km, FC 147, terminando firme). A janela já abre com ele marcado como feito.",
+    "Negociação dos coaches: a academia A/B/C entra em sequência (Seg/Qua/Qui). A perna pesada do Treino C foi posta na quinta para ficar ~48h antes do longão de sábado; e o Treino A de segunda vem com 1 série de perna a menos por causa do longão de ontem.",
+    "Sexta é descanso total para chegar inteiro no longão de sábado — carga combinada dentro do guardrail (ACWR 1,17)."
   ],
   "coaches": {
-    "running": "Ótima semana de retomada. O longão de domingo saiu controlado em Z2 e você fechou os últimos km mais firme — exatamente o que se quer numa corrida de base. Na próxima semana dá pra ir a ~9–10 km no longão e, se o corpo responder bem, introduzir 1 tiro curto leve (4–5 × 1 min) numa corrida de meio de semana. Nada de intensidade alta ainda.",
-    "strength": "Academia consistente (4 sessões). Com a corrida ganhando volume, na próxima semana alivio um pouco o agachamento pesado e priorizo mobilidade de quadril e tornozelo, para o joelho não acumular impacto de corrida + carga alta de perna ao mesmo tempo."
+    "running": "Semana de base: duas corridas fáceis em Z2 e o longão subindo de 8 para 9 km no sábado. Nada de intensidade alta ainda — primeiro consolidar o volume com o joelho confortável.",
+    "strength": "Mantive seu A/B/C em sequência, sem trocar exercícios. Só ajustei o calendário: Treino C (perna pesada) longe do longão, e o A de segunda com um pouco menos de perna porque você correu longo ontem. Amplitude controlada no Hack e no Leg Press, como sempre."
   }
 }
