@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-26T21:37:19Z",
+  "generated_at": "2026-06-28T22:43:34Z",
   "activities": [
     {
       "id": "11665837342",
@@ -2388,6 +2388,18 @@
       "avg_heart_rate_bpm": 153,
       "max_heart_rate_bpm": 173,
       "elevation_m": 88,
+      "name": "Morning Run"
+    },
+    {
+      "id": "19097190755",
+      "date": "2026-06-28",
+      "type": "Run",
+      "distance_km": 8.02,
+      "duration_min": 46.8,
+      "pace_min_km": 5.83,
+      "avg_heart_rate_bpm": 147,
+      "max_heart_rate_bpm": 165,
+      "elevation_m": 138,
       "name": "Morning Run"
     }
   ]

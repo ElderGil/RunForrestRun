@@ -1,12 +1,12 @@
 {
   "schema_version": "2.0",
-  "generated_at": "2026-06-26T14:00:00Z",
+  "generated_at": "2026-06-28T22:50:00Z",
   "week_of": "2026-06-22",
   "week_label": "22–28 jun 2026",
-  "summary": "Semana de retomada da corrida. Você manteve a academia firme e voltou a correr (5 km hoje) — o guardrail segue saudável, então liberei um trote mais longo no sábado antes de fechar a semana com descanso.",
+  "summary": "Semana fechada com chave de ouro: academia firme de segunda a quinta e duas corridas — 5 km na sexta e o longão de 8 km no domingo. O guardrail segue saudável (ACWR 1,17), então a base de corrida está voltando no ritmo certo, sem empilhar carga.",
   "indicators": [
-    { "label": "Corridas na semana", "value": "1 feita + 1 prevista", "status": "ok" },
-    { "label": "Guardrail (ACWR)", "value": "0,43 · saudável", "status": "ok" },
+    { "label": "Corridas na semana", "value": "2 feitas (5 km + 8 km)", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "1,17 · saudável", "status": "ok" },
     { "label": "FC média (corrida)", "value": "150 bpm", "status": "ok" }
   ],
   "days": [
@@ -15,15 +15,15 @@
     { "day": "Qua", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
     { "day": "Qui", "items": [ { "type": "strength", "title": "Academia", "detail": "Treino de força", "done": true } ] },
     { "day": "Sex", "items": [ { "type": "run", "title": "Corrida 5 km", "detail": "FC média 153 bpm — feita", "done": true } ] },
-    { "day": "Sáb", "items": [ { "type": "run", "title": "Trote longo leve", "detail": "8 km em Z2 (~5:50/km), confortável", "done": false } ] },
-    { "day": "Dom", "items": [ { "type": "rest", "title": "Descanso", "detail": "Recuperação — mobilidade leve opcional", "done": false } ] }
+    { "day": "Sáb", "items": [ { "type": "rest", "title": "Descanso", "detail": "Longão adiado para domingo", "done": true } ] },
+    { "day": "Dom", "items": [ { "type": "run", "title": "Trote longo 8 km", "detail": "Z2 ~5:50/km, FC média 147 bpm — feita", "done": true } ] }
   ],
   "adaptations": [
-    "Você correu hoje (26/06, 5 km). Como foi um dia em que você costuma fazer academia, o coach registrou a corrida, recalculou a carga (ACWR 0,43, saudável) e manteve o sábado como trote leve — sem empilhar intensidade.",
-    "Sua última corrida não foi 'há duas semanas': você fez 14 km em 13/06 e 5 km hoje. Os indicadores agora refletem isso."
+    "O longão leve estava previsto para sábado, mas você correu no domingo (28/06): 8,0 km a ~5:50/km, FC média 147 bpm, terminando forte. O coach moveu a sessão para o dia real e recalculou a carga — ACWR 1,17, ainda na faixa saudável.",
+    "Duas corridas na semana (5 km + 8 km, 13,1 km no total) confirmam a retomada da base. FC média estável (~150 bpm) para um volume maior é bom sinal de eficiência."
   ],
   "coaches": {
-    "running": "Bom te ver correndo de novo. Com 5 km hoje e o guardrail em 0,43, dá pra fazer um trote um pouco mais longo no sábado (8 km, leve). Nada de intervalado ainda — a base primeiro. Domingo descansa.",
-    "strength": "A academia foi consistente a semana toda. Como a corrida está voltando, vou aliviar o volume de perna pesada na próxima semana para o joelho não acumular carga de corrida + agachamento ao mesmo tempo."
+    "running": "Ótima semana de retomada. O longão de domingo saiu controlado em Z2 e você fechou os últimos km mais firme — exatamente o que se quer numa corrida de base. Na próxima semana dá pra ir a ~9–10 km no longão e, se o corpo responder bem, introduzir 1 tiro curto leve (4–5 × 1 min) numa corrida de meio de semana. Nada de intensidade alta ainda.",
+    "strength": "Academia consistente (4 sessões). Com a corrida ganhando volume, na próxima semana alivio um pouco o agachamento pesado e priorizo mobilidade de quadril e tornozelo, para o joelho não acumular impacto de corrida + carga alta de perna ao mesmo tempo."
   }
 }
