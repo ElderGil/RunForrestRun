@@ -1,12 +1,13 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-06-28T23:20:00Z",
+  "generated_at": "2026-06-29T01:30:00Z",
   "window_start": "2026-06-28",
   "window_end": "2026-07-04",
-  "summary": "Plano rolante de 7 dias. Você fechou o longão de 8 km hoje; a partir daqui os coaches encaixaram a academia A/B/C em sequência e duas corridas fáceis, mantendo a perna pesada longe do próximo longão e um dia de descanso total. O guardrail segue saudável.",
+  "summary": "Plano rolante de 7 dias. Você fechou o longão de 8 km hoje; os coaches encaixaram a academia A/B/C em sequência e duas corridas fáceis, mantendo a perna pesada longe do próximo longão e um dia de descanso total. Guardrail saudável e os sinais de recuperação (FC de repouso e sono, via Apple Health) estão bons — então dá pra seguir a progressão.",
   "indicators": [
     { "label": "Corridas (7 dias)", "value": "1 feita + 2 previstas", "status": "ok" },
     { "label": "Guardrail (ACWR)", "value": "1,17 · saudável", "status": "ok" },
+    { "label": "Recuperação", "value": "boa", "status": "ok" },
     { "label": "Força (7 dias)", "value": "3 sessões · A·B·C", "status": "ok" }
   ],
   "days": [
@@ -70,10 +71,11 @@
   "adaptations": [
     "Longão saiu no domingo (8 km, FC 147, terminando firme). A janela já abre com ele marcado como feito.",
     "Negociação dos coaches: a academia A/B/C entra em sequência (Seg/Qua/Qui). A perna pesada do Treino C foi posta na quinta para ficar ~48h antes do longão de sábado; e o Treino A de segunda vem com 1 série de perna a menos por causa do longão de ontem.",
+    "Cruzei a recuperação do Apple Health (FC de repouso e sono): estão saudáveis, então mantive a progressão. Se a FC de repouso subir ou o sono cair por vários dias, eu alivio automaticamente.",
     "Sexta é descanso total para chegar inteiro no longão de sábado — carga combinada dentro do guardrail (ACWR 1,17)."
   ],
   "coaches": {
-    "running": "Semana de base: duas corridas fáceis em Z2 e o longão subindo de 8 para 9 km no sábado. Nada de intensidade alta ainda — primeiro consolidar o volume com o joelho confortável.",
+    "running": "Semana de base: duas corridas fáceis em Z2 e o longão subindo de 8 para 9 km no sábado. Seus sinais de recuperação estão bons (FC de repouso baixa e sono em dia), então dá pra seguir — nada de intensidade alta ainda, primeiro consolidar o volume com o joelho confortável.",
     "strength": "Mantive seu A/B/C em sequência, sem trocar exercícios. Só ajustei o calendário: Treino C (perna pesada) longe do longão, e o A de segunda com um pouco menos de perna porque você correu longo ontem. Amplitude controlada no Hack e no Leg Press, como sempre."
   }
 }

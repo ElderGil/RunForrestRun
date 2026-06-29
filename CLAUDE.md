@@ -10,11 +10,11 @@
 
 **Objetivo intermediário:** Meia maratona em Pomerode — 17/18 de outubro de 2026.
 
-**Perfil do atleta:**
-- Nível: Intermediário
-- Histórico: Correndo há mais de 1,5 anos, já completou uma meia maratona
-- Modalidades: Corrida (principal), Musculação/Força (foco em pernas, inclui superiores), Bike (hobby)
-- Dados disponíveis: histórico Strava desde junho de 2024 (2 anos)
+**Perfil do atleta (resumo público):**
+- Nível: Intermediário; correndo há mais de 1,5 anos, já completou uma meia maratona.
+- Modalidades: Corrida (principal), Musculação/Força (programa A/B/C fixo), Bike (hobby).
+- Fontes de dados: Strava (desde jun/2024), Apple Health (sono/recuperação/composição via Amazfit + balança OKOK).
+- **Perfil completo, peso e histórico médico:** em `data/private/athlete.json` (privado — nunca commitado, nunca publicado).
 
 ---
 
@@ -22,12 +22,13 @@
 
 | Camada | Tecnologia | Motivo |
 |---|---|---|
-| Fonte de dados | Strava API | Dados reais de treino |
-| ETL | Python + GitHub Actions | Simples, gratuito, versionado |
-| Armazenamento | JSON estático no repo | Sem banco de dados, compatível com GitHub Pages |
-| Página | HTML + JS + Chart.js | Estático, rápido, sem servidor |
-| Versionamento | Git + GitHub | CI/CD gratuito |
-| Agentes/Skills | Claude Cowork Skills | Coach de corrida e força |
+| Fontes de dados | Strava API + Apple Health (sono/recuperação/composição) | Dados reais de treino e saúde |
+| ETL | Python, rodado pela **routine diária do Claude** | Simples, gratuito, versionado, sem Secrets |
+| Armazenamento público | JSON estático no repo (`data/*.json`) | Sem banco; compatível com GitHub Pages |
+| Armazenamento privado | JSON local gitignored (`data/private/`) | Dados pessoais/médicos nunca publicados |
+| Página | React + Vite + Recharts | Estático, rápido, sem servidor |
+| CI/CD | GitHub Actions (CI de testes/build + deploy do Pages) | Gratuito |
+| Agentes/Skills | Claude Skills (running-coach + strength-coach) | Coaches que negociam o plano |
 | Metodologia | CLAUDE.md + PRD + ADR + Tests | Engenharia orientada a documentação |
 
 ---
@@ -35,60 +36,71 @@
 ## Arquitetura (sumário)
 
 ```
-Strava API
-    ↓ (GitHub Actions — cron diário)
-ETL Python
-    ↓
-JSON normalizado (/data/*.json)
-    ↓
-GitHub Pages (index.html)
-    ↓
-Visualização com Chart.js
+Strava API ─────────┐
+                    ├──► routine diária do Claude (Python ETL no Mac · 11:08 BRT)
+Apple Health ───────┘       merge_strava → normalize → merge_health → coaches negociam
+  (Health Auto Export
+   → Dropbox/iCloud → Mac)
+                            ↓
+   data/*.json  (PÚBLICO, sem dado pessoal)   +   data/private/*.json  (LOCAL, gitignored)
+                            ↓ git push
+            GitHub Actions (pages.yml) → build Vite → GitHub Pages
+                            ↓
+            App React + Recharts (abas Jornada / Plano)
 ```
 
 **Princípios:**
-- Sem servidor: tudo estático, tudo versionado
-- Dados como código: os JSONs gerados ficam no repositório
-- Automação discreta: GitHub Actions roda à meia-noite e atualiza os dados
-- Transparência total: qualquer pessoa pode ver os dados e o código
+- **Sem servidor:** tudo estático, tudo versionado.
+- **Dados como código:** os JSONs públicos ficam no repositório.
+- **Privacidade:** dados pessoais/médicos só em `data/private/` — gitignored e não copiados pelo build (o Vite só copia `data/*.json` da raiz). Nunca vão à página nem ao repo público.
+- **Automação discreta:** a routine do Claude roda diariamente (11:08 BRT), atualiza os dados e publica.
+- **Transparência:** código e dados não-pessoais são abertos.
 
 ---
 
-## Estrutura de Pastas (planejada)
+## Estrutura de Pastas
 
 ```
 RunForrestRun/
-├── CLAUDE.md                  # Este arquivo
-├── README.md                  # Apresentação pública do projeto
+├── CLAUDE.md                  # Este arquivo (memória do projeto)
+├── README.md                  # Apresentação pública + arquitetura
 ├── docs/
-│   ├── PRD.md                 # Product Requirements Document
+│   ├── PRD.md
+│   ├── automation-runbook.md  # Procedimento da routine diária
 │   └── adr/
 │       ├── 001-etl-architecture.md
 │       ├── 002-page-stack.md
-│       └── 003-data-schema.md
+│       ├── 003-data-schema.md
+│       ├── 004-github-actions.md
+│       └── 005-rolling-plan-and-coach-negotiation.md
 ├── etl/
 │   ├── merge_strava.py        # Ingestão incremental do Strava (via routine)
-│   ├── normalize.py           # Normaliza e calcula KPIs
+│   ├── merge_health.py        # Ingestão do Apple Health (Health Auto Export)
+│   ├── normalize.py           # Normaliza e calcula KPIs + guardrail ACWR
 │   └── requirements.txt
-├── data/
-│   ├── activities.json        # Histórico de atividades
-│   ├── kpis.json              # KPIs calculados
-│   └── weekly.json            # Resumo semanal
-├── site/
-│   ├── index.html             # Página principal
-│   ├── style.css
-│   └── charts.js
+├── data/                      # PÚBLICO (vai para a página)
+│   ├── activities.json        # Atividades normalizadas (sem localização)
+│   ├── activities_raw.json    # Store bruto (intermediário)
+│   ├── kpis.json · weekly.json · monthly.json · quarterly.json
+│   ├── coaches.json           # Perfis dos coaches
+│   ├── weekly_plan.json       # Plano rolante de 7 dias (schema 3.0)
+│   └── private/               # LOCAL, gitignored — NUNCA publicado
+│       ├── athlete.json           # Perfil, peso, histórico médico
+│       ├── body_composition.json  # Bioimpedância OKOK
+│       ├── strength_program.json  # Programa A/B/C (base fixa) + análise
+│       └── health.json            # Apple Health (sono, FC repouso, VO2máx, peso…)
+├── site/                      # App React + Vite + Recharts
+│   ├── index.html
+│   ├── vite.config.js         # serve /data em dev; copia data/*.json no build
+│   └── src/ (App.jsx, components/, data/loaders.js, styles/)
 ├── skills/
-│   ├── running-coach/
-│   │   └── SKILL.md
-│   └── strength-coach/
-│       └── SKILL.md
+│   ├── running-coach/SKILL.md
+│   └── strength-coach/SKILL.md
 ├── tests/
-│   ├── test_etl.py
-│   └── test_schema.py
-└── .github/
-    └── workflows/
-        └── daily-update.yml   # Atualização automática diária
+│   ├── test_etl.py · test_schema.py · test_health_etl.py
+└── .github/workflows/
+    ├── ci.yml                 # testes + build em cada push/PR
+    └── pages.yml              # deploy do Pages quando data/** ou site/** mudam
 ```
 
 ---
@@ -97,110 +109,108 @@ RunForrestRun/
 
 | KPI | Por que acompanhar |
 |---|---|
-| Pace médio (min/km) | Indicador direto de performance e evolução de velocidade |
-| Distância semanal (km) | Controle de carga de treino — base para periodização |
-| Frequência cardíaca média | Eficiência cardiovascular — quanto esforço para o mesmo pace |
-| FC máxima | Intensidade real dos treinos |
+| Pace médio (min/km) | Performance e evolução de velocidade |
+| Distância semanal (km) | Controle de carga — base para periodização |
+| Frequência cardíaca média/máx | Eficiência cardiovascular e intensidade |
 | Elevação acumulada (m) | Força e resistência muscular |
-| Tempo em zona de FC | Distribuição de intensidade — polarização do treino |
 | Volume mensal (km) | Visão macro da consistência |
-| Long run mais longo | Preparação específica para maratona |
+| Long run mais longo | Preparação específica para a maratona |
 | Consistência (treinos/semana) | Disciplina — o KPI mais importante a longo prazo |
-| TSS (Training Stress Score) | Carga total de estresse do treino (se disponível via Strava) |
+| Guardrail ACWR | Razão carga aguda/crônica — risco de lesão |
+| Recuperação (Apple Health) | FC de repouso, sono, VO2máx — quando aliviar/avançar |
 
 ---
 
 ## Decisões Técnicas (ADRs)
 
-- [ ] ADR-001: Arquitetura do ETL
-- [ ] ADR-002: Stack da página (HTML estático vs framework)
-- [ ] ADR-003: Schema dos dados normalizados
-- [ ] ADR-004: Estratégia de atualização (GitHub Actions)
+- [x] ADR-001: Arquitetura do ETL (incremental)
+- [x] ADR-002: Stack da página (React + Vite + Recharts)
+- [x] ADR-003: Schema dos dados normalizados
+- [x] ADR-004: Estratégia de atualização (hoje: routine do Claude; GitHub Actions só p/ deploy)
+- [x] ADR-005: Plano rolante de 7 dias + negociação dos coaches
 
 ---
 
 ## Agentes e Skills
 
+Os dois coaches **negociam** o mesmo `data/weekly_plan.json` (plano rolante de 7 dias).
+Leem os artifacts privados (`athlete.json`, `strength_program.json`, `health.json`) como
+contexto, mas **nunca** escrevem dado pessoal no plano público.
+
 ### running-coach
-- **Objetivo:** Analisar treinos de corrida e sugerir sessões futuras com base nos dados do Strava
-- **Inputs:** dados de atividades recentes, KPIs atuais, objetivo (maratona/meia)
-- **Outputs:** plano de treino semanal, análise de evolução, alertas de sobrecarga
-- **Exibição:** plano de treino semanal gerado é exibido na página pública
+- **Objetivo:** analisar a corrida (Strava + recuperação do Apple Health) e montar os dias de corrida da janela.
+- **Outputs:** plano rolante, indicadores, guardrail ACWR, alertas de sobrecarga.
 
 ### strength-coach
-- **Objetivo:** Analisar treinos de força e sugerir sessões complementares ao treino de corrida
-- **Inputs:** atividades de musculação registradas, fase do ciclo de treinamento
-- **Outputs:** sugestões de treino de força, equilíbrio entre volume e recuperação
-- **Exibição:** plano de força gerado é exibido na página pública, integrado ao calendário semanal
+- **Objetivo:** encaixar o programa A/B/C **fixo** ao redor da corrida, sem trocar exercícios (só reduz série/carga/amplitude ou pausa item, com justificativa).
+- **Regras:** perna pesada ≥48h de long run/qualidade; ≥1 descanso na janela; carga dentro do guardrail.
 
 ---
 
 ## Estado Atual
 
 ### Concluído ✅
-- [x] Repositório criado no GitHub
-- [x] Integração Strava conectada no Cowork
-- [x] Integração GitHub conectada no Cowork
-- [x] CLAUDE.md criado
-- [x] PRD — escopo formal da página e dos dados
-- [x] ADR-001..004 (ETL incremental, stack React, schema, GitHub Actions)
-- [x] ETL: busca incremental + normalização (schema ADR-003, guardrail ACWR)
-- [x] Site: React + Vite + Recharts, light mode, abas Jornada/Plano Semanal
-- [x] Skills: running-coach e strength-coach + `weekly_plan.json`
-- [x] GitHub Actions: CI (testes+build) e deploy diário via Pages Actions
-- [x] Testes: ETL e contrato de schema (15 testes, pytest)
-
-- [x] Pages configurado como "GitHub Actions"; site React no ar
-- [x] Sistema de coach adaptativo (perfis + caixa semanal que reage aos treinos)
-- [x] Automação diária via **routine do Claude** (busca Strava sem Secrets) — ver `docs/automation-runbook.md`
+- [x] PRD, ADR-001..005, CLAUDE.md.
+- [x] ETL: ingestão incremental do Strava + normalização (guardrail ACWR).
+- [x] Site React + Vite + Recharts (abas Jornada / Plano), light mode.
+- [x] Automação diária via **routine do Claude** (sem Secrets) — ver `docs/automation-runbook.md`; allowlist destravado.
+- [x] CI (testes + build) e deploy do Pages por push (`pages.yml`).
+- [x] Sistema de coach adaptativo (perfis + caixa semanal que reage aos treinos).
+- [x] **Plano rolante de 7 dias** (ADR-005, schema 3.0) + coaches negociando o A/B/C fixo.
+- [x] **Privacidade:** dados pessoais/médicos em `data/private/` (gitignored) + teste anti-vazamento no plano público.
+- [x] **Apple Health:** ingestão de sono/FC repouso/VO2máx/peso via Health Auto Export → Dropbox → `merge_health.py`.
+- [x] Testes: ETL, contrato de schema, ingester de health (21 testes, pytest).
 
 ### Pendente ⏳
-- [ ] Pré-aprovar as ferramentas da routine ("Run now" 1x) para não pausar em permissões
-- [ ] Jornada: trazer últimas atividades no resumo + histórico mensal (2026) / trimestral (2024-25)
-- [ ] Guardrail KPI definitivo após análise do histórico real pelo running-coach
-- [ ] Monitorar expiração da conexão Strava (alerta proativo)
+- [ ] HRV (VFC) não chega do Amazfit ao Apple Health — investigar/ativar se possível.
+- [ ] Parser do export mensal do OKOK (gordura visceral/água/músculo, que não passam pelo Apple Health).
+- [ ] Decidir export automático diário do Health Auto Export (recurso Premium).
+- [ ] Guardrail KPI definitivo após análise do histórico real.
+- [ ] Monitorar expiração da conexão Strava (alerta proativo).
 
 ---
 
 ## Convenções
 
-- **Commits:** em inglês, formato `feat:`, `fix:`, `data:`, `docs:`, `chore:`
-- **Branches:** `main` é produção; trabalho em `feat/nome-da-feature`
-- **PRs:** toda mudança relevante passa por PR com descrição do que foi feito
-- **Dados:** JSONs sempre com schema versionado — nunca quebrar compatibilidade sem ADR
-- **Código Python:** PEP8, docstrings em funções públicas, sem credenciais no código
+- **Commits:** em inglês, formato `feat:`, `fix:`, `data:`, `docs:`, `chore:`.
+- **Branches:** `main` é produção (fluxo de fato: commits diretos na main + deploy automático).
+- **Dados:** JSONs com schema versionado — nunca quebrar compatibilidade sem ADR.
+- **Privacidade:** nada de dado pessoal/médico fora de `data/private/`.
+- **Código Python:** PEP8, docstrings em funções públicas, sem credenciais no código.
 
 ---
 
 ## Como Rodar Localmente
 
 ```bash
-# Instalar dependências do ETL (pytest)
-cd etl && pip install -r requirements.txt && cd ..
+# Dependências do ETL (pytest)
+pip install -r etl/requirements.txt
 
 # Reprocessar os JSONs a partir do store bruto
-python etl/normalize.py
+python3 etl/normalize.py
 
-# Servir o site localmente (React + Vite; serve /data automaticamente)
+# Ingerir Apple Health (se houver export do Health Auto Export; senão é no-op)
+python3 etl/merge_health.py
+
+# Servir o site (React + Vite; serve /data automaticamente)
 cd site && npm install && npm run dev   # http://localhost:5173
 
-# Rodar os testes
-cd .. && python -m pytest tests/ -q
+# Testes
+python3 -m pytest tests/ -q
 ```
 
 > A busca do Strava roda na **routine diária do Claude** (sem Secrets) —
-> `merge_strava.py` + `normalize.py`. Ver `docs/automation-runbook.md`.
+> `merge_strava.py` + `normalize.py` + `merge_health.py`. Ver `docs/automation-runbook.md`.
 
 ---
 
 ## Metodologia
 
-Este projeto segue uma metodologia de engenharia orientada a documentação:
+Engenharia orientada a documentação:
 
-1. **PRD primeiro** — define o quê antes do como
-2. **ADR para cada decisão técnica relevante** — registra o raciocínio, não só a escolha
-3. **Testes antes do código de produção** — valida contratos de dados
-4. **Reviewer agent** — revisa PRs antes do merge
-5. **CLAUDE.md como memória** — atualizado a cada mudança de estado significativa
+1. **PRD primeiro** — define o quê antes do como.
+2. **ADR para cada decisão técnica relevante** — registra o raciocínio.
+3. **Testes validam contratos de dados** (incl. anti-vazamento de dado pessoal).
+4. **CLAUDE.md como memória** — atualizado a cada mudança de estado significativa.
 
 > Regra de ouro: se não está documentado aqui, não é decisão oficial do projeto.

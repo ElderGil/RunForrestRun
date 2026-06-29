@@ -7,6 +7,11 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const dataDir = resolve(here, "..", "data");
 
+// Arquivos em data/ que NÃO devem ir para a página: o store bruto (intermediário,
+// não é lido pelo app) e qualquer coisa que não seja JSON de raiz. A subpasta
+// data/private/ já é ignorada naturalmente (não termina em .json).
+const PUBLISH_SKIP = new Set(["activities_raw.json"]);
+
 // Serves /data/*.json from the repo's /data folder in dev, and copies those
 // JSONs into the build output so GitHub Pages publishes them alongside the
 // app (ADR-002 loaders fetch from BASE_URL + 'data/...'; ADR-004 only ships
@@ -31,7 +36,9 @@ function serveData() {
       const out = resolve(here, "dist", "data");
       mkdirSync(out, { recursive: true });
       for (const f of readdirSync(dataDir)) {
-        if (f.endsWith(".json")) copyFileSync(resolve(dataDir, f), resolve(out, f));
+        if (f.endsWith(".json") && !PUBLISH_SKIP.has(f)) {
+          copyFileSync(resolve(dataDir, f), resolve(out, f));
+        }
       }
     },
   };
