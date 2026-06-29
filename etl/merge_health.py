@@ -38,13 +38,22 @@ HAE_GLOBS = [
     "**/HealthMetrics*.json",
 ]
 
-# Métrica do Health Auto Export -> campo normalizado (valores escalares).
+# Métrica do Health Auto Export -> campo normalizado (valores escalares com `qty`).
 SIMPLE = {
-    "heart_rate_variability": "hrv_ms",
+    # recuperação
+    "heart_rate_variability": "hrv_ms",       # pode não vir (depende do relógio)
     "resting_heart_rate": "resting_hr",
+    "respiratory_rate": "respiratory_rate",
+    # fitness
+    "vo2_max": "vo2_max",
+    # composição corporal (da balança, via Apple Health)
     "weight_body_mass": "weight_kg",
     "body_fat_percentage": "body_fat_pct",
-    "respiratory_rate": "respiratory_rate",
+    "lean_body_mass": "lean_mass_kg",
+    "body_mass_index": "bmi",
+    # atividade diária (complementa o Strava: NEAT p/ a meta de perda de gordura)
+    "step_count": "steps",
+    "active_energy": "active_energy_kcal",
 }
 SLEEP_FIELDS = ("asleep", "inBed", "core", "deep", "rem", "awake", "totalSleep")
 

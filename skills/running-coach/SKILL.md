@@ -52,6 +52,13 @@ progressão importam mais que pace.** Diretrizes:
 - `data/activities.json` — todas as atividades normalizadas (base da análise).
 - `data/kpis.json` — KPIs do mês + guardrail atual.
 - `data/weekly.json` — volume e pace por semana (últimos 12 meses).
+- `data/private/health.json` (se existir) — Apple Health via Health Auto Export:
+  sono (`sleep.totalSleep` é o tempo dormido; `asleep` pode vir 0), `resting_hr`,
+  `respiratory_rate`, `vo2_max`, `weight_kg`/`bmi`/`body_fat_pct`/`lean_mass_kg`, `steps`.
+  **Sinais de recuperação:** FC de repouso subindo + sono curto/ruim por dias seguidos
+  = aliviar a carga; VO2máx é proxy de fitness (tendência rumo à meia). HRV pode não
+  estar disponível (depende do relógio). `active_energy_kcal` é pouco confiável (dupla
+  contagem) — não usar para balanço calórico sem sanity-check.
 
 ## Filosofia
 **1% melhor toda semana. Saúde antes de velocidade.** O plano nunca aumenta o
