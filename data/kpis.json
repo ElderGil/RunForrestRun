@@ -1,20 +1,20 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-28T22:43:34Z",
+  "generated_at": "2026-07-01T14:06:42Z",
   "period": {
-    "month": 6,
+    "month": 7,
     "year": 2026,
-    "label": "Junho 2026"
+    "label": "Julho 2026"
   },
   "running": {
-    "total_distance_km": 44.7,
-    "total_sessions": 5,
-    "avg_pace_min_km": 5.71,
-    "avg_heart_rate_bpm": 149,
-    "max_heart_rate_bpm": 173,
-    "total_elevation_m": 513,
-    "longest_run_km": 14.0,
-    "sessions_per_week": 1.2,
+    "total_distance_km": 0,
+    "total_sessions": 0,
+    "avg_pace_min_km": null,
+    "avg_heart_rate_bpm": null,
+    "max_heart_rate_bpm": null,
+    "total_elevation_m": 0,
+    "longest_run_km": 0,
+    "sessions_per_week": 0.0,
     "guardrail": {
       "metric": "acute_chronic_ratio",
       "value": 1.17,
@@ -26,8 +26,8 @@
     }
   },
   "strength": {
-    "total_sessions": 11,
-    "sessions_per_week": 2.8,
+    "total_sessions": 0,
+    "sessions_per_week": 0.0,
     "focus": "lower_body"
   }
 }
