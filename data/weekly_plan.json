@@ -1,12 +1,12 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-07-01T14:12:29Z",
+  "generated_at": "2026-07-01T14:22:00Z",
   "window_start": "2026-07-01",
   "window_end": "2026-07-07",
-  "summary": "Janela desliza para hoje (quarta). A corrida fácil de terça ficou para trás sem compensação — apenas seguimos. Força B hoje, corrida fácil na quinta, dois dias de descanso e o longão de 9 km no domingo. Perna pesada (C) somente na terça, após 48h de descanso pós-longão.",
+  "summary": "Plano renegociado: você correu na esteira hoje de manhã (5,3 km) em vez do Treino B, e isso empurrou o guardrail para warning (1,47). Os coaches ajustaram a semana — Treino B foi para amanhã, e o longão de domingo fica em 8 km (sem progressão) para deixar o ACWR baixar antes do Treino C de perna pesada na terça.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "2 previstas — fácil 5 km + longão 9 km", "status": "ok" },
-    { "label": "Guardrail (ACWR)", "value": "1,17 · saudável", "status": "ok" },
+    { "label": "Corridas (7 dias)", "value": "1 feita (5,3 km) + 1 prevista (longão 8 km)", "status": "warning" },
+    { "label": "Guardrail (ACWR)", "value": "1,47 · atenção", "status": "warning" },
     { "label": "Recuperação", "value": "sem dados recentes do Apple Health", "status": "ok" },
     { "label": "Força (7 dias)", "value": "2 sessões · B + C", "status": "ok" }
   ],
@@ -14,14 +14,9 @@
     {
       "date": "2026-07-01",
       "weekday": "Qua",
-      "status": "planned",
+      "status": "done",
       "items": [
-        {
-          "type": "strength",
-          "title": "Treino B — posterior/costas/peito",
-          "detail": "Pouca carga axial de perna — ideal para o dia pós-Treino A. Manguito, Leg Articulado controlado, Remada, Rosca, Crucifixo e Supino na sequência.",
-          "done": false
-        }
+        { "type": "run", "title": "Corrida na esteira 5,3 km", "detail": "Não planejada — FC média 143, terminando leve. Substituiu o Treino B de hoje.", "done": true }
       ]
     },
     {
@@ -30,9 +25,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida fácil 5 km",
-          "detail": "Z2 confortável — pace ~5:50–6:00/km, conseguindo conversar. Não compensar a corrida perdida de terça, só manter o ritmo de construção.",
+          "type": "strength",
+          "title": "Treino B — posterior/costas/peito",
+          "detail": "Remanejado de ontem. Pouca carga axial de perna — bom dia para compensar a corrida não planejada de hoje sem empilhar impacto.",
           "done": false
         }
       ]
@@ -42,12 +37,7 @@
       "weekday": "Sex",
       "status": "planned",
       "items": [
-        {
-          "type": "rest",
-          "title": "Descanso total",
-          "detail": "Mobilidade leve opcional — pré-pausa para o longão de domingo.",
-          "done": false
-        }
+        { "type": "rest", "title": "Descanso total", "detail": "Guardrail em atenção — priorizar recuperação antes do longão.", "done": false }
       ]
     },
     {
@@ -55,12 +45,7 @@
       "weekday": "Sáb",
       "status": "planned",
       "items": [
-        {
-          "type": "rest",
-          "title": "Descanso total",
-          "detail": "Segundo dia de descanso antes do longão — chegue inteiro no domingo.",
-          "done": false
-        }
+        { "type": "rest", "title": "Descanso total", "detail": "Segundo dia de descanso seguido — deixar o ACWR baixar antes do longão de domingo.", "done": false }
       ]
     },
     {
@@ -70,8 +55,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Longão 9 km",
-          "detail": "Z2 ~5:50/km — +1 km sobre o longão de domingo passado (8 km). Progressão conservadora rumo à meia de outubro. Manter Z2 do início ao fim.",
+          "title": "Longão 8 km",
+          "detail": "Z2 ~5:50/km — mantido em 8 km (sem progressão) por causa do guardrail em atenção. Volta a subir só quando o ACWR estiver de volta em ok.",
           "done": false
         }
       ]
@@ -81,12 +66,7 @@
       "weekday": "Seg",
       "status": "planned",
       "items": [
-        {
-          "type": "rest",
-          "title": "Descanso total",
-          "detail": "Recuperação pós-longão. Soltar as pernas, nada de treino.",
-          "done": false
-        }
+        { "type": "rest", "title": "Descanso total", "detail": "Recuperação pós-longão.", "done": false }
       ]
     },
     {
@@ -97,21 +77,21 @@
         {
           "type": "strength",
           "title": "Treino C — pernas/posterior/core",
-          "detail": "≥48h pós-longão de domingo (Dom → Ter = 48h ✓). Hack amplitude ≤90°, Mesa Flexora, Panturrilhas e Abdutora em foco — itens protetores e essenciais para a corrida. Core no final.",
+          "detail": "≥48h pós-longão de domingo (Dom→Ter = 48h ✓). Hack amplitude ≤90°, priorizar Mesa Flexora/Abdutora/Panturrilhas. Se o guardrail ainda estiver em atenção nesse dia, reduzir 1 série dos itens de perna pesada.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Janela deslizou para hoje (1/Jul). A corrida fácil planejada para terça (30/Jun) não foi realizada — sem compensação; progressão de volume segue sem recuperar o que ficou.",
-    "Treino A confirmado feito na segunda (29/Jun). Sequência continua: B hoje (Qua), C na terça (7/Jul).",
-    "Longão deslocado para domingo (5/Jul) para manter o ACWR seguro: o longão de 8 km de 28/Jun ainda está no janela aguda de 7 dias — colocar outro longo no sábado empilharia 8+5+9=22 km em 7 dias (ACWR ~1,98 · risco). Com o longão no domingo, a janela aguda inclui apenas o easy de quinta + o longão = 14 km (ACWR estimado ~1,26 · ok).",
-    "Treino C (perna pesada) encaixado na terça (7/Jul): ≥48h pós-longão de domingo (Dom→Ter = 48h ✓) e sem conflito com corrida na janela.",
-    "Três dias de descanso na janela (Sex, Sáb, Seg) — um pré-longão, um pós. Carga combinada segura dentro do guardrail."
+    "Você correu 5,3 km na esteira hoje de manhã, não planejado — substituiu o Treino B. Registrei a atividade real e recalculei o guardrail: ACWR subiu de 1,17 (ok) para 1,47 (warning), perto do limite de danger (1,5).",
+    "Como o running-coach determina para guardrail em warning: reduzir volume e priorizar recuperação. O Treino B foi remanejado para amanhã (Qui) — mantém a sequência A→B→C sem empilhar mais corrida.",
+    "O longão de domingo foi mantido em 8 km (mesma distância do longão anterior, sem progressão para 9 km) para dar espaço ao ACWR baixar antes de qualquer novo aumento de volume.",
+    "Removi a corrida fácil de quinta que estava no plano anterior — a corrida não planejada de hoje já cobriu o volume da semana; adicionar mais uma sessão estouraria o guardrail.",
+    "Treino C de terça mantido, mas com nota: se o ACWR ainda estiver em warning nesse dia, reduzir mais uma série de perna pesada (Hack/Leg Articulado) além do limite de amplitude já padrão."
   ],
   "coaches": {
-    "running": "Semana de build conservadora: corrida fácil na quinta (5 km Z2) e longão no domingo (9 km, +1 km sobre o de domingo passado). O ACWR em 1,17 está saudável, mas dois longões consecutivos dentro de 7 dias estouram o limite — então o longão vai para domingo, deixando a janela aguda comportada (~1,26). Nada de qualidade (intervalado/tempo) ainda; base aeróbica e joelho confortável são a prioridade com 16 semanas para a meia de outubro.",
-    "strength": "Sequência B→C mantida sem trocar exercícios. Treino B hoje (Qua) — sem perna pesada, sem conflito com corrida ou recuperação. Treino C somente na terça (7/Jul), garantindo ≥48h pós-longão. No Treino B: Leg Articulado com controle de amplitude e velocidade. No Treino C: Hack amplitude ≤90°, priorizar Mesa Flexora, Abdutora e Panturrilhas — os melhores amigos do joelho e da corrida. Três descansos na semana; carga bem distribuída."
+    "running": "A corrida de hoje não estava no plano, mas ok — o corpo pediu e você respondeu. O problema é que ela empilhou em cima do longão de sábado passado e da corrida de sexta retrasada, e o ACWR foi para 1,47 (atenção). Por isso tirei a corrida fácil de quinta do plano e segurei o longão de domingo em 8 km, sem progressão. Nada de intensidade essa semana — o foco agora é deixar a carga aguda cair antes de voltar a subir volume.",
+    "strength": "Treino B só escorregou um dia — vai para amanhã, sem prejuízo pra sequência A→B→C. Ele não tem carga axial pesada de perna, então não compete com a recuperação que você precisa agora. O Treino C de terça segue de pé, mas fica de olho: se o guardrail ainda estiver em atenção, corto mais uma série dos itens de perna pesada (Hack, Leg Articulado) além do limite de amplitude que já é padrão."
   }
 }
