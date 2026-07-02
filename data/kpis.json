@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-01T14:19:35Z",
+  "generated_at": "2026-07-02T14:53:00Z",
   "period": {
     "month": 7,
     "year": 2026,
@@ -26,8 +26,8 @@
     }
   },
   "strength": {
-    "total_sessions": 0,
-    "sessions_per_week": 0.0,
+    "total_sessions": 1,
+    "sessions_per_week": 1.0,
     "focus": "lower_body"
   }
 }
