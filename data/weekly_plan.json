@@ -3,11 +3,12 @@
   "generated_at": "2026-07-06T19:00:00Z",
   "window_start": "2026-07-06",
   "window_end": "2026-07-12",
-  "summary": "Revisão a pedido do atleta: os coaches estavam colocando descanso demais. A partir de hoje a janela volta a treinar quase todo dia (corrida + força intercalados) e reserva o único descanso total para a véspera do longão. A sequência A→B→C naturalmente já espaça a perna pesada em 48h (B seg, C qua, A sex), guardrail ACWR segue em 1,18 (ok) e o longão de domingo sobe para 8,8 km.",
+  "summary": "Revisão a pedido do atleta (com critério de dados, não remoção por remoção): a janela volta a treinar quase todo dia (corrida + força intercalados). Guardrail ACWR em 1,18 (ok) e esforço acumulado dos últimos 3 dias em 103 — dentro do normal histórico do atleta (média 51 ± 50, p90 117), sem sinal de fadiga. Sábado fica como único descanso porque, até lá, o acumulado de 72h (C+corrida+Treino A) deve se aproximar do p90 — decisão revista a cada dia, não uma quota fixa.",
   "indicators": [
     { "label": "Corridas (7 dias)", "value": "0 feitas + 3 previstas (fácil 5 km ter, fácil 5 km qui, longão 8,8 km dom)", "status": "ok" },
     { "label": "Guardrail (ACWR)", "value": "1,18 · ok", "status": "ok" },
-    { "label": "Recuperação", "value": "sem dados recentes do Apple Health (última leitura 28/06)", "status": "ok" },
+    { "label": "Esforço agudo (72h)", "value": "103 (baseline: média 51 ± 50, p90 117) — dentro do normal", "status": "ok" },
+    { "label": "Recuperação", "value": "Apple Health parado há 8 dias (última leitura 28/06) — FC repouso e sono cegos para esta janela; guardrail + esforço acumulado assumem o peso da decisão", "status": "warning" },
     { "label": "Força (7 dias)", "value": "1 feita (B, seg) + 2 previstas (C qua, A sex)", "status": "ok" }
   ],
   "days": [
@@ -76,7 +77,7 @@
       "weekday": "Sáb",
       "status": "planned",
       "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Único descanso da janela — reservado para a véspera do longão, não é uma quota semanal fixa.", "done": false }
+        { "type": "rest", "title": "Descanso total", "detail": "Único descanso da janela. Motivo: até esse ponto o esforço acumulado de 72h (Treino C + corrida fácil + Treino A) deve se aproximar do p90 histórico (117) — descanso pela carga real, não por calendário; reavaliar se os dados vierem mais leves.", "done": false }
       ]
     },
     {
@@ -94,13 +95,14 @@
     }
   ],
   "adaptations": [
-    "Revisão de filosofia a pedido do atleta (06/07/2026): ele treina corrida+força quase todo dia por preferência e considerou os coaches conservadores demais com descanso. Removida a quota fixa de '≥1 descanso total por semana' de ambas as skills — o guardrail ACWR e o sinal de dor articular passam a decidir os dias de descanso, não o calendário.",
-    "Reincluídos o Treino A (sexta) e as duas corridas fáceis (terça e quinta) que antes tinham sido cortados/adiados por excesso de cautela — com o guardrail em 1,18 (ok) e a sequência A→B→C já espaçando a perna pesada em 48h naturalmente (B seg, C qua, A sex), não havia razão técnica para tirá-los da janela.",
-    "Mantido só 1 descanso total na janela (sábado), posicionado deliberadamente na véspera do longão — isso é uma escolha de periodização (chegar leve no longão), não a antiga regra de quota semanal.",
+    "Revisão de critério a pedido do atleta (06/07/2026): descanso deixou de ser quota fixa E deixou de ser removido sem avaliação — agora é decidido por dados, em ordem de prioridade: dor articular > guardrail ACWR > esforço acumulado de 72h (vs. baseline histórica) > FC de repouso/sono (quando atualizados). Critério documentado em ambas as skills.",
+    "Esforço acumulado dos últimos 3 dias (07/04-07/06) = 103, dentro da baseline histórica do atleta (média 51, desvio 50, p90 117 numa janela de 3 dias) — não há sinal de fadiga acumulada, então Treino A (sexta) e as corridas fáceis de terça/quinta foram reincluídos sem corte.",
+    "Apple Health parado há 8 dias (última leitura 28/06) — sinais de FC de repouso e sono ficam cegos nesta janela. Sem esse dado, o guardrail ACWR (1,18, ok) e o esforço acumulado assumem mais peso na decisão; se o export voltar a sincronizar, esses sinais reentram na avaliação diária.",
+    "Sábado mantido como único descanso da janela: previsão de que o acumulado de 72h (Treino C + corrida + Treino A) chegue perto do p90 histórico até lá — decisão pela carga esperada, reavaliada quando os treinos acontecerem de verdade, não uma regra de calendário.",
     "Guardrail de corrida segue em 1,18 (ok); longão de domingo mantido em 8,8 km (progressão de ~10% sobre os 8,03 km de sábado passado)."
   ],
   "coaches": {
-    "running": "Guardrail em 1,18 (ok) segue folgado. Reincluí as corridas fáceis de terça e quinta, que eu tinha cortado por excesso de cautela — não havia justificativa técnica para isso com o ACWR nesse nível. Longão de domingo sobe para 8,8 km.",
-    "strength": "Trouxe o Treino A de volta para sexta, fechando o ciclo A→B→C dentro da própria semana. A rotação já dá 48h entre cada sessão de perna pesada sozinha (seg/qua/sex), então não preciso empilhar dias de descanso artificiais — só guardo sábado de folga como véspera do longão."
+    "running": "Guardrail em 1,18 (ok) e esforço acumulado de 72h em 103 (baseline p90 = 117) — nenhum sinal de fadiga. Reincluí as corridas fáceis de terça e quinta e o longão de domingo sobe para 8,8 km. Recuperação via Apple Health está cega (8 dias sem dado), então sigo apoiado no ACWR + esforço.",
+    "strength": "Treino A de volta para sexta — sem sinal de esforço acumulado elevado nem dor articular relatada, não há razão para cortar. A rotação A→B→C já dá 48h entre sessões de perna pesada sozinha (seg/qua/sex). Sábado fica de descanso porque a carga prevista de 72h (C+corrida+A) deve chegar perto do teto histórico do atleta até lá."
   }
 }

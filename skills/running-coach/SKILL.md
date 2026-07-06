@@ -70,21 +70,50 @@ dias ÷ média semanal dos últimos 28 dias.
 - `ok` < 1.3 · `warning` 1.3–1.5 · `danger` ≥ 1.5
 - Se `warning`/`danger`, o plano da semana **reduz volume e intensidade** e prioriza recuperação.
 
+## Quando inserir um dia de descanso (critério orientado a dados, não calendário)
+Revisado em 06/07/2026: o atleta treina corrida+força quase todo dia por preferência
+e pediu que descanso seja **decidido pelos dados**, não por uma quota fixa nem
+simplesmente removido "porque sim". Antes de gerar a janela, avaliar estes sinais,
+nesta ordem de prioridade:
+
+1. **Dor articular** (joelho, relatada pelo atleta) → descanso/pausa imediata,
+   sempre, independente de qualquer outro sinal. Não é detectável via Strava/Apple
+   Health — perguntar/registrar quando relatada.
+2. **Guardrail ACWR:** `danger` → descanso obrigatório no dia; `warning` → pelo
+   menos 1 descanso nos próximos 2-3 dias; `ok` → sem exigência por esse sinal.
+3. **Carga aguda de esforço** (soma do `suffer_score`/relative effort em
+   `activities.json` nas últimas 72h, comparada à média móvel histórica do atleta —
+   baseline em jul/2026: média ~51, desvio ~50, p90 ~117 numa janela de 3 dias).
+   Se a soma dos últimos 3 dias estiver **acima do p90 histórico**, inserir descanso
+   mesmo com ACWR `ok` — esforço percebido pode subir mais rápido que distância.
+4. **FC de repouso** (`data/private/health.json`, quando atualizado nos últimos
+   ~3 dias): baseline em jul/2026 ~48 bpm (±3.7). Elevação ≥+5 bpm por 2 dias
+   seguidos → sinal de fadiga, inserir descanso ou aliviar intensidade.
+5. **Sono** (`totalSleep`, quando disponível): baseline ~7.4h. Duas noites seguidas
+   bem abaixo disso (ex. <6h) → aliviar a carga do dia seguinte.
+6. Se `health.json` estiver **parado há mais de ~3 dias** (comum — export depende do
+   Health Auto Export sincronizar), os sinais 4-5 ficam cegos: registrar isso no
+   indicador "Recuperação" do plano e dar mais peso ao ACWR + esforço acumulado (2-3).
+7. Se nenhum desses sinais disparar, **não inserir descanso por via das dúvidas** —
+   o atleta pode treinar quase todo dia, como prefere.
+
+Posicionamento estratégico (ex.: descanso na véspera de um longão-pico) continua
+válido, mas deve ser justificado com o sinal de dados que o motiva (ex.: esforço
+acumulado dos últimos 3 dias perto do p90), não citado como regra de calendário.
+
 ## Como gerar o plano (janela rolante de 7 dias)
 1. Ler os inputs + `data/private/athlete.json`; calcular média semanal recente, último
    long run, pace médio e status do guardrail.
 2. Montar a **janela = hoje + próximos 6 dias** (7 entradas, datas consecutivas). Para
    cada dia já passado/atual, marcar `status` e `done` comparando com `activities.json`.
 3. Tipos de treino: **easy** (Z2, base aeróbica), **long** (~30% do volume),
-   **interval/tempo** (no máx. 1 sessão de qualidade, só se guardrail = ok), **rest**.
+   **interval/tempo** (no máx. 1 sessão de qualidade, só se guardrail = ok), **rest**
+   (ver critério de dados acima — nunca por quota fixa).
 4. Long run sobe gradualmente rumo aos 21 km (meia) e depois 42 km (maratona).
 5. **Negociar com o strength-coach** (ver a SKILL dele): perna pesada ≥48h longe de
-   long run/qualidade; não empilhar carga. **Não há mais quota fixa de dia de descanso
-   total por janela** (o atleta treina corrida+força quase todo dia por preferência —
-   confirmado em 06/07/2026) — o guardrail ACWR e o sinal de dor articular/recuperação
-   é que decidem se um dia vira descanso, não uma regra de calendário.
+   long run/qualidade; não empilhar carga.
 6. Escrever uma frase curta em `coaches.running` e registrar conflitos resolvidos em
-   `adaptations[]`.
+   `adaptations[]`, citando o sinal de dados usado para cada descanso inserido.
 
 ## Output — `data/weekly_plan.json` (schema 3.0, ver ADR-005)
 ```json

@@ -56,9 +56,13 @@ sempre com **justificativa técnica** registrada em `adaptations[]`.
 2. **Perna pesada ≥48h longe do long run e dos intervalados** (antes e depois) — essa
    regra fica, é ligada ao histórico de joelho (LCA), não à frequência semanal.
 3. **Sem quota fixa de descanso total por janela** (confirmado com o atleta em
-   06/07/2026: ele treina corrida+força quase todo dia por preferência). Carga
-   combinada não pode estourar o guardrail ACWR; dor **articular** no joelho (não
-   muscular) é sempre sinal de reduzir/pausar, guardrail vale mais que calendário.
+   06/07/2026: ele treina corrida+força quase todo dia por preferência) — mas
+   descanso também não deve ser removido "porque sim". Segue o mesmo critério
+   orientado a dados do running-coach (ver a SKILL dele): dor articular → pausa
+   imediata; ACWR `warning`/`danger` → descanso; carga aguda de esforço (soma do
+   `suffer_score` das últimas 72h) acima do p90 histórico → descanso mesmo com
+   ACWR ok; FC de repouso ou sono fora da baseline (quando `health.json` estiver
+   atualizado) → aliviar. Sem nenhum desses sinais, não inserir descanso.
 4. Em janela com guardrail de corrida em `warning`/`danger`, manter força leve/técnica.
 
 ## Como gerar (negociação com o running-coach, schema 3.0)
