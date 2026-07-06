@@ -1,59 +1,22 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-07-02T15:10:00Z",
-  "window_start": "2026-07-02",
-  "window_end": "2026-07-08",
-  "summary": "Treino B saiu como planejado hoje de manhã. Nenhuma corrida nova desde ontem, então o guardrail segue parado em 1,47 (atenção) — mantemos a estratégia da janela anterior: longão de domingo travado em 8 km, Treino C na terça com ajustes de perna pesada, e quarta (08/07) vira descanso total para consolidar a recuperação antes do próximo ciclo A→B→C.",
+  "generated_at": "2026-07-06T17:38:12Z",
+  "window_start": "2026-07-06",
+  "window_end": "2026-07-12",
+  "summary": "O longão saiu sábado (8,03 km) em vez de domingo — o guardrail voltou para 1,18 (ok), então a janela retoma progressão conservadora: Treino C na terça, corrida fácil na quarta, Treino A na quinta, e o longão de domingo sobe levemente para 8,8 km, sempre com pelo menos 3 dias de descanso na janela.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "0 feitas + 1 prevista (longão 8 km)", "status": "warning" },
-    { "label": "Guardrail (ACWR)", "value": "1,47 · atenção", "status": "warning" },
+    { "label": "Corridas (7 dias)", "value": "0 feitas + 2 previstas (fácil 5 km qua, longão 8,8 km dom)", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "1,18 · ok", "status": "ok" },
     { "label": "Recuperação", "value": "sem dados recentes do Apple Health (última leitura 28/06)", "status": "ok" },
-    { "label": "Força (7 dias)", "value": "1 feita (B) + 1 prevista (C)", "status": "ok" }
+    { "label": "Força (7 dias)", "value": "0 feitas + 2 previstas (C terça, A quinta)", "status": "ok" }
   ],
   "days": [
-    {
-      "date": "2026-07-02",
-      "weekday": "Qui",
-      "status": "done",
-      "items": [
-        { "type": "strength", "title": "Treino B — posterior/costas/peito", "detail": "Executado como planejado, 43,5 min.", "done": true }
-      ]
-    },
-    {
-      "date": "2026-07-03",
-      "weekday": "Sex",
-      "status": "planned",
-      "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Guardrail em atenção — priorizar recuperação antes do longão.", "done": false }
-      ]
-    },
-    {
-      "date": "2026-07-04",
-      "weekday": "Sáb",
-      "status": "planned",
-      "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Segundo dia de descanso seguido — deixar o ACWR baixar antes do longão de domingo.", "done": false }
-      ]
-    },
-    {
-      "date": "2026-07-05",
-      "weekday": "Dom",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Longão 8 km",
-          "detail": "Z2 ~5:50/km — mantido em 8 km (sem progressão) por causa do guardrail em atenção. Volta a subir só quando o ACWR estiver de volta em ok.",
-          "done": false
-        }
-      ]
-    },
     {
       "date": "2026-07-06",
       "weekday": "Seg",
       "status": "planned",
       "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Recuperação pós-longão.", "done": false }
+        { "type": "rest", "title": "Descanso total", "detail": "Recuperação pós-longão de sábado (8,03 km).", "done": false }
       ]
     },
     {
@@ -64,7 +27,7 @@
         {
           "type": "strength",
           "title": "Treino C — pernas/posterior/core",
-          "detail": "≥48h pós-longão de domingo (Dom→Ter = 48h ✓). Hack amplitude ≤90°, priorizar Mesa Flexora/Abdutora/Panturrilhas. Se o guardrail ainda estiver em atenção nesse dia, reduzir 1 série dos itens de perna pesada.",
+          "detail": "72h após o longão de sábado. Hack amplitude ≤90°, priorizar Mesa Flexora/Abdutora/Panturrilhas.",
           "done": false
         }
       ]
@@ -74,18 +37,65 @@
       "weekday": "Qua",
       "status": "planned",
       "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Logo após o Treino C de perna pesada de terça — dá espaço para a perna absorver antes de reiniciar o ciclo A→B→C.", "done": false }
+        {
+          "type": "run",
+          "title": "Corrida fácil 5 km",
+          "detail": "Z2 ~5:50/km — guardrail em ok, retoma o volume fácil de meio de semana.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-07-09",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino A — pernas + tríceps",
+          "detail": "72h antes do longão de domingo (perna pesada ≥48h dos dois lados). Leg Press amplitude ≤90°.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-07-10",
+      "weekday": "Sex",
+      "status": "planned",
+      "items": [
+        { "type": "rest", "title": "Descanso total", "detail": "Recuperação pós-Treino A, antes de reiniciar carga de corrida no fim de semana.", "done": false }
+      ]
+    },
+    {
+      "date": "2026-07-11",
+      "weekday": "Sáb",
+      "status": "planned",
+      "items": [
+        { "type": "rest", "title": "Descanso total", "detail": "Segundo descanso seguido — chegar leve para o longão de domingo.", "done": false }
+      ]
+    },
+    {
+      "date": "2026-07-12",
+      "weekday": "Dom",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Longão 8,8 km",
+          "detail": "Z2 ~5:50/km — progressão conservadora de 8,03 km para 8,8 km (~10%), liberada pelo guardrail voltar a ok.",
+          "done": false
+        }
       ]
     }
   ],
   "adaptations": [
-    "Treino B foi executado como planejado hoje (43,5 min) — sequência A→B→C segue no prumo, sem remanejo.",
-    "Nenhuma corrida nova desde ontem: o guardrail ACWR permanece em 1,47 (atenção), então mantivemos o longão de domingo em 8 km sem progressão e nada de intensidade na janela.",
-    "Adicionei quarta (08/07) como descanso total, logo após o Treino C de perna pesada de terça, para não empilhar recuperação de perna com o início do próximo ciclo.",
-    "Mantida a nota de reduzir uma série de perna pesada no Treino C de terça se o guardrail ainda estiver em atenção nesse dia."
+    "O longão saiu sábado (04/07, 8,03 km) em vez de domingo como planejado — o running-coach registrou a atividade real, recalculou o ACWR (voltou a 1,18, ok) e não pede repetição do longão de domingo.",
+    "Com o guardrail de volta a ok, retomamos progressão conservadora: longão sobe de 8,03 km para 8,8 km (dentro da regra dos 10%) e volta a corrida fácil de meio de semana (quarta).",
+    "Sequência A→B→C segue: B foi feito em 02/07, então a janela agenda C na terça (72h após o longão de sábado) e A na quinta (72h antes do próximo longão), mantendo perna pesada ≥48h de qualquer longão/qualidade.",
+    "Mantidos 3 dias de descanso total na janela (segunda, sexta e sábado) — mais que o mínimo de 1, priorizando recuperação do joelho reconstruído mesmo com o guardrail liberando mais volume."
   ],
   "coaches": {
-    "running": "Sem corrida nova hoje — o guardrail segue em 1,47 (atenção), então mantenho a estratégia da janela anterior: nada de intensidade essa semana, longão de domingo travado em 8 km, e o corpo tem até terça para o ACWR cair antes do Treino C.",
-    "strength": "Treino B fechado como planejado hoje — sequência A→B→C sem atropelos. Terça é Treino C, com perna pesada 48h após o longão de domingo; amplitude limitada e, se o guardrail ainda estiver em atenção, corto mais uma série de Hack/Leg Articulado. Quarta vira descanso total para a perna absorver o C antes de reiniciar o ciclo."
+    "running": "O longão saiu um dia adiantado (sábado, 8,03 km) e isso já baixou o ACWR para 1,18 (ok) — aproveito para reintroduzir a corrida fácil de quarta e subir o longão de domingo para 8,8 km, sempre dentro dos 10%. Sem intensidade essa semana ainda.",
+    "strength": "Sequência A→B→C sem atropelos: C na terça (72h pós-longão de sábado), A na quinta (72h antes do próximo longão de domingo). Amplitude limitada em Hack/Leg Press/Pêndulo como sempre; três descansos totais na janela para o joelho não acumular carga de corrida + perna pesada."
   }
 }

@@ -4597,5 +4597,26 @@
     "kudos_count": 1,
     "pr_count": 0,
     "achievement_count": 0
+  },
+  {
+    "id": 19181247418,
+    "sport_type": "Run",
+    "type": "Run",
+    "start_date_local": "2026-07-04T16:54:25",
+    "distance": 8026.8,
+    "moving_time": 2684,
+    "elapsed_time": 2735,
+    "total_elevation_gain": 157,
+    "average_speed": 2.9906110283159464,
+    "max_speed": 3.82,
+    "average_cadence": 82.2737,
+    "calories": 594,
+    "suffer_score": 93,
+    "average_heartrate": 154.349,
+    "max_heartrate": 170,
+    "name": "Afternoon Run",
+    "kudos_count": 1,
+    "pr_count": 2,
+    "achievement_count": 2
   }
 ]
