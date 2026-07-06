@@ -4618,5 +4618,26 @@
     "kudos_count": 1,
     "pr_count": 2,
     "achievement_count": 2
+  },
+  {
+    "id": 19199994780,
+    "sport_type": "WeightTraining",
+    "type": "WeightTraining",
+    "start_date_local": "2026-07-06T07:34:48",
+    "distance": 0,
+    "moving_time": 4952,
+    "elapsed_time": 4952,
+    "total_elevation_gain": 0,
+    "average_speed": 0,
+    "max_speed": 0,
+    "average_cadence": null,
+    "calories": 440,
+    "suffer_score": 10,
+    "average_heartrate": null,
+    "max_heartrate": null,
+    "name": "Morning Weight Training",
+    "kudos_count": 1,
+    "pr_count": 0,
+    "achievement_count": 0
   }
 ]
