@@ -1,14 +1,14 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-07-06T18:20:00Z",
+  "generated_at": "2026-07-06T19:00:00Z",
   "window_start": "2026-07-06",
   "window_end": "2026-07-12",
-  "summary": "Treino B saiu hoje na academia, fora do planejado (o dia era de descanso) — o strength-coach segura a mão na sequência: entra um descanso amanhã antes do Treino C (evita dois dias de perna pesada seguidos) e adia o Treino A para a próxima janela, para não empilhar B+C+A+longão na mesma semana. O guardrail de corrida segue em 1,18 (ok); longão de domingo sobe para 8,8 km.",
+  "summary": "Revisão a pedido do atleta: os coaches estavam colocando descanso demais. A partir de hoje a janela volta a treinar quase todo dia (corrida + força intercalados) e reserva o único descanso total para a véspera do longão. A sequência A→B→C naturalmente já espaça a perna pesada em 48h (B seg, C qua, A sex), guardrail ACWR segue em 1,18 (ok) e o longão de domingo sobe para 8,8 km.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "0 feitas + 2 previstas (fácil 5 km sex, longão 8,8 km dom)", "status": "ok" },
+    { "label": "Corridas (7 dias)", "value": "0 feitas + 3 previstas (fácil 5 km ter, fácil 5 km qui, longão 8,8 km dom)", "status": "ok" },
     { "label": "Guardrail (ACWR)", "value": "1,18 · ok", "status": "ok" },
     { "label": "Recuperação", "value": "sem dados recentes do Apple Health (última leitura 28/06)", "status": "ok" },
-    { "label": "Força (7 dias)", "value": "1 feita (B, não planejada) + 1 prevista (C quarta) · Treino A adiado p/ próxima janela", "status": "ok" }
+    { "label": "Força (7 dias)", "value": "1 feita (B, seg) + 2 previstas (C qua, A sex)", "status": "ok" }
   ],
   "days": [
     {
@@ -16,7 +16,7 @@
       "weekday": "Seg",
       "status": "done",
       "items": [
-        { "type": "strength", "title": "Treino B — posterior/costas/peito", "detail": "Não estava no plano (dia era de descanso) — feito na academia hoje, fora de sequência.", "done": true }
+        { "type": "strength", "title": "Treino B — posterior/costas/peito", "detail": "Feito na academia hoje.", "done": true }
       ]
     },
     {
@@ -24,7 +24,12 @@
       "weekday": "Ter",
       "status": "planned",
       "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Inserido para não emendar Treino C logo depois do Treino B de hoje — evita dois dias seguidos de perna pesada.", "done": false }
+        {
+          "type": "run",
+          "title": "Corrida fácil 5 km",
+          "detail": "Z2 ~5:50/km — guardrail em ok, treino quase todo dia como o atleta prefere.",
+          "done": false
+        }
       ]
     },
     {
@@ -35,7 +40,7 @@
         {
           "type": "strength",
           "title": "Treino C — pernas/posterior/core",
-          "detail": "48h após o Treino B de hoje. Hack amplitude ≤90°, priorizar Mesa Flexora/Abdutora/Panturrilhas.",
+          "detail": "48h após o Treino B de segunda (a sequência A→B→C já espaça a perna pesada sozinha). Hack amplitude ≤90°, priorizar Mesa Flexora/Abdutora/Panturrilhas.",
           "done": false
         }
       ]
@@ -45,7 +50,12 @@
       "weekday": "Qui",
       "status": "planned",
       "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Recuperação pós-Treino C (Hack 80 kg é o item mais pesado da sequência).", "done": false }
+        {
+          "type": "run",
+          "title": "Corrida fácil 5 km",
+          "detail": "Z2 ~5:50/km — dia seguinte ao Treino C, sem problema com guardrail ok; parar se houver dor articular (não muscular) no joelho.",
+          "done": false
+        }
       ]
     },
     {
@@ -54,9 +64,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida fácil 5 km",
-          "detail": "Z2 ~5:50/km — 48h após o Treino C, guardrail em ok.",
+          "type": "strength",
+          "title": "Treino A — pernas + tríceps",
+          "detail": "48h antes do longão de domingo (perna pesada respeitando o mínimo de 48h antes de longão/qualidade). Leg Press amplitude ≤90°.",
           "done": false
         }
       ]
@@ -66,7 +76,7 @@
       "weekday": "Sáb",
       "status": "planned",
       "items": [
-        { "type": "rest", "title": "Descanso total", "detail": "Descanso antes do longão de domingo.", "done": false }
+        { "type": "rest", "title": "Descanso total", "detail": "Único descanso da janela — reservado para a véspera do longão, não é uma quota semanal fixa.", "done": false }
       ]
     },
     {
@@ -77,22 +87,20 @@
         {
           "type": "run",
           "title": "Longão 8,8 km",
-          "detail": "Z2 ~5:50/km — progressão conservadora de 8,03 km para 8,8 km (~10%), liberada pelo guardrail voltar a ok.",
+          "detail": "Z2 ~5:50/km — progressão conservadora de 8,03 km para 8,8 km (~10%), guardrail em ok.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Treino B foi feito hoje na academia sem estar no plano (o dia era de descanso pós-longão de sábado) — o strength-coach registrou a atividade real fora de sequência.",
-    "Como B já usou a cota de perna pesada da semana, inserimos um descanso na terça antes do Treino C de quarta, para não emendar dois dias seguidos de carga de perna (o próprio programa alerta que 3 dias de perna + corrida na mesma janela é alto para o joelho reconstruído).",
-    "Por esse mesmo motivo, o Treino A foi adiado para a próxima janela em vez de encaixado nesta semana — B (hoje) + C (quarta) já fecham as '2 a 3 sessões de força' recomendadas; fazer A também empilharia um terceiro dia de perna pesada com o longão de domingo.",
-    "Corrida fácil de meio de semana passou de quarta para sexta (48h após o Treino C) para não colidir com a perna pesada de quarta.",
-    "Guardrail de corrida segue em 1,18 (ok) — não afetado pela sessão extra de força; mantido o longão de domingo em 8,8 km (progressão de ~10% sobre os 8,03 km de sábado).",
-    "Capturado retroativamente um passeio de bike casual de domingo (05/07, 8,9 km, ritmo leve, com o filho) que ainda não tinha sincronizado do Strava na primeira busca — bike é hobby no perfil do atleta, não conta como qualidade e fica fora da janela atual (anterior ao window_start)."
+    "Revisão de filosofia a pedido do atleta (06/07/2026): ele treina corrida+força quase todo dia por preferência e considerou os coaches conservadores demais com descanso. Removida a quota fixa de '≥1 descanso total por semana' de ambas as skills — o guardrail ACWR e o sinal de dor articular passam a decidir os dias de descanso, não o calendário.",
+    "Reincluídos o Treino A (sexta) e as duas corridas fáceis (terça e quinta) que antes tinham sido cortados/adiados por excesso de cautela — com o guardrail em 1,18 (ok) e a sequência A→B→C já espaçando a perna pesada em 48h naturalmente (B seg, C qua, A sex), não havia razão técnica para tirá-los da janela.",
+    "Mantido só 1 descanso total na janela (sábado), posicionado deliberadamente na véspera do longão — isso é uma escolha de periodização (chegar leve no longão), não a antiga regra de quota semanal.",
+    "Guardrail de corrida segue em 1,18 (ok); longão de domingo mantido em 8,8 km (progressão de ~10% sobre os 8,03 km de sábado passado)."
   ],
   "coaches": {
-    "running": "Sem mudança do lado da corrida: guardrail em 1,18 (ok), corrida fácil de sexta e longão de domingo em 8,8 km seguem meu plano de progressão conservadora. Só reposicionei a fácil de quarta para sexta para dar espaço ao ajuste de força.",
-    "strength": "Treino B saiu hoje fora do plano — nesse caso seguro a sequência: descanso amanhã, Treino C na quarta (48h de B), e adio o Treino A para a próxima janela. Fazer B+C+A na mesma semana junto com o longão seria exatamente o cenário de sobrecarga de perna que o programa pede para evitar no joelho reconstruído; prefiro fechar a janela com 2 sessões de força bem espaçadas."
+    "running": "Guardrail em 1,18 (ok) segue folgado. Reincluí as corridas fáceis de terça e quinta, que eu tinha cortado por excesso de cautela — não havia justificativa técnica para isso com o ACWR nesse nível. Longão de domingo sobe para 8,8 km.",
+    "strength": "Trouxe o Treino A de volta para sexta, fechando o ciclo A→B→C dentro da própria semana. A rotação já dá 48h entre cada sessão de perna pesada sozinha (seg/qua/sex), então não preciso empilhar dias de descanso artificiais — só guardo sábado de folga como véspera do longão."
   }
 }

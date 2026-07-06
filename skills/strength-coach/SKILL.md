@@ -53,8 +53,12 @@ sempre com **justificativa técnica** registrada em `adaptations[]`.
 ## Princípios
 1. **2 a 3 sessões de força** na janela de 7 dias, em sequência A → B → C, sem colidir
    com os treinos de qualidade de corrida.
-2. **Perna pesada ≥48h longe do long run e dos intervalados** (antes e depois).
-3. **≥1 descanso total** na janela; carga combinada não pode estourar o guardrail.
+2. **Perna pesada ≥48h longe do long run e dos intervalados** (antes e depois) — essa
+   regra fica, é ligada ao histórico de joelho (LCA), não à frequência semanal.
+3. **Sem quota fixa de descanso total por janela** (confirmado com o atleta em
+   06/07/2026: ele treina corrida+força quase todo dia por preferência). Carga
+   combinada não pode estourar o guardrail ACWR; dor **articular** no joelho (não
+   muscular) é sempre sinal de reduzir/pausar, guardrail vale mais que calendário.
 4. Em janela com guardrail de corrida em `warning`/`danger`, manter força leve/técnica.
 
 ## Como gerar (negociação com o running-coach, schema 3.0)

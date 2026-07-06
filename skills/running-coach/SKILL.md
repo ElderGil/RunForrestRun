@@ -79,7 +79,10 @@ dias ÷ média semanal dos últimos 28 dias.
    **interval/tempo** (no máx. 1 sessão de qualidade, só se guardrail = ok), **rest**.
 4. Long run sobe gradualmente rumo aos 21 km (meia) e depois 42 km (maratona).
 5. **Negociar com o strength-coach** (ver a SKILL dele): perna pesada ≥48h longe de
-   long run/qualidade; ≥1 descanso total na janela; não empilhar carga.
+   long run/qualidade; não empilhar carga. **Não há mais quota fixa de dia de descanso
+   total por janela** (o atleta treina corrida+força quase todo dia por preferência —
+   confirmado em 06/07/2026) — o guardrail ACWR e o sinal de dor articular/recuperação
+   é que decidem se um dia vira descanso, não uma regra de calendário.
 6. Escrever uma frase curta em `coaches.running` e registrar conflitos resolvidos em
    `adaptations[]`.
 
