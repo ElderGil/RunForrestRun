@@ -47,7 +47,9 @@ sempre com **justificativa técnica** registrada em `adaptations[]`.
 - `data/private/strength_program.json` — **base fixa** A/B/C + notas + análise (ler sempre).
 - `data/private/athlete.json` — perfil, peso, histórico de joelho.
 - `data/activities.json` — atividades `type: "Strength"` (frequência e recência).
-- `data/kpis.json` — `strength.sessions_per_week` e `strength.focus`.
+- `data/kpis.json` — `strength.sessions_per_week`, `strength.focus` e
+  `load_guardrail` (esforço agudo corrida+força+bike vs. baseline do atleta,
+  recalculado a cada rodada — ver critério de descanso do running-coach).
 - `data/weekly_plan.json` — janela de corrida já rascunhada pelo running-coach (ler antes de escrever).
 
 ## Princípios
@@ -59,9 +61,10 @@ sempre com **justificativa técnica** registrada em `adaptations[]`.
    06/07/2026: ele treina corrida+força quase todo dia por preferência) — mas
    descanso também não deve ser removido "porque sim". Segue o mesmo critério
    orientado a dados do running-coach (ver a SKILL dele): dor articular → pausa
-   imediata; ACWR `warning`/`danger` → descanso; carga aguda de esforço (soma do
-   `suffer_score` das últimas 72h) acima do p90 histórico → descanso mesmo com
-   ACWR ok; FC de repouso ou sono fora da baseline (quando `health.json` estiver
+   imediata; `kpis.json.running.guardrail` em `warning`/`danger` → descanso;
+   `kpis.json.load_guardrail.status == "warning"` (esforço agudo acima do p90
+   histórico do atleta, recalculado a cada rodada) → descanso mesmo com ACWR ok;
+   FC de repouso ou sono fora da baseline (quando `health.json` estiver
    atualizado) → aliviar. Sem nenhum desses sinais, não inserir descanso.
 4. Em janela com guardrail de corrida em `warning`/`danger`, manter força leve/técnica.
 

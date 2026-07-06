@@ -50,7 +50,9 @@ progressão importam mais que pace.** Diretrizes:
 
 ## Inputs
 - `data/activities.json` — todas as atividades normalizadas (base da análise).
-- `data/kpis.json` — KPIs do mês + guardrail atual.
+- `data/kpis.json` — KPIs do mês + `running.guardrail` (ACWR) + `load_guardrail`
+  (esforço agudo corrida+força+bike vs. baseline histórica do atleta — ambos
+  recalculados a cada rodada pelo `etl/normalize.py`, nunca hardcoded).
 - `data/weekly.json` — volume e pace por semana (últimos 12 meses).
 - `data/private/health.json` (se existir) — Apple Health via Health Auto Export:
   sono (`sleep.totalSleep` é o tempo dormido; `asleep` pode vir 0), `resting_hr`,
@@ -79,22 +81,24 @@ nesta ordem de prioridade:
 1. **Dor articular** (joelho, relatada pelo atleta) → descanso/pausa imediata,
    sempre, independente de qualquer outro sinal. Não é detectável via Strava/Apple
    Health — perguntar/registrar quando relatada.
-2. **Guardrail ACWR:** `danger` → descanso obrigatório no dia; `warning` → pelo
-   menos 1 descanso nos próximos 2-3 dias; `ok` → sem exigência por esse sinal.
-3. **Carga aguda de esforço** (soma do `suffer_score`/relative effort em
-   `activities.json` nas últimas 72h, comparada à média móvel histórica do atleta —
-   baseline em jul/2026: média ~51, desvio ~50, p90 ~117 numa janela de 3 dias).
-   Se a soma dos últimos 3 dias estiver **acima do p90 histórico**, inserir descanso
-   mesmo com ACWR `ok` — esforço percebido pode subir mais rápido que distância.
-4. **FC de repouso** (`data/private/health.json`, quando atualizado nos últimos
-   ~3 dias): baseline em jul/2026 ~48 bpm (±3.7). Elevação ≥+5 bpm por 2 dias
-   seguidos → sinal de fadiga, inserir descanso ou aliviar intensidade.
-5. **Sono** (`totalSleep`, quando disponível): baseline ~7.4h. Duas noites seguidas
-   bem abaixo disso (ex. <6h) → aliviar a carga do dia seguinte.
-6. Se `health.json` estiver **parado há mais de ~3 dias** (comum — export depende do
-   Health Auto Export sincronizar), os sinais 4-5 ficam cegos: registrar isso no
-   indicador "Recuperação" do plano e dar mais peso ao ACWR + esforço acumulado (2-3).
-7. Se nenhum desses sinais disparar, **não inserir descanso por via das dúvidas** —
+2. **Guardrail ACWR** (`kpis.json.running.guardrail`): `danger` → descanso
+   obrigatório no dia; `warning` → pelo menos 1 descanso nos próximos 2-3 dias;
+   `ok` → sem exigência por esse sinal.
+3. **Guardrail de esforço agudo** (`kpis.json.load_guardrail`, calculado
+   automaticamente pelo `etl/normalize.py` a cada rodada — nunca reusar um número
+   fixo de uma análise anterior): soma do esforço relativo do Strava (corrida +
+   força + bike) dos últimos `window_days` dias vs. `baseline_p90` da distribuição
+   histórica do próprio atleta. `status: "warning"` (valor acima do p90) → inserir
+   descanso mesmo com a ACWR `ok`, porque esse guardrail enxerga a força (a ACWR só
+   enxerga corrida). `status: "unknown"` → histórico curto demais, ignorar o sinal.
+4. **FC de repouso e sono** (`data/private/health.json`, só quando atualizado nos
+   últimos ~3 dias): comparar o dia mais recente com a média dos últimos 14 dias
+   do próprio arquivo. FC de repouso bem acima da média por 2 dias seguidos, ou
+   sono bem abaixo por 2 noites seguidas → aliviar a carga do dia seguinte.
+5. Se `health.json` estiver **parado há mais de ~3 dias** (comum — depende do
+   Health Auto Export sincronizar), o sinal 4 fica cego: registrar isso no
+   indicador "Recuperação" do plano e apoiar a decisão nos sinais 2-3.
+6. Se nenhum desses sinais disparar, **não inserir descanso por via das dúvidas** —
    o atleta pode treinar quase todo dia, como prefere.
 
 Posicionamento estratégico (ex.: descanso na véspera de um longão-pico) continua

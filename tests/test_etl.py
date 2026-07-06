@@ -80,3 +80,31 @@ def test_quarter_of():
     assert N.quarter_of(3) == 1
     assert N.quarter_of(4) == 2
     assert N.quarter_of(12) == 4
+
+
+def test_acute_effort_load_unknown_with_little_history():
+    from datetime import datetime
+    ref = datetime(2026, 7, 6)
+    acts = [{"date": "2026-07-04", "relative_effort": 93},
+            {"date": "2026-07-06", "relative_effort": 10}]
+    load = N.acute_effort_load(acts, ref)
+    assert load["metric"] == "acute_effort_load"
+    assert load["value"] == 103.0
+    assert load["status"] == "unknown"  # <14 dias de histórico
+
+
+def test_acute_effort_load_flags_above_p90():
+    from datetime import datetime, timedelta
+    ref = datetime(2026, 7, 6)
+    acts = []
+    # 90 dias de esforço baixo e estável, exceto os últimos 3 dias (pico)
+    for i in range(3, 93):
+        d = (ref - timedelta(days=i)).strftime("%Y-%m-%d")
+        acts.append({"date": d, "relative_effort": 10})
+    for i in range(3):
+        d = (ref - timedelta(days=i)).strftime("%Y-%m-%d")
+        acts.append({"date": d, "relative_effort": 200})
+
+    load = N.acute_effort_load(acts, ref)
+    assert load["status"] == "warning"
+    assert load["value"] > load["baseline_p90"]

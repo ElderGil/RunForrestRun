@@ -13,6 +13,7 @@ No location fields are ever emitted (ADR-003 rule 5).
 from __future__ import annotations
 
 import json
+import statistics
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -83,6 +84,7 @@ def build_activities(raw_list: list[dict]) -> list[dict]:
             "avg_heart_rate_bpm": round(raw["average_heartrate"]) if raw.get("average_heartrate") else None,
             "max_heart_rate_bpm": round(raw["max_heartrate"]) if raw.get("max_heartrate") else None,
             "elevation_m": round(raw.get("total_elevation_gain", 0) or 0),
+            "relative_effort": raw.get("suffer_score"),
             "name": raw.get("name", ""),
         })
     out.sort(key=lambda a: a["date"])
@@ -270,6 +272,65 @@ def acute_chronic_ratio(activities: list[dict], ref: datetime) -> dict:
     }
 
 
+def acute_effort_load(activities: list[dict], ref: datetime, window_days: int = 3,
+                       history_days: int = 120) -> dict:
+    """Combined-load signal: rolling sum of Strava relative effort (Run+Strength+Ride)
+    vs. this athlete's own historical distribution.
+
+    Exists because `acute_chronic_ratio` only sees running distance — a heavy
+    strength week (or a strength+running week) can raise real fatigue without ever
+    moving that guardrail. Used by running-coach/strength-coach to decide rest days
+    from data instead of a fixed calendar quota (see their SKILL.md).
+    """
+    by_day: dict[str, float] = defaultdict(float)
+    for a in activities:
+        e = a.get("relative_effort")
+        if e:
+            by_day[a["date"]] += e
+
+    def window_sum(end: datetime) -> float:
+        return sum(by_day.get((end - timedelta(days=i)).strftime("%Y-%m-%d"), 0)
+                   for i in range(window_days))
+
+    current = window_sum(ref)
+
+    base = {
+        "metric": "acute_effort_load",
+        "window_days": window_days,
+        "value": round(current, 1),
+        "label": "Esforço agudo (corrida+força+bike)",
+        "description": "Soma do esforço relativo (Strava) dos últimos "
+                       f"{window_days} dias vs. a distribuição histórica (P90) do "
+                       "próprio atleta. Cobre a força, que a ACWR (só corrida) não vê.",
+    }
+
+    # Baseline confiável exige uma janela real de histórico com dados, não só um
+    # intervalo de datas — poucas atividades espalhadas não formam distribuição.
+    min_history_days = 21
+    if not by_day or (ref - parse_dt(min(by_day))).days < min_history_days:
+        return {**base, "status": "unknown"}
+
+    history = []
+    day = ref - timedelta(days=window_days)
+    cutoff = ref - timedelta(days=history_days)
+    while day >= cutoff:
+        history.append(window_sum(day))
+        day -= timedelta(days=1)
+
+    mean = statistics.mean(history)
+    stdev = statistics.pstdev(history)
+    p90 = sorted(history)[int(len(history) * 0.9)]
+    status = "warning" if current > p90 else "ok"
+
+    return {
+        **base,
+        "baseline_mean": round(mean, 1),
+        "baseline_stdev": round(stdev, 1),
+        "baseline_p90": round(p90, 1),
+        "status": status,
+    }
+
+
 def build_kpis(activities: list[dict]) -> dict:
     ref = datetime.now()
     cur_y, cur_m = ref.year, ref.month
@@ -304,6 +365,7 @@ def build_kpis(activities: list[dict]) -> dict:
             "sessions_per_week": round(len(strength) / weeks_elapsed, 1),
             "focus": "lower_body",
         },
+        "load_guardrail": acute_effort_load(activities, ref),
     }
 
 
@@ -338,12 +400,14 @@ def main():
         json.dumps(kpis, indent=2, ensure_ascii=False))
 
     g = kpis["running"]["guardrail"]
+    le = kpis["load_guardrail"]
     print("Done.")
     print(f"  Kept activities (Run/Strength/Ride): {len(activities)}")
     print(f"  Weeks (12mo): {len(weekly)} | Quarters: {len(quarterly)}")
     print(f"  Current month: {kpis['period']['label']} — "
           f"{kpis['running']['total_sessions']} runs, {kpis['running']['total_distance_km']} km")
     print(f"  Guardrail ACWR: {g['value']} ({g['status']})")
+    print(f"  Load guardrail (esforço {le['window_days']}d): {le['value']} ({le['status']})")
 
 
 if __name__ == "__main__":

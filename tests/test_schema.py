@@ -36,6 +36,10 @@ def test_kpis_shape():
     assert g["threshold_warning"] < g["threshold_danger"]
     assert {"total_sessions", "focus"} <= d["strength"].keys()
 
+    le = d["load_guardrail"]
+    assert le["metric"] == "acute_effort_load"
+    assert le["status"] in {"ok", "warning", "unknown"}
+
 
 def test_weekly_shape_and_pace_is_decimal():
     weeks = load("weekly.json")["weeks"]
