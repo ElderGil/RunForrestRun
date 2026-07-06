@@ -4620,6 +4620,27 @@
     "achievement_count": 2
   },
   {
+    "id": 19190994046,
+    "sport_type": "Ride",
+    "type": "Ride",
+    "start_date_local": "2026-07-05T10:34:11",
+    "distance": 8860.1,
+    "moving_time": 3988,
+    "elapsed_time": 4618,
+    "total_elevation_gain": 103,
+    "average_speed": 2.221690070210632,
+    "max_speed": 7.14,
+    "average_cadence": null,
+    "calories": 433,
+    "suffer_score": null,
+    "average_heartrate": null,
+    "max_heartrate": null,
+    "name": "Passeio de Bike com o Bê",
+    "kudos_count": 0,
+    "pr_count": 6,
+    "achievement_count": 6
+  },
+  {
     "id": 19199994780,
     "sport_type": "WeightTraining",
     "type": "WeightTraining",

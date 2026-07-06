@@ -1,6 +1,6 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-07-06T18:05:00Z",
+  "generated_at": "2026-07-06T18:20:00Z",
   "window_start": "2026-07-06",
   "window_end": "2026-07-12",
   "summary": "Treino B saiu hoje na academia, fora do planejado (o dia era de descanso) — o strength-coach segura a mão na sequência: entra um descanso amanhã antes do Treino C (evita dois dias de perna pesada seguidos) e adia o Treino A para a próxima janela, para não empilhar B+C+A+longão na mesma semana. O guardrail de corrida segue em 1,18 (ok); longão de domingo sobe para 8,8 km.",
@@ -88,7 +88,8 @@
     "Como B já usou a cota de perna pesada da semana, inserimos um descanso na terça antes do Treino C de quarta, para não emendar dois dias seguidos de carga de perna (o próprio programa alerta que 3 dias de perna + corrida na mesma janela é alto para o joelho reconstruído).",
     "Por esse mesmo motivo, o Treino A foi adiado para a próxima janela em vez de encaixado nesta semana — B (hoje) + C (quarta) já fecham as '2 a 3 sessões de força' recomendadas; fazer A também empilharia um terceiro dia de perna pesada com o longão de domingo.",
     "Corrida fácil de meio de semana passou de quarta para sexta (48h após o Treino C) para não colidir com a perna pesada de quarta.",
-    "Guardrail de corrida segue em 1,18 (ok) — não afetado pela sessão extra de força; mantido o longão de domingo em 8,8 km (progressão de ~10% sobre os 8,03 km de sábado)."
+    "Guardrail de corrida segue em 1,18 (ok) — não afetado pela sessão extra de força; mantido o longão de domingo em 8,8 km (progressão de ~10% sobre os 8,03 km de sábado).",
+    "Capturado retroativamente um passeio de bike casual de domingo (05/07, 8,9 km, ritmo leve, com o filho) que ainda não tinha sincronizado do Strava na primeira busca — bike é hobby no perfil do atleta, não conta como qualidade e fica fora da janela atual (anterior ao window_start)."
   ],
   "coaches": {
     "running": "Sem mudança do lado da corrida: guardrail em 1,18 (ok), corrida fácil de sexta e longão de domingo em 8,8 km seguem meu plano de progressão conservadora. Só reposicionei a fácil de quarta para sexta para dar espaço ao ajuste de força.",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-06T17:41:09Z",
+  "generated_at": "2026-07-06T17:43:19Z",
   "activities": [
     {
       "id": "11665837342",
@@ -2461,6 +2461,18 @@
       "max_heart_rate_bpm": 170,
       "elevation_m": 157,
       "name": "Afternoon Run"
+    },
+    {
+      "id": "19190994046",
+      "date": "2026-07-05",
+      "type": "Ride",
+      "distance_km": 8.86,
+      "duration_min": 66.5,
+      "pace_min_km": null,
+      "avg_heart_rate_bpm": null,
+      "max_heart_rate_bpm": null,
+      "elevation_m": 103,
+      "name": "Passeio de Bike com o Bê"
     },
     {
       "id": "19199994780",
