@@ -1,14 +1,23 @@
-"""Ingestão dos dados do Apple Health exportados pelo app 'Health Auto Export' (iOS).
+"""Ingestão dos dados de recuperação do Apple Health (iOS).
 
 Por quê assim: o Apple Health **não tem API no macOS** e os dados vivem no iPhone.
-O app Health Auto Export (configurado pelo atleta) exporta um JSON para o iCloud Drive
-numa agenda; como a routine diária roda no Mac, ela **lê esse arquivo localmente** —
-sem servidor, no mesmo espírito do resto do projeto. Ver docs/automation-runbook.md.
+Como a routine diária roda no Mac, ela **lê um arquivo local** sincronizado pelo
+iCloud Drive — sem servidor, no mesmo espírito do resto do projeto.
+Ver docs/automation-runbook.md.
+
+Suporta DOIS formatos de export, detectados automaticamente pelo shape do JSON:
+1. **Health Auto Export** (app, requer assinatura Premium para automação agendada)
+   — `{"data": {"metrics": [...]}}`, ver `parse_hae`.
+2. **Atalho (Shortcuts) caseiro, gratuito** — dicionário simples e plano montado
+   por uma automação nativa do app Atalhos da Apple (sem terceiros, sem custo),
+   lendo o HealthKit direto via ações `Get Health Sample`/`Find Health Samples`.
+   Ver `parse_shortcuts_export` e o guia de montagem no chat/README.
 
 Uso:
     python etl/merge_health.py [export.json]
 
-Sem argumento, usa o JSON mais recente sob a pasta do Health Auto Export no iCloud.
+Sem argumento, usa o JSON mais recente sob a pasta do export no iCloud (mesmos
+nomes de arquivo servem para os dois formatos — ver HAE_GLOBS).
 Saída: data/private/health.json (gitignored — dado pessoal), com um registro por dia.
 Se não houver export nenhum, faz no-op (não quebra a routine).
 """
@@ -87,6 +96,43 @@ def parse_hae(payload: dict) -> dict:
     return out
 
 
+# Campos escalares aceitos de um export do Atalho caseiro — mesmos nomes de saída
+# que o Health Auto Export já usa, pra não duplicar schema em health.json.
+SHORTCUT_SCALAR_FIELDS = set(SIMPLE.values())
+
+
+def parse_shortcuts_export(payload: dict) -> dict:
+    """JSON de uma automação caseira no app Atalhos (Shortcuts) -> mesmo shape do
+    parse_hae: { 'YYYY-MM-DD': {campos...} }.
+
+    Shape esperado (um dicionário só, achatado — fácil de montar com uma única
+    ação "Dicionário" no Atalhos, sem precisar replicar o array de métricas
+    aninhado do Health Auto Export):
+
+        {"date": "2026-07-07", "resting_hr": 47, "vo2_max": 46,
+         "sleep": {"totalSleep": 7.2, "deep": 1.5, "rem": 1.6, "core": 4.1,
+                   "awake": 0.3, "inBed": 7.5}}
+
+    Aceita tanto um único dia (dict) quanto uma lista de dias (uma automação que
+    rode 1x/dia normalmente só manda o dia atual — merge_into já sabe mesclar).
+    """
+    days = payload if isinstance(payload, list) else [payload]
+    out: dict[str, dict] = {}
+    for day in days:
+        d = _day(day.get("date")) if len(str(day.get("date", ""))) > 10 else day.get("date")
+        if not d:
+            continue
+        rec = {k: round(float(day[k]), 2) for k in SHORTCUT_SCALAR_FIELDS if day.get(k) is not None}
+        if day.get("sleep"):
+            sleep = {k: round(float(v), 2) for k, v in day["sleep"].items()
+                      if k in SLEEP_FIELDS and v is not None}
+            if sleep:
+                rec["sleep"] = sleep
+        if rec:
+            out[d] = rec
+    return out
+
+
 def merge_into(out_path: Path, records: dict) -> tuple[int, int]:
     """Mescla os registros no health.json (dedup por dia, novo vence)."""
     store = {}
@@ -101,7 +147,7 @@ def merge_into(out_path: Path, records: dict) -> tuple[int, int]:
         "schema_version": "1.0",
         "private": True,
         "_warning": "NÃO versionar / NÃO publicar.",
-        "source": "Apple Health via Health Auto Export",
+        "source": "Apple Health (Health Auto Export ou Atalho caseiro)",
         "days": dict(sorted(store.items())),
     }
     out_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
@@ -124,11 +170,14 @@ def _discover() -> Path | None:
 def main(argv: list[str]) -> int:
     src = Path(argv[0]) if argv else _discover()
     if not src or not src.exists():
-        print("Health: nenhum export do Health Auto Export encontrado — no-op.")
+        print("Health: nenhum export encontrado (Health Auto Export ou Atalho) — no-op.")
         return 0
-    records = parse_hae(json.loads(src.read_text()))
+    raw = json.loads(src.read_text())
+    is_hae = isinstance(raw, dict) and "metrics" in (raw.get("data") or {})
+    records = parse_hae(raw) if is_hae else parse_shortcuts_export(raw)
     before, after = merge_into(OUT, records)
-    print(f"Health: {src.name} -> {len(records)} dia(s); store {before} -> {after}.")
+    fmt = "Health Auto Export" if is_hae else "Atalho caseiro"
+    print(f"Health ({fmt}): {src.name} -> {len(records)} dia(s); store {before} -> {after}.")
     return 0
 
 

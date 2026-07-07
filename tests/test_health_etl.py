@@ -58,3 +58,34 @@ def test_parse_hae_groups_by_day():
 def test_parse_hae_handles_empty():
     assert H.parse_hae({}) == {}
     assert H.parse_hae({"data": {"metrics": []}}) == {}
+
+
+SHORTCUT_SAMPLE = {
+    "date": "2026-07-07",
+    "resting_hr": 47,
+    "respiratory_rate": 14.8,
+    "vo2_max": 46,
+    "hrv_ms": 42.1,
+    "sleep": {"totalSleep": 7.2, "core": 4.1, "deep": 1.5, "rem": 1.6,
+              "awake": 0.3, "inBed": 7.5},
+}
+
+
+def test_parse_shortcuts_export_single_day():
+    out = H.parse_shortcuts_export(SHORTCUT_SAMPLE)
+    day = out["2026-07-07"]
+    assert day["resting_hr"] == 47
+    assert day["vo2_max"] == 46
+    assert day["hrv_ms"] == 42.1
+    assert day["sleep"]["totalSleep"] == 7.2
+
+
+def test_parse_shortcuts_export_accepts_list_of_days():
+    out = H.parse_shortcuts_export([SHORTCUT_SAMPLE, {**SHORTCUT_SAMPLE, "date": "2026-07-08", "resting_hr": 45}])
+    assert set(out.keys()) == {"2026-07-07", "2026-07-08"}
+    assert out["2026-07-08"]["resting_hr"] == 45
+
+
+def test_parse_shortcuts_export_handles_empty():
+    assert H.parse_shortcuts_export({}) == {}
+    assert H.parse_shortcuts_export({"date": "2026-07-07"}) == {}
