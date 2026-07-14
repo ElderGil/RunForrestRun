@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-09T11:54:40Z",
+  "generated_at": "2026-07-14T13:14:14Z",
   "months": [
     {
       "month": "2026-01",
@@ -71,12 +71,12 @@
     {
       "month": "2026-07",
       "label": "Jul",
-      "run_km": 18.5,
-      "run_count": 4,
+      "run_km": 24.5,
+      "run_count": 5,
       "longest_run_km": 8.0,
-      "avg_pace_min_km": 5.35,
-      "avg_heart_rate_bpm": 134,
-      "elevation_m": 187,
+      "avg_pace_min_km": 5.43,
+      "avg_heart_rate_bpm": 139,
+      "elevation_m": 213,
       "strength_sessions": 3
     }
   ]
