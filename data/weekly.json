@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-16T14:14:13Z",
+  "generated_at": "2026-07-17T16:59:13Z",
   "weeks": [
     {
       "week_start": "2025-07-14",
@@ -688,7 +688,7 @@
         "avg_heart_rate_bpm": null
       },
       "strength": {
-        "sessions": 1
+        "sessions": 2
       }
     }
   ]
