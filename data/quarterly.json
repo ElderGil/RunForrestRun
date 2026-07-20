@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-17T16:59:13Z",
+  "generated_at": "2026-07-20T12:55:13Z",
   "quarters": [
     {
       "label": "Q2 2024",
@@ -153,9 +153,9 @@
         "end": "2026-09-30"
       },
       "running": {
-        "total_distance_km": 24.5,
-        "avg_pace_min_km": 5.43,
-        "total_sessions": 5,
+        "total_distance_km": 29.5,
+        "avg_pace_min_km": 5.52,
+        "total_sessions": 6,
         "longest_run_km": 8.0
       },
       "strength": {
