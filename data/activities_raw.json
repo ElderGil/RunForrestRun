@@ -4828,5 +4828,26 @@
     "kudos_count": 0,
     "pr_count": 0,
     "achievement_count": 0
+  },
+  {
+    "id": 19409361374,
+    "sport_type": "WeightTraining",
+    "type": "WeightTraining",
+    "start_date_local": "2026-07-21T18:01:07",
+    "distance": 0,
+    "moving_time": 1816,
+    "elapsed_time": 1816,
+    "total_elevation_gain": 0,
+    "average_speed": 0,
+    "max_speed": 0,
+    "average_cadence": null,
+    "calories": 183,
+    "suffer_score": 4,
+    "average_heartrate": null,
+    "max_heartrate": null,
+    "name": "Evening Weight Training",
+    "kudos_count": 0,
+    "pr_count": 0,
+    "achievement_count": 0
   }
 ]
