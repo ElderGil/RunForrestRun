@@ -1,40 +1,27 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-07-23T14:50:11Z",
-  "window_start": "2026-07-23",
-  "window_end": "2026-07-29",
-  "summary": "Janela desliza de 22-28/07 para 23-29/07. O longão previsto para hoje (quinta 23/07) não aconteceu — o Strava registrou em vez disso 'Morning Weight Training' (65 min, esforço relativo 9), que entendo como o Treino A adiantado (sequência A→B→C, Treino C feito em 21/07). Não tentei compensar o longão de uma vez: redistribuí para sábado 25/07 (~7 km), respeitando a distância mínima de 48h entre perna pesada e long run. Guardrail ACWR segue bem folgado (0,47) e o esforço agudo de 3 dias caiu para 13,0 (bem abaixo do p90 de 117,0) — sem nenhum sinal de sobrecarga, então não inseri descanso total nesta janela (o atleta prefere treinar quase todo dia e nenhum sinal de dados pede pausa). Treino B fica para segunda 27/07 (48h depois do longão de sábado). Apple Health segue travado (última leitura 28/06, 25 dias sem dado novo).",
+  "generated_at": "2026-07-24T14:43:54Z",
+  "window_start": "2026-07-24",
+  "window_end": "2026-07-30",
+  "summary": "Janela desliza de 23-29/07 para 24-30/07. O Treino B (posterior/costas/peito) aconteceu hoje, sexta 24/07, dando sequência ao Treino A de quinta 23/07. Como o Treino B inclui itens de perna pesada (Agachamento Pêndulo, Leg Articulado), o longão que estava planejado para amanhã (sábado 25/07) ainda não teria as 48h mínimas de distância — adiei para segunda 27/07 e coloquei corridas fáceis em sábado e domingo como buffer. Mantive o mesmo teto conservador do longão (abaixo de 8,8 km). O Treino C, que fecha o ciclo A→B→C, ficou para quarta 29/07 — exatamente 48h depois do longão. Guardrail ACWR (0,53) e esforço agudo de 3 dias (16,0, bem abaixo do p90 de 117,0) seguem folgados, então não inseri descanso total nesta janela. Apple Health segue travado desde 28/06 (26 dias sem dado novo).",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "0 feita ainda + 4 previstas (fácil ~3 km sex, longão ~7 km sáb, fácil ~4 km dom, fácil ~4 km ter, fácil ~4-5 km qua)", "status": "ok" },
-    { "label": "Guardrail (ACWR)", "value": "0,47 (ok) — folgado, ainda reconstruindo base depois de semanas de corrida fragmentada", "status": "ok" },
-    { "label": "Esforço agudo (3 dias)", "value": "13,0 (baseline: média 47,4 ± 50,5, p90 117,0) — caiu bastante frente à rodada anterior (76,0), bem abaixo do p90", "status": "ok" },
-    { "label": "Recuperação", "value": "Apple Health parado há 25 dias (última leitura 28/06) — FC repouso e sono cegos; guardrail + esforço agudo assumem o peso da decisão", "status": "warning" },
-    { "label": "Força (7 dias)", "value": "1 feita hoje (Treino A, adiantado) + 1 prevista (Treino B segunda 27/07 — Treino C já foi feito em 21/07, fora da janela atual)", "status": "ok" }
+    { "label": "Corridas (7 dias)", "value": "0 feita ainda + 4 previstas (fácil ~3 km sáb, fácil ~4 km dom, longão ~7 km seg, fácil ~4 km ter, fácil ~4-5 km qui)", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "0,53 (ok) — segue folgado, ainda reconstruindo base", "status": "ok" },
+    { "label": "Esforço agudo (3 dias)", "value": "16,0 (baseline: média 47,7 ± 50,6, p90 117,0) — bem abaixo do p90", "status": "ok" },
+    { "label": "Recuperação", "value": "Apple Health parado há 26 dias (última leitura 28/06) — FC repouso e sono seguem cegos; guardrail + esforço agudo assumem o peso da decisão", "status": "warning" },
+    { "label": "Força (7 dias)", "value": "1 feita hoje (Treino B) + 1 prevista (Treino C quarta 29/07) — fecha o ciclo A→B→C (A em 23/07, B em 24/07)", "status": "ok" }
   ],
   "days": [
     {
-      "date": "2026-07-23",
-      "weekday": "Qui",
+      "date": "2026-07-24",
+      "weekday": "Sex",
       "status": "done",
       "items": [
         {
           "type": "strength",
-          "title": "Treino A — pernas/tríceps",
-          "detail": "Realizado como 'Morning Weight Training' (65 min, esforço relativo 9), no lugar do longão que estava planejado para hoje. Entendo como o Treino A adiantado (sequência A→B→C, Treino C feito em 21/07) — o atleta às vezes inverte a ordem corrida/força no dia, e o coach só registra o que aconteceu e reajusta os dias seguintes sem tentar compensar tudo de uma vez.",
+          "title": "Treino B — posterior/costas/peito",
+          "detail": "Realizado como 'Morning Weight Training' (58 min, esforço relativo 7), dando sequência A→B (Treino A foi quinta 23/07). Inclui itens de perna (Agachamento Pêndulo, Leg Articulado) com amplitude limitada a ~90°, por indicação técnica do programa.",
           "done": true
-        }
-      ]
-    },
-    {
-      "date": "2026-07-24",
-      "weekday": "Sex",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Corrida leve de recuperação ~3 km",
-          "detail": "Z2 bem leve — dia seguinte ao Treino A (perna pesada: Leg Press 45° e Terra Sumô), volume baixo de propósito para não competir com a recuperação da força.",
-          "done": false
         }
       ]
     },
@@ -45,8 +32,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Longão ~7 km",
-          "detail": "Redistribuição do longão que não aconteceu na quinta — sem tentar compensar tudo de uma vez, mantém o mesmo teto conservador já calculado (abaixo de 8,8 km — 10% sobre os 8,03 km do último longão real, em 04/07). Exatamente 48h depois do Treino A de quinta 23/07, respeitando a distância mínima de perna pesada.",
+          "title": "Corrida leve de recuperação ~3 km",
+          "detail": "Z2 bem leve — só 1 dia depois do Treino B (perna pesada). O longão que estava previsto para hoje foi adiado porque a distância mínima de 48h entre perna pesada e long run ainda não estava completa.",
           "done": false
         }
       ]
@@ -59,7 +46,7 @@
         {
           "type": "run",
           "title": "Corrida fácil ~4 km",
-          "detail": "Z2 leve — dia seguinte ao longão. Guardrail (0,47) e esforço agudo (13,0) seguem bem folgados e nenhum sinal de dados pede descanso extra, então mantenho corrida leve em vez de pausa por calendário (o atleta prefere treinar quase todo dia).",
+          "detail": "Z2 leve — segundo dia de buffer depois do Treino B, completando as 48h mínimas antes do longão de segunda. Guardrail (0,53) e esforço agudo (16,0) seguem bem folgados.",
           "done": false
         }
       ]
@@ -70,9 +57,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "strength",
-          "title": "Treino B — posterior/costas/peito",
-          "detail": "Segue a sequência A→B (Treino A feito em 23/07). Inclui exercícios de perna (Agachamento Pêndulo, Leg Articulado) — exatamente 48h depois do longão de sábado 25/07, respeitando a regra de perna pesada. Amplitude limitada a ~90° no Agachamento Pêndulo; sem progressão de carga com dor articular.",
+          "type": "run",
+          "title": "Longão ~7 km",
+          "detail": "Redistribuição do longão adiado desde sábado 25/07 — agora com folga de mais de 48h desde o Treino B (perna pesada) de sexta 24/07. Mantido o mesmo teto conservador (abaixo de 8,8 km — 10% sobre os 8,03 km do último longão real em 04/07), sem compensar tudo de uma vez.",
           "done": false
         }
       ]
@@ -85,7 +72,7 @@
         {
           "type": "run",
           "title": "Corrida fácil ~4 km",
-          "detail": "Z2 leve — dia seguinte ao Treino B, volume moderado para não competir com a recuperação da força. Guardrail e esforço agudo seguem com folga.",
+          "detail": "Z2 leve, recuperação do longão de segunda. Guardrail e esforço agudo seguem com folga.",
           "done": false
         }
       ]
@@ -96,25 +83,39 @@
       "status": "planned",
       "items": [
         {
+          "type": "strength",
+          "title": "Treino C — pernas/posterior/core",
+          "detail": "Fecha o ciclo A→B→C (A em 23/07, B em 24/07). Exatamente 48h depois do longão de segunda 27/07, respeitando a distância mínima para os itens de perna pesada (Hack Machine, Mesa Flexora). Hack Machine com amplitude limitada a ~90° e sem progressão de carga; sem empilhar mais volume de perna nesta semana.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-07-30",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
           "type": "run",
           "title": "Corrida fácil ~4-5 km",
-          "detail": "Z2 leve, fecha a janela — ainda priorizando volume fácil em vez de qualidade, já que a base voltou a treinar há pouco tempo. Sem sinal de sobrecarga (guardrail e esforço agudo folgados).",
+          "detail": "Z2 leve, dia seguinte ao Treino C (perna pesada) — volume baixo de propósito para não competir com a recuperação da força. Fecha a janela de 7 dias.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Janela deslizou de 22-28/07 para 23-29/07.",
-    "Longão previsto para hoje (quinta 23/07) não aconteceu — Strava registrou 'Morning Weight Training' (65 min, esforço relativo 9) no lugar. Interpretado como o Treino A adiantado (sequência A→B→C, Treino C feito em 21/07); marcado como feito e não compensado de uma vez, só redistribuído.",
-    "Longão redistribuído para sábado 25/07 (~7 km), exatamente 48h depois do Treino A de quinta, respeitando a distância mínima de perna pesada. Mantido o mesmo teto conservador (abaixo de 8,8 km — 10% sobre os 8,03 km do último longão real, em 04/07).",
-    "Guardrail ACWR segue 'ok' (0,47) e o esforço agudo de 3 dias caiu bastante para 13,0 (ainda 'ok', bem abaixo do p90 de 117,0) — sem nenhum sinal de sobrecarga, não inseri descanso total nesta janela (nenhum dos critérios de dados disparou, e o atleta prefere treinar quase todo dia).",
-    "Treino B reposicionado para segunda 27/07 — 48h depois do novo longão de sábado, respeitando a regra de perna pesada para o joelho reconstruído (Agachamento Pêndulo, Leg Articulado).",
-    "Adicionei um dia na ponta da janela: quarta 29/07 (corrida fácil ~4-5 km), fechando os 7 dias.",
-    "Apple Health segue travado em 28/06 — agora 25 dias sem dado novo — sinal de FC de repouso/sono continua cego; decisão apoiada em ACWR + esforço agudo."
+    "Janela deslizou de 23-29/07 para 24-30/07.",
+    "Treino B (posterior/costas/peito) aconteceu hoje, sexta 24/07 — Strava registrou 'Morning Weight Training' (58 min, esforço relativo 7), dando sequência ao Treino A de quinta 23/07.",
+    "O longão planejado para sábado 25/07 foi adiado: só teria ~24h desde o Treino B (perna pesada — Agachamento Pêndulo, Leg Articulado), abaixo do mínimo de 48h entre perna pesada e long run. Substituí sábado e domingo por corridas fáceis (~3 km e ~4 km) e movi o longão para segunda 27/07, quando a folga de 48h já está garantida.",
+    "Longão mantido no mesmo teto conservador de antes (abaixo de 8,8 km — 10% sobre os 8,03 km do último longão real em 04/07), sem compensar tudo de uma vez.",
+    "Treino C (fecha o ciclo A→B→C) posicionado para quarta 29/07 — exatamente 48h depois do longão de segunda, respeitando a mesma regra mínima para os itens de perna pesada do treino (Hack Machine, Mesa Flexora).",
+    "Guardrail ACWR (0,53) e esforço agudo de 3 dias (16,0, bem abaixo do p90 de 117,0) seguem folgados — nenhum sinal de dados pediu descanso total nesta janela; o atleta segue treinando quase todo dia, como prefere.",
+    "Apple Health segue travado desde 28/06 — agora 26 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo.",
+    "Adicionei um dia na ponta da janela: quinta 30/07 (corrida fácil ~4-5 km), fechando os 7 dias."
   ],
   "coaches": {
-    "running": "O longão de hoje (quinta 23/07) virou treino de força no Strava — registrei o que de fato aconteceu e redistribuí o longão para sábado 25/07 (~7 km, mesmo teto conservador de antes) em vez de tentar compensar tudo de uma vez. Guardrail ACWR (0,47) e esforço agudo (13,0, bem abaixo do p90 de 117,0) estão bem folgados, então mantive corridas fáceis no restante da janela (sexta, domingo, terça, quarta) sem inserir descanso total — nenhum sinal de dados pediu pausa esta rodada. Recuperação via Apple Health segue cega (25 dias sem dado).",
-    "strength": "Sequência A→B→C: Treino C foi feito em 21/07, e o que estava previsto para sábado (Treino A) acabou acontecendo hoje, quinta 23/07, registrado no Strava. Reposicionei o Treino B para segunda 27/07 — 48h depois do novo longão de sábado, respeitando a regra de perna pesada para o joelho reconstruído. Nenhum item foi trocado; Agachamento Pêndulo e Leg Articulado mantêm amplitude limitada a ~90° por indicação técnica do programa."
+    "running": "O Treino B de hoje (perna pesada) empurrou o longão que estava previsto para sábado — sem as 48h mínimas de distância, adiei para segunda 27/07 (~7 km, mesmo teto conservador de antes) e usei sábado/domingo como corridas fáceis de buffer. Guardrail ACWR (0,53) e esforço agudo (16,0, bem abaixo do p90 de 117,0) seguem bem folgados, então mantive corridas fáceis no restante da janela sem inserir descanso total — nenhum sinal de dados pediu pausa esta rodada. Recuperação via Apple Health segue cega (26 dias sem dado).",
+    "strength": "Sequência A→B→C: Treino A na quinta 23/07, Treino B hoje sexta 24/07 (Strava). Posicionei o Treino C, que fecha o ciclo, para quarta 29/07 — exatamente 48h depois do novo longão de segunda, respeitando a regra de perna pesada para o joelho reconstruído. Nenhum item foi trocado; Agachamento Pêndulo, Leg Articulado e Hack Machine mantêm amplitude limitada a ~90° por indicação técnica do programa."
   }
 }
