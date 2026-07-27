@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-24T14:41:18Z",
+  "generated_at": "2026-07-27T12:21:58Z",
   "activities": [
     {
       "id": "11665837342",
@@ -2822,6 +2822,32 @@
       "elevation_m": 0,
       "relative_effort": 7,
       "name": "Morning Weight Training"
+    },
+    {
+      "id": "19473895284",
+      "date": "2026-07-26",
+      "type": "Ride",
+      "distance_km": 5.21,
+      "duration_min": 36.1,
+      "pace_min_km": null,
+      "avg_heart_rate_bpm": null,
+      "max_heart_rate_bpm": null,
+      "elevation_m": 48,
+      "relative_effort": 4,
+      "name": "Morning Ride"
+    },
+    {
+      "id": "19483490237",
+      "date": "2026-07-27",
+      "type": "Run",
+      "distance_km": 5.02,
+      "duration_min": 29.4,
+      "pace_min_km": 5.84,
+      "avg_heart_rate_bpm": 144,
+      "max_heart_rate_bpm": 165,
+      "elevation_m": 33,
+      "relative_effort": 39,
+      "name": "Morning Run"
     }
   ]
 }
