@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-27T12:21:58Z",
+  "generated_at": "2026-07-28T12:14:15Z",
   "weeks": [
     {
       "week_start": "2025-07-28",
@@ -685,10 +685,10 @@
         "distance_km": 5.0,
         "avg_pace_min_km": 5.84,
         "sessions": 1,
-        "avg_heart_rate_bpm": 144
+        "avg_heart_rate_bpm": null
       },
       "strength": {
-        "sessions": 0
+        "sessions": 1
       }
     }
   ]
