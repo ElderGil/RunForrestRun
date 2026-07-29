@@ -1,40 +1,27 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-07-28T12:15:44Z",
-  "window_start": "2026-07-28",
-  "window_end": "2026-08-03",
-  "summary": "Janela desliza de 27/07-02/08 para 28/07-03/08. Hoje, terça 28/07, o atleta não fez a corrida fácil prevista — em vez disso treinou força (Morning Weight Training, esforço relativo 5). Pelo padrão de esforço (Treino A em 23/07 foi 9, Treino B em 24/07 foi 7), interpretei essa sessão como o Treino C, que fecha o ciclo A→B→C — um dia antes do que a janela anterior havia planejado (quarta 29/07), mas ainda 4 dias (96h) depois do Treino B, bem acima do mínimo de 48h. Como já são 3 sessões de força nos últimos 6 dias (A 23/07, B 24/07, C 28/07) — no teto da faixa de 2-3/semana — não empilhei um novo ciclo A nesta janela; a análise do programa já recomenda reduzir para ~2 dias de ênfase em perna em semanas de build de corrida, então deixo o próximo A para a rodada seguinte, com folga adequada. O longão, reagendado na janela anterior para sábado 01/08, segue de pé: agora com 96h de folga desde o Treino C de hoje (folgado acima do mínimo de 48h). Guardrail ACWR (0,58) e esforço agudo de 3 dias (48,0, abaixo do p90 de 117,0) seguem folgados — nenhum sinal de dados pediu descanso total. Apple Health segue travado desde 28/06 (30 dias sem dado novo).",
+  "generated_at": "2026-07-29T14:08:00Z",
+  "window_start": "2026-07-29",
+  "window_end": "2026-08-04",
+  "summary": "Janela desliza de 28/07-03/08 para 29/07-04/08. Hoje, quarta 29/07, o atleta fez a corrida fácil prevista, mas mais forte do que o planejado: 5,02 km, FC média 161, FC máx 178, esforço relativo 83 — o mais alto entre as corridas fáceis recentes de distância parecida (20/07: efeito 72, FC 157; 27/07: efeito 39). Isso empurrou o guardrail de esforço agudo (3 dias: corrida de 27/07 + Treino C de 28/07 + corrida de hoje) para 127,0, acima do p90 histórico (117,0) — passou de 'ok' para 'warning'. A ACWR de corrida segue tranquila (1,17, abaixo do limiar de 1,3). Por isso, reforcei quinta e sexta como recuperação de verdade (Z2 bem leve, sem pressa) para o esforço agudo cair antes do longão de sábado, e adiei de novo a abertura do próximo ciclo de força (Treino A) — não é hora de somar mais carga com o guardrail em alerta. Apple Health segue travado desde 28/06 (31 dias sem dado novo).",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "0 feitas + 5 previstas (fácil ~4 km qua, fácil ~3-4 km qui, fácil ~3-4 km sex, longão ~7 km sáb, fácil ~4 km dom, fácil ~3-4 km seg)", "status": "ok" },
-    { "label": "Guardrail (ACWR)", "value": "0,58 (ok) — segue folgado, ainda reconstruindo base", "status": "ok" },
-    { "label": "Esforço agudo (3 dias)", "value": "48,0 (baseline: média 47,6 ± 50,7, p90 117,0) — abaixo do p90", "status": "ok" },
-    { "label": "Recuperação", "value": "Apple Health parado há 30 dias (última leitura 28/06) — FC repouso e sono seguem cegos; guardrail + esforço agudo assumem o peso da decisão", "status": "warning" },
-    { "label": "Força (7 dias)", "value": "1 feita hoje (Treino C, fecha o ciclo A→B→C) + 0 previstas no restante da janela — 3 sessões nos últimos 6 dias, no teto de 2-3/semana; próximo ciclo (A) fica para a rodada seguinte", "status": "ok" }
+    { "label": "Corridas (7 dias)", "value": "1 feita (5,02 km, hoje) + 4 previstas (fácil ~3-4 km qui/sex, longão ~7 km sáb, fácil ~4 km dom, fácil ~3-4 km seg/ter)", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "1,17 (ok) — abaixo do limiar de alerta (1,3)", "status": "ok" },
+    { "label": "Esforço agudo (3 dias)", "value": "127,0 (baseline: média 47,6 ± 50,6, p90 117,0) — acima do p90, entrou em warning por causa da corrida mais forte de hoje empilhada sobre o Treino C de ontem", "status": "warning" },
+    { "label": "Recuperação", "value": "Apple Health parado há 31 dias (última leitura 28/06) — FC repouso e sono seguem cegos; guardrail + esforço agudo assumem o peso da decisão", "status": "warning" },
+    { "label": "Força (7 dias)", "value": "0 feitas + 0 previstas nesta janela — próximo ciclo (Treino A) segue adiado enquanto o esforço agudo está em warning", "status": "ok" }
   ],
   "days": [
     {
-      "date": "2026-07-28",
-      "weekday": "Ter",
-      "status": "done",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino C — pernas/posterior/core (fecha o ciclo A→B→C)",
-          "detail": "Realizado como 'Morning Weight Training' (43 min, esforço relativo 5) no lugar da corrida fácil prevista. Pelo padrão de esforço em relação a A (23/07, esforço 9) e B (24/07, esforço 7), interpreto como o Treino C, um dia antes do planejado — mas com 96h de folga desde o Treino B, bem acima do mínimo de 48h. Sem registro de dor articular.",
-          "done": true
-        }
-      ]
-    },
-    {
       "date": "2026-07-29",
       "weekday": "Qua",
-      "status": "planned",
+      "status": "done",
       "items": [
         {
           "type": "run",
           "title": "Corrida fácil ~4 km",
-          "detail": "Z2 leve, recuperação do Treino C de ontem (perna pesada). Guardrail (0,58) e esforço agudo (48,0) seguem folgados.",
-          "done": false
+          "detail": "Realizada como 'Morning Run', 5,02 km, FC média 161, FC máx 178, esforço relativo 83 — mais forte que o Z2 leve planejado (a mais alta das corridas fáceis recentes de distância parecida). Sem dor relatada. Empurrou o esforço agudo de 3 dias para 127,0, acima do p90 (117,0) — entrou em warning. Resposta: reforçar recuperação de verdade em quinta e sexta, sem cobrar compensação.",
+          "done": true
         }
       ]
     },
@@ -45,8 +32,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 leve, mantendo volume de base a caminho do longão de sábado.",
+          "title": "Corrida bem leve ~3 km",
+          "detail": "Z2 bem leve, ritmo de conversa — recuperação de verdade após a corrida mais forte de ontem. Reduzida de ~3-4 km para ~3 km para ajudar o esforço agudo (127,0, acima do p90 117,0) a cair antes do longão de sábado.",
           "done": false
         }
       ]
@@ -59,7 +46,7 @@
         {
           "type": "run",
           "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 bem leve — véspera do longão, mantendo o corpo ativo sem acumular fadiga.",
+          "detail": "Z2 leve — véspera do longão. Se o esforço agudo ainda estiver em warning, priorizar o lado mais leve da faixa (3 km) e manter ritmo bem confortável.",
           "done": false
         }
       ]
@@ -72,7 +59,7 @@
         {
           "type": "run",
           "title": "Longão ~7 km",
-          "detail": "Mantido da janela anterior — agora com 96h de folga desde o Treino C de terça (perna pesada), bem acima do mínimo de 48h. Teto conservador (abaixo de 8,8 km — 10% sobre os 8,0 km do último longão real), sem compensar tudo de uma vez já que o atleta não completa um longão há algumas semanas.",
+          "detail": "Mantido da janela anterior. ACWR (1,17) segue tranquila e dá espaço para o longão; o cuidado desta janela é o esforço agudo de 3 dias, não a carga crônica. Teto conservador (abaixo de 8,8 km — 10% sobre os 8,0 km do último longão real), sem compensar tudo de uma vez. 96h de folga desde o Treino C de terça (perna pesada).",
           "done": false
         }
       ]
@@ -98,24 +85,37 @@
         {
           "type": "run",
           "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 leve, fecha a janela de 7 dias. Sem força nova prevista ainda — 48h exatas desde o longão de sábado, no limite mínimo; próximo Treino A fica para a rodada seguinte, com folga mais confortável.",
+          "detail": "Z2 leve. 48h desde o longão de sábado, no limite mínimo — nada de força nova ainda.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-04",
+      "weekday": "Ter",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Corrida fácil ~3-4 km",
+          "detail": "Z2 leve, fecha a janela de 7 dias. Ainda sem força nova prevista: mesmo com ~72h de folga desde o longão de sábado (o que daria espaço técnico para o Treino A), o esforço agudo desta janela entrou em warning por causa da corrida mais forte de hoje — prefiro ver esse número voltar a 'ok' antes de somar mais carga. Próximo Treino A fica para a rodada seguinte, quando o guardrail estiver folgado de novo.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Janela deslizou de 27/07-02/08 para 28/07-03/08.",
-    "Hoje (terça 28/07) o atleta não fez a corrida fácil ~4 km prevista — treinou força em vez disso ('Morning Weight Training', 43 min, esforço relativo 5). Pelo padrão de esforço de A (9) e B (7), interpretei como o Treino C, que fecha o ciclo A→B→C, adiantado em 1 dia da janela anterior (estava planejado para quarta 29/07). Ainda assim, ficou com 96h de folga desde o Treino B (24/07), bem acima do mínimo de 48h.",
-    "Como o ciclo A→B→C já somou 3 sessões nos últimos 6 dias (23, 24 e 28/07) — no teto da faixa de 2-3 sessões/semana recomendada — não iniciei um novo ciclo (Treino A) nesta janela. A análise do programa (data/private/strength_program.json) recomenda reduzir para ~2 dias de ênfase em perna em semanas de build de corrida; o próximo Treino A fica para a rodada seguinte, com folga mais confortável em relação ao longão de sábado.",
-    "O dia de quarta 29/07, antes reservado ao Treino C, virou corrida fácil de recuperação — a rotina de 'corrida leve no dia seguinte a perna pesada' foi apenas deslocada um dia mais cedo.",
-    "Longão de sábado 01/08 mantido sem alteração de volume, mas a folga desde o dia de perna pesada mais recente aumentou de 72h (na janela anterior) para 96h, já que o Treino C aconteceu hoje em vez de quarta.",
-    "Guardrail ACWR (0,58) e esforço agudo de 3 dias (48,0, abaixo do p90 de 117,0) seguem folgados — nenhum sinal de dados pediu descanso total nesta janela; o atleta segue treinando quase todo dia, como prefere.",
-    "Apple Health segue travado desde 28/06 — agora 30 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo.",
-    "Adicionei um dia na ponta da janela: segunda 03/08 (corrida fácil), fechando os 7 dias — 48h exatas desde o longão de sábado, suficiente para o limite mínimo, sem inserir força nova ainda."
+    "Janela deslizou de 28/07-03/08 para 29/07-04/08.",
+    "Hoje (quarta 29/07) o atleta fez a corrida fácil prevista, mas mais forte que o planejado: 5,02 km, FC média 161, FC máx 178, esforço relativo 83 — o mais alto entre as corridas fáceis recentes de distância parecida (20/07: 72; 27/07: 39). Sem dor relatada, mantive como corrida fácil (não foi reclassificada como qualidade), mas registrei o desvio.",
+    "Esse esforço mais alto, somado ao Treino C de ontem (28/07, esforço 5) e à corrida de 27/07 (esforço 39), levou o guardrail de esforço agudo de 3 dias a 127,0 — acima do p90 histórico (117,0) pela primeira vez em várias janelas, mudando de 'ok' para 'warning'. A ACWR de corrida (1,17) segue tranquila, então a resposta foi puxar o freio no volume de curto prazo, não no plano geral: reduzi a corrida de quinta de ~3-4 km para ~3 km, bem leve, para dar espaço de recuperação antes do longão de sábado.",
+    "Não abri o próximo ciclo de força (Treino A) nesta janela, mesmo havendo folga técnica de horário (~72h do longão de sábado até terça 04/08) — com o esforço agudo em warning, prefiro deixar o guardrail voltar a 'ok' antes de somar carga nova de perna. Segue a recomendação da análise do programa (data/private/strength_program.json) de reduzir ênfase em perna em semanas de build de corrida.",
+    "Longão de sábado 01/08 mantido sem alteração de volume (teto abaixo de 8,8 km) — a ACWR ainda dá espaço; o cuidado desta janela é o acúmulo de curto prazo, não a carga crônica.",
+    "Guardrail ACWR (1,17) segue abaixo do limiar de alerta (1,3) — nenhum sinal de dado pediu descanso total nesta janela; o atleta segue treinando quase todo dia, como prefere.",
+    "Apple Health segue travado desde 28/06 — agora 31 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo.",
+    "Adicionei um dia na ponta da janela: terça 04/08 (corrida fácil), fechando os 7 dias — força nova segue adiada até o esforço agudo voltar a 'ok'."
   ],
   "coaches": {
-    "running": "O atleta trocou a corrida fácil de hoje por um treino de força (interpretado como o Treino C, pelo padrão de esforço). Não penalizei — sem dor relatada, guardrail e esforço agudo seguem folgados (ACWR 0,58; esforço agudo 48,0 vs p90 117,0). Desloquei a corrida de recuperação pós-perna-pesada de quinta para amanhã (quarta), e mantive o longão de sábado com teto conservador (abaixo de 8,8 km), agora com folga ainda maior (96h) desde o dia de perna pesada. Recuperação via Apple Health segue cega (30 dias sem dado).",
-    "strength": "Treino C de hoje fecha o ciclo A→B→C (A em 23/07, B em 24/07), adiantado 1 dia mas com folga de 96h do Treino B — tranquilo. Como já são 3 sessões de força nos últimos 6 dias, no teto da faixa recomendada, não abri um novo ciclo (Treino A) nesta janela — segue a recomendação da análise do programa de reduzir ênfase em perna em semanas de build de corrida. Nenhum item foi trocado; mantidas as restrições de amplitude e progressão de carga do joelho reconstruído."
+    "running": "A corrida de hoje saiu do planejado: 5,02 km a FC média 161 (máx 178), esforço relativo 83 — a mais forte entre as corridas fáceis recentes de distância parecida. Sem dor relatada, não troquei a classificação (segue como corrida fácil), mas o efeito cumulativo empurrou o esforço agudo de 3 dias para 127,0, acima do p90 (117,0). Resposta: reduzi a corrida de amanhã (quinta) para ~3 km bem leve, e deixei sexta com preferência pelo lado mais leve da faixa. O longão de sábado segue como estava — a ACWR (1,17) segue folgada, então o volume semanal não é o problema, é o acúmulo dos últimos 3 dias. Recuperação via Apple Health segue cega (31 dias sem dado).",
+    "strength": "Nenhum treino de força nesta janela ainda. Havia espaço técnico de horário para abrir o Treino A perto do fim da janela (04/08, ~72h após o longão de sábado), mas com o esforço agudo de 3 dias em warning (127,0 vs p90 117,0), prefiro esperar esse número relaxar antes de somar carga de perna nova — consistente com a recomendação da análise do programa de reduzir ênfase em perna em semanas de build de corrida. Próximo Treino A fica para quando o guardrail voltar a 'ok'."
   }
 }
