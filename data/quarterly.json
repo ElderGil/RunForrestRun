@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-30T14:24:40Z",
+  "generated_at": "2026-07-31T18:04:04Z",
   "quarters": [
     {
       "label": "Q2 2024",
@@ -159,7 +159,7 @@
         "longest_run_km": 8.0
       },
       "strength": {
-        "total_sessions": 10
+        "total_sessions": 11
       }
     }
   ]
