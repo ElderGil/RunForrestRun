@@ -1,122 +1,122 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-03T16:39:49Z",
-  "window_start": "2026-08-03",
-  "window_end": "2026-08-09",
-  "summary": "Janela desliza de 31/07-06/08 para 03/08-09/08. O longão de sábado (01/08, ~7 km) não aconteceu — nenhuma atividade registrada naquele dia. No domingo (02/08), em vez da corrida fácil ~4 km prevista, o atleta fez 5,01 km bem mais intensos que o esperado: FC média 158 bpm, subindo a 174-176 bpm (perto do máximo de 176) nos últimos quilômetros — perfil de esforço tipo tempo/progressivo, não Z2 fácil — e virou PR de segmento (Silver, #35). Sem dor relatada. Como consequência, a ACWR subiu de 1,17 para 1,29: ainda 'ok', mas a só 0,01 do limiar de alerta (1,3). Por precaução, reduzo a corrida de hoje (segunda) para ~3 km bem fácil e seguro sem progressão de volume nem nova qualidade até o guardrail abrir folga de novo. Reagendei o longão perdido para este sábado (08/08), mesma distância conservadora ~7 km — sem progressão, já que não há novo dado real de longão maior para justificar subir. Treino C segue para terça 04/08, ~72h do último treino de perna pesada (Treino B, 31/07), dentro da regra de 48h; não coube uma segunda sessão de força na janela com folga suficiente do longão. Esforço agudo de 3 dias segue ok (73,0, abaixo do p90 de 118,0). Apple Health segue travado desde 28/06 — 36 dias sem dado novo — recuperação via FC de repouso/sono continua cega.",
+  "generated_at": "2026-08-10T12:15:00Z",
+  "window_start": "2026-08-10",
+  "window_end": "2026-08-16",
+  "summary": "Janela desliza de 03/08-09/08 para 10/08-16/08. Os últimos 8 dias corridos (03/08 a 09/08) não têm nenhuma atividade registrada — nem as corridas fáceis previstas nem o longão reagendado de sábado (08/08) aconteceram, e não há dado disponível sobre o motivo. A retomada veio hoje (10/08) com uma sessão de força registrada de forma genérica (esforço relativo 5, bem leve). Como consequência da pausa, a ACWR ficou 'unknown' (sem volume de corrida nos últimos 7 dias para calcular a razão) e o esforço agudo de 3 dias caiu para 5,0 — bem abaixo da baseline, coerente com o período parado. Nenhum guardrail automático aponta risco, mas 8 dias sem nenhum registro é, por si só, um sinal que merece cautela: em vez de retomar no ritmo anterior, esta janela tem só 3 corridas fáceis espaçadas, 2 sessões de força e 2 dias de descanso, reconstruindo a rotina aos poucos. O longão de sábado volta ao último volume real conhecido (~5 km, igual ao de 02/08) em vez dos 7 km programados antes da pausa — sem tentar compensar o tempo parado de uma vez. Apple Health segue travado desde 28/06 (43 dias sem dado novo); recuperação via FC de repouso/sono continua cega, decisão apoiada em ACWR + esforço agudo + observação direta do gap de atividades.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "0 feitas + 6 previstas (fácil seg/qua/qui/sex/dom, longão sáb)", "status": "ok" },
-    { "label": "Guardrail (ACWR)", "value": "1,29 (ok) — a só 0,01 do limiar de alerta (1,3), subiu de 1,17 após o esforço intenso de domingo (02/08)", "status": "ok" },
-    { "label": "Esforço agudo (3 dias)", "value": "73,0 (baseline: média 51,0 ± 50,7, p90 118,0) — ok", "status": "ok" },
-    { "label": "Recuperação", "value": "Apple Health parado há 36 dias (última leitura 28/06) — FC repouso e sono seguem cegos; decisão apoiada em ACWR + esforço agudo", "status": "warning" },
-    { "label": "Força (7 dias)", "value": "1 prevista (Treino C, terça) — só 1 sessão coube na janela com folga de 48h do longão e do último treino de perna pesada", "status": "ok" }
+    { "label": "Corridas (7 dias)", "value": "0 feitas + 3 previstas (fácil ter/sex, mais longa sáb ~5 km) — volume reduzido de propósito após 8 dias parado", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "unknown — sem corrida nos últimos 7 dias para calcular a razão; retomando com cautela extra", "status": "warning" },
+    { "label": "Esforço agudo (3 dias)", "value": "5,0 (baseline: média 49,3 ± 50,6, p90 118,0) — bem abaixo do normal, coerente com a pausa", "status": "ok" },
+    { "label": "Recuperação", "value": "Apple Health parado há 43 dias (última leitura 28/06) — FC repouso e sono seguem cegos; decisão apoiada em observação direta de 8 dias sem nenhuma atividade registrada + guardrails de esforço", "status": "warning" },
+    { "label": "Força (7 dias)", "value": "2 previstas (retomada da sequência A→B→C: hoje + quarta) — volume reduzido de propósito nesta janela de retorno, 3ª sessão fica para a próxima janela", "status": "ok" }
   ],
   "days": [
     {
-      "date": "2026-08-03",
+      "date": "2026-08-10",
       "weekday": "Seg",
+      "status": "done",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino (retomada) — pernas/força",
+          "detail": "Sessão registrada no Strava de forma genérica (\"Morning Weight Training\", esforço relativo 5 — bem leve), sem detalhe de qual treino A/B/C foi executado. Assumo continuidade da sequência que estava pendente antes da pausa (o Treino C não chegou a acontecer em 04/08).",
+          "done": true
+        }
+      ]
+    },
+    {
+      "date": "2026-08-11",
+      "weekday": "Ter",
       "status": "planned",
       "items": [
         {
           "type": "run",
           "title": "Corrida fácil ~3 km",
-          "detail": "Reduzida de ~3-4 km para ~3 km por precaução: ACWR subiu para 1,29 (a só 0,01 do limiar de alerta) depois do treino de domingo (02/08), que saiu bem mais intenso que o previsto (FC média 158 bpm, chegando a 174-176 bpm). Hoje bem fácil (Z2), sem puxar.",
+          "detail": "Retomada gradual após 8 dias sem correr (última corrida em 02/08). Bem fácil (Z2), sem puxar pace nem distância. Parar/encurtar ao primeiro sinal de dor articular no joelho.",
           "done": false
         }
       ]
     },
     {
-      "date": "2026-08-04",
-      "weekday": "Ter",
+      "date": "2026-08-12",
+      "weekday": "Qua",
       "status": "planned",
       "items": [
         {
           "type": "strength",
           "title": "Treino C — pernas/posterior/core",
-          "detail": "~72h desde o último treino de perna pesada (Treino B, 31/07) — dentro da regra de 48h. Hack Machine (80 kg) é o maior ponto de atenção do programa — amplitude limitada (~90°), priorizar controle, sem progressão de carga com qualquer desconforto articular. Sem corrida planejada neste dia para não empilhar carga.",
+          "detail": "Próximo item pendente da sequência A→B→C (interrompida pela pausa). Hack Machine (80 kg) é o maior ponto de atenção do programa — amplitude limitada (~90°), priorizar controle; considerar começar com carga um pouco reduzida dado o tempo sem treinar perna pesada, sem dor relatada até o momento.",
           "done": false
         }
       ]
     },
     {
-      "date": "2026-08-05",
-      "weekday": "Qua",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 leve. ~24h depois do Treino C — carga baixa o suficiente para não conflitar com a regra de 48h, que vale para long run e qualidade, não para corrida fácil.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-06",
+      "date": "2026-08-13",
       "weekday": "Qui",
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 leve, mantém a base sem progressão enquanto a ACWR está perto do limiar de alerta.",
+          "type": "rest",
+          "title": "Descanso",
+          "detail": "8 dias corridos sem nenhuma atividade registrada (03-09/08) é um evento atípico que os guardrails automáticos não capturam sozinhos. Por precaução, espaço as sessões desta janela de retorno em vez de emendar treino todo dia, mesmo com ACWR 'unknown' e esforço agudo 'ok'.",
           "done": false
         }
       ]
     },
     {
-      "date": "2026-08-07",
+      "date": "2026-08-14",
       "weekday": "Sex",
       "status": "planned",
       "items": [
         {
           "type": "run",
           "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 leve, véspera do longão de sábado. Mantido fácil de propósito — ACWR ainda perto do limiar (1,29) — para não chegar no longão com carga acumulada.",
+          "detail": "Z2 leve, seguindo a retomada gradual. Ainda sem progressão de volume — ACWR segue 'unknown' e a prioridade é reconstruir a rotina com segurança.",
           "done": false
         }
       ]
     },
     {
-      "date": "2026-08-08",
+      "date": "2026-08-15",
       "weekday": "Sáb",
       "status": "planned",
       "items": [
         {
           "type": "run",
-          "title": "Longão ~7 km",
-          "detail": "Reagendado do sábado passado (01/08), que não aconteceu. Mesma distância conservadora, sem progressão de volume — a ACWR segue perto do limiar de alerta (1,29) e não há novo dado real de longão maior para justificar subir. Ritmo bem fácil (Z2), parar/encurtar ao primeiro sinal de dor articular no joelho.",
+          "title": "Corrida ~5 km",
+          "detail": "Volta ao último volume real conhecido (5,01 km em 02/08), não aos 7 km do longão que estava programado antes da pausa — sem tentar compensar o tempo parado de uma vez. Ritmo bem fácil (Z2), parar/encurtar ao primeiro sinal de dor articular no joelho. ~72h desde o Treino C de quarta (12/08), dentro da regra de 48h.",
           "done": false
         }
       ]
     },
     {
-      "date": "2026-08-09",
+      "date": "2026-08-16",
       "weekday": "Dom",
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida fácil ~3-4 km",
-          "detail": "Z2 leve, recuperação do longão de sábado. Fecha a janela de 7 dias.",
+          "type": "rest",
+          "title": "Descanso",
+          "detail": "Recuperação do dia seguinte ao maior esforço da janela (corrida de sábado), fechando os 7 dias com a rotina sendo reconstruída aos poucos.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Janela deslizou de 31/07-06/08 para 03/08-09/08.",
-    "O longão de sábado (01/08, ~7 km) planejado não foi realizado — nenhuma atividade registrada nesse dia. Não tentei compensar integralmente de uma vez (respeita a regra dos 10%); reagendei para este sábado (08/08), mesma distância conservadora ~7 km, sem progressão de volume.",
-    "No domingo (02/08), em vez da corrida fácil ~4 km prevista, o atleta fez 5,01 km bem mais intensos: FC média 158 bpm, subindo a 174-176 bpm (perto do máximo de 176) nos últimos quilômetros — perfil de esforço tipo tempo/progressivo, não Z2 fácil. Virou PR de segmento (Silver, #35) e novo melhor tempo registrado pelo Strava. Sem dor relatada.",
-    "Como consequência desse esforço, a ACWR subiu de 1,17 para 1,29 — ainda 'ok', mas a só 0,01 do limiar de alerta (1,3). Por precaução, reduzi a corrida de hoje (segunda) para ~3 km bem fácil e mantive os dias seguintes sem progressão de volume nem nova sessão de qualidade, até o guardrail abrir folga de novo.",
-    "Esforço agudo (3 dias) segue ok (73,0, baseline p90 118,0) — sem sinal de sobrecarga por esse guardrail, mesmo com o esforço intenso de domingo.",
-    "Treino C mantido para terça 04/08, ~72h do último treino de perna pesada (Treino B, 31/07) — dentro da regra de 48h ligada ao joelho reconstruído.",
-    "Só 1 sessão de força coube nesta janela (Treino C): não havia como encaixar uma segunda sessão (ex. Treino A) com folga de 48h tanto do Treino C quanto do longão de sábado dentro dos 7 dias — fica para a próxima janela.",
-    "Apple Health segue travado desde 28/06 — agora 36 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo.",
-    "Adicionei três dias na ponta da janela: sexta 07/08 (fácil), sábado 08/08 (longão reagendado) e domingo 09/08 (recuperação), fechando os 7 dias."
+    "Janela deslizou de 03/08-09/08 para 10/08-16/08.",
+    "Os 8 dias entre 03/08 e 09/08 não têm nenhuma atividade registrada — nem as corridas fáceis previstas, nem o longão reagendado de sábado (08/08). Não há dado disponível sobre o motivo (dor, viagem, doença etc.); não presumo causa.",
+    "Retomada hoje (10/08) com uma sessão de força registrada de forma genérica no Strava (esforço relativo 5, bem leve), sem indicar qual treino A/B/C foi feito. Assumi continuidade da sequência pendente (Treino C, que não chegou a acontecer em 04/08 antes da pausa) e mantive esse item para quarta (12/08).",
+    "A ACWR ficou 'unknown' — sem volume de corrida nos últimos 7 dias para calcular a razão. O esforço agudo de 3 dias caiu para 5,0 (baseline p90 118,0), bem abaixo do normal, coerente com o período parado.",
+    "Por causa da pausa de 8 dias — sinal que os guardrails automáticos não capturam sozinhos, já que ambos ficaram 'unknown'/'ok' justamente por falta de carga recente — priorizei uma janela com só 3 corridas fáceis espaçadas, 2 sessões de força e 2 dias de descanso, em vez de retomar no ritmo da janela anterior. Não é uma quota fixa de descanso; é resposta direta ao gap real de atividades.",
+    "O longão de sábado volta ao último volume real conhecido (~5 km, igual ao de 02/08) em vez dos 7 km que estavam programados antes da pausa — sem tentar compensar o tempo parado de uma vez (respeita a regra dos 10%).",
+    "Treino C (quarta) mantém a cautela padrão na Hack Machine (80 kg): amplitude limitada a ~90°, priorizar controle; sugiro considerar carga inicial um pouco reduzida dado o tempo sem treinar perna pesada — decisão final no dia, conforme houver ou não desconforto.",
+    "Só 2 sessões de força nesta janela (retomada gradual) em vez das 2-3 de rotina — a 3ª fica para a próxima janela, quando a consistência estiver mais reestabelecida.",
+    "Apple Health segue travado desde 28/06 — agora 43 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo + observação direta do gap de atividades."
   ],
   "coaches": {
-    "running": "O longão de sábado (01/08) não aconteceu, e domingo (02/08) virou uma corrida bem mais intensa que a fácil prevista — FC chegando perto do máximo e um PR de segmento. Sem dor relatada, mas a ACWR subiu para 1,29 (a só 0,01 do limiar de alerta), então sigo com cautela: hoje bem fácil, sem progressão de volume nem qualidade nova esta semana. Reagendei o longão para este sábado, mesma distância conservadora de ~7 km, ritmo bem fácil.",
-    "strength": "Treino C segue para terça 04/08, ~72h do Treino B (31/07) — dentro da regra de 48h ligada ao joelho reconstruído. Hack Machine (80 kg) é o ponto de maior atenção, amplitude limitada, sem progressão de carga com qualquer desconforto articular. Não coube uma segunda sessão de força com folga segura do longão reagendado de sábado, então a janela fica com só 1 sessão desta vez."
+    "running": "Os últimos 8 dias (03-09/08) não têm nenhuma corrida registrada — nem as fáceis previstas, nem o longão reagendado de sábado. A ACWR ficou 'unknown' por falta de volume recente, e o esforço agudo caiu bem abaixo da baseline. Sem sinal de dor e sem guardrail em alerta, mas 8 dias parado merece cautela extra que os números sozinhos não mostram: retomo com 3 corridas fáceis espaçadas nesta janela, terminando num longão de ~5 km — o mesmo volume da última corrida real, não os 7 km que estavam programados antes da pausa.",
+    "strength": "Só uma sessão de força na pausa (hoje, 10/08), registrada sem detalhe de qual treino foi feito — assumo que seguimos a sequência pendente (Treino C) na quarta. Hack Machine (80 kg) continua sendo o ponto de maior atenção do programa: amplitude limitada, priorizar controle, e vale começar com carga um pouco mais leve dado o tempo parado. Deixo só 2 sessões nesta janela para não empilhar carga de perna em cima da retomada da corrida — a 3ª volta na próxima janela."
   }
 }
