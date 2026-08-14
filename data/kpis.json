@@ -1,24 +1,24 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-10T12:08:40Z",
+  "generated_at": "2026-08-14T11:39:09Z",
   "period": {
     "month": 8,
     "year": 2026,
     "label": "Agosto 2026"
   },
   "running": {
-    "total_distance_km": 5.0,
-    "total_sessions": 1,
-    "avg_pace_min_km": 5.79,
-    "avg_heart_rate_bpm": 158,
+    "total_distance_km": 9.2,
+    "total_sessions": 2,
+    "avg_pace_min_km": 5.71,
+    "avg_heart_rate_bpm": 150,
     "max_heart_rate_bpm": 176,
-    "total_elevation_m": 65,
+    "total_elevation_m": 94,
     "longest_run_km": 5.0,
-    "sessions_per_week": 0.7,
+    "sessions_per_week": 1.0,
     "guardrail": {
       "metric": "acute_chronic_ratio",
-      "value": 0.0,
-      "status": "unknown",
+      "value": 0.7,
+      "status": "ok",
       "threshold_warning": 1.3,
       "threshold_danger": 1.5,
       "label": "Razão carga aguda/crônica",
@@ -26,17 +26,17 @@
     }
   },
   "strength": {
-    "total_sessions": 1,
-    "sessions_per_week": 0.7,
+    "total_sessions": 3,
+    "sessions_per_week": 1.5,
     "focus": "lower_body"
   },
   "load_guardrail": {
     "metric": "acute_effort_load",
     "window_days": 3,
-    "value": 5.0,
+    "value": 14.0,
     "label": "Esforço agudo (corrida+força+bike)",
     "description": "Soma do esforço relativo (Strava) dos últimos 3 dias vs. a distribuição histórica (P90) do próprio atleta. Cobre a força, que a ACWR (só corrida) não vê.",
-    "baseline_mean": 49.3,
+    "baseline_mean": 48.9,
     "baseline_stdev": 50.6,
     "baseline_p90": 118.0,
     "status": "ok"
