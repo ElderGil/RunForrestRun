@@ -1,82 +1,17 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-14T11:50:00Z",
-  "window_start": "2026-08-14",
-  "window_end": "2026-08-20",
-  "summary": "Janela desliza de 10/08-16/08 para 14/08-20/08. A retomada gradual planejada na janela anterior não seguiu o roteiro previsto: o Treino C de quarta (12/08) não aconteceu (nenhuma atividade registrada nesse dia), o descanso de quinta (13/08) virou uma sessão de força genérica (esforço relativo 6, ~47 min — assumo ser o Treino A pendente), e a corrida fácil prevista para hoje (14/08) também não aconteceu: em vez dela, já há registrada uma sessão de força mais longa e intensa (esforço relativo 8, ~71 min — assumo Treino B). Ou seja, três sessões de força seguidas (10/08, 13/08, 14/08) substituíram os dois dias de corrida que estavam no plano. Nenhum guardrail automático aponta risco — ACWR em 0,7 (bem abaixo do limite) e esforço agudo de 3 dias em 14,0 (baseline p90: 118,0) — mas o padrão em si (corrida perdendo espaço para força três vezes seguidas) é um sinal que os guardrails sozinhos não capturam. Por isso, esta janela prioriza reancorar pelo menos duas corridas fáceis reais em vez de progredir volume: um longão de retomada de ~5 km no sábado (mesmo volume da última corrida real, sem tentar compensar os dias perdidos) e uma corrida fácil na quarta. A sequência de força retoma no Treino C na segunda (17/08), respeitando as ≥48h do longão de sábado, seguida de descanso na terça para não empilhar corrida em cima de um dia de perna pesada, e fecha com o Treino A na quinta (20/08). Apple Health segue travado desde 28/06 (47 dias sem dado novo); recuperação via FC de repouso/sono continua cega, decisão apoiada em ACWR + esforço agudo + observação direta do padrão recente.",
+  "generated_at": "2026-08-19T14:45:00Z",
+  "window_start": "2026-08-19",
+  "window_end": "2026-08-25",
+  "summary": "Janela desliza de 14/08-20/08 para 19/08-25/08. Das duas corridas fáceis planejadas na janela anterior, o longão de sábado (15/08) não aconteceu (nenhuma atividade registrada), e a corrida de hoje (quarta, 19/08) segue em aberto — ainda não há registro no Strava. O Treino C planejado para segunda (17/08) também não aconteceu naquele dia, mas uma sessão de força (esforço relativo 7, ~54 min) foi registrada no dia seguinte, terça (18/08) — no lugar do descanso que estava previsto ali. Assumo que essa sessão foi o Treino C pendente, o que fecha a sequência A(13/08)→B(14/08)→C(18/08) com um dia de atraso: uma resolução positiva da lacuna sinalizada na janela anterior. Ainda assim, o padrão de fundo persiste: a corrida segue perdendo espaço para a força (agora a segunda semana seguida com um longão de fim de semana não realizado), e o volume de corrida do mês continua muito baixo (9,2 km em 2 sessões em agosto; última corrida real em 11/08, há 8 dias). Com a meia de Pomerode em 17/10 (cerca de 8,5 semanas), esse ritmo é o risco real agora — não sobrecarga (ACWR não calculável por falta de volume recente; esforço agudo de 3 dias em 7,0, bem abaixo do baseline). Por isso, esta janela mantém a mesma estratégia: sem progredir volume, reancorar duas corridas fáceis reais (hoje, carregada da janela anterior, e um longão de retomada no sábado, no mesmo volume da última corrida real). A sequência de força retoma no Treino A (quinta, 20/08) e segue para o Treino B (segunda, 24/08), ~48h após o longão de sábado. Os três descansos da janela (sexta, domingo, terça) não são por quota fixa — são espaçamento de segurança para o joelho reconstruído: sexta separa o Treino A de quinta do longão de sábado, domingo recupera do longão, e terça evita empilhar corrida em cima do Treino B de segunda. Apple Health segue travado desde 28/06 (52 dias sem dado novo); recuperação via FC de repouso/sono continua cega, decisão apoiada em ACWR + esforço agudo + observação direta do padrão recente.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "0 feitas nos últimos 7 dias (última corrida em 11/08) + 2 previstas nesta janela (longão ~5 km sábado, fácil ~3-4 km quarta) — prioridade é reancorar a rotina de corrida, não progredir volume", "status": "ok" },
-    { "label": "Guardrail (ACWR)", "value": "0,7 (ok) — bem abaixo do limite de 1,3; volume de corrida ainda baixo após a lacuna recente, sem urgência de reduzir carga", "status": "ok" },
-    { "label": "Esforço agudo (3 dias)", "value": "14,0 (baseline: média 48,9 ± 50,6, p90 118,0) — bem abaixo do normal, sem sinal de sobrecarga", "status": "ok" },
-    { "label": "Recuperação", "value": "Apple Health parado há 47 dias (última leitura 28/06) — FC repouso e sono seguem cegos; decisão apoiada em ACWR + esforço agudo + observação direta do padrão dos últimos dias", "status": "warning" },
-    { "label": "Força (7 dias)", "value": "1 feita hoje (Treino B assumido) + 2 previstas (Treino C segunda, Treino A quinta) — retomando a sequência A→B→C após o C de 12/08 não ter acontecido", "status": "ok" }
+    { "label": "Corridas (7 dias)", "value": "0 feitas nos últimos 7 dias (última corrida real em 11/08, há 8 dias) + 2 previstas nesta janela (fácil ~3-4 km hoje, longão de retomada ~5 km sábado) — volume do mês (9,2 km em 2 sessões) está crítico para a meia de 17/10", "status": "warning" },
+    { "label": "Guardrail (ACWR)", "value": "0,0 (não calculável — volume recente insuficiente). O risco atual não é sobrecarga, é volume de corrida baixo demais para a meta de outubro", "status": "unknown" },
+    { "label": "Esforço agudo (3 dias)", "value": "7,0 (baseline: média 48,0 ± 50,6, p90 118,0) — bem abaixo do normal, sem sinal de sobrecarga", "status": "ok" },
+    { "label": "Recuperação", "value": "Apple Health parado há 52 dias (última leitura 28/06) — FC repouso e sono seguem cegos; decisão apoiada em ACWR + esforço agudo + observação direta do padrão dos últimos dias", "status": "warning" },
+    { "label": "Força (7 dias)", "value": "1 feita nos últimos 7 dias (18/08, assumido Treino C pendente, fechando a sequência A→B→C) + 2 previstas (Treino A quinta, Treino B segunda)", "status": "ok" }
   ],
   "days": [
-    {
-      "date": "2026-08-14",
-      "weekday": "Sex",
-      "status": "done",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino (força) — sessão já registrada",
-          "detail": "Sessão registrada no Strava de forma genérica (\"Morning Weight Training\", ~71 min, esforço relativo 8 — a mais longa/intensa das três sessões recentes), sem detalhe de qual treino A/B/C foi executado. Assumo Treino B (posterior/costas/peito) por ser o próximo pendente na sequência A→B→C, já que o C de 12/08 ficou incompleto e o A parece ter sido feito em 13/08. A corrida fácil que estava planejada para hoje não aconteceu — não empilho corrida em cima desta sessão já feita.",
-          "done": true
-        }
-      ]
-    },
-    {
-      "date": "2026-08-15",
-      "weekday": "Sáb",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Corrida ~5 km",
-          "detail": "Retomada da corrida depois de 3 dias sem correr (última em 11/08). Volta ao último volume real conhecido (~5 km), sem tentar compensar de uma vez os dias de corrida perdidos nesta semana. Ritmo bem fácil (Z2), parar/encurtar ao primeiro sinal de dor articular no joelho.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-16",
-      "weekday": "Dom",
-      "status": "planned",
-      "items": [
-        {
-          "type": "rest",
-          "title": "Descanso",
-          "detail": "Recuperação do dia seguinte ao longão de sábado, fechando a primeira metade da janela.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-17",
-      "weekday": "Seg",
-      "status": "planned",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino C — pernas/posterior/core",
-          "detail": "Próximo item pendente da sequência A→B→C (o C de 12/08 não chegou a acontecer). ~48h desde o longão de sábado, dentro da regra de perna pesada. Hack Machine (carga alta) é o maior ponto de atenção do programa — amplitude limitada (~90°), priorizar controle; sem dor relatada até o momento.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-18",
-      "weekday": "Ter",
-      "status": "planned",
-      "items": [
-        {
-          "type": "rest",
-          "title": "Descanso",
-          "detail": "Um dia de folga logo após o Treino C de perna pesada, antes de retomar a corrida na quarta — evita empilhar corrida em cima de um dia de perna pesada no joelho reconstruído.",
-          "done": false
-        }
-      ]
-    },
     {
       "date": "2026-08-19",
       "weekday": "Qua",
@@ -85,7 +20,7 @@
         {
           "type": "run",
           "title": "Corrida fácil ~3-4 km",
-          "detail": "Segunda corrida da janela, mesma lógica da anterior: Z2 leve, sem progressão de volume por enquanto — prioridade é reancorar a rotina de corrida com dois treinos reais nesta janela, não progredir. Parar/encurtar ao primeiro sinal de dor articular no joelho.",
+          "detail": "Carregada da janela anterior — ainda não registrada no Strava até a geração deste plano. Z2 leve, sem progressão de volume; prioridade é reancorar a rotina de corrida. Parar/encurtar ao primeiro sinal de dor articular no joelho.",
           "done": false
         }
       ]
@@ -97,27 +32,91 @@
       "items": [
         {
           "type": "strength",
-          "title": "Treino A — pernas/tríceps",
-          "detail": "Fecha a sequência A→B→C nesta janela. ~48h desde a corrida de quarta. Leg Press com amplitude limitada (~90°), mesma cautela padrão dos demais itens de perna pesada do programa.",
+          "title": "Treino A — pernas+tríceps",
+          "detail": "Retoma a sequência A→B→C após o C (assumido) ter sido concluído em 18/08. Leg Press 45° com amplitude limitada (~90°); sem dor relatada até o momento.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-21",
+      "weekday": "Sex",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso",
+          "detail": "Espaçamento de segurança entre o Treino A de quinta (perna pesada) e o longão de sábado — protege o joelho reconstruído, não é quota fixa.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-22",
+      "weekday": "Sáb",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Corrida ~5 km",
+          "detail": "Longão de retomada, no mesmo volume da última corrida real (11/08), sem tentar compensar os dias de corrida perdidos nas últimas duas semanas. Ritmo bem fácil (Z2), parar/encurtar ao primeiro sinal de dor articular no joelho.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-23",
+      "weekday": "Dom",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso",
+          "detail": "Recuperação do longão de sábado — joelho reconstruído + peso atual pedem cautela mesmo sem sinal de guardrail.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-24",
+      "weekday": "Seg",
+      "status": "planned",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino B — posterior/costas/peito",
+          "detail": "~48h desde o longão de sábado, dentro da regra de perna pesada (Agachamento Pêndulo e Leg Articulado com amplitude/carga controladas). Segue a sequência A→B→C.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-25",
+      "weekday": "Ter",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso",
+          "detail": "Um dia de folga logo após o Treino B de perna pesada — evita empilhar corrida em cima de um dia de perna pesada no joelho reconstruído.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Janela deslizou de 10/08-16/08 para 14/08-20/08.",
-    "O Treino C planejado para quarta (12/08) não aconteceu — nenhuma atividade registrada nesse dia. A sequência A→B→C ficou pendente nesse ponto.",
-    "Em vez do descanso planejado para quinta (13/08), o atleta registrou uma sessão de força genérica (esforço relativo 6, ~47 min). Assumo que foi o Treino A, dando continuidade à sequência pendente, mas sem confirmação de detalhe.",
-    "Em vez da corrida fácil planejada para hoje, sexta (14/08), já há uma sessão de força registrada (esforço relativo 8, ~71 min — a mais longa das três recentes). Assumo Treino B. Não insiro corrida no mesmo dia dessa sessão já feita.",
-    "No total, três sessões de força seguidas (10/08, 13/08, 14/08) substituíram os dois dias de corrida que estavam previstos. Nenhum guardrail aponta risco (ACWR 0,7 ok; esforço agudo 14,0 ok), mas esse padrão por si só é um sinal — a prioridade desta janela passa a ser reancorar corrida, não progredir volume.",
-    "Corrida de sábado volta ao último volume real conhecido (~5 km) em vez de tentar compensar os dias perdidos de uma vez.",
-    "Treino C (segunda, 17/08) retoma a sequência pendente, respeitando ≥48h do longão de sábado; mantenho a cautela padrão de amplitude limitada na Hack Machine.",
-    "Inseri um descanso na terça (18/08), logo após o Treino C de perna pesada, antes de retomar a corrida na quarta — evita empilhar corrida em cima de um dia de perna pesada.",
-    "Treino A fecha a sequência A→B→C nesta janela na quinta (20/08), ~48h após a corrida de quarta.",
-    "Apple Health segue travado desde 28/06 — agora 47 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo + observação direta do padrão dos últimos dias."
+    "Janela deslizou de 14/08-20/08 para 19/08-25/08.",
+    "O longão planejado para sábado (15/08) não aconteceu — nenhuma atividade registrada nesse dia.",
+    "A corrida fácil planejada para hoje, quarta (19/08), segue em aberto — ainda não registrada no Strava até a geração deste plano; mantida sem alteração.",
+    "O Treino C planejado para segunda (17/08) não aconteceu naquele dia, mas uma sessão de força (esforço relativo 7, ~54 min) foi registrada no dia seguinte, terça (18/08) — no lugar do descanso previsto ali. Assumo que foi o Treino C pendente, fechando a sequência A(13/08)→B(14/08)→C(18/08) com um dia de atraso.",
+    "Padrão de fundo persiste: pela segunda janela seguida, um longão de fim de semana planejado não aconteceu. Volume de corrida do mês (9,2 km em 2 sessões) está crítico para a meia de 17/10 — o risco real agora é volume baixo demais, não sobrecarga (ACWR não calculável por falta de dado recente; esforço agudo em 7,0, bem abaixo do baseline).",
+    "Mantida a mesma estratégia de reancoragem: sem progredir volume, corrida de sábado volta ao último volume real conhecido (~5 km) em vez de compensar os dias perdidos de uma vez.",
+    "Sequência de força retoma no Treino A (quinta, 20/08) e segue para o Treino B (segunda, 24/08), ~48h após o longão de sábado.",
+    "Os três descansos da janela (sexta 21/08, domingo 23/08, terça 25/08) são espaçamento de segurança em torno dos dias de perna pesada e do longão — não quota fixa de calendário.",
+    "Apple Health segue travado desde 28/06 — agora 52 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo + observação direta do padrão recente."
   ],
   "coaches": {
-    "running": "Nos últimos dias, a corrida perdeu espaço para a força três vezes seguidas: nem o Treino C planejado nem as duas corridas fáceis da janela anterior aconteceram como previsto, e sim três sessões de força. Os guardrails automáticos seguem tranquilos (ACWR 0,7, esforço agudo 14,0, ambos bem abaixo do limite), mas esse padrão por si só merece atenção — sem retomar a rotina de corrida, o volume não evolui e a base para a meia de outubro fica comprometida. Por isso, priorizo reancorar duas corridas fáceis reais nesta janela (sábado e quarta) em vez de mexer no volume: um longão de retomada de ~5 km — igual à última corrida real, sem compensar os dias perdidos de uma vez — e uma corrida fácil no meio da semana.",
-    "strength": "As sessões de força seguem acontecendo de forma genérica no Strava, sem indicar qual treino A/B/C foi executado, o que dificulta rastrear a sequência com precisão — assumo continuidade (B hoje, após A em 13/08, já que o C de 12/08 ficou pendente). Mantenho a sequência A→B→C: o C entra na segunda, respeitando as ≥48h do longão de sábado, com a cautela padrão de amplitude limitada na Hack Machine; o A fecha a janela na quinta. Inseri um descanso logo depois do C para não empilhar corrida em cima de um dia de perna pesada."
+    "running": "Pela segunda janela seguida, um longão de fim de semana planejado não aconteceu, e a corrida de hoje ainda está em aberto. Os guardrails automáticos não apontam sobrecarga (esforço agudo em 7,0, bem abaixo do baseline) — pelo contrário: a ACWR nem consegue ser calculada porque o volume de corrida está baixo demais. Com a meia de Pomerode a ~8,5 semanas (17/10) e apenas 9,2 km rodados em agosto, esse é o risco real agora. Mantenho a estratégia de reancoragem sem progredir volume: a corrida de hoje segue como estava, e o longão de sábado volta ao mesmo volume da última corrida real (~5 km), sem tentar compensar as duas semanas perdidas de uma vez.",
+    "strength": "A sessão de força registrada terça-feira (18/08), no lugar do descanso previsto, fecha a sequência A→B→C pendente — assumo que foi o Treino C, dado o padrão de retomar sempre o próximo item pendente. A sequência recomeça no Treino A na quinta e segue para o Treino B na segunda, ambos respeitando as ≥48h de distância do longão de sábado. Mantida a cautela padrão de amplitude limitada nos exercícios de perna pesada (Leg Press, Agachamento Pêndulo) — sem dor relatada até o momento."
   }
 }
