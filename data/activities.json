@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-20T14:13:06Z",
+  "generated_at": "2026-08-24T11:06:47Z",
   "activities": [
     {
       "id": "11665837342",
@@ -2986,11 +2986,24 @@
       "distance_km": 5.02,
       "duration_min": 29.6,
       "pace_min_km": 5.89,
-      "avg_heart_rate_bpm": 145,
-      "max_heart_rate_bpm": 165,
+      "avg_heart_rate_bpm": null,
+      "max_heart_rate_bpm": null,
       "elevation_m": 24,
       "relative_effort": 43,
       "name": "Morning Run"
+    },
+    {
+      "id": "19870519251",
+      "date": "2026-08-23",
+      "type": "Run",
+      "distance_km": 5.03,
+      "duration_min": 30.1,
+      "pace_min_km": 5.98,
+      "avg_heart_rate_bpm": 154,
+      "max_heart_rate_bpm": 174,
+      "elevation_m": 105,
+      "relative_effort": 65,
+      "name": "Afternoon Run"
     }
   ]
 }
