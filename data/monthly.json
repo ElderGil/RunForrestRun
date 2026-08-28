@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-24T11:06:47Z",
+  "generated_at": "2026-08-28T16:42:29Z",
   "months": [
     {
       "month": "2026-01",
@@ -88,7 +88,7 @@
       "avg_pace_min_km": 5.83,
       "avg_heart_rate_bpm": 152,
       "elevation_m": 223,
-      "strength_sessions": 4
+      "strength_sessions": 6
     }
   ]
 }

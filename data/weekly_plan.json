@@ -1,69 +1,17 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-08-24T14:20:00Z",
-  "window_start": "2026-08-24",
-  "window_end": "2026-08-30",
-  "summary": "Janela desliza de 20/08-26/08 para 24/08-30/08. O longão de retomada planejado para sábado (22/08) não aconteceu, mas no domingo (23/08) — dia que estava reservado para descanso — o atleta correu 5,03 km (FC média 154 bpm, esforço relativo 65, mais intenso que a corrida de 20/08 na mesma distância). Duas corridas em 4 dias sem espaçamento suficiente (20/08 e 23/08) elevaram o guardrail ACWR para 1,65, cruzando pela primeira vez o limiar de 'danger' (≥1,5). O esforço agudo de 3 dias segue ok (65,0, bem abaixo do p90 histórico de 118,0), mas o ACWR já é suficiente para acionar a regra de dados: descanso obrigatório hoje. Isso empurra o Treino A de força — já adiado uma vez de quinta (20/08) para hoje (24/08) — para terça (25/08), e toda a semana passa a priorizar recuperação: Treino A e Treino B mantidos na sequência fixa mas com carga/amplitude reduzidas, sem corrida de qualidade nem longão, e só uma corrida fácil no sábado (29/08) — mesmo volume conservador da semana anterior, reintroduzida perto do fim da janela porque é quando a corrida de domingo deve sair da janela móvel de 7 dias do ACWR. Apple Health segue travado desde 28/06 (~57 dias sem dado novo); recuperação via FC de repouso/sono continua cega, decisão apoiada em ACWR + esforço agudo + observação direta do padrão recente.",
+  "generated_at": "2026-08-28T16:45:00Z",
+  "window_start": "2026-08-28",
+  "window_end": "2026-09-03",
+  "summary": "Janela desliza de 24/08-30/08 para 28/08-03/09. O guardrail ACWR normalizou: caiu de 1,65 (danger, na janela anterior) para 1,04 (ok) — as duas corridas de 20/08 e 23/08 saíram da janela móvel de 7 dias e a carga crônica acompanhou. O esforço agudo de 3 dias está muito baixo (5,0 contra p90 histórico de 118,0): os últimos dias foram só dois treinos de força leves (25/08 e 26/08, assumidos Treino A e Treino B, feitos em dias seguidos em vez de espaçados) e descanso em 27/08 e hoje 28/08 (o atleta treina de manhã; a manhã passou sem atividade registrada). Com os dois guardrails em ok e bastante folga de carga, a janela retoma a rotina: corrida fácil no sábado (29/08) e uma primeira progressão suave do longão para ~6 km na terça (01/09), já de olho na meia de 17/10; a sequência fixa de força retoma em Treino C no domingo (30/08) e Treino A na quarta (02/09), com amplitude limitada nos itens de flexão profunda e sem progressão de carga. Apple Health segue travado desde 28/06 (~61 dias sem dado novo): FC de repouso e sono continuam cegos e a decisão se apoia em ACWR + esforço agudo.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "2 feitas nos últimos 7 dias (20/08 e 23/08, 5 km cada) sem espaçamento suficiente entre elas — foi o que elevou o ACWR para danger; nesta janela, só 1 corrida fácil prevista (sábado, mesmo volume anterior, sem progressão)", "status": "warning" },
-    { "label": "Guardrail (ACWR)", "value": "1,65 (danger) — acima do limiar de 1,5, motiva descanso obrigatório hoje e redução geral de volume/intensidade da semana", "status": "danger" },
-    { "label": "Esforço agudo (3 dias)", "value": "65,0 (baseline: média 48,7 ± 50,3, p90 118,0) — dentro do normal, não é o sinal que disparou a cautela desta semana", "status": "ok" },
-    { "label": "Recuperação", "value": "Apple Health parado há ~57 dias (última leitura 28/06) — FC repouso e sono seguem cegos; decisão apoiada em ACWR + esforço agudo + observação direta do padrão dos últimos dias", "status": "warning" },
-    { "label": "Força (7 dias)", "value": "0 feitas nos últimos 7 dias (última em 18/08, Treino C assumido, há 6 dias); 2 previstas nesta janela (Treino A terça, Treino B quinta), com carga reduzida dado o guardrail", "status": "warning" }
+    { "label": "Corridas (7 dias)", "value": "1 feita nos últimos 7 dias (23/08, 5 km). Nesta janela: 2 corridas fáceis — sábado (~5 km, sem progressão) e terça (~6 km, primeira progressão suave do longão rumo à meia de 17/10).", "status": "ok" },
+    { "label": "Guardrail (ACWR)", "value": "1,04 (ok) — normalizou depois de bater 1,65 (danger) na janela anterior; as corridas de 20/08 e 23/08 saíram da janela móvel de 7 dias. Volta a haver margem para progredir volume com cautela.", "status": "ok" },
+    { "label": "Esforço agudo (3 dias)", "value": "5,0 (baseline: média 49,6 ± 50,2, p90 118,0) — muito baixo, folga grande; os últimos 3 dias foram 2 treinos de força leves + descanso.", "status": "ok" },
+    { "label": "Recuperação", "value": "Apple Health parado desde 28/06 (~61 dias, última leitura) — FC de repouso e sono seguem cegos; decisão apoiada em ACWR + esforço agudo.", "status": "warning" },
+    { "label": "Força (7 dias)", "value": "2 feitas nos últimos 7 dias (25/08 e 26/08, assumidas Treino A e Treino B, em dias seguidos). A sequência fixa retoma em Treino C (domingo) e Treino A (quarta) — 2 sessões nesta janela.", "status": "ok" }
   ],
   "days": [
-    {
-      "date": "2026-08-24",
-      "weekday": "Seg",
-      "status": "planned",
-      "items": [
-        {
-          "type": "rest",
-          "title": "Descanso obrigatório",
-          "detail": "ACWR em 1,65 (danger, acima do limiar de 1,5) por causa das duas corridas de 20/08 e 23/08 sem espaçamento suficiente. Por regra de dados, descanso é obrigatório hoje — não é quota de calendário. O Treino A que estava planejado para hoje (já era o segundo reagendamento) passa para terça (25/08).",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-25",
-      "weekday": "Ter",
-      "status": "planned",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino A — pernas+tríceps (carga reduzida)",
-          "detail": "Segundo reagendamento (de quinta 20/08 para hoje 24/08, agora para terça 25/08, ≥48h após a corrida de domingo 23/08). Guardrail ACWR ainda em recuperação nesta janela: manter Leg Press 45° com amplitude limitada (~90°) e reduzir 1 série dos itens de perna pesada (Leg Press, Cadeira Extensora) em relação à base — sem progredir carga. Sem dor articular relatada até o momento.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-26",
-      "weekday": "Qua",
-      "status": "planned",
-      "items": [
-        {
-          "type": "rest",
-          "title": "Descanso",
-          "detail": "Recuperação do Treino A de terça e espaçamento antes do Treino B de quinta — semana de guardrail em danger prioriza recuperação, sem empilhar carga de perna.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-08-27",
-      "weekday": "Qui",
-      "status": "planned",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino B — posterior/costas/peito (carga reduzida)",
-          "detail": "≥48h após o Treino A de terça, dentro da sequência A→B→C. Agachamento Pêndulo e Leg Articulado com amplitude limitada (~90°) e sem progressão de carga, seguindo a recomendação de reduzir volume de perna em semanas de guardrail warning/danger. Sem dor relatada até o momento.",
-          "done": false
-        }
-      ]
-    },
     {
       "date": "2026-08-28",
       "weekday": "Sex",
@@ -72,7 +20,7 @@
         {
           "type": "rest",
           "title": "Descanso",
-          "detail": "Espaçamento de segurança antes de reintroduzir a corrida no sábado — protege o joelho reconstruído e dá mais uma janela para o ACWR normalizar.",
+          "detail": "O atleta treina de manhã e a manhã passou sem atividade registrada — dia de descanso de fato. Também é recuperação natural depois de Treino A e Treino B feitos em dias seguidos (25/08 e 26/08). Nenhum sinal de dados pede sessão forçada: ACWR 1,04 (ok) e esforço agudo 5,0 (ok).",
           "done": false
         }
       ]
@@ -85,7 +33,7 @@
         {
           "type": "run",
           "title": "Corrida fácil ~5 km",
-          "detail": "Reintrodução cautelosa da corrida, no mesmo volume conservador (~5 km, Z2) das semanas anteriores — sem progressão. Nesta data a corrida de domingo (23/08) já está próxima de sair da janela móvel de 7 dias do ACWR, então o risco de reacender o guardrail é menor. Parar/encurtar ao primeiro sinal de dor articular no joelho.",
+          "detail": "Retomada da rotina de corrida (última foi 23/08). Z2, ritmo conversável, mesmo volume conservador das semanas anteriores — sem progressão neste primeiro dia de volta. ACWR ok. Encurtar ao primeiro sinal de dor articular no joelho.",
           "done": false
         }
       ]
@@ -96,27 +44,79 @@
       "status": "planned",
       "items": [
         {
+          "type": "strength",
+          "title": "Treino C — pernas/posterior/core (perna reduzida)",
+          "detail": "Retoma a sequência fixa A→B→C (últimas foram A e B em 25-26/08). Esteira de aquecimento no mínimo (5 min, leve) para não virar corrida escondida. Hack Machine com amplitude limitada (~90°), 1 série a menos que a base e sem progressão de carga — é o item de maior atenção para o joelho reconstruído e vem logo após a corrida de sábado. Mesa Flexora (protetora do joelho) mantida, mas sem levar o drop set à falha. Panturrilhas e Cadeira Abdutora normais — são pró-corrida. Fica ≥48h antes da corrida de terça.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-08-31",
+      "weekday": "Seg",
+      "status": "planned",
+      "items": [
+        {
           "type": "rest",
           "title": "Descanso",
-          "detail": "Recuperação da corrida de sábado e preparação do Treino C (próxima janela) com ≥48h de distância de qualquer corrida — fecha a janela em cautela, coerente com a semana de guardrail danger.",
+          "detail": "Recuperação de perna depois do Treino C e espaçamento de ≥48h entre a força de perna pesada e a corrida de terça — margem de segurança para o joelho reconstruído.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-01",
+      "weekday": "Ter",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Corrida fácil longa ~6 km",
+          "detail": "Primeira progressão suave do longão: de ~5 km para ~6 km, ainda em Z2 e ritmo conversável. Justificativa: a meia de 17/10 está a ~7 semanas e o maior rodado recente é 5 km — precisa começar a estender, um passo por vez. Com ACWR 1,04 (ok) e esforço agudo bem abaixo do p90, há margem para este passo único. Reduzir a distância ou parar se aparecer dor articular no joelho.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-02",
+      "weekday": "Qua",
+      "status": "planned",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino A — pernas+tríceps",
+          "detail": "Reinicia a sequência (A→B→C), ≥48h depois do Treino C de domingo. Leg Press 45° com amplitude limitada (~90°) e sem progressão de carga; Cadeira Extensora controlada na fase final, sem travar em extensão total sob carga alta. Terra Sumô e itens de tríceps/ombro normais. Vem depois da corrida de terça e antes do descanso de quinta — sem empilhar perna pesada entre dois dias de corrida.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-03",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso",
+          "detail": "Recuperação e fechamento da janela em cautela: garante ≥48h entre o Treino A e qualquer corrida longa da próxima janela (fim de semana). Nenhum sinal de dados pede além disso.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Janela deslizou de 20/08-26/08 para 24/08-30/08.",
-    "O longão de retomada planejado para sábado (22/08) não aconteceu — nenhuma atividade registrada nesse dia.",
-    "Domingo (23/08), dia de descanso planejado, o atleta correu 5,03 km em vez disso (FC média 154 bpm, esforço relativo 65 — mais intenso que a corrida de 20/08 na mesma distância). O coach registra a atividade real em vez de ignorá-la.",
-    "Duas corridas em 4 dias (20/08 e 23/08) sem espaçamento suficiente elevaram o ACWR para 1,65 — primeira vez nesta janela que o guardrail cruza para 'danger' (limiar 1,5).",
-    "Por regra de dados (ACWR danger → descanso obrigatório no dia), hoje (24/08) vira descanso total. O Treino A, que já havia sido adiado de quinta (20/08) para hoje, é adiado pela segunda vez, agora para terça (25/08).",
-    "Treino A (terça) e Treino B (quinta) mantidos na sequência fixa A→B→C, mas com 1 série a menos nos itens de perna pesada e sem progressão de carga — justificativa: guardrail ACWR ainda em recuperação, recomendação do programa de reduzir volume de perna em semanas de guardrail warning/danger.",
-    "Nenhuma corrida de qualidade ou longão nesta janela — corrida reintroduzida só no sábado (29/08), no mesmo volume conservador (~5 km) da semana anterior, sem tentar compensar o longão perdido de 22/08 de uma vez.",
-    "Treino C não entra nesta janela — fica para a próxima, mantendo ≥48h de distância de qualquer corrida (a corrida de sábado 29/08 fecha a janela muito perto do domingo 30/08 para um dia de perna pesada).",
-    "Apple Health segue travado desde 28/06 — agora ~57 dias sem dado novo; sinal de FC de repouso/sono continua cego, decisão apoiada em ACWR + esforço agudo + observação direta do padrão recente."
+    "Janela deslizou de 24/08-30/08 para 28/08-03/09.",
+    "Guardrail ACWR normalizou de 1,65 (danger, janela anterior) para 1,04 (ok): as corridas de 20/08 e 23/08 saíram da janela móvel de 7 dias e a carga crônica acompanhou. A janela volta a permitir progressão de volume com cautela.",
+    "Na janela anterior a força prevista era Treino A (25/08) e Treino B (27/08). O atleta fez força em 25/08 e 26/08 (dias seguidos em vez de espaçados) — assumidos Treino A e Treino B. A sequência fixa A→B→C retoma agora em Treino C (30/08).",
+    "27/08 e 28/08 sem atividade: 27/08 estava planejado como descanso; 28/08 vira descanso de fato porque o atleta treina de manhã e a manhã passou sem registro. Nenhum sinal de dados pedia sessão nesses dias (ACWR e esforço agudo ambos ok).",
+    "Corrida: retomada com ~5 km fácil no sábado (sem progressão) e primeira extensão do longão para ~6 km na terça. O passo de 5→6 km é justificado pela proximidade da meia (17/10, ~7 semanas) somada aos dois guardrails em ok e ao esforço agudo bem abaixo do p90 — é um passo único, não uma tendência de aumento semana a semana.",
+    "Treino C (30/08): esteira de aquecimento mantida no mínimo (5 min, leve) para não virar volume de corrida escondido; Hack Machine com 1 série a menos e amplitude limitada (~90°), sem progressão de carga — item de maior risco para o joelho reconstruído e vem no dia seguinte à corrida de sábado; Mesa Flexora sem levar o drop set à falha. Justificativa: recomendação do programa de reduzir volume de perna em fases de build de corrida + carga cumulativa no joelho.",
+    "Treino A (02/09): Leg Press 45° e Cadeira Extensora com amplitude limitada / fase final controlada e sem progressão de carga, seguindo as notas técnicas fixas do programa. Posicionado depois da corrida de terça e antes do descanso de quinta para não ficar entre dois dias de corrida.",
+    "Espaçamento: perna pesada (Treino C e Treino A) mantida a ≥48h das corridas mais longas; descanso em 31/08 e 03/09 garante essa distância. A janela tem 3 dias de descanso (28/08, 31/08, 03/09).",
+    "Apple Health segue travado desde 28/06 — ~61 dias sem dado novo; FC de repouso e sono continuam cegos, decisão apoiada em ACWR + esforço agudo."
   ],
   "coaches": {
-    "running": "As duas corridas de 20/08 e 23/08, feitas fora do plano (a de domingo substituiu um dia de descanso) e sem espaço suficiente entre elas, elevaram o ACWR para 1,65 — primeira vez que o guardrail entra em 'danger' nesta janela. O esforço agudo de 3 dias segue ok (65,0, bem abaixo do p90 histórico), mas o ACWR já basta para acionar a regra de dados: hoje é descanso obrigatório, e a semana toda reduz volume e intensidade. Não insiro corrida de qualidade nem longão — a única corrida da janela fica para sábado (29/08), no mesmo volume conservador de ~5 km, quando a corrida de domingo já deve estar saindo da janela móvel de 7 dias e o guardrail tende a normalizar. Prioridade total é deixar o ACWR baixar antes de voltar a progredir volume.",
-    "strength": "Como hoje (24/08) virou descanso obrigatório pelo ACWR, o Treino A — que já tinha sido adiado uma vez — muda de novo, para terça (25/08), respeitando as ≥48h da corrida de domingo. Mantenho a sequência A→B→C sem trocar nenhum exercício, mas com um ajuste extra: com o guardrail ainda em danger/recuperação, reduzo 1 série dos itens de perna pesada em A e B (Leg Press, Cadeira Extensora, Agachamento Pêndulo, Leg Articulado) e não progrido nenhuma carga nesta janela — a base fixa do Coach Ernesto já pede amplitude limitada nesses itens, e a semana pede ainda mais cautela. Treino C fica para a próxima janela, para não colidir com a corrida de sábado."
+    "running": "O ACWR voltou para 1,04 (ok) depois de ter batido em danger na janela passada — as duas corridas fora do plano de 20/08 e 23/08 saíram da janela de 7 dias. Com os dois guardrails em ok e o esforço agudo de 3 dias bem baixo (5,0), retomo a corrida em dois passos: sábado ~5 km fácil só para reativar a rotina, sem progressão, e terça ~6 km, a primeira extensão do longão. Faço essa progressão de 5→6 km porque a meia de Pomerode é dia 17/10, faltam ~7 semanas e o maior rodado recente ainda é 5 km — precisa começar a subir agora, mas um passo de cada vez e sempre em Z2. Se aparecer dor articular no joelho, encurta ou para. Sem corrida de qualidade nesta janela.",
+    "strength": "A sequência fixa A→B→C retoma em Treino C no domingo (as sessões de 25 e 26/08 fecham A e B, feitas em dias seguidos). Não troco nenhum exercício: em C reduzo 1 série do Hack Machine, limito a amplitude (~90°) nos itens de flexão profunda, mantenho a esteira de aquecimento no mínimo e não levo o drop set da Mesa Flexora à falha — é build de corrida e o joelho reconstruído não deve acumular corrida + agachamento profundo no mesmo bloco. Treino A na quarta reinicia o ciclo, ≥48h depois de C, com Leg Press e Cadeira Extensora em amplitude controlada e sem progressão de carga. Posterior, panturrilhas e abdutora seguem normais — são os itens que protegem o joelho e ajudam a corrida."
   }
 }
