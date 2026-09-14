@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-08T11:59:43Z",
+  "generated_at": "2026-09-14T10:40:10Z",
   "weeks": [
     {
       "week_start": "2025-09-08",
       "week_label": "08 Set",
       "running": {
-        "distance_km": 23.1,
-        "avg_pace_min_km": 5.4,
-        "sessions": 3,
+        "distance_km": 6.2,
+        "avg_pace_min_km": 5.34,
+        "sessions": 1,
         "avg_heart_rate_bpm": null
       },
       "strength": {
@@ -663,6 +663,19 @@
       },
       "strength": {
         "sessions": 1
+      }
+    },
+    {
+      "week_start": "2026-09-07",
+      "week_label": "07 Set",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
       }
     }
   ]
