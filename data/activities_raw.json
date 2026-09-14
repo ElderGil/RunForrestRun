@@ -5332,5 +5332,26 @@
     "kudos_count": 0,
     "pr_count": 0,
     "achievement_count": 0
+  },
+  {
+    "id": 20171164847,
+    "sport_type": "Run",
+    "type": "Run",
+    "start_date_local": "2026-09-13T10:09:15",
+    "distance": 6012.7,
+    "moving_time": 2224,
+    "elapsed_time": 2357,
+    "total_elevation_gain": 34,
+    "average_speed": 2.7035521582733812,
+    "max_speed": 3.78,
+    "average_cadence": 80.4041,
+    "calories": 486,
+    "suffer_score": 79,
+    "average_heartrate": 154.613,
+    "max_heartrate": 177,
+    "name": "Morning Run",
+    "kudos_count": 0,
+    "pr_count": 0,
+    "achievement_count": 0
   }
 ]
