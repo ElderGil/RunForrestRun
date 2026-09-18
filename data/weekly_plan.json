@@ -1,53 +1,27 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-09-16T11:09:00Z",
-  "window_start": "2026-09-16",
-  "window_end": "2026-09-22",
-  "summary": "A janela desliza um dia (14→20 para 16→22). Duas mudanças em relação ao previsto: a corrida fácil de segunda (14/09, ~4 km) não aconteceu, e a de hoje (quarta, 16/09, ~5 km) também não — em vez dela, o Strava registrou uma sessão de força não planejada com Agachamento Livre detectado (perna pesada). Isso é o caso clássico de 'treinou força num dia de corrida': a atividade real é registrada, o guardrail é recalculado e os dias seguintes se ajustam para não empilhar carga de perna. Como ontem (15/09, Treino A) já tinha carga de perna leve/superior e hoje veio um dia de agachamento pesado não planejado, o Treino B (que também tem exercícios de perna — Agachamento Pêndulo, Leg Articulado) é adiado de amanhã para sexta (18/09), abrindo 2 dias de intervalo da perna pesada de hoje; no lugar, entra uma corrida fácil amanhã (17/09) para repor a frequência perdida. O Treino C (o mais pesado, Hack Machine 80 kg) fica no domingo (20/09), também com 2 dias de intervalo do Treino B. Nenhum guardrail está em alerta: ACWR 1,09 (ok) e esforço agudo de 3 dias caiu para 10,0 (ok, baseline p90 103,0) — a sessão de hoje teve esforço relativo baixo (4). O problema real segue sendo frequência de corrida: só 1 saída nos últimos 7 dias (13/09). Apple Health continua travado desde 28/06 (~80 dias), então recuperação (FC repouso/sono) segue sem dado — decisão apoiada em Strava + guardrails. Pomerode é 17/10, faltam ~31 dias (~4,4 semanas); com a frequência ainda baixa, a meta realista continua 'completar', não 'competir'.",
+  "generated_at": "2026-09-18T23:43:58Z",
+  "window_start": "2026-09-18",
+  "window_end": "2026-09-24",
+  "summary": "A janela desliza de 16→22 para 18→24. Novidade real: a corrida fácil que faltava (planejada para 17/09) acabou acontecendo hoje, sexta (18/09, ~6,08 km, Z2/moderado) — no lugar do Treino B que estava previsto para hoje. É o mesmo padrão de sempre, agora invertido: 'correu num dia de força', e o coach registra o que de fato aconteceu em vez do script. O efeito nos guardrails é o ponto central desta janela: a ACWR saltou de 1,09 (ok) para 2,09 (danger) — mas isso é sensibilidade de baseline, não sobrecarga real: o esforço agudo de 3 dias (que soma corrida+força+bike e compara com o histórico do próprio atleta) segue em 83,0, bem abaixo do p90 (103,0), então não há sinal de excesso de carga absoluta. O motivo do salto é que a média das últimas 4 semanas está muito baixa (0 a 10 km/semana) — um único treino de 6 km move a razão desproporcionalmente. Ainda assim, o protocolo do running-coach é claro: ACWR em danger exige descanso obrigatório no dia seguinte, então amanhã (19/09) entra descanso total. O ciclo de força retoma de onde parou: Treino A (15/09, feito), Treino B ainda pendente (reagendado para domingo 20/09, ≥48h depois da corrida de hoje e depois de um dia cheio de descanso), Treino C fecha na terça (22/09). Duas corridas fáceis fecham a janela (segunda 21/09 e quarta 23/09) para seguir recolocando frequência, e um trote leve na quinta (24/09). Apple Health continua travado desde 28/06 (~82 dias), então recuperação (FC repouso/sono) segue sem dado novo — decisão apoiada em Strava + guardrails. Nota à parte: o programa de força (data/private/strength_program.json) tem validade registrada até hoje (18/09) — segue sendo usado como base por não haver atualização, mas vale o atleta confirmar com o Coach Ernesto se o ciclo será renovado. Pomerode é 17/10, faltam ~29 dias (~4,1 semanas); com a frequência de corrida ainda baixa (2 saídas nos últimos 7 dias), a meta realista continua 'completar', não 'competir'.",
   "indicators": [
-    { "label": "Corridas (7 dias)", "value": "1 corrida nos últimos 7 dias — 6,01 km em 13/09. Duas corridas fáceis planejadas nesta janela (14/09 e 16/09) não aconteceram; a de hoje virou uma sessão de força não planejada. Nesta janela: 4 saídas fáceis em Z2 (17, 19, 21 e um trote leve em 22/09) para recolocar a frequência.", "status": "warning" },
-    { "label": "Guardrail (ACWR)", "value": "1,09 (ok) — abaixo do limiar de atenção (1,3). Sem corrida nova desde 13/09, o valor não muda até haver mais dados; sinal segue confiável (corrida de 13/09 ainda dentro da janela aguda de 7 dias até 20/09).", "status": "ok" },
-    { "label": "Esforço agudo (3 dias)", "value": "10,0 (baseline: média 43,9 ± 48,4, p90 103,0) — caiu bastante em relação à leitura anterior (79,0) porque a corrida de 13/09 saiu da janela de 3 dias; reflete só a sessão de força de hoje (esforço relativo baixo). Bem dentro do normal.", "status": "ok" },
-    { "label": "Recuperação", "value": "Apple Health parado desde 28/06 (~80 dias, última leitura). FC de repouso, sono e HRV seguem cegos; decisão apoiada em histórico Strava + guardrails. Sem dor articular no joelho relatada.", "status": "warning" },
-    { "label": "Força (7 dias)", "value": "3 sessões nos últimos 7 dias (10, 15 e 16/09). A de hoje (16/09) não era planejada e teve ênfase de perna (agachamento detectado) — por isso o Treino B, que também carrega perna, foi adiado de quinta para sexta (18/09), abrindo intervalo.", "status": "ok" }
+    { "label": "Corridas (7 dias)", "value": "2 corridas nos últimos 7 dias — 6,01 km em 13/09 e 6,08 km hoje (18/09), ambas em ritmo semelhante (~6 min/km). Melhora frente à janela anterior (1 corrida), mas ainda longe de uma base consistente. Nesta janela: mais 2 corridas fáceis (21/09 e 23/09) e um trote leve (24/09).", "status": "warning" },
+    { "label": "Guardrail (ACWR)", "value": "2,09 (danger) — acima do limiar de risco (1,5). Salto forte frente à leitura anterior (1,09) causado pela corrida de hoje somada a uma baseline de 4 semanas muito baixa (semanas de 0 a 10 km) — a razão é sensível a isso quando o volume de base é pequeno. Como o esforço agudo (abaixo) segue ok, trata-se mais de um alerta de baseline do que de sobrecarga real, mas o protocolo exige descanso no dia seguinte mesmo assim.", "status": "danger" },
+    { "label": "Esforço agudo (3 dias)", "value": "83,0 (baseline: média 44,3 ± 48,6, p90 103,0) — subiu por causa da corrida de hoje, mas segue dentro do normal, sem cruzar o p90. Esse guardrail vê a carga absoluta (corrida+força+bike) e não indica excesso — reforça que a ACWR em danger é mais um efeito de baseline baixa do que sinal de sobrecarga.", "status": "ok" },
+    { "label": "Recuperação", "value": "Apple Health parado desde 28/06 (~82 dias, última leitura). FC de repouso, sono e HRV seguem cegos; decisão apoiada em histórico Strava + guardrails. Sem dor articular no joelho relatada.", "status": "warning" },
+    { "label": "Força (7 dias)", "value": "2 sessões nos últimos 7 dias (15 e 16/09, Treino A + sessão extra de perna). O Treino B, previsto para hoje, não aconteceu (virou corrida) — retoma domingo (20/09) para não deixar o ciclo A→B→C parado, respeitando o intervalo de perna pesada.", "status": "ok" }
   ],
   "days": [
     {
-      "date": "2026-09-16",
-      "weekday": "Qua",
+      "date": "2026-09-18",
+      "weekday": "Sex",
       "status": "done",
       "items": [
         {
-          "type": "strength",
-          "title": "Força não planejada (perna) — substituiu a corrida fácil",
-          "detail": "Registrada no Strava como 'Morning Weight Training', com Agachamento Livre (barra) detectado entre os exercícios — sessão com ênfase de perna. Não estava no plano (era dia de corrida fácil ~5 km); o coach registra o que de fato aconteceu, recalcula os guardrails (ACWR segue ok, esforço agudo caiu para 10,0) e ajusta os próximos dias para não empilhar mais carga de perna logo em seguida.",
-          "done": true
-        }
-      ]
-    },
-    {
-      "date": "2026-09-17",
-      "weekday": "Qui",
-      "status": "planned",
-      "items": [
-        {
           "type": "run",
-          "title": "Corrida fácil ~4 km",
-          "detail": "Repõe a corrida que não aconteceu nem na segunda (14/09) nem hoje (16/09) — prioridade é frequência, não distância. Z2, ritmo conversável. Corrida leve o dia depois de um treino de perna pesada não planejado é aceitável (é carga baixo-impacto comparado ao agachamento), mas encurtar ou parar com qualquer dor articular no joelho (dor muscular normal não é motivo para parar).",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-09-18",
-      "weekday": "Sex",
-      "status": "planned",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino B — posterior/costas/peito (perna reduzida)",
-          "detail": "Adiado de quinta (17/09) para hoje, para abrir 2 dias de intervalo da sessão de perna não planejada de quarta (16/09) — a base do programa (Terra Sumô, Leg Press etc. do Treino A já tinham vindo terça) não é trocada, só reposicionada no tempo. Nenhum exercício trocado. Agachamento Pêndulo com amplitude limitada (~90°) e Leg Articulado com carga/volume reduzidos, já que é a segunda sessão com componente de perna na semana. Manguito, remada, roscas e supino/crucifixo normais.",
-          "done": false
+          "title": "Corrida — 6,08 km (substituiu o Treino B)",
+          "detail": "Registrada no Strava como 'Morning Run', ~6,08 km, FC média 155 bpm / máx 168 bpm, pace médio ~5,8 min/km. Não estava no plano (era dia de Treino B); o coach registra o que de fato aconteceu, recalcula os guardrails — ACWR sobe para danger (2,09), esforço agudo sobe para 83,0 mas segue ok — e ajusta os próximos dias: descanso obrigatório amanhã e o Treino B reagendado para domingo.",
+          "done": true
         }
       ]
     },
@@ -57,9 +31,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida fácil ~5 km",
-          "detail": "Segunda corrida da janela, um degrau acima da de quinta. Z2, ritmo conversável, sem progressão de pace ainda — a prioridade continua sendo recolocar a cadência semanal antes de mexer em volume.",
+          "type": "rest",
+          "title": "Descanso total",
+          "detail": "Inserido por dado, não por calendário: a ACWR está em danger (2,09) após a corrida de hoje, e o protocolo do running-coach manda descanso obrigatório no dia seguinte quando isso acontece. Sem corrida nem força hoje — só recuperação. Se sentir qualquer dor articular no joelho (diferente de dor muscular normal), é sinal para manter o descanso além de hoje também.",
           "done": false
         }
       ]
@@ -71,8 +45,8 @@
       "items": [
         {
           "type": "strength",
-          "title": "Treino C — pernas/posterior/core (perna reduzida)",
-          "detail": "Fecha o ciclo A(15/09)→B(18/09)→C(20/09). Nenhum exercício trocado. Hack Machine (80 kg) com amplitude limitada a ~90° e sem progressão de carga — maior ponto de atenção do programa para o joelho reconstruído, ainda mais com a sessão extra de perna já feita na quarta. Mesa Flexora, panturrilhas e Cadeira Abdutora mantidas normais (protetoras do joelho e da corrida). Esteira de aquecimento no mínimo (5 min, leve).",
+          "title": "Treino B — posterior/costas/peito (perna reduzida)",
+          "detail": "Retoma o ciclo A(15/09)→B(hoje)→C, que ficou pendente porque a corrida de sexta (18/09) tomou o lugar deste treino. Nenhum exercício trocado. Agachamento Pêndulo com amplitude limitada (~90°) e Leg Articulado com carga/volume reduzidos — regra padrão de proteção ao joelho reconstruído, reforçada aqui porque vem ≥48h depois da corrida de sexta e logo após um dia cheio de descanso. Manguito, remada, roscas e supino/crucifixo normais.",
           "done": false
         }
       ]
@@ -84,8 +58,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Corrida fácil ~6 km",
-          "detail": "Terceira corrida da janela, de volta ao patamar da última corrida real (13/09) — ainda não é passo de progressão de longão. Z2, ritmo conversável. Vem no dia seguinte ao Treino C (perna pesada), então atenção redobrada a qualquer dor articular — encurtar ou encerrar se aparecer.",
+          "title": "Corrida fácil ~5 km",
+          "detail": "Z2, ritmo conversável, sem progressão de pace — a prioridade segue sendo consolidar frequência, não volume. Vem no dia seguinte ao Treino B (perna reduzida, sem carga pesada), risco baixo, mas qualquer dor articular no joelho é sinal para encurtar ou parar.",
           "done": false
         }
       ]
@@ -96,27 +70,52 @@
       "status": "planned",
       "items": [
         {
+          "type": "strength",
+          "title": "Treino C — pernas/posterior/core (perna reduzida)",
+          "detail": "Fecha o ciclo A(15/09)→B(20/09)→C(hoje), com 2 dias de intervalo do B. Nenhum exercício trocado. Hack Machine (80 kg) com amplitude limitada a ~90° e sem progressão de carga — maior ponto de atenção do programa para o joelho reconstruído. Mesa Flexora, panturrilhas e Cadeira Abdutora mantidas normais (protetoras do joelho e da corrida). Esteira de aquecimento no mínimo (5 min, leve).",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-23",
+      "weekday": "Qua",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Corrida fácil ~6 km",
+          "detail": "De volta ao patamar das últimas corridas reais (13/09 e 18/09) — ainda sem progressão de longão. Z2, ritmo conversável. Vem no dia seguinte ao Treino C (perna pesada), então atenção redobrada a qualquer dor articular — encurtar ou encerrar se aparecer.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
           "type": "run",
           "title": "Trote leve ~3-4 km",
-          "detail": "Fecha a janela com a saída mais curta e leve — foco em consistência (4 corridas registradas na semana), não em volume. Ritmo bem tranquilo, caminhada nos trechos que precisar. Encerrar de imediato com qualquer dor articular no joelho.",
+          "detail": "Fecha a janela com a saída mais curta e leve — foco em consistência, não em volume, e em deixar a ACWR se acomodar antes de qualquer novo aumento de carga. Ritmo bem tranquilo. Encerrar de imediato com qualquer dor articular no joelho.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Corrida fácil de segunda (14/09, ~4 km) não aconteceu — sem atividade correspondente no Strava.",
-    "Corrida fácil de hoje (16/09, ~5 km) também não aconteceu — em vez dela, o Strava registrou uma sessão de força não planejada ('Morning Weight Training') com Agachamento Livre detectado, ou seja, ênfase de perna. Caso clássico de 'treinou força num dia de corrida': a atividade real substitui a planejada, os guardrails são recalculados sobre o que de fato aconteceu, e os próximos dias se ajustam.",
-    "Guardrail ACWR: segue 1,09 (ok) — sem corrida nova, o cálculo não muda; a corrida de 13/09 segue dentro da janela aguda até 20/09.",
-    "Esforço agudo (3 dias): caiu de 79,0 para 10,0 porque a corrida de 13/09 saiu da janela de 3 dias e a sessão de força de hoje teve esforço relativo baixo (4). Ainda bem abaixo do p90 (103,0), sem qualquer sinal de sobrecarga.",
-    "Força: como a sessão não planejada de hoje (16/09) teve ênfase de perna, o Treino B — que também carrega perna (Agachamento Pêndulo, Leg Articulado) — foi adiado de quinta (17/09) para sexta (18/09), abrindo 2 dias de intervalo em vez de deixar dois estímulos de perna em dias seguidos. Nenhum exercício da base foi trocado ou inventado; o Treino C (mais pesado, Hack 80 kg) permanece no domingo (20/09), também com 2 dias de intervalo do B.",
-    "Corrida: a corrida perdida de quinta (17/09, herdando a vaga do que seria a sessão de força adiada) entra como corrida fácil ~4 km, para recolocar frequência — prioridade sobre distância, já que setembro segue com poucas saídas.",
-    "Descanso: nenhum sinal de dados manda descanso total nesta janela (ACWR ok, esforço agudo ok, sem dor articular relatada) — segue a preferência do atleta de treinar quase todo dia; a corrida de segunda (21/09) vem no dia seguinte ao Treino C, então fica em Z2 com atenção redobrada ao joelho.",
-    "Pomerode (17/10) está a ~31 dias (~4,4 semanas); com a frequência de corrida ainda baixa (1 corrida nos últimos 7 dias), a expectativa realista para a prova segue 'completar', não 'competir'.",
-    "Apple Health segue travado desde 28/06 (~80 dias sem dado novo); FC de repouso, sono e HRV seguem cegos. Indicador Recuperação em warning; decisão apoiada em histórico Strava + guardrails."
+    "Corrida fácil que faltava desde 17/09 aconteceu hoje (18/09, ~6,08 km) — mas no lugar do Treino B que estava previsto para hoje. Caso 'correu num dia de força', espelhado: a atividade real substitui a planejada, os guardrails são recalculados sobre o que de fato aconteceu, e os próximos dias se ajustam.",
+    "Guardrail ACWR: subiu de 1,09 (ok) para 2,09 (danger) por causa da corrida de hoje somada a uma baseline de 4 semanas muito baixa (0-10 km/semana) — a razão é sensível a baselines pequenas. O esforço agudo (que enxerga carga absoluta) segue ok em 83,0, reforçando que não é sobrecarga real, mas o protocolo exige descanso obrigatório no dia seguinte mesmo assim — inserido em 19/09.",
+    "Esforço agudo (3 dias): subiu de 10,0 para 83,0 com a corrida de hoje, ainda bem abaixo do p90 (103,0) — sem sinal de excesso de carga absoluta.",
+    "Força: o Treino B (perna reduzida) foi reagendado de hoje (18/09) para domingo (20/09), já que a corrida tomou o lugar dele hoje e o dia seguinte (19/09) é de descanso total pela ACWR. O Treino C fecha o ciclo na terça (22/09), com 2 dias de intervalo do B. Nenhum exercício da base trocado ou inventado.",
+    "Descanso: inserido em 19/09 por sinal de dado (ACWR danger), não por calendário — segue a regra de prioridade do running-coach (guardrail em danger = descanso obrigatório no dia seguinte).",
+    "Programa de força: `data/private/strength_program.json` tem validade registrada até 18/09 (hoje). Seguimos usando como base por não haver ciclo novo cadastrado — vale o atleta confirmar com o Coach Ernesto se o programa será renovado ou ajustado.",
+    "Pomerode (17/10) está a ~29 dias (~4,1 semanas); com a frequência de corrida ainda baixa (2 corridas nos últimos 7 dias), a expectativa realista para a prova segue 'completar', não 'competir'.",
+    "Apple Health segue travado desde 28/06 (~82 dias sem dado novo); FC de repouso, sono e HRV seguem cegos. Indicador Recuperação em warning; decisão apoiada em histórico Strava + guardrails."
   ],
   "coaches": {
-    "running": "Duas corridas fáceis previstas (segunda e hoje) não aconteceram — a de hoje virou uma sessão de força não planejada, com agachamento livre detectado. Registro o que aconteceu de verdade: ACWR segue tranquilo (1,09) e o esforço agudo de 3 dias caiu para 10,0 (bem abaixo do teto de 103) porque a corrida de domingo passado já saiu da janela curta. O que importa agora é recolocar frequência: amanhã (17/09) entra uma corrida fácil de ~4 km no lugar da que faltou, sábado (19/09) sobe pra ~5 km, segunda (21/09) volta ao patamar de 6 km (repetindo a última corrida real) e terça (22/09) fecha com um trote levíssimo. Nada de longão ainda — isso só entra quando a rotina estiver consistente por 2-3 semanas seguidas. Pomerode é dia 17/10, ~31 dias — a meta realista continua ser cruzar a linha. Qualquer dor articular no joelho: encurta ou para na hora.",
-    "strength": "A sessão de hoje (16/09) não estava no meu roteiro, mas o Strava mostrou agachamento livre — ou seja, foi um dia de perna de verdade, ainda que fora do script A→B→C. Isso muda a sequência: em vez de emendar o Treino B já amanhã (o que empilharia perna dois dias seguidos), adio ele para sexta (18/09), com Agachamento Pêndulo e Leg Articulado em carga/volume reduzidos por já ser a segunda sessão de perna da semana. Não troco nenhum exercício da base. O Treino C fecha o ciclo no domingo (20/09) — segue sendo o de maior atenção pelo Hack Machine a 80 kg, amplitude limitada a ~90°, sem progredir carga, ainda mais depois da sessão extra de perna desta quarta. Mesa Flexora, panturrilhas e Abdutora seguem normais, são protetoras do joelho e ajudam a corrida. Qualquer desconforto articular no joelho, a série para na hora."
+    "running": "A corrida que faltava desde quinta passada aconteceu hoje (~6,08 km, FC média 155 bpm) — só que no lugar do Treino B, então foi a força que ficou de fora, não a corrida. O que chama atenção é a ACWR: pulou para 2,09 (danger), mas isso é mais reflexo de uma baseline de 4 semanas muito baixa do que sobrecarga de verdade — o esforço agudo de 3 dias (83,0) segue longe do teto (103,0). De qualquer forma, sigo o protocolo à risca: amanhã (19/09) é descanso total, sem exceção. A partir daí, retomo devagar: segunda (21/09) uma corrida fácil de ~5 km, quarta (23/09) volta ao patamar de ~6 km, e quinta (24/09) fecha com um trote levíssimo — dando tempo pra ACWR se acomodar antes de pensar em subir volume. Nada de longão ainda. Pomerode é dia 17/10, ~29 dias — a meta realista continua ser cruzar a linha. Qualquer dor articular no joelho: encurta ou para na hora.",
+    "strength": "Hoje era dia do Treino B no meu roteiro, mas o Strava mostrou uma corrida em vez disso — então a força que ficou pendente dessa vez, não a corrida. Como amanhã (19/09) virou descanso obrigatório pela ACWR, reagendo o Treino B para domingo (20/09), com Agachamento Pêndulo em amplitude limitada (~90°) e Leg Articulado com carga/volume reduzidos — já ≥48h longe da corrida de hoje e vindo de um dia cheio de descanso, então é um bom momento pra perna pesada. Não troco nenhum exercício da base. O Treino C fecha o ciclo na terça (22/09), 2 dias depois do B — Hack Machine a 80 kg com amplitude limitada e sem progressão de carga, segue sendo o ponto de maior atenção pro joelho reconstruído. Mesa Flexora, panturrilhas e Abdutora seguem normais. Nota: o programa base tem validade registrada até hoje — sigo usando por não haver atualização, mas vale confirmar com o Coach Ernesto se o ciclo será renovado. Qualquer desconforto articular no joelho, a série para na hora."
   }
 }
