@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-18T23:41:47Z",
+  "generated_at": "2026-09-21T10:44:07Z",
   "months": [
     {
       "month": "2026-01",
@@ -93,12 +93,12 @@
     {
       "month": "2026-09",
       "label": "Set",
-      "run_km": 18.1,
-      "run_count": 3,
+      "run_km": 23.1,
+      "run_count": 4,
       "longest_run_km": 6.1,
-      "avg_pace_min_km": 6.0,
-      "avg_heart_rate_bpm": 148,
-      "elevation_m": 93,
+      "avg_pace_min_km": 5.98,
+      "avg_heart_rate_bpm": 152,
+      "elevation_m": 96,
       "strength_sessions": 5
     }
   ]
