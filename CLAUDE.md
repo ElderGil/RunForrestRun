@@ -159,14 +159,39 @@ contexto, mas **nunca** escrevem dado pessoal no plano público.
 - [x] **Plano rolante de 7 dias** (ADR-005, schema 3.0) + coaches negociando o A/B/C fixo.
 - [x] **Privacidade:** dados pessoais/médicos em `data/private/` (gitignored) + teste anti-vazamento no plano público.
 - [x] **Apple Health:** ingestão de sono/FC repouso/VO2máx/peso via Health Auto Export → Dropbox → `merge_health.py`.
-- [x] Testes: ETL, contrato de schema, ingester de health (21 testes, pytest).
+- [x] Testes: ETL, contrato de schema, ingester de health (26 testes, pytest).
+- [x] **Guardrail de esforço agudo** (`kpis.json.load_guardrail`, calculado pelo `normalize.py`
+  a cada rodada): soma do esforço relativo do Strava (corrida+força+bike) vs. baseline
+  histórica do próprio atleta — cobre a força, que a ACWR (só corrida) não vê. Junto com a
+  ACWR, decide dias de descanso por dado real em vez de quota fixa de calendário.
 
 ### Pendente ⏳
-- [ ] HRV (VFC) não chega do Amazfit ao Apple Health — investigar/ativar se possível.
-- [ ] Parser do export mensal do OKOK (gordura visceral/água/músculo, que não passam pelo Apple Health).
-- [ ] Decidir export automático diário do Health Auto Export (recurso Premium).
+- [ ] **Health Auto Export sem automação grátis** (trial acabou, 06/2026): pipeline de
+  sono/FC repouso/VO2máx travado desde então. Decisão (07/07/2026): montar uma automação
+  gratuita no app Atalhos (Shortcuts) da Apple lendo o HealthKit direto, em vez de assinar
+  o Premium. `etl/merge_health.py` já sabe parsear esse formato (`parse_shortcuts_export`,
+  JSON simples e plano) — falta o atleta montar o Atalho no iPhone e confirmar que roda
+  diariamente (limitação conhecida: leitura do HealthKit exige o iPhone desbloqueado
+  perto do horário agendado).
+- [ ] HRV (VFC) não chega do Amazfit ao Apple Health — investigar/ativar se possível
+  (config. do relógio/app Zepp, não é problema de pipeline).
+- [ ] Parser do export mensal do OKOK (gordura visceral/água/músculo, que não passam pelo
+  Apple Health) — hoje é transcrito manualmente em `data/private/body_composition.json`.
 - [ ] Guardrail KPI definitivo após análise do histórico real.
 - [ ] Monitorar expiração da conexão Strava (alerta proativo).
+
+---
+
+## Roadmap / Visão futura
+
+- [ ] **Tornar o projeto um template público clonável** — qualquer pessoa com conhecimento
+  mínimo de IA/GitHub clona, roda no próprio computador e ganha um assistente pessoal.
+  Jornada do novo usuário: **entender** (docs) → **entrevista** (agente capta objetivos) →
+  **sistema** (escolhe IA + integrações) → assistente personalizado rodando.
+  Exige separar *framework (motor)* de *personalização (config do usuário)*. Fases: 0)
+  publicável (LICENSE, scrub do histórico, README "use this template"); 1) camada de
+  config; 2) agente de onboarding `/setup`; 3) integrações plugáveis + escolha de modelo;
+  4) generalizar além de corrida. *Planejado, não iniciado.*
 
 ---
 
