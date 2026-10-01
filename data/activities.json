@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-28T17:40:17Z",
+  "generated_at": "2026-10-01T17:45:39Z",
   "activities": [
     {
       "id": "11665837342",
@@ -3198,6 +3198,19 @@
       "max_heart_rate_bpm": null,
       "elevation_m": 0,
       "relative_effort": 5,
+      "name": "Morning Weight Training"
+    },
+    {
+      "id": "20403701137",
+      "date": "2026-09-30",
+      "type": "Strength",
+      "distance_km": 0.0,
+      "duration_min": 48.4,
+      "pace_min_km": null,
+      "avg_heart_rate_bpm": null,
+      "max_heart_rate_bpm": null,
+      "elevation_m": 0,
+      "relative_effort": 6,
       "name": "Morning Weight Training"
     }
   ]
