@@ -1,13 +1,13 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-10-07T18:30:23Z",
-  "window_start": "2026-10-07",
-  "window_end": "2026-10-13",
-  "summary": "A janela desliza para 07/10→13/10. Desde a última atualização: a corrida fácil de 06/10 não aconteceu — a última corrida segue sendo a de 20/09, 17 dias atrás. Hoje cedo, no lugar do descanso previsto, veio o Treino C (~50 min, esforço 6), fechando o ciclo A→B→C. ACWR 'unknown' (sem corrida em 7 dias) e esforço agudo de 3 dias em 11,0, bem abaixo do p90 (89,0): o risco segue sendo falta de estímulo, não sobrecarga. Faltam 10 dias para Pomerode (17/10). Plano: retomada amanhã com ~4 km, Treino A na sexta com perna reduzida (48h antes do longão), descanso no sábado, último longão de ~7 km no domingo (11/10) e, já em polimento, Treino B só de superiores na segunda e ~4 km com strides na terça. Apple Health segue parado desde 28/06. Meta: completar a prova, com corrida/caminhada se preciso.",
+  "generated_at": "2026-10-09T14:10:00Z",
+  "window_start": "2026-10-09",
+  "window_end": "2026-10-15",
+  "summary": "A janela desliza para 09/10→15/10. Desde a última atualização: a corrida de retomada de 08/10 não aconteceu (a última corrida segue sendo 20/09, 19 dias atrás). Hoje cedo veio o Treino A (~47 min, esforço 6), como previsto. ACWR 'unknown' (sem corrida em 7 dias) e esforço agudo de 3 dias em 12,0, bem abaixo do p90 (89,0): o risco segue sendo falta de estímulo, não sobrecarga. Faltam 8 dias para Pomerode (17/10). Plano: retomada amanhã com ~4 km, longão encurtado para ~6 km no domingo com corrida/caminhada, Treino B só de superiores na segunda, ~4 km com strides na terça, descanso de polimento na quarta e, na quinta, ~3 km soltos + Treino C só de core. Apple Health segue parado desde 28/06. Meta: completar a prova, com corrida/caminhada se preciso.",
   "indicators": [
     {
       "label": "Corridas (7 dias)",
-      "value": "0 corridas nos últimos 7 dias — a última foi 5,02 km em 20/09; a de 06/10 não aconteceu. Nesta janela: fácil ~4 km (08/10), longão ~7 km (11/10) e fácil ~4 km com strides (13/10), total ~15 km.",
+      "value": "0 corridas nos últimos 7 dias — a última foi 5,02 km em 20/09; a de 08/10 não aconteceu. Nesta janela: fácil ~4 km (10/10), longão ~6 km (11/10), fácil ~4 km com strides (13/10) e ~3 km soltos (15/10), total ~17 km.",
       "status": "warning"
     },
     {
@@ -17,7 +17,7 @@
     },
     {
       "label": "Esforço agudo (3 dias)",
-      "value": "11,0 (baseline: média 38,3 ± 38,7, p90 89,0) — Treino B (05/10) + Treino C (07/10). Muito espaço abaixo do teto.",
+      "value": "12,0 (baseline: média 37,9 ± 38,9, p90 89,0) — Treino C (07/10) + Treino A (09/10). Muito espaço abaixo do teto.",
       "status": "ok"
     },
     {
@@ -27,52 +27,26 @@
     },
     {
       "label": "Força (7 dias)",
-      "value": "2 sessões na janela de 7 dias — Treino B (05/10) e Treino C (07/10); ciclo A→B→C fechado (A em 30/09). Próximo: A na sexta (09/10), perna reduzida.",
+      "value": "3 sessões em 7 dias — B (05/10), C (07/10) e A (09/10). Ciclo segue em sequência; na semana da prova, B e C entram sem perna.",
       "status": "ok"
     },
     {
       "label": "Pomerode (17/10)",
-      "value": "Faltam 10 dias. Maior corrida recente ~6 km e frequência muito baixa. Meta: completar, com estratégia de corrida/caminhada se preciso.",
+      "value": "Faltam 8 dias. Sem corrida há 19 dias e maior corrida recente ~6 km. Meta: completar, com estratégia de corrida/caminhada desde o início.",
       "status": "warning"
     }
   ],
   "days": [
     {
-      "date": "2026-10-07",
-      "weekday": "Qua",
+      "date": "2026-10-09",
+      "weekday": "Sex",
       "status": "done",
       "items": [
         {
           "type": "strength",
-          "title": "Treino C — pernas/posterior/core",
-          "detail": "Realizado (Morning Weight Training, ~50 min, esforço 6), no lugar do descanso previsto. 4 dias antes do longão — regra de 48h respeitada.",
-          "done": true
-        }
-      ]
-    },
-    {
-      "date": "2026-10-08",
-      "weekday": "Qui",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Corrida fácil ~4 km (retomada)",
-          "detail": "Primeira corrida em 18 dias. Z2, conversável, sem olhar pace. 24h após o Treino C: se as pernas estiverem pesadas, 3 km bastam. Dor articular no joelho: encurtar ou parar.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-10-09",
-      "weekday": "Sex",
-      "status": "planned",
-      "items": [
-        {
-          "type": "strength",
           "title": "Treino A — pernas + tríceps (perna reduzida)",
-          "detail": "48h antes do longão (limite da regra de perna pesada), por isso perna reduzida: Terra Sumô, Leg Press 45° e Cadeira Extensora com 1 série a menos e carga ~20% menor; nenhum exercício trocado. Desenvolvimento e tríceps normais.",
-          "done": false
+          "detail": "Realizado (Morning Weight Training, ~47 min, esforço 6). 48h antes do longão: a orientação era perna reduzida (1 série a menos, carga ~20% menor), sem trocar exercício.",
+          "done": true
         }
       ]
     },
@@ -82,9 +56,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "rest",
-          "title": "Descanso total",
-          "detail": "Véspera do último longão (posicionamento estratégico). Um pedal leve de passeio é aceitável, sem esforço.",
+          "type": "run",
+          "title": "Corrida fácil ~4 km (retomada)",
+          "detail": "Primeira corrida em 20 dias. Z2, conversável, sem olhar pace. 24h após o Treino A: se as pernas estiverem pesadas, 3 km bastam. Dor articular no joelho: encurtar ou parar.",
           "done": false
         }
       ]
@@ -96,8 +70,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Longão ~7 km (último antes da prova)",
-          "detail": "Z2 do início ao fim; pausa curta para caminhar é permitida. Ensaiar a estratégia de corrida/caminhada e testar hidratação/gel da prova. Dor no joelho: encerrar e voltar caminhando.",
+          "title": "Longão ~6 km com corrida/caminhada (último antes da prova)",
+          "detail": "Z2 do início ao fim, ensaiando a estratégia de prova (ex.: 8 min correndo / 1 min caminhando). Testar hidratação/gel. Se ontem pesou, 5 km já cumprem o objetivo. Dor no joelho: encerrar e voltar caminhando.",
           "done": false
         }
       ]
@@ -110,7 +84,7 @@
         {
           "type": "strength",
           "title": "Treino B — só superiores (perna pausada)",
-          "detail": "Pull Down, Remada, Rosca, Crucifixo, Supino e Manguito normais. Agachamento Pêndulo e Leg Articulado PAUSADOS nesta semana: dia seguinte ao longão (regra de 48h) e semana da prova — pernas frescas para 17/10.",
+          "detail": "Pull Down, Remada, Rosca, Crucifixo, Supino e Manguito normais. Agachamento Pêndulo e Leg Articulado PAUSADOS: dia seguinte ao longão (regra de 48h) e semana da prova — pernas frescas para 17/10.",
           "done": false
         }
       ]
@@ -123,22 +97,54 @@
         {
           "type": "run",
           "title": "Corrida fácil ~4 km + 4 strides",
-          "detail": "Polimento: Z2 e, no fim, 4 acelerações de ~20 s soltas com recuperação caminhando. Só para manter as pernas acordadas.",
+          "detail": "Polimento: Z2 e, no fim, 4 acelerações de ~20 s soltas, recuperando caminhando. Só para manter as pernas acordadas.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-10-14",
+      "weekday": "Qua",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso total (polimento)",
+          "detail": "Descanso estratégico a 3 dias da prova. Um pedal leve de passeio é aceitável, sem esforço.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-10-15",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Corrida solta ~3 km",
+          "detail": "Bem leve, só para soltar. Sem strides. Sexta (16/10) fica para descanso e viagem.",
+          "done": false
+        },
+        {
+          "type": "strength",
+          "title": "Treino C — só core (pernas/posterior pausados)",
+          "detail": "Mantém a sequência A→B→C, mas a 48h da prova os itens de perna e posterior ficam PAUSADOS. Só core, leve, sem ir à falha. Se o tempo apertar, pular sem culpa.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Corrida fácil de 06/10 não aconteceu (última corrida: 20/09). Volume perdido NÃO é compensado: a retomada vai para quinta (~4 km) e o último longão cai de ~8 para ~7 km, porque chega com só uma corrida antes dele.",
-    "Treino C feito hoje (07/10, esforço 6) no lugar do descanso previsto: ficou 4 dias antes do longão, então a regra de perna pesada segue respeitada. Ciclo A→B→C fechado; o A volta na sexta (09/10).",
-    "Negociação perna pesada × longão: A (pernas + tríceps) cai exatamente 48h antes do longão, com perna reduzida (1 série a menos, carga ~20% menor); nenhum exercício trocado.",
-    "Treino B de 12/10 com Agachamento Pêndulo e Leg Articulado pausados: dia seguinte ao longão (regra de 48h) e semana da prova (Pomerode 17/10).",
-    "Guardrails: ACWR 'unknown' (sem corrida em 7 dias) e esforço agudo 11,0 (ok, p90 89,0) — nenhum sinal de dados pede descanso. O único descanso total (10/10) é estratégico, na véspera do longão.",
-    "Pomerode a 10 dias: depois do longão a janela entra em polimento — corrida curta com strides, força só de superiores."
+    "A retomada de 08/10 não aconteceu (última corrida: 20/09). Ela vai para sábado (10/10, ~4 km), e o longão cai de ~7 para ~6 km com corrida/caminhada, porque chega com só uma corrida antes dele. Volume perdido NÃO é compensado.",
+    "Treino A feito hoje (09/10, esforço 6) como previsto, 48h antes do longão: dentro do limite da regra de perna pesada.",
+    "Treino B de 12/10 com Agachamento Pêndulo e Leg Articulado pausados: dia seguinte ao longão (regra de 48h) e semana da prova.",
+    "Treino C de 15/10 só com core: itens de perna/posterior pausados a 48h da prova (Pomerode 17/10). Nenhum exercício trocado.",
+    "Guardrails: ACWR 'unknown' (sem corrida em 7 dias) e esforço agudo 12,0 (ok, p90 89,0). Nenhum sinal de dados pede descanso; o único descanso total (14/10) é posicionamento estratégico de polimento.",
+    "Pomerode a 8 dias: depois do longão, a janela entra em polimento, com corridas curtas, strides só na terça e força sem perna."
   ],
   "coaches": {
-    "running": "Sem corrida há 17 dias (a última foi 20/09) e Pomerode é daqui a 10. A carga está baixíssima (esforço agudo 11,0 contra teto de 89,0), então a prioridade é simplesmente voltar a correr: ~4 km fáceis amanhã e um último longão de ~7 km no domingo, ensaiando a estratégia de corrida/caminhada. Na terça, ~4 km com strides, já em polimento. Meta: cruzar a linha. Dor articular no joelho: encurta ou para.",
-    "strength": "O Treino C de hoje fechou o ciclo — bom sinal de consistência na força. O A da sexta cai 48h antes do longão, então perna reduzida (1 série a menos, carga ~20% menor); desenvolvimento e tríceps normais. Na segunda, B só de superiores, com as pernas pausadas por causa do longão e da prova. O programa base segue vencido — vale fechar a renovação com o Coach Ernesto depois de Pomerode."
+    "running": "Já são 19 dias sem correr, e Pomerode é daqui a 8. A carga está baixíssima (esforço agudo 12,0 contra teto de 89,0), então a prioridade é uma só: voltar a correr. Amanhã, ~4 km fáceis; no domingo, ~6 km com corrida/caminhada, ensaiando a estratégia da prova. Na terça, ~4 km com strides; na quarta, descanso; na quinta, ~3 km soltos. Meta: cruzar a linha. Dor articular no joelho: encurta ou para.",
+    "strength": "O Treino A de hoje manteve a sequência: são três sessões em sete dias, e a força segue consistente. Na semana da prova, o programa só alivia, sem trocar nada: o B de segunda é só de superiores e o C de quinta é só de core, com pernas e posterior pausados para chegar fresco em 17/10. O programa base segue vencido; vale fechar a renovação com o Coach Ernesto depois de Pomerode."
   }
 }
