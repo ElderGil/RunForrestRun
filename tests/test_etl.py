@@ -64,15 +64,38 @@ def test_guardrail_status_thresholds():
         d = (ref - timedelta(days=days_ago)).strftime("%Y-%m-%d")
         return {"date": d, "type": "Run", "distance_km": km, "pace_min_km": 5.0}
 
-    # acute (7d) baixo vs crônico => ok
-    acts = [run(20, 40), run(14, 40), run(3, 8)]
+    # base contínua (corrida em todas as 4 semanas), acute baixo => ok
+    acts = [run(24, 10), run(17, 10), run(10, 10), run(3, 8)]
     g = N.acute_chronic_ratio(acts, ref)
     assert g["metric"] == "acute_chronic_ratio"
-    assert g["status"] in {"ok", "warning", "danger"}
+    assert g["status"] == "ok"
+
+    # base contínua, acute bem acima da média => danger
+    g_hot = N.acute_chronic_ratio([run(24, 5), run(17, 5), run(10, 5), run(3, 20)], ref)
+    assert g_hot["status"] == "danger"
 
     # sem corridas recentes => unknown
     g2 = N.acute_chronic_ratio([], ref)
     assert g2["status"] == "unknown"
+
+
+def test_guardrail_rebuilding_after_break():
+    """Primeira corrida depois de 3 semanas parado não pode virar `danger` (ADR-006)."""
+    from datetime import datetime, timedelta
+    ref = datetime(2026, 10, 20)
+
+    def run(days_ago, km):
+        d = (ref - timedelta(days=days_ago)).strftime("%Y-%m-%d")
+        return {"date": d, "type": "Run", "distance_km": km, "pace_min_km": 6.0}
+
+    # pausa longa, uma corrida de volta: razão 4.0, mas status rebuilding
+    g = N.acute_chronic_ratio([run(40, 6), run(1, 3)], ref)
+    assert g["value"] == 4.0
+    assert g["status"] == "rebuilding"
+
+    # segunda semana de volta: ainda falta base nas semanas anteriores
+    g2 = N.acute_chronic_ratio([run(9, 3), run(8, 3), run(2, 3.5)], ref)
+    assert g2["status"] == "rebuilding"
 
 
 def test_quarter_of():

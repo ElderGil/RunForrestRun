@@ -243,22 +243,38 @@ def acute_chronic_ratio(activities: list[dict], ref: datetime) -> dict:
 
     acute   = last 7 days total km
     chronic = avg weekly km over the last 28 days
+
+    After a break the 28-day average is mostly the current week itself, so the
+    ratio is inflated (one 3 km run back = 4.0). When any of the 3 weeks before
+    the acute week had no run, status is `rebuilding` instead (ADR-006): the
+    return-to-running protocol and `acute_effort_load` are the brakes then.
     """
     runs = [(parse_dt(a["date"]), a["distance_km"]) for a in activities if a["type"] == "Run"]
     acute = sum(km for d, km in runs if (ref - d).days < 7)
     chronic_total = sum(km for d, km in runs if (ref - d).days < 28)
     chronic_weekly = chronic_total / 4 if chronic_total else 0
     ratio = round(acute / chronic_weekly, 2) if chronic_weekly else 0.0
+    prior_weeks_with_runs = {(ref - d).days // 7 for d, _ in runs if 7 <= (ref - d).days < 28}
 
     warning, danger = 1.3, 1.5
     if ratio == 0 or chronic_weekly == 0:
         status = "unknown"
+    elif len(prior_weeks_with_runs) < 3:
+        status = "rebuilding"
     elif ratio >= danger:
         status = "danger"
     elif ratio >= warning:
         status = "warning"
     else:
         status = "ok"
+
+    if status == "rebuilding":
+        description = ("Voltando de uma pausa: a média das últimas 4 semanas ainda não representa a base, "
+                       "então a razão fica inflada. Até completar 4 semanas seguidas com corrida, o freio é "
+                       "a volta gradual (corridas curtas e fáceis) e o esforço agudo.")
+    else:
+        description = ("Compara o volume da última semana com a média das últimas 4. "
+                       "Acima de 1.3 o risco de lesão sobe — o guardrail prioriza saúde sobre velocidade.")
 
     return {
         "metric": "acute_chronic_ratio",
@@ -267,8 +283,7 @@ def acute_chronic_ratio(activities: list[dict], ref: datetime) -> dict:
         "threshold_warning": warning,
         "threshold_danger": danger,
         "label": "Razão carga aguda/crônica",
-        "description": "Compara o volume da última semana com a média das últimas 4. "
-                       "Acima de 1.3 o risco de lesão sobe — o guardrail prioriza saúde sobre velocidade.",
+        "description": description,
     }
 
 

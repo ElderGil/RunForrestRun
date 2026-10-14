@@ -12,6 +12,11 @@ DATA = Path(__file__).parent.parent / "data"
 
 LOCATION_FIELDS = {"lat", "lng", "start_latlng", "end_latlng", "map"}
 
+# Peso corporal na faixa adulta (qualquer valor em kg de 2 ou 3 dígitos), diagnóstico e
+# histórico ortopédico. Nomes de campo como `bmi` podem aparecer nas skills (descrevem o
+# health.json); valores e diagnósticos não. Sem números reais do atleta aqui: o teste é público.
+PERSONAL_PATTERNS = [r"\b\d{2,3}[.,]?\d*\s?kg\b", r"\bobes", r"\blca\b", r"\bmenisco\b"]
+
 
 def load(name):
     return json.loads((DATA / name).read_text())
@@ -32,7 +37,7 @@ def test_kpis_shape():
         assert k in r
     g = r["guardrail"]
     assert g["metric"] == "acute_chronic_ratio"
-    assert g["status"] in {"ok", "warning", "danger", "unknown"}
+    assert g["status"] in {"ok", "warning", "danger", "unknown", "rebuilding"}
     assert g["threshold_warning"] < g["threshold_danger"]
     assert {"total_sessions", "focus"} <= d["strength"].keys()
 
@@ -100,12 +105,32 @@ def test_weekly_plan_shape_if_present():
             assert day["date"] == (start + timedelta(days=i)).isoformat()
             assert day["status"] in {"planned", "done", "missed"}
 
+        # Fase opcional (ADR-006): alimenta o hero da página.
+        if "phase" in d:
+            assert isinstance(d["phase"]["label"], str) and d["phase"]["label"]
+            assert isinstance(d["phase"].get("detail", ""), str)
+
 
 def test_weekly_plan_has_no_personal_data():
     """O plano é público: nunca pode vazar peso/medidas/idade (ficam em data/private/)."""
     path = DATA / "weekly_plan.json"
     if not path.exists():
         pytest.skip("weekly_plan.json ainda não gerado")
+    import re
+
     blob = path.read_text().lower()
-    for term in ("109", "108 kg", "bmi", "imc", "gordura visceral", "cirurgia", "lca"):
-        assert term not in blob, f"possível vazamento de dado pessoal: {term!r}"
+    for pattern in (*PERSONAL_PATTERNS, r"\bbmi\b", r"\bimc\b", "gordura visceral", "cirurgia"):
+        assert not re.search(pattern, blob), f"possível vazamento de dado pessoal: {pattern!r}"
+
+
+PUBLIC_TEXTS = [DATA / "coaches.json", *sorted((DATA.parent / "skills").glob("*/SKILL.md"))]
+
+
+@pytest.mark.parametrize("path", PUBLIC_TEXTS, ids=lambda p: str(p.relative_to(DATA.parent)))
+def test_public_texts_have_no_personal_data(path):
+    """Coaches e skills são públicos (ADR-006): perfil, peso e histórico médico só em data/private/."""
+    import re
+
+    blob = path.read_text().lower()
+    for pattern in PERSONAL_PATTERNS:
+        assert not re.search(pattern, blob), f"possível vazamento de dado pessoal em {path.name}: {pattern!r}"

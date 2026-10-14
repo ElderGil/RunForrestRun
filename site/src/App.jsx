@@ -37,7 +37,7 @@ export default function App() {
     <>
       <nav className="nav">
         <div className="nav-inner">
-          <div className="brand">RunForrestRun <span>🏃</span></div>
+          <div className="brand">RunForrestRun</div>
           <div className="tabs">
             <button className={`tab ${tab === "jornada" ? "active" : ""}`} onClick={() => setTab("jornada")}>
               Jornada
@@ -51,7 +51,7 @@ export default function App() {
 
       {tab === "jornada" ? (
         <main>
-          <Hero kpis={data.kpis} />
+          <Hero kpis={data.kpis} plan={data.plan} />
           <RecentActivities activities={data.activities} />
           <RunningSection kpis={data.kpis} weeks={data.weekly} />
           <StrengthSection kpis={data.kpis} />

@@ -1,4 +1,6 @@
 // Perfil dos coaches: quem são, versão, resumo e principais configurações do agent.
+import { RunIcon, StrengthIcon } from "./Icons.jsx";
+
 export default function CoachProfiles({ coaches }) {
   if (!coaches) return null;
 
@@ -15,7 +17,9 @@ export default function CoachProfiles({ coaches }) {
         {coaches.coaches.map((c) => (
           <div className="coach-card" key={c.id}>
             <div className="coach-head">
-              <span className="coach-emoji">{c.emoji}</span>
+              <span className="coach-icon">
+                {c.id === "strength-coach" ? <StrengthIcon width={22} height={22} /> : <RunIcon width={22} height={22} />}
+              </span>
               <div>
                 <div className="coach-name">
                   {c.name} <span className="coach-version">v{c.version}</span>

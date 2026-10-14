@@ -1,9 +1,10 @@
 // Resumo do mês atual (PRD §4): contexto antes dos números.
-import { fmtPace, daysUntil } from "../data/loaders.js";
+// A frase de objetivo vem da fase do plano (ADR-006), não de uma data de prova fixa.
+import { fmtPace } from "../data/loaders.js";
 
-export default function Hero({ kpis }) {
+export default function Hero({ kpis, plan }) {
   const r = kpis.running;
-  const daysToHalf = daysUntil("2026-10-17");
+  const phase = plan?.phase;
 
   return (
     <header className="hero wrap">
@@ -14,7 +15,14 @@ export default function Hero({ kpis }) {
 
       <span className="goal-line">
         <span className="goal-dot" />
-        Faltam <strong>&nbsp;{daysToHalf} dias&nbsp;</strong> para a meia maratona de Pomerode
+        {phase ? (
+          <span>
+            <strong>{phase.label}</strong>
+            {phase.detail ? ` · ${phase.detail}` : null}
+          </span>
+        ) : (
+          <span>Foco em saúde e constância</span>
+        )}
       </span>
 
       <div className="hero-metrics">

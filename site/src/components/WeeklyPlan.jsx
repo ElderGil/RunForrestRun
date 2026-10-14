@@ -1,6 +1,7 @@
 // Caixa "Coach": análise + indicadores + plano rolante de 7 dias (hoje + 6).
 // Schema 3.0 (ADR-005): janela móvel com datas reais; destaca hoje e amanhã.
 import { fmtDate, shortDate, isoToday, weekdayShort } from "../data/loaders.js";
+import { RunIcon, StrengthIcon, RefreshIcon } from "./Icons.jsx";
 
 function nextDayIso(iso) {
   const d = new Date(iso + "T12:00:00");
@@ -52,13 +53,13 @@ export default function WeeklyPlan({ plan }) {
         <div className="coach-notes">
           {c.running && (
             <div className="coach-note run">
-              <div className="cn-head"><span>🏃</span> Running Coach</div>
+              <div className="cn-head"><RunIcon /> Running Coach</div>
               <p>{c.running}</p>
             </div>
           )}
           {c.strength && (
             <div className="coach-note strength">
-              <div className="cn-head"><span>🏋️</span> Strength Coach</div>
+              <div className="cn-head"><StrengthIcon /> Strength Coach</div>
               <p>{c.strength}</p>
             </div>
           )}
@@ -67,7 +68,7 @@ export default function WeeklyPlan({ plan }) {
 
       {plan.adaptations?.length > 0 && (
         <div className="adaptations">
-          <div className="adapt-title">🔄 Como o coach se adaptou</div>
+          <div className="adapt-title"><RefreshIcon width={18} height={18} /> Como o coach se adaptou</div>
           <ul>
             {plan.adaptations.map((a, i) => <li key={i}>{a}</li>)}
           </ul>

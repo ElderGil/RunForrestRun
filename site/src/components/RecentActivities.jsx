@@ -1,10 +1,11 @@
 // Últimas atividades — contexto além dos números do mês (PRD §4).
 import { shortDate, fmtPace } from "../data/loaders.js";
+import { RunIcon, StrengthIcon, RideIcon } from "./Icons.jsx";
 
 const TYPE_META = {
-  Run: { icon: "🏃", cls: "run" },
-  Strength: { icon: "🏋️", cls: "strength" },
-  Ride: { icon: "🚴", cls: "ride" },
+  Run: { icon: <RunIcon />, cls: "run" },
+  Strength: { icon: <StrengthIcon />, cls: "strength" },
+  Ride: { icon: <RideIcon />, cls: "ride" },
 };
 
 export default function RecentActivities({ activities }) {

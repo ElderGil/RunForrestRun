@@ -145,14 +145,16 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
 .guardrail.warning { border-left-color: var(--warn); }
 .guardrail.danger { border-left-color: var(--danger); }
 .guardrail.unknown { border-left-color: var(--text-dim); }
+.guardrail.rebuilding { border-left-color: var(--sky); }
 .guardrail .g-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.guardrail .g-title { font-weight: 700; }
+.guardrail .g-title { font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem; }
 .guardrail .g-value { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; }
 .g-status { font-size: 0.78rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; }
 .g-status.ok { background: #dcfce7; color: var(--ok); }
 .g-status.warning { background: #fef3c7; color: var(--warn); }
 .g-status.danger { background: #fee2e2; color: var(--danger); }
 .g-status.unknown { background: #f1eff4; color: var(--text-dim); }
+.g-status.rebuilding { background: #e0f2fe; color: #0369a1; }
 .guardrail .g-desc { color: var(--text-dim); font-size: 0.88rem; margin-top: 0.5rem; max-width: 44rem; }
 
 /* ---- Chart card ---- */
@@ -182,7 +184,10 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
 .act.run { border-left-color: var(--blue); }
 .act.strength { border-left-color: var(--orange); }
 .act.ride { border-left-color: var(--sky); }
-.act-icon { font-size: 1.25rem; flex-shrink: 0; }
+.act-icon { flex-shrink: 0; display: grid; place-items: center; color: var(--text-dim); }
+.act.run .act-icon { color: var(--blue); }
+.act.strength .act-icon { color: var(--orange); }
+.act.ride .act-icon { color: var(--sky); }
 .act-main { display: flex; flex-direction: column; min-width: 0; flex: 1; }
 .act-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .act-date { color: var(--text-dim); font-size: 0.8rem; }
@@ -212,8 +217,8 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
   border-radius: var(--radius); padding: 1.3rem 1.25rem; box-shadow: var(--shadow);
 }
 .coach-head { display: flex; align-items: center; gap: 0.7rem; }
-.coach-emoji {
-  font-size: 1.35rem; width: 46px; height: 46px; flex-shrink: 0;
+.coach-icon {
+  color: #fff; width: 46px; height: 46px; flex-shrink: 0;
   display: grid; place-items: center; border-radius: 12px;
   background-image: var(--grad); filter: saturate(0.95);
 }
@@ -246,7 +251,7 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
   margin-top: 1.5rem; background: #f6f9ff; border: 1px solid #dbeafe;
   border-radius: var(--radius); padding: 1.2rem 1.3rem;
 }
-.adapt-title { font-weight: 700; }
+.adapt-title { font-weight: 700; display: flex; align-items: center; gap: 0.45rem; }
 .adaptations ul { margin: 0.6rem 0 0 0; padding-left: 1.1rem; }
 .adaptations li { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 0.4rem; line-height: 1.5; }
 
@@ -261,7 +266,7 @@ section.block .lead { color: var(--text-dim); margin-top: 0.3rem; max-width: 42r
 }
 .coach-note.strength { border-top-color: var(--orange); }
 .cn-head { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; letter-spacing: -0.01em; }
-.cn-head span { font-size: 1.2rem; }
+.cn-head svg { flex-shrink: 0; }
 .coach-note p { color: var(--text-dim); font-size: 0.9rem; margin-top: 0.6rem; line-height: 1.55; }
 .plan-subtitle { font-size: 1.15rem; font-weight: 700; margin-top: 2.2rem; }
 

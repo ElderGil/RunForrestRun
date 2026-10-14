@@ -2,6 +2,7 @@
 import KPICard from "./KPICard.jsx";
 import EvolutionChart from "./EvolutionChart.jsx";
 import { fmtPace } from "../data/loaders.js";
+import { ShieldIcon } from "./Icons.jsx";
 
 export default function RunningSection({ kpis, weeks }) {
   const r = kpis.running;
@@ -20,7 +21,7 @@ export default function RunningSection({ kpis, weeks }) {
         <KPICard value={fmtPace(r.avg_pace_min_km)} unit="min/km" label="Pace médio"
           legend="Indicador direto de velocidade e evolução de performance." />
         <KPICard value={r.longest_run_km} unit="km" label="Long run mais longo"
-          legend="Preparação específica para a prova — sobe rumo aos 42 km." />
+          legend="Resistência aeróbica: sobe devagar, só depois de a base voltar." />
         <KPICard value={r.avg_heart_rate_bpm ?? "—"} unit="bpm" label="FC média"
           legend="Eficiência cardiovascular: menos esforço no mesmo pace = evolução real." />
         <KPICard value={r.max_heart_rate_bpm ?? "—"} unit="bpm" label="FC máxima"
@@ -33,9 +34,9 @@ export default function RunningSection({ kpis, weeks }) {
 
       <div className={`guardrail ${g.status}`}>
         <div className="g-head">
-          <span className="g-title">🛡️ Guardrail · {g.label}</span>
+          <span className="g-title"><ShieldIcon width={18} height={18} /> Guardrail · {g.label}</span>
           <span>
-            <span className="g-value">{g.status === "unknown" ? "—" : g.value}</span>{" "}
+            <span className="g-value">{g.status === "unknown" || g.status === "rebuilding" ? "—" : g.value}</span>{" "}
             <span className={`g-status ${g.status}`}>{statusLabel(g.status)}</span>
           </span>
         </div>
@@ -52,5 +53,5 @@ export default function RunningSection({ kpis, weeks }) {
 }
 
 function statusLabel(s) {
-  return { ok: "saudável", warning: "atenção", danger: "risco", unknown: "sem dados" }[s] || s;
+  return { ok: "saudável", warning: "atenção", danger: "risco", unknown: "sem dados", rebuilding: "reconstruindo base" }[s] || s;
 }
