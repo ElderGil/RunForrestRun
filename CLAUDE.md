@@ -1,14 +1,19 @@
-# RunForrestRun 🏃
+# RunForrestRun
 
 ## Contexto do Projeto
 
-**O que é:** Página pública no GitHub Pages que documenta e visualiza a jornada de treinamento do Elder até uma maratona completa.
+**O que é:** Página pública no GitHub Pages com dois coaches de IA (corrida e força) que montam e ajustam o treino do Elder todo dia, com foco em saúde.
 
 **Por que existe:** Documentar publicamente uma jornada real de treinamento — com dados, métricas e evolução visíveis — do jeito que um engenheiro documenta um projeto de software.
 
-**Objetivo final:** Correr uma maratona completa até o final de 2027.
+**Objetivo principal:** saúde, com perda de peso como maior objetivo (números só em
+`data/private/athlete.json`). Constância de corrida e força, sem lesão.
 
-**Objetivo intermediário:** Meia maratona em Pomerode — 17/18 de outubro de 2026.
+**Fase atual (out/2026):** volta à corrida após ~3 semanas de pausa por agenda (última
+corrida em 20/09/2026), seguindo o protocolo do ADR-006. A força foi mantida.
+
+**Horizonte:** maratona completa, sem data. A meia de Pomerode (out/2026) e o prazo de
+2027 saíram em 14/10/2026 (ADR-006).
 
 **Perfil do atleta (resumo público):**
 - Nível: Intermediário; correndo há mais de 1,5 anos, já completou uma meia maratona.
@@ -72,7 +77,8 @@ RunForrestRun/
 │       ├── 002-page-stack.md
 │       ├── 003-data-schema.md
 │       ├── 004-github-actions.md
-│       └── 005-rolling-plan-and-coach-negotiation.md
+│       ├── 005-rolling-plan-and-coach-negotiation.md
+│       └── 006-health-goal-and-return-to-running.md
 ├── etl/
 │   ├── merge_strava.py        # Ingestão incremental do Strava (via routine)
 │   ├── merge_health.py        # Ingestão do Apple Health (Health Auto Export)
@@ -128,6 +134,7 @@ RunForrestRun/
 - [x] ADR-003: Schema dos dados normalizados
 - [x] ADR-004: Estratégia de atualização (hoje: routine do Claude; GitHub Actions só p/ deploy)
 - [x] ADR-005: Plano rolante de 7 dias + negociação dos coaches
+- [x] ADR-006: Objetivo de saúde + protocolo de volta à corrida (status `rebuilding` na ACWR)
 
 ---
 
@@ -149,7 +156,7 @@ contexto, mas **nunca** escrevem dado pessoal no plano público.
 
 ## Estado Atual
 
-### Concluído ✅
+### Concluído
 - [x] PRD, ADR-001..005, CLAUDE.md.
 - [x] ETL: ingestão incremental do Strava + normalização (guardrail ACWR).
 - [x] Site React + Vite + Recharts (abas Jornada / Plano), light mode.
@@ -160,12 +167,16 @@ contexto, mas **nunca** escrevem dado pessoal no plano público.
 - [x] **Privacidade:** dados pessoais/médicos em `data/private/` (gitignored) + teste anti-vazamento no plano público.
 - [x] **Apple Health:** ingestão de sono/FC repouso/VO2máx/peso via Health Auto Export → Dropbox → `merge_health.py`.
 - [x] Testes: ETL, contrato de schema, ingester de health (26 testes, pytest).
+- [x] **Objetivo revisado (ADR-006, 14/10/2026):** saúde e perda de peso no lugar das
+  provas; protocolo de volta à corrida no running-coach; status `rebuilding` na ACWR;
+  campo `phase` no plano (hero da página); dado pessoal fora das SKILL.md; página e
+  README sem emoji.
 - [x] **Guardrail de esforço agudo** (`kpis.json.load_guardrail`, calculado pelo `normalize.py`
   a cada rodada): soma do esforço relativo do Strava (corrida+força+bike) vs. baseline
   histórica do próprio atleta — cobre a força, que a ACWR (só corrida) não vê. Junto com a
   ACWR, decide dias de descanso por dado real em vez de quota fixa de calendário.
 
-### Pendente ⏳
+### Pendente
 - [ ] **Health Auto Export sem automação grátis** (trial acabou, 06/2026): pipeline de
   sono/FC repouso/VO2máx travado desde então. Decisão (07/07/2026): montar uma automação
   gratuita no app Atalhos (Shortcuts) da Apple lendo o HealthKit direto, em vez de assinar

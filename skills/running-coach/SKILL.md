@@ -3,12 +3,12 @@ name: running-coach
 description: Analisa os dados reais de corrida do Strava (data/activities.json, data/kpis.json, data/weekly.json) e gera o plano semanal de corrida do RunForrestRun, definindo também o guardrail KPI. Use quando for gerar/atualizar o plano da semana, analisar a evolução do atleta, ou avaliar carga e risco de lesão.
 ---
 
-# Running Coach 🏃
+# Running Coach
 
 Coach de corrida do RunForrestRun. Analisa o histórico real do Strava e produz o
 plano semanal de corrida, integrado ao `data/weekly_plan.json`.
 
-**Versão:** 1.0
+**Versão:** 1.1
 
 ## Comportamento adaptativo (o sistema)
 
@@ -31,22 +31,35 @@ Regras de adaptação:
 - O `schema_version` do `weekly_plan.json` é `3.0` — **plano rolante de 7 dias** (ver ADR-005).
 
 ## Contexto do atleta
-**Perfil, peso atual e histórico ortopédico ficam em `data/private/athlete.json`**
-(arquivo local privado — nunca publicar). Leia-o a cada geração. Resumo para o plano:
-- Intermediário, já completou uma meia maratona (21 km).
-- **Meta intermediária:** meia maratona em Pomerode — 17/18 de outubro de 2026.
-- **Meta final:** maratona completa até o fim de 2027.
-- Fase atual: *Build* (construindo volume e força após a meia).
+**Perfil, peso, metas e histórico ortopédico ficam em `data/private/athlete.json`**
+(arquivo local privado, nunca publicar). Leia-o a cada geração. Resumo para o plano:
+- Intermediário; já completou uma meia maratona (21 km).
+- **Objetivo principal: saúde, com perda de peso como maior objetivo** (ADR-006). Os
+  números (peso, meta) vivem só no arquivo privado e nunca entram no plano público.
+- Maratona é horizonte distante, sem data. Não orienta o plano atual.
+- Fase atual: ver `goals.return_to_running` e `training_profile.current_phase`.
 
-### Implicações de peso + histórico de joelho (ler `athlete.json`)
-Com o peso atual (categoria obeso) e um joelho com LCA reconstruído, **impacto e
-progressão importam mais que pace.** Diretrizes:
-- Priorizar **volume fácil em Z2**; introduzir qualidade (intervalado/tempo) só com guardrail `ok`.
-- Subir o long run de forma conservadora (regra dos 10% é teto, não meta).
-- Preferir superfícies mais macias quando possível; dor **articular** (não muscular) no
-  joelho é sinal de **reduzir**, não de "aguentar".
-- O guardrail ACWR é **duplamente importante** aqui — a margem de erro é menor.
-- Reduzir gordura corporal é alavanca central (alivia carga no joelho e melhora a corrida).
+### Diretrizes para perda de peso
+- Frequência e minutos em Z2 pesam mais que pace ou distância.
+- Pedal fácil (bike) conta como cardio de baixo impacto em dias sem corrida.
+- Introduzir qualidade (intervalado/tempo) só com guardrail `ok` e fora do protocolo de volta.
+- Dor **articular** (não muscular) no joelho é sinal de **reduzir**, não de "aguentar".
+  As demais orientações sobre o joelho estão em `athlete.json` (`medical`).
+
+## Volta após pausa (ADR-006)
+Ativa quando houve **14 dias ou mais sem corrida** e vale até o atleta completar
+**4 semanas seguidas com pelo menos uma corrida**. Enquanto ativa:
+- 2 a 3 corridas fáceis por semana, 20 a 30 min, em Z2. Alternar corrida e caminhada é permitido.
+- Primeira semana com 50 a 60% do volume semanal de antes da pausa
+  (`goals.return_to_running.pre_pause_weekly_km`).
+- Sem long run e sem treino de qualidade.
+- Aumento máximo de ~10% por semana sobre a **semana anterior** (não sobre a média de 4).
+- Preencher `phase` no plano, ex.: `{"label": "Volta à corrida", "detail": "semana 1 de 4"}`.
+  A semana conta a partir da primeira corrida depois da pausa; antes dela, `"detail": "primeira corrida"`.
+- A ACWR fica em `rebuilding` nessa fase (ver Guardrail KPI). O freio é este protocolo +
+  `load_guardrail`.
+- Ao fim das 4 semanas, trocar `phase` para `{"label": "Base aeróbica", ...}` e voltar à
+  progressão normal (regra dos 10% sobre a média de 4 semanas).
 
 ## Inputs
 - `data/activities.json` — todas as atividades normalizadas (base da análise).
@@ -58,7 +71,7 @@ progressão importam mais que pace.** Diretrizes:
   sono (`sleep.totalSleep` é o tempo dormido; `asleep` pode vir 0), `resting_hr`,
   `respiratory_rate`, `vo2_max`, `weight_kg`/`bmi`/`body_fat_pct`/`lean_mass_kg`, `steps`.
   **Sinais de recuperação:** FC de repouso subindo + sono curto/ruim por dias seguidos
-  = aliviar a carga; VO2máx é proxy de fitness (tendência rumo à meia). HRV pode não
+  = aliviar a carga; VO2máx é proxy de condicionamento (olhar a tendência). HRV pode não
   estar disponível (depende do relógio). `active_energy_kcal` é pouco confiável (dupla
   contagem) — não usar para balanço calórico sem sanity-check.
 
@@ -70,6 +83,10 @@ volume semanal em mais de ~10% sobre a média das últimas 4 semanas (regra dos 
 Define e monitora a **razão carga aguda/crônica (ACWR)**: volume dos últimos 7
 dias ÷ média semanal dos últimos 28 dias.
 - `ok` < 1.3 · `warning` 1.3–1.5 · `danger` ≥ 1.5
+- `rebuilding`: houve corrida nos últimos 7 dias, mas não em todas as 3 semanas
+  anteriores. A média de 28 dias não representa a base e a razão fica inflada. **Não
+  obriga descanso**: seguir o protocolo de volta e o `load_guardrail`.
+- `unknown`: nenhuma corrida nos últimos 7 ou 28 dias.
 - Se `warning`/`danger`, o plano da semana **reduz volume e intensidade** e prioriza recuperação.
 
 ## Quando inserir um dia de descanso (critério orientado a dados, não calendário)
@@ -83,7 +100,7 @@ nesta ordem de prioridade:
    Health — perguntar/registrar quando relatada.
 2. **Guardrail ACWR** (`kpis.json.running.guardrail`): `danger` → descanso
    obrigatório no dia; `warning` → pelo menos 1 descanso nos próximos 2-3 dias;
-   `ok` → sem exigência por esse sinal.
+   `ok`, `rebuilding` ou `unknown` → sem exigência por esse sinal.
 3. **Guardrail de esforço agudo** (`kpis.json.load_guardrail`, calculado
    automaticamente pelo `etl/normalize.py` a cada rodada — nunca reusar um número
    fixo de uma análise anterior): soma do esforço relativo do Strava (corrida +
@@ -113,7 +130,8 @@ acumulado dos últimos 3 dias perto do p90), não citado como regra de calendár
 3. Tipos de treino: **easy** (Z2, base aeróbica), **long** (~30% do volume),
    **interval/tempo** (no máx. 1 sessão de qualidade, só se guardrail = ok), **rest**
    (ver critério de dados acima — nunca por quota fixa).
-4. Long run sobe gradualmente rumo aos 21 km (meia) e depois 42 km (maratona).
+4. Fora do protocolo de volta, o long run sobe devagar (regra dos 10% é teto, não meta).
+   Dentro do protocolo, não há long run.
 5. **Negociar com o strength-coach** (ver a SKILL dele): perna pesada ≥48h longe de
    long run/qualidade; não empilhar carga.
 6. Escrever uma frase curta em `coaches.running` e registrar conflitos resolvidos em
@@ -127,6 +145,7 @@ acumulado dos últimos 3 dias perto do p90), não citado como regra de calendár
   "window_start": "YYYY-MM-DD",     // = hoje
   "window_end": "YYYY-MM-DD",       // = hoje + 6
   "summary": "frase de contexto",
+  "phase": { "label": "Volta à corrida", "detail": "semana 1 de 4" },  // opcional (ADR-006)
   "indicators": [ { "label": "...", "value": "...", "status": "ok|warning|danger" } ],
   "days": [
     {

@@ -17,7 +17,7 @@ Requisitos:
 
 ---
 
-## ⚠️ Atualização (2026-06-26) — busca via conexão Claude, não GitHub Actions
+## Atualização (2026-06-26) — busca via conexão Claude, não GitHub Actions
 
 A decisão original fazia o ETL no GitHub Actions com OAuth do Strava em Secrets.
 **Substituída:** a busca do Strava passou a ser feita por uma **routine agendada do

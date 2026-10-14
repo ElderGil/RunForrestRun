@@ -16,7 +16,7 @@ A decisão define qual tecnologia constrói a interface — impacta diretamente 
 
 ## Opções Consideradas
 
-### Opção A — React + Vite + Recharts ✅ Escolhida
+### Opção A — React + Vite + Recharts (escolhida)
 
 React como framework de UI, Vite como bundler e ferramenta de build, Recharts como biblioteca de gráficos nativa para React.
 
@@ -42,7 +42,7 @@ HTML, CSS e JavaScript sem framework. Chart.js para gráficos.
 - Zero build step — o arquivo fonte é o arquivo servido
 - Mais simples de inspecionar no browser
 
-**Contras:** ❌ Descartada
+**Contras** (opção descartada):
 - Sem componentes: qualquer mudança no card de KPI exige edição em múltiplos lugares
 - Estado de UI (filtros, tabs) vira manipulação manual de DOM — código difícil de manter
 - Chart.js requer configuração imperativa verbose; não integra naturalmente com estado

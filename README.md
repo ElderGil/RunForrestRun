@@ -1,11 +1,48 @@
-# RunForrestRun 🏃
+# RunForrestRun
 
-> Documentando publicamente uma jornada real de treinamento — com dados, métricas e evolução visíveis — do jeito que um engenheiro documenta um projeto de software.
+Dois coaches de IA montam meu treino e o ajustam todo dia com base no que eu realmente
+fiz, dormi e aguentei:
 
-**Objetivo final:** correr uma maratona completa até o final de 2027.
-**Objetivo intermediário:** meia maratona em Pomerode — outubro de 2026.
+- **Coach de corrida:** monta as corridas da semana e controla a carga para evitar lesão.
+- **Coach de força:** encaixa o programa de musculação ao redor da corrida.
 
-🔗 **Página ao vivo:** https://eldergil.github.io/RunForrestRun/
+O objetivo é saúde: correr e treinar com constância por muitos anos, sem me machucar no
+caminho.
+
+[Página ao vivo](https://eldergil.github.io/RunForrestRun/) · [Como funciona](#como-funciona) · [Decisões de arquitetura](docs/adr/)
+
+## O que ele faz
+
+Apps de treino entregam uma planilha pronta e esperam que a vida se encaixe nela. Aqui é
+o contrário: o plano se ajusta ao que de fato aconteceu.
+
+- **Plano que acompanha a vida real.** Todo dia o sistema lê o que foi corrido, levantado
+  e dormido, e refaz os próximos 7 dias. Se você passou semanas sem correr, o plano
+  recomeça de onde o corpo está, não de onde a planilha parou.
+- **Dois coaches que negociam.** O coach de corrida e o de força dividem a mesma semana.
+  A corrida define o esqueleto e a força encaixa o programa A/B/C ao redor, sem trocar
+  exercícios. Cada ajuste fica registrado com o motivo.
+- **Freio contra lesão.** Dois guardrails vigiam a carga: a razão aguda/crônica da corrida
+  e o esforço somado de corrida, força e bike, comparado ao próprio histórico do atleta.
+  O descanso sai desses números, não de um dia fixo no calendário.
+- **Custo zero, sem servidor.** Os dados ficam em JSON versionado, o site é estático no
+  GitHub Pages e a atualização é feita por uma routine diária do Claude. Não há banco,
+  API própria nem segredo guardado no repositório.
+- **Aberto, mas não exposto.** O código e as métricas de treino são públicos. Peso, saúde e
+  histórico médico ficam só na máquina local, e um teste quebra o build se algo vazar.
+
+## Momento atual
+
+Desde junho de 2024 são mais de 1.000 km corridos e 250 treinos registrados. Depois de
+algumas semanas longe da corrida, mantendo só a força, estou voltando a correr. A volta é
+gradual ([protocolo de volta à corrida](docs/adr/006-health-goal-and-return-to-running.md)),
+com a força sustentando a constância enquanto a base de corrida se reconstrói.
+
+## Feito como software
+
+O projeto segue o processo de um produto: [PRD](docs/PRD.md) antes do código,
+[ADRs](docs/adr/) para cada decisão técnica, testes de contrato sobre os dados e CI em
+cada push. O histórico de commits funciona também como diário de treino.
 
 ---
 
@@ -15,7 +52,7 @@
 Strava ───────────┐
                   ├──► routine diária do Claude (Python, no Mac · 11:08 BRT)
 Apple Health ─────┘        merge_strava → normalize → merge_health → coaches negociam
-  (Health Auto Export → Dropbox/iCloud → Mac)
+  (export → nuvem → Mac)
                            │
         ┌──────────────────┴───────────────────┐
    data/*.json  (PÚBLICO)              data/private/*.json  (LOCAL, gitignored)
@@ -26,11 +63,11 @@ Apple Health ─────┘        merge_strava → normalize → merge_heal
               App React + Recharts (Jornada / Plano)
 ```
 
-- **Sem servidor.** Tudo é arquivo estático versionado; a página é React puro servido pelo GitHub Pages.
-- **Atualização diária.** Uma *routine* do Claude busca só as atividades novas do Strava (incremental), lê o Apple Health, recalcula os KPIs, deixa os coaches re-negociarem o plano e publica. Sem Secrets, sem cron de servidor.
-- **Coaches que conversam.** `running-coach` e `strength-coach` negociam um único **plano rolante de 7 dias** (hoje + 6): a corrida define o esqueleto, a força encaixa o programa A/B/C ao redor, respeitando recuperação e o guardrail de carga.
+- **Sem servidor.** Tudo é arquivo estático versionado. A página é React puro servido pelo GitHub Pages.
+- **Atualização diária.** Uma routine do Claude busca só as atividades novas do Strava, lê o Apple Health, recalcula os KPIs, deixa os coaches renegociarem o plano e publica. Sem Secrets e sem cron de servidor.
+- **Plano rolante.** `running-coach` e `strength-coach` negociam um único plano de 7 dias (hoje + 6), respeitando a recuperação e o guardrail de carga.
 
-## Privacidade — o que NÃO é exposto
+## Privacidade: o que não é exposto
 
 O repositório e a página são públicos, então há uma fronteira rígida:
 
@@ -73,7 +110,8 @@ A busca do Strava e a ingestão do Apple Health rodam na **routine diária do Cl
 ## KPIs acompanhados
 
 Pace médio · volume semanal/mensal · long run mais longo · consistência · FC média/máx ·
-elevação · treinos de força · **guardrail** (razão carga aguda/crônica) · recuperação (sono, FC de repouso, VO2máx).
+elevação · treinos de força · **guardrails** (razão carga aguda/crônica da corrida e esforço
+agudo de corrida+força+bike) · recuperação (sono, FC de repouso, VO2máx).
 
 ---
 

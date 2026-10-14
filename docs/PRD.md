@@ -1,14 +1,14 @@
 # PRD — RunForrestRun
 
-**Versão:** 1.0  
-**Data:** 2026-06-25  
+**Versão:** 1.1  
+**Data:** 2026-06-25 · revisado em 2026-10-14 (objetivos, ver ADR-006)  
 **Status:** Aprovado  
 
 ---
 
 ## 1. Visão Geral
 
-RunForrestRun é uma página pública no GitHub Pages que documenta a jornada de treinamento do Elder até uma maratona completa. O projeto une dados reais do Strava com visualizações claras, decisões de engenharia documentadas e planos gerados por agentes de IA — tudo visível, tudo explicado.
+RunForrestRun é uma página pública no GitHub Pages que documenta o treino do Elder, conduzido por dois coaches de IA (corrida e força), com foco em saúde. O projeto une dados reais do Strava com visualizações claras, decisões de engenharia documentadas e planos gerados por agentes de IA — tudo visível, tudo explicado.
 
 **Filosofia central:** 1% melhor toda semana.
 
@@ -18,8 +18,13 @@ RunForrestRun é uma página pública no GitHub Pages que documenta a jornada de
 
 | Objetivo | Prazo |
 |---|---|
-| Meia maratona em Pomerode | 17/18 outubro de 2026 |
-| Maratona completa | Até dezembro de 2027 |
+| Saúde: perder peso (números só em `data/private/`) | Contínuo |
+| Constância de corrida e força, sem lesão | Contínuo |
+| Volta gradual à corrida após pausa (protocolo do ADR-006) | Out–nov/2026 |
+| Maratona completa | Horizonte distante, sem data |
+
+> Revisão de 2026-10-14: a meia de Pomerode (17/10/2026) e o prazo de 2027 para a maratona
+> saíram. Motivo e regras novas em [ADR-006](adr/006-health-goal-and-return-to-running.md).
 
 ---
 
@@ -42,7 +47,7 @@ Página única com scroll. Sem subpáginas. Navegação interna por âncora.
 
 **Hero — Resumo do Mês Atual**
 - Mês em curso com métricas principais: km totais, número de treinos, pace médio
-- Frase/objetivo visível: meta intermediária ou final
+- Frase visível com a fase atual do plano (ex.: volta à corrida), lida de `weekly_plan.json`
 - Tom: contexto antes dos números
 
 **Corrida**
@@ -84,7 +89,7 @@ Cada KPI exibido na página deve ter uma legenda curta explicando por que é aco
 | FC máxima | Intensidade real dos treinos |
 | Elevação acumulada (m) | Força e resistência muscular em terreno variado |
 | Tempo em zona de FC | Distribuição de intensidade — polarização do treino |
-| Long run mais longo | Preparação específica para prova |
+| Long run mais longo | Resistência aeróbica; base para distâncias maiores |
 | Consistência (treinos/semana) | Disciplina — o KPI mais importante a longo prazo |
 | Guardrail KPI | A definir pelo running-coach (ex: razão carga aguda/crônica, FC repouso, HRV) |
 
@@ -138,7 +143,7 @@ Ambos os planos são exibidos integrados no **Plano Semanal**.
 
 - **Fonte:** Strava API
 - **Histórico:** desde junho de 2024 (aproximadamente 2 anos)
-- **Atualização:** diária via GitHub Actions (meia-noite)
+- **Atualização:** diária via routine do Claude (ADR-004)
 - **Armazenamento:** JSON estático versionado no repositório
 - **Localização dos treinos:** não exibida
 - **Dados excluídos:** peso corporal, comparações com outros atletas

@@ -23,7 +23,7 @@ Requisitos:
 ### Opção A — Um arquivo único (`data.json`)
 Tudo em um JSON: atividades, KPIs, semanas, quarters. Descartada — arquivo cresce com o histórico, página carrega tudo mesmo usando só uma parte, ruim para mobile.
 
-### Opção B — Arquivos especializados por uso ✅ Escolhida
+### Opção B — Arquivos especializados por uso (escolhida)
 Cada arquivo serve uma seção específica da página. ETL calcula e agrega antes de salvar. Página só faz fetch do que precisa.
 
 ### Opção C — Atividades brutas + cálculo no browser

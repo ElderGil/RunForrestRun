@@ -3,6 +3,10 @@
 **Status:** Aceito · 2026-06-28
 **Contexto decidido com o atleta** (ver memória do projeto).
 
+> **Atualização (2026-10-14):** a meta que orienta o running-coach mudou. A meia de
+> Pomerode saiu; o objetivo passou a ser saúde e perda de peso, com um protocolo de volta
+> à corrida. Ver [ADR-006](006-health-goal-and-return-to-running.md).
+
 ## Contexto
 
 O `weekly_plan.json` (schema 2.0) modelava uma **semana fixa** (segunda a domingo,
@@ -57,7 +61,7 @@ janela sempre carrega 6 dias à frente, o "amanhã" já está visível de manhã
 
 Sem hierarquia fixa. A cada geração:
 1. **running-coach** rascunha os dias de corrida (tipo/intensidade/distância) pela meta
-   (meia Pomerode out/2026), guardrail ACWR e carga recente.
+   vigente (ver ADR-006), guardrail ACWR e carga recente.
 2. **strength-coach** rascunha os dias de força a partir do **programa A/B/C fixo**
    (`data/private/strength_program.json`), respeitando a recuperação.
 3. **Passo de merge** concilia conflitos dia a dia com regras:

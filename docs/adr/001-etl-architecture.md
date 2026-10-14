@@ -23,7 +23,7 @@ Requisitos que guiam a decisão:
 
 ## Opções Consideradas
 
-### Opção A — Python + GitHub Actions (cron diário) ✅ Escolhida
+### Opção A — Python + GitHub Actions (cron diário) (escolhida)
 
 Script Python roda via GitHub Actions todos os dias. Busca dados da Strava API usando credenciais armazenadas em GitHub Secrets, gera JSONs normalizados e faz commit automático no repositório. A página lê os JSONs diretamente.
 
@@ -49,7 +49,7 @@ A página faz chamadas diretas à Strava API via JavaScript no browser do visita
 - Dados sempre em tempo real
 - Sem pipeline de ETL para manter
 
-**Contras:** ❌ Descartada
+**Contras** (opção descartada):
 - Expõe credenciais da Strava no código público (inaceitável)
 - CORS bloquearia as chamadas diretas sem proxy
 - Dependência de conexão do visitante para renderizar dados
@@ -63,7 +63,7 @@ Serviço de terceiro faz a ponte entre Strava e o repositório.
 **Prós:**
 - Configuração sem código
 
-**Contras:** ❌ Descartada
+**Contras** (opção descartada):
 - Dependência de terceiro (pode sair do ar, mudar de preço)
 - Menos controle sobre o schema dos dados
 - Adiciona complexidade desnecessária para o que o GitHub Actions já resolve
