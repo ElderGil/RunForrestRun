@@ -1,38 +1,37 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-10-14T14:10:00Z",
+  "generated_at": "2026-10-14T13:43:16Z",
   "window_start": "2026-10-14",
   "window_end": "2026-10-20",
-  "summary": "A janela desliza para 14/10→20/10. Desde a última atualização: nenhuma corrida de 10/10 a 13/10 (a última segue sendo 20/09, 24 dias atrás); hoje cedo veio mais uma sessão de força (~48 min, esforço 5). ACWR 'unknown' (sem corrida em 7 dias) e esforço agudo de 3 dias em 5,0, muito abaixo do p90 (83,0): o risco é falta de estímulo, não sobrecarga. Faltam 3 dias para Pomerode (17/10). Plano: ~3 km soltos amanhã, descanso total na sexta (viagem), prova no sábado com corrida/caminhada desde o início, recuperação leve depois. Apple Health segue parado desde 28/06. Meta: completar a prova; se o corpo pedir, reduzir sem culpa.",
+  "summary": "A janela vai de 14/10 a 20/10. A meia de Pomerode saiu do plano e o foco agora é saúde. Depois de 24 dias sem correr, começa a volta gradual: duas corridas fáceis e curtas nesta semana, força mantida na sequência do A/B/C e dias livres com caminhada ou pedal leve opcional. Hoje cedo veio mais uma sessão de força.",
+  "phase": {
+    "label": "Volta à corrida",
+    "detail": "semana 1 de 4 · primeira corrida em 15/10"
+  },
   "indicators": [
     {
       "label": "Corridas (7 dias)",
-      "value": "0 corridas nos últimos 7 dias — a última foi 5,02 km em 20/09; as de 10, 11 e 13/10 não aconteceram. Nesta janela: ~3 km soltos (15/10) antes da prova.",
+      "value": "0 corridas; a última foi em 20/09 (24 dias). Meta da semana: 2 corridas fáceis, cerca de 5 km no total.",
       "status": "warning"
     },
     {
       "label": "Guardrail (ACWR)",
-      "value": "0,0 (unknown) — sem corrida em 7 dias; é ausência de carga, não risco.",
-      "status": "warning"
+      "value": "Sem dados (nenhuma corrida em 7 dias). Na volta aparece como 'reconstruindo base', que não obriga descanso.",
+      "status": "ok"
     },
     {
       "label": "Esforço agudo (3 dias)",
-      "value": "5,0 (baseline: média 33,8 ± 35,9, p90 83,0) — só a sessão de força de hoje. Muito espaço abaixo do teto.",
+      "value": "5,0 contra p90 de 83,0 no histórico. Muito espaço para carga.",
+      "status": "ok"
+    },
+    {
+      "label": "Força (7 dias)",
+      "value": "2 sessões (09/10 e 14/10). A constância veio da força durante a pausa.",
       "status": "ok"
     },
     {
       "label": "Recuperação",
-      "value": "Apple Health parado desde 28/06; FC de repouso, sono e HRV seguem cegos. Decisão apoiada em Strava + guardrails. Sem dor articular relatada.",
-      "status": "warning"
-    },
-    {
-      "label": "Força (7 dias)",
-      "value": "2 sessões em 7 dias (09/10 e 14/10). Força consistente; perna pausada até a prova.",
-      "status": "ok"
-    },
-    {
-      "label": "Pomerode (17/10)",
-      "value": "Faltam 3 dias. Sem corrida há 24 dias e maior corrida recente ~5 km. Meta: completar, com corrida/caminhada desde o início e saída bem conservadora.",
+      "value": "Apple Health parado desde 28/06; sono e FC de repouso seguem cegos. Decisão apoiada em Strava + guardrails. Sem dor relatada.",
       "status": "warning"
     }
   ],
@@ -44,8 +43,8 @@
       "items": [
         {
           "type": "strength",
-          "title": "Sessão de força (Morning Weight Training)",
-          "detail": "Realizada hoje cedo (~48 min, esforço 5). Mantém a sequência do programa A/B/C.",
+          "title": "Sessão de força (Treino B)",
+          "detail": "Feita hoje cedo, cerca de 48 min, esforço 5. Sequência segue com o Treino C.",
           "done": true
         }
       ]
@@ -57,8 +56,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Corrida solta ~3 km",
-          "detail": "Bem leve, Z2, conversável, sem olhar pace. Só para soltar as pernas antes da prova. Sem strides. Dor no joelho: encurtar ou parar.",
+          "title": "Primeira corrida de volta · 20 min",
+          "detail": "Bem fácil, em Z2, dando para conversar. Se precisar, alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Dor no joelho: encurtar ou parar.",
           "done": false
         }
       ]
@@ -69,9 +68,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "rest",
-          "title": "Descanso total (viagem/pré-prova)",
-          "detail": "Sem treino. Hidratação, sono, carboidrato no jantar e separar o kit da prova.",
+          "type": "strength",
+          "title": "Treino C · pernas, posterior e core",
+          "detail": "Programa completo, amplitude completa. Sem corrida amanhã, então a perna pode trabalhar normalmente.",
           "done": false
         }
       ]
@@ -82,9 +81,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Pomerode — meia maratona (conferir largada: 17 ou 18/10)",
-          "detail": "Estratégia: corrida/caminhada desde o início (ex.: 8 min correndo / 1 min caminhando), ritmo bem conservador, gel/hidratação planejados. Com 24 dias sem correr, o objetivo é completar. Dor articular ou mal-estar: reduzir ou parar.",
+          "type": "rest",
+          "title": "Descanso ativo (opcional)",
+          "detail": "Caminhada ou pedal leve de 30 a 40 min em Z2. Soma gasto de energia sem impacto. Se não der, descanso total.",
           "done": false
         }
       ]
@@ -95,9 +94,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "rest",
-          "title": "Descanso / caminhada de recuperação",
-          "detail": "Pós-prova: só caminhada leve se o corpo pedir. Se a prova for neste dia, este é o dia da largada e o sábado vira descanso.",
+          "type": "run",
+          "title": "Corrida fácil · 25 min",
+          "detail": "Mesmo ritmo confortável da quinta. Se a quinta foi fácil, pode correr direto, sem pausas de caminhada.",
           "done": false
         }
       ]
@@ -109,8 +108,8 @@
       "items": [
         {
           "type": "strength",
-          "title": "Treino C — só core e superiores leves",
-          "detail": "Retorno suave após a prova: pernas e posterior pausados, sem ir à falha. Pular se estiver muito cansado.",
+          "title": "Treino A · pernas e tríceps",
+          "detail": "Programa completo. Fica um dia depois da corrida e longe da próxima.",
           "done": false
         }
       ]
@@ -121,22 +120,23 @@
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida regenerativa ~3 km",
-          "detail": "Muito leve, só para soltar as pernas. Se ainda estiver dolorido, trocar por caminhada ou bike leve.",
+          "type": "rest",
+          "title": "Descanso ativo (opcional)",
+          "detail": "Caminhada ou pedal leve, em Z2. A terceira corrida da semana de volta fica para quarta, se as duas primeiras forem tranquilas.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "As corridas de 10/10, 11/10 e 13/10 não aconteceram (última corrida: 20/09). Volume perdido NÃO é compensado: a 3 dias da prova, tentar recuperar só aumentaria o risco.",
-    "Última sessão pré-prova encurtada para ~3 km soltos (15/10) e descanso total na sexta; sem strides.",
-    "Perna segue pausada na força até a prova (regra de 48h/polimento). Treino C vira só core/superiores leves após a prova.",
-    "Descanso total na sexta (viagem) e domingo (pós-prova): ≥1 descanso na janela; esforço agudo 5,0 vs p90 83,0 — guardrail muito folgado."
+    "Meta revisada (ADR-006): a meia de Pomerode saiu do plano. O objetivo agora é saúde, e a corrida volta por um protocolo gradual.",
+    "Protocolo de volta ativo após 24 dias sem correr: 2 corridas fáceis de 20 a 25 min nesta janela, sem long run nem treino de qualidade, com cerca de metade do volume de antes da pausa.",
+    "Força segue a sequência (C na sexta, A na segunda) com amplitude completa. Perna pesada nunca na véspera de corrida, por isso as corridas ficam na quinta e no domingo.",
+    "Sábado e terça viram descanso ativo opcional (caminhada ou pedal leve): mais gasto de energia sem impacto, que ajuda o objetivo de saúde.",
+    "Nenhum descanso obrigatório: nenhum sinal de dados pede (ACWR sem dados, esforço agudo 5,0 contra p90 de 83,0)."
   ],
   "coaches": {
-    "running": "Já são 24 dias sem correr e Pomerode é daqui a 3. A carga está baixíssima, então não há o que 'ganhar' em treino agora: só soltar as pernas com ~3 km amanhã, descansar na sexta e largar a prova com corrida/caminhada desde o início, ritmo conservador. Meta: cruzar a linha. Dor articular ou mal-estar: reduz ou para.",
-    "strength": "A sessão de hoje manteve a força consistente (2 sessões em 7 dias). Até a prova, nenhum treino de perna; depois dela, o Treino C volta só com core e superiores leves, sem trocar exercício. O programa base segue vencido; vale fechar a renovação com o Coach Ernesto depois de Pomerode."
+    "running": "Foram 24 dias sem correr, por agenda, e a meta agora é saúde. Por isso a volta é curta e fácil: 20 minutos amanhã, alternando corrida e caminhada se precisar, e mais 25 minutos no domingo. Nada de pace, long run ou tiro nas próximas 3 a 4 semanas; o volume sobe no máximo 10% por semana. Dor articular encurta ou para o treino.",
+    "strength": "A força segurou a constância durante a pausa e segue o A/B/C: Treino C na sexta e Treino A na segunda, com amplitude completa. Ela preserva a massa magra enquanto o foco é saúde. Perna pesada fica longe da véspera das corridas. O programa base passou da validade em setembro; vale renovar com o Coach Ernesto."
   }
 }
