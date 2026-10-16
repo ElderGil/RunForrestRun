@@ -1,17 +1,17 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-10-14T13:43:16Z",
-  "window_start": "2026-10-14",
-  "window_end": "2026-10-20",
-  "summary": "A janela vai de 14/10 a 20/10. A meia de Pomerode saiu do plano e o foco agora é saúde. Depois de 24 dias sem correr, começa a volta gradual: duas corridas fáceis e curtas nesta semana, força mantida na sequência do A/B/C e dias livres com caminhada ou pedal leve opcional. Hoje cedo veio mais uma sessão de força.",
+  "generated_at": "2026-10-16T14:07:50Z",
+  "window_start": "2026-10-16",
+  "window_end": "2026-10-22",
+  "summary": "A janela vai de 16/10 a 22/10. A primeira corrida de volta estava marcada para ontem, mas ontem entrou uma sessão de força no lugar. A corrida passa para hoje, e o resto da semana anda um dia. O foco continua em saúde: duas corridas fáceis e curtas, força na sequência do A/B/C e dias livres com caminhada ou pedal leve.",
   "phase": {
     "label": "Volta à corrida",
-    "detail": "semana 1 de 4 · primeira corrida em 15/10"
+    "detail": "primeira corrida · hoje (16/10)"
   },
   "indicators": [
     {
       "label": "Corridas (7 dias)",
-      "value": "0 corridas; a última foi em 20/09 (24 dias). Meta da semana: 2 corridas fáceis, cerca de 5 km no total.",
+      "value": "0 corridas; a última foi em 20/09 (26 dias). Meta da primeira semana: 2 corridas fáceis, cerca de 5 km no total.",
       "status": "warning"
     },
     {
@@ -21,12 +21,12 @@
     },
     {
       "label": "Esforço agudo (3 dias)",
-      "value": "5,0 contra p90 de 83,0 no histórico. Muito espaço para carga.",
+      "value": "13,0 contra p90 de 83,0 no histórico. Muito espaço para carga.",
       "status": "ok"
     },
     {
       "label": "Força (7 dias)",
-      "value": "2 sessões (09/10 e 14/10). A constância veio da força durante a pausa.",
+      "value": "2 sessões seguidas (14/10 e 15/10). A de ontem foi a mais longa da semana: 60 min, esforço 8.",
       "status": "ok"
     },
     {
@@ -37,40 +37,14 @@
   ],
   "days": [
     {
-      "date": "2026-10-14",
-      "weekday": "Qua",
-      "status": "done",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Sessão de força (Treino B)",
-          "detail": "Feita hoje cedo, cerca de 48 min, esforço 5. Sequência segue com o Treino C.",
-          "done": true
-        }
-      ]
-    },
-    {
-      "date": "2026-10-15",
-      "weekday": "Qui",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Primeira corrida de volta · 20 min",
-          "detail": "Bem fácil, em Z2, dando para conversar. Se precisar, alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Dor no joelho: encurtar ou parar.",
-          "done": false
-        }
-      ]
-    },
-    {
       "date": "2026-10-16",
       "weekday": "Sex",
       "status": "planned",
       "items": [
         {
-          "type": "strength",
-          "title": "Treino C · pernas, posterior e core",
-          "detail": "Programa completo, amplitude completa. Sem corrida amanhã, então a perna pode trabalhar normalmente.",
+          "type": "run",
+          "title": "Primeira corrida de volta · 20 min",
+          "detail": "Remarcada de ontem. Bem fácil, em Z2, dando para conversar. Se precisar, alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Dor no joelho: encurtar ou parar.",
           "done": false
         }
       ]
@@ -81,9 +55,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "rest",
-          "title": "Descanso ativo (opcional)",
-          "detail": "Caminhada ou pedal leve de 30 a 40 min em Z2. Soma gasto de energia sem impacto. Se não der, descanso total.",
+          "type": "strength",
+          "title": "Treino C · pernas, posterior e core",
+          "detail": "Programa completo, amplitude completa. Fica um dia depois da corrida, e domingo não tem corrida, então a perna pode trabalhar normalmente.",
           "done": false
         }
       ]
@@ -94,9 +68,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "run",
-          "title": "Corrida fácil · 25 min",
-          "detail": "Mesmo ritmo confortável da quinta. Se a quinta foi fácil, pode correr direto, sem pausas de caminhada.",
+          "type": "rest",
+          "title": "Descanso ativo (opcional)",
+          "detail": "Caminhada ou pedal leve de 30 a 40 min em Z2. Soma gasto de energia sem impacto, depois de três dias de treino. Se não der, descanso total.",
           "done": false
         }
       ]
@@ -107,9 +81,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "strength",
-          "title": "Treino A · pernas e tríceps",
-          "detail": "Programa completo. Fica um dia depois da corrida e longe da próxima.",
+          "type": "run",
+          "title": "Corrida fácil · 25 min",
+          "detail": "Mesmo ritmo confortável de sexta. Se sexta foi fácil, pode correr direto, sem pausas de caminhada.",
           "done": false
         }
       ]
@@ -120,23 +94,49 @@
       "status": "planned",
       "items": [
         {
+          "type": "strength",
+          "title": "Treino A · pernas e tríceps",
+          "detail": "Programa completo. Fica um dia depois da corrida, e quarta não tem corrida.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-10-21",
+      "weekday": "Qua",
+      "status": "planned",
+      "items": [
+        {
           "type": "rest",
           "title": "Descanso ativo (opcional)",
-          "detail": "Caminhada ou pedal leve, em Z2. A terceira corrida da semana de volta fica para quarta, se as duas primeiras forem tranquilas.",
+          "detail": "Caminhada ou pedal leve, em Z2. Se não der, descanso total.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-10-22",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino B · posterior, costas e peito",
+          "detail": "Programa completo. Se as duas corridas da semana foram tranquilas, a terceira entra na sexta (23/10), já na segunda semana da volta.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Meta revisada (ADR-006): a meia de Pomerode saiu do plano. O objetivo agora é saúde, e a corrida volta por um protocolo gradual.",
-    "Protocolo de volta ativo após 24 dias sem correr: 2 corridas fáceis de 20 a 25 min nesta janela, sem long run nem treino de qualidade, com cerca de metade do volume de antes da pausa.",
-    "Força segue a sequência (C na sexta, A na segunda) com amplitude completa. Perna pesada nunca na véspera de corrida, por isso as corridas ficam na quinta e no domingo.",
-    "Sábado e terça viram descanso ativo opcional (caminhada ou pedal leve): mais gasto de energia sem impacto, que ajuda o objetivo de saúde.",
-    "Nenhum descanso obrigatório: nenhum sinal de dados pede (ACWR sem dados, esforço agudo 5,0 contra p90 de 83,0)."
+    "A primeira corrida de volta (15/10) não aconteceu; no lugar entrou uma sessão de força. A corrida foi para hoje, sem compensar com volume extra, e a semana toda andou um dia.",
+    "A semana 1 do protocolo de volta passa a contar a partir de hoje: 2 corridas fáceis de 20 e 25 min (sexta e segunda), sem long run nem treino de qualidade, cerca de metade do volume de antes da pausa.",
+    "Força segue a sequência (C no sábado, A na terça, B na quinta) com amplitude completa. O relógio registrou ontem um treino de costas e peito, sem perna pesada, então o próximo continua sendo o C. Perna pesada nunca cai na véspera de corrida.",
+    "Domingo e quarta viram descanso ativo opcional (caminhada ou pedal leve): mais gasto de energia sem impacto, que ajuda o objetivo de saúde.",
+    "Nenhum descanso obrigatório: nenhum sinal de dados pede (ACWR sem dados, esforço agudo 13,0 contra p90 de 83,0)."
   ],
   "coaches": {
-    "running": "Foram 24 dias sem correr, por agenda, e a meta agora é saúde. Por isso a volta é curta e fácil: 20 minutos amanhã, alternando corrida e caminhada se precisar, e mais 25 minutos no domingo. Nada de pace, long run ou tiro nas próximas 3 a 4 semanas; o volume sobe no máximo 10% por semana. Dor articular encurta ou para o treino.",
-    "strength": "A força segurou a constância durante a pausa e segue o A/B/C: Treino C na sexta e Treino A na segunda, com amplitude completa. Ela preserva a massa magra enquanto o foco é saúde. Perna pesada fica longe da véspera das corridas. O programa base passou da validade em setembro; vale renovar com o Coach Ernesto."
+    "running": "A corrida de ontem virou força, e tudo bem: a volta só começa de fato com a primeira corrida. Ela fica para hoje, 20 minutos bem fáceis, alternando com caminhada se precisar, e mais 25 minutos na segunda. Nada de pace, long run ou tiro nas próximas 3 a 4 semanas; o volume sobe no máximo 10% por semana. Dor articular encurta ou para o treino.",
+    "strength": "Duas sessões seguidas (14 e 15/10) mantiveram a constância, e a de ontem foi longa. A sequência segue com o Treino C no sábado, o A na terça e o B na quinta, sempre com amplitude completa e longe da véspera das corridas. O programa base passou da validade em setembro; vale renovar com o Coach Ernesto."
   }
 }
