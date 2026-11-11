@@ -1,0 +1,25 @@
+name: Data freshness
+
+# Falha se o plano rolante parou de deslizar (a routine diária não publicou).
+# Falha de workflow agendado gera e-mail do GitHub para o dono do repositório:
+# é o alerta proativo para conexão do Strava expirada, Mac desligado, plan mode, etc.
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 21h BRT, bem depois da routine das ~11h
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check that the plan window starts today or yesterday
+        run: python etl/check_freshness.py --max-lag-days 1

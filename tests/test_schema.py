@@ -4,6 +4,7 @@ Validates the data currently in /data so a broken ETL output never ships.
 """
 
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -60,7 +61,8 @@ def test_weekly_shape_and_pace_is_decimal():
 def test_monthly_shape():
     months = load("monthly.json")["months"]
     for m in months:
-        assert m["month"].startswith("2026-")
+        # Ano corrente (build_monthly), então só o formato YYYY-MM é fixo.
+        assert re.fullmatch(r"\d{4}-\d{2}", m["month"])
         assert "label" in m and "run_km" in m and "longest_run_km" in m
         pace = m["avg_pace_min_km"]
         assert pace is None or isinstance(pace, (int, float))

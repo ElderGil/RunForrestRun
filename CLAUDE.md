@@ -9,8 +9,9 @@
 **Objetivo principal:** saúde, com perda de peso como maior objetivo (números só em
 `data/private/athlete.json`). Constância de corrida e força, sem lesão.
 
-**Fase atual (out/2026):** volta à corrida após ~3 semanas de pausa por agenda (última
-corrida em 20/09/2026), seguindo o protocolo do ADR-006. A força foi mantida.
+**Fase atual (nov/2026):** volta à corrida pelo protocolo do ADR-006. A última corrida foi
+em 20/09/2026; a volta planejada para 16/10 não começou e foi replanejada a partir de
+11/11/2026. A força seguiu com 2 a 3 sessões por semana.
 
 **Horizonte:** maratona completa, sem data. A meia de Pomerode (out/2026) e o prazo de
 2027 saíram em 14/10/2026 (ADR-006).
@@ -42,7 +43,7 @@ corrida em 20/09/2026), seguindo o protocolo do ADR-006. A força foi mantida.
 
 ```
 Strava API ─────────┐
-                    ├──► routine diária do Claude (Python ETL no Mac · 11:08 BRT)
+                    ├──► routine diária do Claude (Python ETL no Mac · ~11h BRT)
 Apple Health ───────┘       merge_strava → normalize → merge_health → coaches negociam
   (Health Auto Export
    → Dropbox/iCloud → Mac)
@@ -58,7 +59,7 @@ Apple Health ───────┘       merge_strava → normalize → merge
 - **Sem servidor:** tudo estático, tudo versionado.
 - **Dados como código:** os JSONs públicos ficam no repositório.
 - **Privacidade:** dados pessoais/médicos só em `data/private/` — gitignored e não copiados pelo build (o Vite só copia `data/*.json` da raiz). Nunca vão à página nem ao repo público.
-- **Automação discreta:** a routine do Claude roda diariamente (11:08 BRT), atualiza os dados e publica.
+- **Automação discreta:** a routine do Claude roda diariamente (~11h BRT), atualiza os dados e publica.
 - **Transparência:** código e dados não-pessoais são abertos.
 
 ---
@@ -72,6 +73,7 @@ RunForrestRun/
 ├── docs/
 │   ├── PRD.md
 │   ├── automation-runbook.md  # Procedimento da routine diária
+│   ├── apple-health-shortcut.md # Guia do Atalho gratuito do Apple Health
 │   └── adr/
 │       ├── 001-etl-architecture.md
 │       ├── 002-page-stack.md
@@ -83,6 +85,7 @@ RunForrestRun/
 │   ├── merge_strava.py        # Ingestão incremental do Strava (via routine)
 │   ├── merge_health.py        # Ingestão do Apple Health (Health Auto Export)
 │   ├── normalize.py           # Normaliza e calcula KPIs + guardrail ACWR
+│   ├── check_freshness.py     # Falha se o plano parou de deslizar (alerta)
 │   └── requirements.txt
 ├── data/                      # PÚBLICO (vai para a página)
 │   ├── activities.json        # Atividades normalizadas (sem localização)
@@ -106,7 +109,8 @@ RunForrestRun/
 │   ├── test_etl.py · test_schema.py · test_health_etl.py
 └── .github/workflows/
     ├── ci.yml                 # testes + build em cada push/PR
-    └── pages.yml              # deploy do Pages quando data/** ou site/** mudam
+    ├── pages.yml              # deploy do Pages quando data/** ou site/** mudam
+    └── freshness.yml          # checagem diária de dado parado (falha = e-mail)
 ```
 
 ---
@@ -166,7 +170,7 @@ contexto, mas **nunca** escrevem dado pessoal no plano público.
 - [x] **Plano rolante de 7 dias** (ADR-005, schema 3.0) + coaches negociando o A/B/C fixo.
 - [x] **Privacidade:** dados pessoais/médicos em `data/private/` (gitignored) + teste anti-vazamento no plano público.
 - [x] **Apple Health:** ingestão de sono/FC repouso/VO2máx/peso via Health Auto Export → Dropbox → `merge_health.py`.
-- [x] Testes: ETL, contrato de schema, ingester de health (26 testes, pytest).
+- [x] Testes: ETL, contrato de schema, ingester de health (32 testes, pytest, no `.venv/` do projeto).
 - [x] **Objetivo revisado (ADR-006, 14/10/2026):** saúde e perda de peso no lugar das
   provas; protocolo de volta à corrida no running-coach; status `rebuilding` na ACWR;
   campo `phase` no plano (hero da página); dado pessoal fora das SKILL.md; página e
@@ -176,20 +180,33 @@ contexto, mas **nunca** escrevem dado pessoal no plano público.
   histórica do próprio atleta — cobre a força, que a ACWR (só corrida) não vê. Junto com a
   ACWR, decide dias de descanso por dado real em vez de quota fixa de calendário.
 
+### Incidente 17/10 a 10/11/2026
+A routine rodou todo dia como "succeeded" mas não publicou nada: as sessões agendadas
+abriam em plan mode (`permissions.defaultMode: "plan"` em `~/.claude/settings.json`) e só
+escreviam um plano. Além disso, o runbook mandava encerrar sem commit quando não havia
+atividade nova, o que congelava a janela. Correções: o runbook e a routine sempre
+deslizam a janela, a routine encerra e relata se abrir em plan mode, testes rodam no
+`.venv/` (o python3 do Homebrew 3.14 não tem pytest) e o `freshness.yml` avisa no mesmo
+dia. **O modo padrão continua sendo decisão do atleta** e precisa sair de `plan` para a
+routine voltar a publicar.
+
 ### Pendente
 - [ ] **Health Auto Export sem automação grátis** (trial acabou, 06/2026): pipeline de
   sono/FC repouso/VO2máx travado desde então. Decisão (07/07/2026): montar uma automação
   gratuita no app Atalhos (Shortcuts) da Apple lendo o HealthKit direto, em vez de assinar
   o Premium. `etl/merge_health.py` já sabe parsear esse formato (`parse_shortcuts_export`,
-  JSON simples e plano) — falta o atleta montar o Atalho no iPhone e confirmar que roda
+  JSON simples e plano) e o passo a passo está em `docs/apple-health-shortcut.md`. Falta
+  o atleta montar o Atalho no iPhone e confirmar que roda
   diariamente (limitação conhecida: leitura do HealthKit exige o iPhone desbloqueado
   perto do horário agendado).
 - [ ] HRV (VFC) não chega do Amazfit ao Apple Health — investigar/ativar se possível
-  (config. do relógio/app Zepp, não é problema de pipeline).
+  (config. do relógio/app Zepp, não é problema de pipeline; passos no guia do Atalho).
 - [ ] Parser do export mensal do OKOK (gordura visceral/água/músculo, que não passam pelo
   Apple Health) — hoje é transcrito manualmente em `data/private/body_composition.json`.
 - [ ] Guardrail KPI definitivo após análise do histórico real.
-- [ ] Monitorar expiração da conexão Strava (alerta proativo).
+- [x] **Alerta de dado parado** (11/11/2026): `freshness.yml` falha todo dia às 21h BRT
+  se o plano não começar hoje ou ontem (falha agendada = e-mail do GitHub), e a página
+  avisa no plano. Cobre conexão do Strava expirada, Mac desligado e routine travada.
 
 ---
 

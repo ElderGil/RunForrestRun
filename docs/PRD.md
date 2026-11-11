@@ -20,7 +20,7 @@ RunForrestRun é uma página pública no GitHub Pages que documenta o treino do 
 |---|---|
 | Saúde: perder peso (números só em `data/private/`) | Contínuo |
 | Constância de corrida e força, sem lesão | Contínuo |
-| Volta gradual à corrida após pausa (protocolo do ADR-006) | Out–nov/2026 |
+| Volta gradual à corrida após pausa (protocolo do ADR-006) | Recomeça em 11/11/2026 (4 semanas) |
 | Maratona completa | Horizonte distante, sem data |
 
 > Revisão de 2026-10-14: a meia de Pomerode (17/10/2026) e o prazo de 2027 para a maratona

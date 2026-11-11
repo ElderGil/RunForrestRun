@@ -28,6 +28,13 @@ export default function WeeklyPlan({ plan }) {
   const tomorrow = nextDayIso(today);
   const days = plan.days || [];
 
+  // A routine roda por volta das 11h, então de manhã a janela ainda começa ontem.
+  // Dois dias ou mais de atraso = a atualização diária parou.
+  const lagDays = plan.window_start
+    ? Math.round((new Date(today + "T12:00:00") - new Date(plan.window_start + "T12:00:00")) / 86400000)
+    : 0;
+  const stale = lagDays >= 2;
+
   const rangeLabel = plan.window_start
     ? `${shortDate(plan.window_start)} – ${shortDate(plan.window_end)}`
     : plan.week_label || fmtDate(plan.week_of);
@@ -36,6 +43,12 @@ export default function WeeklyPlan({ plan }) {
     <div className="week-coach">
       <p className="eyebrow">Coach · próximos 7 dias · {rangeLabel}</p>
       <h2>O que o coach diz</h2>
+      {stale && (
+        <p className="stale-notice" role="status">
+          Plano desatualizado: foi gerado em {fmtDate(plan.window_start)}, {lagDays} dias atrás.
+          A atualização diária não rodou desde então, então os dias abaixo podem não valer mais.
+        </p>
+      )}
       <p className="lead">{plan.summary}</p>
 
       {plan.indicators?.length > 0 && (

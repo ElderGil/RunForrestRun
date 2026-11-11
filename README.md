@@ -33,10 +33,12 @@ o contrário: o plano se ajusta ao que de fato aconteceu.
 
 ## Momento atual
 
-Desde junho de 2024 são mais de 1.000 km corridos e 250 treinos registrados. Depois de
-algumas semanas longe da corrida, mantendo só a força, estou voltando a correr. A volta é
-gradual ([protocolo de volta à corrida](docs/adr/006-health-goal-and-return-to-running.md)),
-com a força sustentando a constância enquanto a base de corrida se reconstrói.
+Desde junho de 2024 são mais de 1.000 km corridos e 260 treinos registrados. A última
+corrida foi em setembro de 2026. Desde então a força seguiu com 2 a 3 sessões por semana,
+e a volta à corrida recomeça em novembro, de forma gradual
+([protocolo de volta à corrida](docs/adr/006-health-goal-and-return-to-running.md)): duas
+corridas curtas e fáceis por semana, subindo aos poucos, com a força sustentando a
+constância enquanto a base se reconstrói.
 
 ## Feito como software
 
@@ -50,7 +52,7 @@ cada push. O histórico de commits funciona também como diário de treino.
 
 ```
 Strava ───────────┐
-                  ├──► routine diária do Claude (Python, no Mac · 11:08 BRT)
+                  ├──► routine diária do Claude (Python, no Mac · ~11h BRT)
 Apple Health ─────┘        merge_strava → normalize → merge_health → coaches negociam
   (export → nuvem → Mac)
                            │
@@ -66,6 +68,7 @@ Apple Health ─────┘        merge_strava → normalize → merge_heal
 - **Sem servidor.** Tudo é arquivo estático versionado. A página é React puro servido pelo GitHub Pages.
 - **Atualização diária.** Uma routine do Claude busca só as atividades novas do Strava, lê o Apple Health, recalcula os KPIs, deixa os coaches renegociarem o plano e publica. Sem Secrets e sem cron de servidor.
 - **Plano rolante.** `running-coach` e `strength-coach` negociam um único plano de 7 dias (hoje + 6), respeitando a recuperação e o guardrail de carga.
+- **Alerta de dado parado.** Um workflow diário do GitHub falha, e manda e-mail, se o plano não andar no dia. A página também avisa quando o plano está atrasado.
 
 ## Privacidade: o que não é exposto
 
@@ -83,14 +86,14 @@ Garantido por três mecanismos: **(1)** `.gitignore` bloqueia `data/private/`; *
 
 | Pasta | O quê |
 |---|---|
-| `etl/` | `merge_strava.py` (Strava), `merge_health.py` (Apple Health), `normalize.py` (KPIs + guardrail) |
+| `etl/` | `merge_strava.py` (Strava), `merge_health.py` (Apple Health), `normalize.py` (KPIs + guardrail), `check_freshness.py` (alerta de dado parado) |
 | `data/` | JSONs públicos (`activities`, `weekly`, `monthly`, `quarterly`, `kpis`, `coaches`, `weekly_plan`) |
 | `data/private/` | Dados pessoais (gitignored, nunca publicados) |
 | `site/` | App React + Vite + Recharts (`src/`) |
 | `skills/` | `running-coach` e `strength-coach` (negociam o plano rolante) |
-| `docs/` | PRD, runbook da automação e ADRs (decisões registradas) |
+| `docs/` | PRD, runbook da automação, guia do Atalho do Apple Health e ADRs (decisões registradas) |
 | `tests/` | ETL, contrato de schema e ingester de health (pytest) |
-| `.github/workflows/` | CI (testes + build) e deploy do Pages |
+| `.github/workflows/` | CI (testes + build), deploy do Pages e checagem diária de dado parado |
 
 ## Rodar localmente
 
@@ -101,8 +104,9 @@ cd site && npm install && npm run dev   # http://localhost:5173
 # Reprocessar os JSONs a partir do store bruto
 python3 etl/normalize.py
 
-# Testes
-python3 -m pytest tests/ -q
+# Testes (o ETL só usa a biblioteca padrão; pytest fica num venv)
+python3 -m venv .venv && .venv/bin/pip install -r etl/requirements.txt
+.venv/bin/python -m pytest tests/ -q
 ```
 
 A busca do Strava e a ingestão do Apple Health rodam na **routine diária do Claude** (sem Secrets), que executa `etl/merge_strava.py` + `etl/normalize.py` + `etl/merge_health.py`. Ver [`docs/automation-runbook.md`](docs/automation-runbook.md).

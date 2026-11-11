@@ -131,3 +131,24 @@ def test_acute_effort_load_flags_above_p90():
     load = N.acute_effort_load(acts, ref)
     assert load["status"] == "warning"
     assert load["value"] > load["baseline_p90"]
+
+
+# --- check_freshness.py (alerta de dado parado) --------------------------------
+
+import check_freshness as F  # noqa: E402
+from datetime import date  # noqa: E402
+
+
+def test_plan_lag_days():
+    plan = {"window_start": "2026-11-09"}
+    assert F.plan_lag_days(plan, date(2026, 11, 9)) == 0
+    assert F.plan_lag_days(plan, date(2026, 11, 11)) == 2
+    assert F.plan_lag_days({}, date(2026, 11, 11)) is None
+
+
+def test_check_freshness_flags_stale_plan(tmp_path, monkeypatch):
+    plan = tmp_path / "weekly_plan.json"
+    plan.write_text('{"window_start": "2026-10-16"}')
+    monkeypatch.setattr(F, "PLAN_PATH", plan)
+    assert F.main(["--today", "2026-10-17"]) == 0   # routine das 11h ainda não rodou
+    assert F.main(["--today", "2026-11-11"]) == 1   # parada de 26 dias

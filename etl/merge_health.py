@@ -11,7 +11,7 @@ Suporta DOIS formatos de export, detectados automaticamente pelo shape do JSON:
 2. **Atalho (Shortcuts) caseiro, gratuito** — dicionário simples e plano montado
    por uma automação nativa do app Atalhos da Apple (sem terceiros, sem custo),
    lendo o HealthKit direto via ações `Get Health Sample`/`Find Health Samples`.
-   Ver `parse_shortcuts_export` e o guia de montagem no chat/README.
+   Ver `parse_shortcuts_export` e o guia de montagem em docs/apple-health-shortcut.md.
 
 Uso:
     python etl/merge_health.py [export.json]
