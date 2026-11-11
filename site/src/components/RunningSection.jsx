@@ -1,22 +1,33 @@
 // Seção Corrida: KPIs com legenda + guardrail + gráfico de evolução (PRD §4/§5).
 import KPICard from "./KPICard.jsx";
 import EvolutionChart from "./EvolutionChart.jsx";
-import { fmtPace } from "../data/loaders.js";
+import { fmtPace, shortDate, lastActivity, daysSince } from "../data/loaders.js";
 import { ShieldIcon } from "./Icons.jsx";
 
-export default function RunningSection({ kpis, weeks }) {
+export default function RunningSection({ kpis, weeks, activities }) {
   const r = kpis.running;
   const g = r.guardrail;
+  const lastRun = lastActivity(activities, "Run");
 
   return (
     <section className="block wrap" id="corrida">
       <p className="eyebrow">Corrida</p>
       <h2>Performance e evolução</h2>
       <p className="lead">
-        Cada métrica acompanha um aspecto do treino. O foco não é só velocidade —
+        Cada métrica acompanha um aspecto do treino. O foco não é só velocidade:
         é evoluir sem se machucar.
       </p>
 
+      {r.total_sessions === 0 ? (
+        <p className="empty-note">
+          <strong>Sem corrida em {kpis.period.label.split(" ")[0].toLowerCase()}.</strong>{" "}
+          {lastRun
+            ? `A última foi em ${shortDate(lastRun.date)}, há ${daysSince(lastRun.date)} dias. `
+            : ""}
+          Pace, frequência cardíaca e volume do mês voltam a aparecer depois da primeira
+          corrida. O gráfico abaixo mostra a base de antes da pausa.
+        </p>
+      ) : (
       <div className="kpi-grid">
         <KPICard value={fmtPace(r.avg_pace_min_km)} unit="min/km" label="Pace médio"
           legend="Indicador direto de velocidade e evolução de performance." />
@@ -29,8 +40,9 @@ export default function RunningSection({ kpis, weeks }) {
         <KPICard value={r.total_elevation_m} unit="m" label="Elevação no mês"
           legend="Força e resistência muscular em terreno variado." />
         <KPICard value={r.sessions_per_week} unit="/sem" label="Consistência"
-          legend="Disciplina — o KPI mais importante a longo prazo." />
+          legend="Disciplina: o KPI mais importante a longo prazo." />
       </div>
+      )}
 
       <div className={`guardrail ${g.status}`}>
         <div className="g-head">

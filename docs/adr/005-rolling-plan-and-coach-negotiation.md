@@ -35,7 +35,7 @@ O plano deixa de ser uma semana fixa e passa a ser uma **janela móvel = hoje + 
   "window_start": "YYYY-MM-DD",   // = hoje
   "window_end": "YYYY-MM-DD",     // = hoje + 6
   "summary": "frase de contexto",
-  "indicators": [ { "label": "...", "value": "...", "status": "ok|warning|danger" } ],
+  "indicators": [ { "label": "...", "value": "curto", "detail": "opcional", "status": "ok|warning|danger|unknown" } ],
   "days": [
     {
       "date": "YYYY-MM-DD",
@@ -74,7 +74,7 @@ Sem hierarquia fixa. A cada geração:
 
 ### 3. Programa de força como base fixa (artifact)
 
-O A/B/C do Coach Ernesto é **base fixa**, executada em sequência. Os coaches **não trocam
+O A/B/C montado pelo treinador da academia é **base fixa**, executada em sequência. Os coaches **não trocam
 nem inventam** exercícios — só reduzem série/reps/carga, limitam amplitude ou pausam um
 item, sempre com justificativa. A transcrição + análise vivem em
 `data/private/strength_program.json` (privado).
@@ -94,3 +94,12 @@ leem esses arquivos **localmente**; a página só mostra o plano derivado, sem d
   **amanhã**, no lugar do grid fixo Seg–Dom.
 - A periodização semanal "pura" (Mon–Sun) é trocada pela janela rolante; métricas semanais
   para análise continuam em `weekly.json` (inalterado).
+
+## Nota (11/11/2026): texto público e indicadores
+
+- `indicators[].detail` (opcional) separa a frase explicativa do valor curto; `status`
+  ganhou `unknown` (sem dado, cinza na página). Campo novo e opcional: planos antigos
+  continuam válidos.
+- O plano não cita dor, articulação, condição de saúde nem nome de pessoas ou academias.
+  Limites de tamanho por campo ficam em `skills/running-coach/SKILL.md` ("Texto público do
+  plano"), e o teste de contrato varre esses termos.

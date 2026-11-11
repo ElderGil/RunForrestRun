@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-11T14:04:19Z",
+  "generated_at": "2026-11-11T16:27:23Z",
   "period": {
     "month": 11,
     "year": 2026,
@@ -22,7 +22,7 @@
       "threshold_warning": 1.3,
       "threshold_danger": 1.5,
       "label": "Razão carga aguda/crônica",
-      "description": "Compara o volume da última semana com a média das últimas 4. Acima de 1.3 o risco de lesão sobe — o guardrail prioriza saúde sobre velocidade."
+      "description": "Compara o volume da última semana com a média das últimas 4. Acima de 1.3 o risco de lesão sobe, e o guardrail prioriza saúde sobre velocidade."
     }
   },
   "strength": {

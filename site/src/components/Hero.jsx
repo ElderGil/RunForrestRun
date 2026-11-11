@@ -1,42 +1,71 @@
-// Resumo do mês atual (PRD §4): contexto antes dos números.
-// A frase de objetivo vem da fase do plano (ADR-006), não de uma data de prova fixa.
-import { fmtPace } from "../data/loaders.js";
+// Resumo do mês atual (PRD §4): onde o atleta está e o que vem a seguir.
+// A fase vem do plano (ADR-006); a próxima corrida, da janela de 7 dias.
+import { shortDate, isoToday, lastActivity, daysSince } from "../data/loaders.js";
 
-export default function Hero({ kpis, plan }) {
+const WEEKDAY_LONG = { Seg: "segunda", Ter: "terça", Qua: "quarta", Qui: "quinta", Sex: "sexta", Sáb: "sábado", Dom: "domingo" };
+
+function nextRun(plan) {
+  const today = isoToday();
+  for (const d of plan?.days || []) {
+    if (d.date < today) continue;
+    const it = (d.items || []).find((x) => x.type === "run" && !x.done);
+    if (it) return { day: d, item: it };
+  }
+  return null;
+}
+
+export default function Hero({ kpis, plan, activities, onOpenPlan }) {
   const r = kpis.running;
+  const s = kpis.strength;
   const phase = plan?.phase;
+  const next = nextRun(plan);
+  const lastRun = lastActivity(activities, "Run");
+  const ago = lastRun ? daysSince(lastRun.date) : null;
 
   return (
     <header className="hero wrap">
       <p className="eyebrow">{kpis.period.label} · resumo do mês</p>
+      {/* Título fixo = objetivo do projeto (ADR-006); a fase é passageira e fica num selo. */}
       <h1>
-        Running <span className="gradient-text">Coach</span>
+        Saúde e <span className="gradient-text">constância</span>
       </h1>
+      {phase?.label && (
+        <p className="phase-tag">
+          Fase atual: <strong>{phase.label.toLowerCase()}</strong>
+        </p>
+      )}
 
-      <span className="goal-line">
-        <span className="goal-dot" />
-        {phase ? (
-          <span>
-            <strong>{phase.label}</strong>
-            {phase.detail ? ` · ${phase.detail}` : null}
-          </span>
-        ) : (
-          <span>Foco em saúde e constância</span>
-        )}
-      </span>
+      {next ? (
+        <div className="next-up">
+          <div>
+            <div className="nu-label">Próxima corrida</div>
+            <div className="nu-text">
+              {WEEKDAY_LONG[next.day.weekday] || next.day.weekday}, {shortDate(next.day.date)} · {next.item.title}
+            </div>
+          </div>
+          <button className="link-btn" onClick={onOpenPlan}>Ver o plano da semana</button>
+        </div>
+      ) : (
+        <div className="next-up">
+          <div className="nu-text">Foco em saúde e constância</div>
+          <button className="link-btn" onClick={onOpenPlan}>Ver o plano da semana</button>
+        </div>
+      )}
 
       <div className="hero-metrics">
-        <div className="metric">
-          <div className="v">{r.total_distance_km}<small> km</small></div>
-          <div className="l">Corridos no mês</div>
+        <div className="metric run">
+          <div className="v">{r.total_sessions}<small> {r.total_sessions === 1 ? "corrida" : "corridas"}</small></div>
+          <div className="l">{r.total_distance_km} km no mês</div>
+        </div>
+        <div className="metric strength">
+          <div className="v">{s.total_sessions}<small> {s.total_sessions === 1 ? "sessão" : "sessões"}</small></div>
+          <div className="l">de força no mês</div>
         </div>
         <div className="metric">
-          <div className="v">{r.total_sessions}</div>
-          <div className="l">Treinos de corrida</div>
-        </div>
-        <div className="metric">
-          <div className="v">{fmtPace(r.avg_pace_min_km)}<small> /km</small></div>
-          <div className="l">Pace médio</div>
+          <div className="v">{lastRun ? shortDate(lastRun.date) : "—"}</div>
+          <div className="l">
+            Última corrida{ago != null ? ` · ${ago === 0 ? "hoje" : `${ago} ${ago === 1 ? "dia" : "dias"}`}` : ""}
+          </div>
         </div>
       </div>
     </header>

@@ -42,7 +42,7 @@ export default function WeeklyPlan({ plan }) {
   return (
     <div className="week-coach">
       <p className="eyebrow">Coach · próximos 7 dias · {rangeLabel}</p>
-      <h2>O que o coach diz</h2>
+      <h2>O plano da semana</h2>
       {stale && (
         <p className="stale-notice" role="status">
           Plano desatualizado: foi gerado em {fmtDate(plan.window_start)}, {lagDays} dias atrás.
@@ -51,45 +51,7 @@ export default function WeeklyPlan({ plan }) {
       )}
       <p className="lead">{plan.summary}</p>
 
-      {plan.indicators?.length > 0 && (
-        <div className="indicators">
-          {plan.indicators.map((ind, i) => (
-            <div className={`indicator ${ind.status || ""}`} key={i}>
-              <div className="ind-value">{ind.value}</div>
-              <div className="ind-label">{ind.label}</div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {(c.running || c.strength) && (
-        <div className="coach-notes">
-          {c.running && (
-            <div className="coach-note run">
-              <div className="cn-head"><RunIcon /> Running Coach</div>
-              <p>{c.running}</p>
-            </div>
-          )}
-          {c.strength && (
-            <div className="coach-note strength">
-              <div className="cn-head"><StrengthIcon /> Strength Coach</div>
-              <p>{c.strength}</p>
-            </div>
-          )}
-        </div>
-      )}
-
-      {plan.adaptations?.length > 0 && (
-        <div className="adaptations">
-          <div className="adapt-title"><RefreshIcon width={18} height={18} /> Como o coach se adaptou</div>
-          <ul>
-            {plan.adaptations.map((a, i) => <li key={i}>{a}</li>)}
-          </ul>
-        </div>
-      )}
-
-      <h3 className="plan-subtitle">Plano · próximos 7 dias</h3>
-      <div className="plan-grid">
+      <ol className="plan-grid">
         {days.map((d, i) => {
           const date = d.date || null;
           const isToday = date === today;
@@ -97,36 +59,96 @@ export default function WeeklyPlan({ plan }) {
           const wd = d.weekday || (date ? weekdayShort(date) : d.day) || "";
           const items = d.items || [];
           return (
-            <div
+            <li
               className={`day ${isToday ? "today" : ""} ${isTomorrow ? "tomorrow" : ""}`}
               key={date || i}
+              aria-current={isToday ? "date" : undefined}
             >
               <div className="d-name">
                 {wd} {date && <span className="d-date">{shortDate(date)}</span>}
                 {isToday && <span className="d-tag">hoje</span>}
                 {isTomorrow && <span className="d-tag soft">amanhã</span>}
               </div>
-              {items.length === 0 ? (
-                <div className="chip rest">Livre</div>
-              ) : (
-                items.map((it, idx) => (
-                  <div className={`chip ${it.type} ${it.done ? "done" : ""}`} key={idx}>
-                    {it.done ? "✓ " : ""}{it.title}
-                    {it.detail ? <span className="c-detail">{it.detail}</span> : null}
-                  </div>
-                ))
-              )}
-            </div>
+              <div className="d-items">
+                {items.length === 0 ? (
+                  <div className="chip rest">Dia livre</div>
+                ) : (
+                  items.map((it, idx) => (
+                    <div className={`chip ${it.type}`} key={idx}>
+                      {it.done ? <span className="c-done">Feito</span> : null}
+                      {it.title}
+                      {it.detail ? <span className="c-detail">{it.detail}</span> : null}
+                    </div>
+                  ))
+                )}
+              </div>
+            </li>
           );
         })}
+      </ol>
+
+      <div className="legend" aria-hidden="true">
+        <span><i style={{ background: "var(--run)" }} /> Corrida</span>
+        <span><i style={{ background: "var(--strength)" }} /> Força</span>
+        <span><i style={{ background: "#b9b4ab" }} /> Dia livre</span>
+        <span><em className="c-done">Feito</em> já registrado no Strava</span>
       </div>
 
-      <div className="legend">
-        <span><i style={{ background: "linear-gradient(135deg,#e0f2fe,#dbeafe)" }} /> Corrida</span>
-        <span><i style={{ background: "#fff1e6" }} /> Força</span>
-        <span><i style={{ background: "#f1f5f9" }} /> Descanso</span>
-        <span><i style={{ background: "#dcfce7" }} /> ✓ Feito</span>
-      </div>
+      {plan.indicators?.length > 0 && (
+        <>
+          <h3 className="plan-subtitle">Indicadores</h3>
+          <div className="indicators">
+            {plan.indicators.map((ind, i) => {
+              // Planos antigos trazem a frase inteira em `value`; sem `detail`, ela vira texto normal.
+              const long = !ind.detail && ind.value.length > 32;
+              return (
+                <div className={`indicator ${ind.status || "unknown"}`} key={i}>
+                  <div className="ind-head">
+                    <span className="ind-label">{ind.label}</span>
+                    <span className={`g-status ${ind.status || "unknown"}`}>{STATUS_LABEL[ind.status] || "sem dados"}</span>
+                  </div>
+                  <div className={`ind-value ${long ? "long" : ""}`}>{ind.value}</div>
+                  {ind.detail ? <div className="ind-detail">{ind.detail}</div> : null}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+
+      {(c.running || c.strength) && (
+        <>
+          <h3 className="plan-subtitle">O que os coaches dizem</h3>
+          <div className="coach-notes">
+            {c.running && (
+              <div className="coach-note run">
+                <div className="cn-head"><RunIcon /> Running Coach</div>
+                <p>{c.running}</p>
+              </div>
+            )}
+            {c.strength && (
+              <div className="coach-note strength">
+                <div className="cn-head"><StrengthIcon /> Strength Coach</div>
+                <p>{c.strength}</p>
+              </div>
+            )}
+          </div>
+        </>
+      )}
+
+      {plan.adaptations?.length > 0 && (
+        <details className="adaptations">
+          <summary>
+            <RefreshIcon width={18} height={18} aria-hidden="true" /> Como o coach se adaptou
+            <span className="adapt-count">({plan.adaptations.length})</span>
+          </summary>
+          <ul>
+            {plan.adaptations.map((a, i) => <li key={i}>{a}</li>)}
+          </ul>
+        </details>
+      )}
     </div>
   );
 }
+
+const STATUS_LABEL = { ok: "saudável", warning: "atenção", danger: "risco", unknown: "sem dados" };

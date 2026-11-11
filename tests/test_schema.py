@@ -16,7 +16,13 @@ LOCATION_FIELDS = {"lat", "lng", "start_latlng", "end_latlng", "map"}
 # Peso corporal na faixa adulta (qualquer valor em kg de 2 ou 3 dígitos), diagnóstico e
 # histórico ortopédico. Nomes de campo como `bmi` podem aparecer nas skills (descrevem o
 # health.json); valores e diagnósticos não. Sem números reais do atleta aqui: o teste é público.
-PERSONAL_PATTERNS = [r"\b\d{2,3}[.,]?\d*\s?kg\b", r"\bobes", r"\blca\b", r"\bmenisco\b"]
+PERSONAL_PATTERNS = [
+    r"\b\d{2,3}[.,]?\d*\s?kg\b", r"\bobes", r"\blca\b", r"\bmenisco\b",
+    r"joelh", r"ernesto", r"fitclub",
+]
+# Só no plano: as SKILL.md citam "dor articular" como regra de decisão, mas o texto
+# público do plano não menciona dor, articulação nem lesão.
+PLAN_ONLY_PATTERNS = [r"\bdor(es)?\b", r"articula", r"\bles[aã]o\b", r"ortop"]
 
 
 def load(name):
@@ -112,6 +118,12 @@ def test_weekly_plan_shape_if_present():
             assert isinstance(d["phase"]["label"], str) and d["phase"]["label"]
             assert isinstance(d["phase"].get("detail", ""), str)
 
+        # Indicadores: valor curto + frase opcional em `detail` (nota de 11/11 no ADR-005).
+        for ind in d.get("indicators", []):
+            assert isinstance(ind["label"], str) and isinstance(ind["value"], str)
+            assert isinstance(ind.get("detail", ""), str)
+            assert ind.get("status", "unknown") in {"ok", "warning", "danger", "unknown"}
+
 
 def test_weekly_plan_has_no_personal_data():
     """O plano é público: nunca pode vazar peso/medidas/idade (ficam em data/private/)."""
@@ -121,7 +133,7 @@ def test_weekly_plan_has_no_personal_data():
     import re
 
     blob = path.read_text().lower()
-    for pattern in (*PERSONAL_PATTERNS, r"\bbmi\b", r"\bimc\b", "gordura visceral", "cirurgia"):
+    for pattern in (*PERSONAL_PATTERNS, *PLAN_ONLY_PATTERNS, r"\bbmi\b", r"\bimc\b", "gordura visceral", "cirurgia"):
         assert not re.search(pattern, blob), f"possível vazamento de dado pessoal: {pattern!r}"
 
 

@@ -17,7 +17,7 @@ maratona até o fim de 2027. Em outubro de 2026 a situação real era outra:
    pela média semanal dos últimos 28. Depois de uma pausa, a média de 28 dias contém quase
    só a própria semana atual. A primeira corrida de 3 km dá 3 ÷ 0,75 = 4,0, que é
    `danger`. Pela regra dos coaches, isso obrigaria descanso logo no primeiro treino.
-4. **Joelho.** O histórico do joelho é antigo (detalhes só em `data/private/athlete.json`).
+4. **Restrições articulares.** O histórico médico é antigo (detalhes só em `data/private/athlete.json`).
    Desde fev/2026 o atleta faz musculação com bastante volume de perna, e a musculatura
    está adaptada. As restrições de amplitude por padrão ficaram mais conservadoras do que
    o necessário.
@@ -77,7 +77,7 @@ Campo opcional `phase` no schema 3.0. É aditivo, então planos sem ele continua
 
 O hero da página mostra a fase no lugar da contagem regressiva para uma prova.
 
-### 6. Joelho
+### 6. Amplitude e dor articular
 
 - Amplitude completa liberada por padrão; limitar só com dor articular.
 - Mantém: dor articular reduz, nunca progride; posterior forte como proteção.

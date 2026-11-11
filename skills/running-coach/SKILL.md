@@ -43,8 +43,8 @@ Regras de adaptação:
 - Frequência e minutos em Z2 pesam mais que pace ou distância.
 - Pedal fácil (bike) conta como cardio de baixo impacto em dias sem corrida.
 - Introduzir qualidade (intervalado/tempo) só com guardrail `ok` e fora do protocolo de volta.
-- Dor **articular** (não muscular) no joelho é sinal de **reduzir**, não de "aguentar".
-  As demais orientações sobre o joelho estão em `athlete.json` (`medical`).
+- Dor **articular** (não muscular) é sinal de **reduzir**, não de "aguentar". Quais
+  articulações e as orientações específicas estão em `athlete.json` (`medical`).
 
 ## Volta após pausa (ADR-006)
 Ativa quando houve **14 dias ou mais sem corrida** e vale até o atleta completar
@@ -95,7 +95,7 @@ e pediu que descanso seja **decidido pelos dados**, não por uma quota fixa nem
 simplesmente removido "porque sim". Antes de gerar a janela, avaliar estes sinais,
 nesta ordem de prioridade:
 
-1. **Dor articular** (joelho, relatada pelo atleta) → descanso/pausa imediata,
+1. **Dor articular** (relatada pelo atleta) → descanso/pausa imediata,
    sempre, independente de qualquer outro sinal. Não é detectável via Strava/Apple
    Health — perguntar/registrar quando relatada.
 2. **Guardrail ACWR** (`kpis.json.running.guardrail`): `danger` → descanso
@@ -146,7 +146,7 @@ acumulado dos últimos 3 dias perto do p90), não citado como regra de calendár
   "window_end": "YYYY-MM-DD",       // = hoje + 6
   "summary": "frase de contexto",
   "phase": { "label": "Volta à corrida", "detail": "semana 1 de 4" },  // opcional (ADR-006)
-  "indicators": [ { "label": "...", "value": "...", "status": "ok|warning|danger" } ],
+  "indicators": [ { "label": "...", "value": "curto", "detail": "uma frase", "status": "ok|warning|danger|unknown" } ],
   "days": [
     {
       "date": "YYYY-MM-DD",
@@ -164,5 +164,22 @@ acumulado dos últimos 3 dias perto do p90), não citado como regra de calendár
 Regras: `type` da corrida é sempre `"run"` na UI (o detalhe diz se é fácil/longo/intervalado).
 Nunca incluir localização nem dado pessoal. O plano se adapta: o que não foi executado é
 redistribuído sem compensar tudo de uma vez (respeita os 10%).
+
+### Texto público do plano
+O `weekly_plan.json` vai para a página pública. Além de peso, medidas e idade, **nunca**
+escrever no plano:
+- dor, lesão, articulação, parte do corpo machucada ou qualquer condição de saúde (as
+  regras de dor continuam valendo na decisão, mas não aparecem no texto);
+- nome de pessoas (treinador, familiares, companhia de treino) nem de academias.
+
+Limites de tamanho, para a página continuar legível:
+- `indicators[].value`: até 4 palavras ("0 de 2", "Sem dados", "3 sessões");
+  `indicators[].detail`: uma frase. `status` `unknown` quando não há dado (cinza na página).
+- `days[].items[].detail`: até 3 frases. Datas absolutas ou o dia da semana, nunca
+  "hoje"/"amanhã" dentro do card de outro dia.
+- `adaptations[]`: até 4 itens, sem repetir o `summary`.
+- `coaches.running` e `coaches.strength`: até 3 frases cada.
+- Reler o plano inteiro antes de gravar: a mesma sequência (ex.: A/B/C da força) não pode
+  aparecer com dias diferentes em lugares diferentes.
 
 Ver `skills/strength-coach/SKILL.md` — os dois coaches negociam o mesmo `weekly_plan.json`.

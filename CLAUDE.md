@@ -180,6 +180,13 @@ contexto, mas **nunca** escrevem dado pessoal no plano público.
   histórica do próprio atleta — cobre a força, que a ACWR (só corrida) não vê. Junto com a
   ACWR, decide dias de descanso por dado real em vez de quota fixa de calendário.
 
+- [x] **Revisão de design (11/11/2026):** paleta azul (corrida, ação) + laranja (força) com
+  contraste AA medido (tokens em `site/src/styles/index.css`); aba Plano abre pela grade
+  de 7 dias em linhas; indicadores com `value` curto + `detail` (opcional, nota no
+  ADR-005); hero da Jornada mostra a fase e a próxima corrida; estados vazios no lugar
+  de KPIs zerados. O plano público não cita dor, articulação, condição de saúde nem nome
+  de pessoas ou academias (regra nas SKILL.md, teste em `test_schema.py`).
+
 ### Incidente 17/10 a 10/11/2026
 A routine rodou todo dia como "succeeded" mas não publicou nada: as sessões agendadas
 abriam em plan mode (`permissions.defaultMode: "plan"` em `~/.claude/settings.json`) e só

@@ -11,7 +11,7 @@ export default function StrengthSection({ kpis }) {
       <h2>O suporte da corrida</h2>
       <p className="lead">
         Musculação com foco em pernas sustenta o volume de corrida e reduz risco de lesão.
-        Força e corrida como sistema — não competindo.
+        Força e corrida funcionam como um sistema, não competem.
       </p>
 
       <div className="kpi-grid">

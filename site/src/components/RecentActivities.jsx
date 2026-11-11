@@ -1,5 +1,5 @@
 // Últimas atividades — contexto além dos números do mês (PRD §4).
-import { shortDate, fmtPace } from "../data/loaders.js";
+import { shortDate, fmtPace, weekdayShort, activityLabel } from "../data/loaders.js";
 import { RunIcon, StrengthIcon, RideIcon } from "./Icons.jsx";
 
 const TYPE_META = {
@@ -16,7 +16,7 @@ export default function RecentActivities({ activities }) {
     <section className="block wrap">
       <p className="eyebrow">Últimas atividades</p>
       <h2>O que rolou por aqui</h2>
-      <p className="lead">As sessões mais recentes — não só o número, o treino.</p>
+      <p className="lead">As sessões mais recentes: não só o número, o treino.</p>
 
       <ul className="act-list">
         {recent.map((a) => {
@@ -25,8 +25,8 @@ export default function RecentActivities({ activities }) {
             <li className={`act ${m.cls}`} key={a.id}>
               <span className="act-icon">{m.icon}</span>
               <span className="act-main">
-                <span className="act-name">{a.name}</span>
-                <span className="act-date">{shortDate(a.date)}</span>
+                <span className="act-name">{activityLabel(a)}</span>
+                <span className="act-date">{weekdayShort(a.date)}, {shortDate(a.date)}</span>
               </span>
               <span className="act-stats">
                 {a.type === "Run" ? (
@@ -39,6 +39,7 @@ export default function RecentActivities({ activities }) {
                   <>
                     <b>{Math.round(a.duration_min)} min</b>
                     {a.avg_heart_rate_bpm ? <span>{a.avg_heart_rate_bpm} bpm</span> : null}
+                    {a.relative_effort ? <span>esforço {a.relative_effort}</span> : null}
                   </>
                 )}
               </span>

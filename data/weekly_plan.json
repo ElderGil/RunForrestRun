@@ -11,27 +11,32 @@
   "indicators": [
     {
       "label": "Corridas (7 dias)",
-      "value": "0 corridas; a última foi em 20/09 (52 dias). Meta desta janela: 2 corridas fáceis (quinta e domingo), cerca de 5 km no total.",
+      "value": "0 de 2",
+      "detail": "Última corrida em 20/09 (52 dias). Meta da janela: quinta e domingo, cerca de 5 km no total.",
       "status": "warning"
     },
     {
       "label": "Guardrail (ACWR)",
-      "value": "Sem dados (nenhuma corrida em 28 dias). Depois da primeira corrida aparece como 'reconstruindo base', que não obriga descanso.",
-      "status": "ok"
+      "value": "Sem dados",
+      "detail": "Nenhuma corrida em 28 dias. Depois da primeira, aparece como reconstruindo base, sem obrigar descanso.",
+      "status": "unknown"
     },
     {
       "label": "Esforço agudo (3 dias)",
-      "value": "11,0 contra p90 de 79,0 no histórico. Muito espaço para carga.",
+      "value": "11 de 79",
+      "detail": "Soma do esforço relativo contra o p90 do histórico. Muito espaço para carga.",
       "status": "ok"
     },
     {
       "label": "Força (7 dias)",
-      "value": "3 sessões (06/11, 10/11 e 11/11); 9 desde 19/10, entre 37 e 58 min cada. Constância mantida.",
+      "value": "3 sessões",
+      "detail": "06/11, 10/11 e 11/11; 9 desde 19/10, de 37 a 58 min cada. Constância mantida.",
       "status": "ok"
     },
     {
       "label": "Recuperação",
-      "value": "Apple Health parado desde 28/06; sono e FC de repouso seguem cegos. Decisão apoiada em Strava e guardrails. Sem dor relatada.",
+      "value": "Sem leitura",
+      "detail": "Apple Health parado desde 28/06: sono e FC de repouso sem dado. A decisão usa o Strava e os guardrails.",
       "status": "warning"
     }
   ],
@@ -57,7 +62,7 @@
         {
           "type": "run",
           "title": "Primeira corrida de volta · 20 min",
-          "detail": "Dia sem academia, depois da força de hoje. Pode ser em qualquer horário. Bem fácil, em Z2, dando para conversar. Alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Dor no joelho: encurtar ou parar.",
+          "detail": "Dia sem academia, depois da força de quarta. Pode ser em qualquer horário. Bem fácil, em Z2, dando para conversar. Alterne 4 min correndo e 1 min caminhando. Sem olhar pace.",
           "done": false
         }
       ]
@@ -70,7 +75,7 @@
         {
           "type": "strength",
           "title": "Treino C · pernas, posterior e core",
-          "detail": "Programa completo. Segue a sequência estimada (A na terça, 10/11, e B hoje). Fica cerca de 48h antes da corrida de domingo, e sábado não tem corrida.",
+          "detail": "Programa completo. Próximo da sequência estimada (A em 10/11, B em 11/11). Fica cerca de 48h antes da corrida de domingo, e sábado não tem corrida.",
           "done": false
         }
       ]
@@ -129,16 +134,13 @@
     }
   ],
   "adaptations": [
-    "A volta à corrida não começou: os dias de corrida de 16/10 a 22/10 passaram sem corrida, e as quatro semanas seguintes também. O protocolo recomeça hoje, sem compensar o atraso com volume extra.",
-    "11/11: a força de hoje (05:18) apareceu no Strava depois da rotina das 09:10, que não tinha esse dado. A primeira corrida mudou de hoje para quinta (12/11), e o plano foi refeito com a sessão registrada.",
-    "As corridas vão para dias sem academia (quinta e domingo). Nas últimas semanas a força ocupou as manhãs de dia útil, e domingo de manhã é um horário que o atleta já usa para treinar.",
-    "Semana 1 do protocolo: 2 corridas fáceis de 20 e 25 min com pausas de caminhada, cerca de metade do volume de antes da pausa, sem long run nem treino de qualidade.",
-    "A caminhada de 18/10 ('Corrida com o Bê', registrada como caminhada no Strava) não conta como corrida para o protocolo.",
-    "Força segue a sequência com amplitude completa (A na segunda, B na quinta, C na sexta). Hoje entrou como B, e a sequência foi estimada contando as sessões desde 15/10, porque o Strava não registra qual treino foi feito. Perna pesada nunca cai na véspera de corrida.",
-    "Nenhum descanso obrigatório: nenhum sinal de dados pede (ACWR sem dados, esforço agudo 11,0 contra p90 de 79,0). Sábado e terça ficam livres para pedal ou caminhada."
+    "A volta à corrida não começou: de 16/10 até hoje nenhuma corrida aconteceu. O protocolo recomeça nesta janela, sem compensar o atraso com volume extra.",
+    "A força de hoje (05:18) entrou no Strava depois da rotina das 09:10. A primeira corrida passou de hoje para quinta (12/11), dia sem academia; a segunda fica no domingo de manhã, horário que o atleta já usa para treinar.",
+    "Sequência de força estimada contando as sessões desde 15/10, porque o Strava não registra qual treino foi feito: A em 10/11, B hoje, C na sexta e A na segunda, com amplitude completa. Perna pesada nunca cai na véspera de corrida.",
+    "Nenhum descanso obrigatório: nenhum sinal de dados pede (ACWR sem dados, esforço agudo 11 contra p90 de 79). Sábado e terça ficam livres para pedal ou caminhada."
   ],
   "coaches": {
-    "running": "Quatro semanas sem a primeira corrida mostram que o problema é encaixe na agenda, não condicionamento. Por isso a janela pede pouco: 20 minutos na quinta e 25 no domingo de manhã, alternando com caminhada. Nada de pace, long run ou tiro nas próximas 4 semanas; o volume sobe no máximo 10% por semana. Dor articular encurta ou para o treino.",
-    "strength": "Nove sessões desde 19/10, com 2 a 3 por semana: a força virou o hábito mais firme do plano e não perde espaço. A sequência segue com C na sexta e A na segunda, longe da véspera das corridas. O programa base venceu em setembro; vale renovar com o Coach Ernesto."
+    "running": "Quatro semanas sem a primeira corrida mostram que o problema é encaixe na agenda, não condicionamento. Por isso a janela pede pouco: 20 minutos na quinta e 25 no domingo de manhã, alternando com caminhada. Nada de pace, long run ou tiro nas próximas 4 semanas; o volume sobe no máximo 10% por semana.",
+    "strength": "Nove sessões desde 19/10, com 2 a 3 por semana: a força virou o hábito mais firme do plano e não perde espaço. A sequência segue com C na sexta e A na segunda, longe da véspera das corridas. O programa base venceu em setembro; vale pedir um programa novo na academia."
   }
 }

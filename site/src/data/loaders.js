@@ -62,6 +62,31 @@ export function fmtDate(iso) {
   return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 }
 
+// Última atividade de um tipo ("Run", "Strength", "Ride"); null se não houver.
+export function lastActivity(activities, type) {
+  let last = null;
+  for (const a of activities || []) {
+    if (a.type === type && (!last || a.date > last.date)) last = a;
+  }
+  return last;
+}
+
+// Dias inteiros entre uma data ISO e hoje (positivo = no passado).
+export function daysSince(isoDate) {
+  const a = new Date(isoDate + "T12:00:00");
+  const b = new Date(isoToday() + "T12:00:00");
+  return Math.round((b - a) / 86400000);
+}
+
+// Nome da atividade para a página: o rótulo do tipo em pt-BR, a menos que o atleta
+// tenha renomeado a atividade no Strava (os nomes automáticos vêm em inglês).
+const AUTO_NAME = /^(morning|afternoon|evening|night|lunch)\s+(run|ride|weight training|walk|workout|hike)$/i;
+const TYPE_LABEL = { Run: "Corrida", Strength: "Força", Ride: "Pedal" };
+export function activityLabel(a) {
+  const label = TYPE_LABEL[a.type] || a.type;
+  return !a.name || AUTO_NAME.test(a.name.trim()) ? label : a.name;
+}
+
 export function daysUntil(isoDate) {
   const target = new Date(isoDate + "T00:00:00");
   return Math.ceil((target - new Date()) / 86400000);

@@ -25,7 +25,7 @@ nunca publicar). Objetivo principal: **saúde, com perda de peso como maior obje
 dar suporte à volta à corrida. Foco em trem inferior + manutenção de superiores.
 
 ## Programa de academia (base fixa)
-O atleta segue um programa A/B/C **fixo** (DUE FitClub — Coach Ernesto), executado em
+O atleta segue um programa A/B/C **fixo** (montado pelo treinador da academia), executado em
 **sequência A → B → C**. A transcrição completa (exercícios, séries, reps, cargas), as
 notas técnicas por exercício e a análise crítica estão em
 **`data/private/strength_program.json`** — leia-o a cada geração.
@@ -38,15 +38,17 @@ sempre com **justificativa técnica** registrada em `adaptations[]`.
 - **Amplitude completa liberada por padrão.** A musculatura de perna está adaptada
   (musculação com bastante perna desde fev/2026). Limitar amplitude só com dor articular.
 - **Manter/priorizar** posterior e estabilizadores (Terra Sumô, Mesa Flexora, Cadeira
-  Abdutora, panturrilhas): protegem o joelho e ajudam a corrida.
+  Abdutora, panturrilhas): protegem as articulações e ajudam a corrida.
 - **Carga cumulativa:** em semanas de mais corrida, reduzir o volume de perna na academia
   antes de cortar corrida fácil.
 - **Dor articular = reduzir, nunca progredir** (distinguir de dor muscular normal).
-- Detalhes do histórico do joelho: `athlete.json` (`medical`), nunca no plano público.
+- Histórico médico: `athlete.json` (`medical`). Nunca no plano público, nem como
+  menção a dor ou articulação. Também não citar nome do treinador nem da academia.
+  Ver "Texto público do plano" na SKILL do running-coach (vale para `coaches.strength`).
 
 ## Inputs
 - `data/private/strength_program.json` — **base fixa** A/B/C + notas + análise (ler sempre).
-- `data/private/athlete.json` — perfil, peso, histórico de joelho.
+- `data/private/athlete.json` — perfil, peso, histórico médico.
 - `data/activities.json` — atividades `type: "Strength"` (frequência e recência).
 - `data/kpis.json` — `strength.sessions_per_week`, `strength.focus` e
   `load_guardrail` (esforço agudo corrida+força+bike vs. baseline do atleta,

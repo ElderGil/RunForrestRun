@@ -274,7 +274,7 @@ def acute_chronic_ratio(activities: list[dict], ref: datetime) -> dict:
                        "a volta gradual (corridas curtas e fáceis) e o esforço agudo.")
     else:
         description = ("Compara o volume da última semana com a média das últimas 4. "
-                       "Acima de 1.3 o risco de lesão sobe — o guardrail prioriza saúde sobre velocidade.")
+                       "Acima de 1.3 o risco de lesão sobe, e o guardrail prioriza saúde sobre velocidade.")
 
     return {
         "metric": "acute_chronic_ratio",

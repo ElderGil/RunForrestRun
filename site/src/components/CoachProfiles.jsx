@@ -6,18 +6,18 @@ export default function CoachProfiles({ coaches }) {
 
   return (
     <div className="coaches">
-      <p className="eyebrow">Seus coaches</p>
-      <h2>Um sistema de coach de corrida e força</h2>
+      <p className="eyebrow">Quem monta o plano</p>
+      <h2>Dois coaches, um plano</h2>
       <p className="lead">
-        Dois agentes que leem seus treinos do Strava e se adaptam ao que você
-        realmente faz. Abaixo, o perfil de cada um; mais adiante, o plano da semana.
+        Dois agentes leem os treinos do Strava todo dia e ajustam o plano acima ao que
+        foi feito de verdade. Este é o perfil de cada um.
       </p>
 
       <div className="coach-grid">
         {coaches.coaches.map((c) => (
           <div className="coach-card" key={c.id}>
             <div className="coach-head">
-              <span className="coach-icon">
+              <span className={`coach-icon ${c.id === "strength-coach" ? "strength" : ""}`}>
                 {c.id === "strength-coach" ? <StrengthIcon width={22} height={22} /> : <RunIcon width={22} height={22} />}
               </span>
               <div>

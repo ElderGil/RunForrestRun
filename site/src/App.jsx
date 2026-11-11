@@ -33,35 +33,48 @@ export default function App() {
   if (error) return <div className="error">Erro ao carregar os dados: {error}</div>;
   if (!data) return <div className="loading">Carregando dados do Strava…</div>;
 
+  const openPlan = () => {
+    setTab("plano");
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <>
       <nav className="nav">
         <div className="nav-inner">
-          <div className="brand">RunForrestRun</div>
-          <div className="tabs">
-            <button className={`tab ${tab === "jornada" ? "active" : ""}`} onClick={() => setTab("jornada")}>
+          <div className="brand"><span className="brand-mark" aria-hidden="true" />RunForrestRun</div>
+          <div className="tabs" role="tablist" aria-label="Seções">
+            <button
+              role="tab" id="tab-jornada" aria-selected={tab === "jornada"} aria-controls="panel"
+              className={`tab ${tab === "jornada" ? "active" : ""}`} onClick={() => setTab("jornada")}
+            >
               Jornada
             </button>
-            <button className={`tab ${tab === "plano" ? "active" : ""}`} onClick={() => setTab("plano")}>
-              Plano semanal
+            <button
+              role="tab" id="tab-plano" aria-selected={tab === "plano"} aria-controls="panel"
+              className={`tab ${tab === "plano" ? "active" : ""}`} onClick={() => setTab("plano")}
+            >
+              <span className="tab-long">Plano semanal</span>
+              <span className="tab-short">Plano</span>
             </button>
           </div>
         </div>
       </nav>
 
       {tab === "jornada" ? (
-        <main>
-          <Hero kpis={data.kpis} plan={data.plan} />
+        <main id="panel" role="tabpanel" aria-labelledby="tab-jornada">
+          <Hero kpis={data.kpis} plan={data.plan} activities={data.activities} onOpenPlan={openPlan} />
           <RecentActivities activities={data.activities} />
-          <RunningSection kpis={data.kpis} weeks={data.weekly} />
+          <RunningSection kpis={data.kpis} weeks={data.weekly} activities={data.activities} />
           <StrengthSection kpis={data.kpis} />
-          <HistorySection monthly={data.monthly} quarters={data.quarterly} />
+          <HistorySection monthly={data.monthly} quarters={data.quarterly} activities={data.activities} />
         </main>
       ) : (
-        <main>
+        <main id="panel" role="tabpanel" aria-labelledby="tab-plano">
+          {/* O plano vem primeiro; os perfis dos coaches mudam pouco e ficam no fim. */}
           <section className="block wrap">
-            <CoachProfiles coaches={data.coaches} />
             <WeeklyPlan plan={data.plan} />
+            <CoachProfiles coaches={data.coaches} />
           </section>
         </main>
       )}
