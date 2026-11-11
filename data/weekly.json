@@ -1,59 +1,7 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-16T14:06:18Z",
+  "generated_at": "2026-11-11T12:01:39Z",
   "weeks": [
-    {
-      "week_start": "2025-10-13",
-      "week_label": "13 Out",
-      "running": {
-        "distance_km": 5.1,
-        "avg_pace_min_km": 5.07,
-        "sessions": 1,
-        "avg_heart_rate_bpm": null
-      },
-      "strength": {
-        "sessions": 0
-      }
-    },
-    {
-      "week_start": "2025-10-20",
-      "week_label": "20 Out",
-      "running": {
-        "distance_km": 42.3,
-        "avg_pace_min_km": 5.46,
-        "sessions": 4,
-        "avg_heart_rate_bpm": null
-      },
-      "strength": {
-        "sessions": 0
-      }
-    },
-    {
-      "week_start": "2025-10-27",
-      "week_label": "27 Out",
-      "running": {
-        "distance_km": 10.1,
-        "avg_pace_min_km": 5.35,
-        "sessions": 2,
-        "avg_heart_rate_bpm": null
-      },
-      "strength": {
-        "sessions": 0
-      }
-    },
-    {
-      "week_start": "2025-11-03",
-      "week_label": "03 Nov",
-      "running": {
-        "distance_km": 19.6,
-        "avg_pace_min_km": 5.48,
-        "sessions": 2,
-        "avg_heart_rate_bpm": null
-      },
-      "strength": {
-        "sessions": 0
-      }
-    },
     {
       "week_start": "2025-11-10",
       "week_label": "10 Nov",
@@ -676,6 +624,58 @@
       },
       "strength": {
         "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-10-19",
+      "week_label": "19 Out",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-10-26",
+      "week_label": "26 Out",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 2
+      }
+    },
+    {
+      "week_start": "2026-11-02",
+      "week_label": "02 Nov",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 3
+      }
+    },
+    {
+      "week_start": "2026-11-09",
+      "week_label": "09 Nov",
+      "running": {
+        "distance_km": 0.0,
+        "avg_pace_min_km": null,
+        "sessions": 0,
+        "avg_heart_rate_bpm": null
+      },
+      "strength": {
+        "sessions": 1
       }
     }
   ]
