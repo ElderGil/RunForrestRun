@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-11-12T15:02:57Z",
+  "generated_at": "2026-11-14T20:28:39Z",
   "weeks": [
     {
       "week_start": "2025-11-10",
       "week_label": "10 Nov",
       "running": {
-        "distance_km": 23.2,
-        "avg_pace_min_km": 5.28,
-        "sessions": 3,
+        "distance_km": 15.1,
+        "avg_pace_min_km": 5.46,
+        "sessions": 2,
         "avg_heart_rate_bpm": null
       },
       "strength": {

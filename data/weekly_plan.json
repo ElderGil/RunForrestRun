@@ -1,9 +1,9 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-11-12T15:03:38Z",
-  "window_start": "2026-11-12",
-  "window_end": "2026-11-18",
-  "summary": "A janela vai de 12/11 a 18/11. A força de hoje (sessão C, pernas) entrou no Strava às 05:16, então a primeira corrida de volta sai de quinta e passa para sábado (14/11), 48 horas depois da perna pesada. A segunda corrida fica na quarta (18/11), depois da força A de segunda.",
+  "generated_at": "2026-11-14T20:40:00Z",
+  "window_start": "2026-11-14",
+  "window_end": "2026-11-20",
+  "summary": "A janela vai de 14/11 a 20/11. Nenhuma atividade nova desde a força C de 12/11: a primeira corrida de volta segue para hoje (sábado), 48 horas depois da perna pesada. A segunda fica na quarta (18/11), entre a força B e a força C.",
   "phase": {
     "label": "Volta à corrida",
     "detail": "primeira corrida · sábado (14/11)"
@@ -12,7 +12,7 @@
     {
       "label": "Corridas (7 dias)",
       "value": "0 de 2",
-      "detail": "Última corrida em 20/09 (53 dias). Meta da janela: sábado e quarta, cerca de 5 km no total.",
+      "detail": "Última corrida em 20/09 (55 dias). Meta da janela: sábado e quarta, cerca de 5 km no total.",
       "status": "warning"
     },
     {
@@ -23,14 +23,14 @@
     },
     {
       "label": "Esforço agudo (3 dias)",
-      "value": "18 de 79",
+      "value": "7 de 79",
       "detail": "Soma do esforço relativo contra o p90 do histórico. Muito espaço para carga.",
       "status": "ok"
     },
     {
       "label": "Força (7 dias)",
-      "value": "4 sessões",
-      "detail": "06/11, 10/11, 11/11 e 12/11; 10 desde 19/10, de 37 a 58 min cada. Constância mantida.",
+      "value": "3 sessões",
+      "detail": "10/11, 11/11 e 12/11; sem sessão em 13/11 (descanso planejado). Constância mantida.",
       "status": "ok"
     },
     {
@@ -42,32 +42,6 @@
   ],
   "days": [
     {
-      "date": "2026-11-12",
-      "weekday": "Qui",
-      "status": "done",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Força · sessão C feita",
-          "detail": "Registrada no Strava às 05:16, esforço relativo 7. Sem corrida hoje: a primeira corrida foi para sábado.",
-          "done": true
-        }
-      ]
-    },
-    {
-      "date": "2026-11-13",
-      "weekday": "Sex",
-      "status": "planned",
-      "items": [
-        {
-          "type": "rest",
-          "title": "Descanso · ou caminhada leve",
-          "detail": "Dia depois da perna pesada de hoje. Caminhada curta sem pressa, ou descanso total.",
-          "done": false
-        }
-      ]
-    },
-    {
       "date": "2026-11-14",
       "weekday": "Sáb",
       "status": "planned",
@@ -75,7 +49,7 @@
         {
           "type": "run",
           "title": "Primeira corrida de volta · 20 min",
-          "detail": "Bem fácil, em Z2, dando para conversar. Alterne 4 min correndo e 1 min caminhando. Sem olhar pace.",
+          "detail": "Bem fácil, em Z2, dando para conversar. Alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Ainda não apareceu no Strava: se não der hoje, vira domingo e o resto da janela se ajusta.",
           "done": false
         }
       ]
@@ -88,7 +62,7 @@
         {
           "type": "rest",
           "title": "Dia livre · pedal ou caminhada leve",
-          "detail": "Opcional. Pedal ou caminhada em Z2, como nos fins de semana recentes. Se não der, descanso total.",
+          "detail": "Opcional, em Z2. Se a corrida de sábado não saiu, ela entra aqui (20 min com pausas).",
           "done": false
         }
       ]
@@ -101,7 +75,7 @@
         {
           "type": "strength",
           "title": "Treino A · pernas e tríceps",
-          "detail": "Programa completo, com amplitude controlada nos exercícios de perna. Fica dois dias depois da corrida de sábado e sem corrida no dia seguinte.",
+          "detail": "Programa completo, com amplitude controlada nos exercícios de perna. Dois dias depois da primeira corrida e sem corrida no dia seguinte.",
           "done": false
         }
       ]
@@ -112,9 +86,9 @@
       "status": "planned",
       "items": [
         {
-          "type": "rest",
-          "title": "Descanso total",
-          "detail": "Separa a força de segunda da segunda corrida, que entra na quarta.",
+          "type": "strength",
+          "title": "Treino B",
+          "detail": "Programa completo. Sem perna pesada, então não atrapalha a corrida de quarta.",
           "done": false
         }
       ]
@@ -127,20 +101,46 @@
         {
           "type": "run",
           "title": "Corrida fácil · 25 min",
-          "detail": "Mesmo ritmo confortável de sábado. Use 5 min correndo e 1 min caminhando. Se sábado não aconteceu, esta vira a primeira: 20 min com pausas.",
+          "detail": "Ritmo confortável, 5 min correndo e 1 min caminhando. Se sábado não aconteceu, esta vira a primeira: 20 min com pausas.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-19",
+      "weekday": "Qui",
+      "status": "planned",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino C · pernas",
+          "detail": "Programa completo. Corrida fácil de 25 min no dia anterior; sem long run nem qualidade no protocolo, então a perna pesada pode entrar.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-20",
+      "weekday": "Sex",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso · ou caminhada leve",
+          "detail": "Dia depois da perna pesada de quinta. Sem corrida para não empilhar carga na perna.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "A força de hoje (sessão C, 05:16) entrou no Strava. A primeira corrida, planejada para hoje, passou para sábado (14/11): corrida no mesmo dia da perna pesada não encaixa, e sábado já cumpre as 48 horas.",
-    "Sexta virou descanso ou caminhada, porque cai logo depois da perna pesada de hoje. A força A ficou para segunda (16/11), com a corrida de sábado antes e um dia livre depois dela.",
-    "Sequência de força estimada: A em 10/11, B em 11/11, C hoje (12/11) e A na segunda. Perna pesada nunca cai na véspera de corrida nem no dia da corrida.",
-    "Nenhum descanso obrigatório: nenhum sinal de dados pede (ACWR sem dados, esforço agudo 18 contra p90 de 79). Sábado e terça ficam livres para pedal, caminhada ou descanso."
+    "Sem atividade nova desde 12/11. A sexta (13/11) era descanso planejado, então não conta como falta. A primeira corrida segue em sábado (14/11).",
+    "Sequência de força: A na segunda, B na terça e C na quinta, com a corrida de quarta no meio. Perna pesada fica 48 horas depois da corrida de sábado e nunca no dia da corrida.",
+    "Sexta (20/11) fica sem corrida porque vem depois da perna pesada de quinta. Nenhum sinal de dados pede descanso obrigatório (ACWR sem dados, esforço agudo 7 contra p90 de 79).",
+    "Apple Health sem leitura nova (último export cobre até 28/06): a decisão usa o Strava e os guardrails."
   ],
   "coaches": {
-    "running": "Quatro semanas sem a primeira corrida mostram que o problema é encaixe na agenda, não condicionamento. A janela pede pouco: 20 minutos no sábado e 25 na quarta, alternando com caminhada. Nada de pace, long run ou tiro nas próximas 4 semanas; o volume sobe no máximo 10% por semana.",
-    "strength": "Dez sessões desde 19/10, com 2 a 4 por semana na última janela: a força segue como o hábito mais firme do plano. A sequência segue com A na segunda, longe das corridas. O programa base venceu em setembro; vale pedir um programa novo na academia."
+    "running": "O protocolo de volta segue: 20 min no sábado e 25 na quarta, alternando corrida e caminhada, sem pace, long run ou tiro. Corrida de sábado ainda não registrada; o plano se ajusta se ela escorregar para domingo.",
+    "strength": "Força em 3 sessões na janela (A, B, C), sempre longe do dia da corrida. O hábito segue firme; o programa base venceu em setembro, vale pedir um programa novo na academia."
   }
 }
