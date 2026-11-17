@@ -1,18 +1,18 @@
 {
   "schema_version": "3.0",
-  "generated_at": "2026-11-14T20:40:00Z",
-  "window_start": "2026-11-14",
-  "window_end": "2026-11-20",
-  "summary": "A janela vai de 14/11 a 20/11. Nenhuma atividade nova desde a força C de 12/11: a primeira corrida de volta segue para hoje (sábado), 48 horas depois da perna pesada. A segunda fica na quarta (18/11), entre a força B e a força C.",
+  "generated_at": "2026-11-17T14:00:00Z",
+  "window_start": "2026-11-17",
+  "window_end": "2026-11-23",
+  "summary": "A janela vai de 17/11 a 23/11. A força de hoje já está registrada. A volta à corrida continua parada: a última corrida foi em 20/09 e a primeira entra amanhã (quarta), com 20 minutos alternando corrida e caminhada. A segunda fica no sábado.",
   "phase": {
     "label": "Volta à corrida",
-    "detail": "primeira corrida · sábado (14/11)"
+    "detail": "primeira corrida · quarta (18/11)"
   },
   "indicators": [
     {
       "label": "Corridas (7 dias)",
       "value": "0 de 2",
-      "detail": "Última corrida em 20/09 (55 dias). Meta da janela: sábado e quarta, cerca de 5 km no total.",
+      "detail": "Última corrida em 20/09 (58 dias). Meta da janela: quarta e sábado, cerca de 5 km no total.",
       "status": "warning"
     },
     {
@@ -23,15 +23,15 @@
     },
     {
       "label": "Esforço agudo (3 dias)",
-      "value": "7 de 79",
+      "value": "6 de 79",
       "detail": "Soma do esforço relativo contra o p90 do histórico. Muito espaço para carga.",
       "status": "ok"
     },
     {
       "label": "Força (7 dias)",
-      "value": "3 sessões",
-      "detail": "10/11, 11/11 e 12/11; sem sessão em 13/11 (descanso planejado). Constância mantida.",
-      "status": "ok"
+      "value": "2 sessões",
+      "detail": "12/11 e 17/11. Sem sessão de 13/11 a 16/11: a segunda (16/11) planejada não saiu.",
+      "status": "warning"
     },
     {
       "label": "Recuperação",
@@ -42,54 +42,15 @@
   ],
   "days": [
     {
-      "date": "2026-11-14",
-      "weekday": "Sáb",
-      "status": "planned",
-      "items": [
-        {
-          "type": "run",
-          "title": "Primeira corrida de volta · 20 min",
-          "detail": "Bem fácil, em Z2, dando para conversar. Alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Ainda não apareceu no Strava: se não der hoje, vira domingo e o resto da janela se ajusta.",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-11-15",
-      "weekday": "Dom",
-      "status": "planned",
-      "items": [
-        {
-          "type": "rest",
-          "title": "Dia livre · pedal ou caminhada leve",
-          "detail": "Opcional, em Z2. Se a corrida de sábado não saiu, ela entra aqui (20 min com pausas).",
-          "done": false
-        }
-      ]
-    },
-    {
-      "date": "2026-11-16",
-      "weekday": "Seg",
-      "status": "planned",
-      "items": [
-        {
-          "type": "strength",
-          "title": "Treino A · pernas e tríceps",
-          "detail": "Programa completo, com amplitude controlada nos exercícios de perna. Dois dias depois da primeira corrida e sem corrida no dia seguinte.",
-          "done": false
-        }
-      ]
-    },
-    {
       "date": "2026-11-17",
       "weekday": "Ter",
-      "status": "planned",
+      "status": "done",
       "items": [
         {
           "type": "strength",
-          "title": "Treino B",
-          "detail": "Programa completo. Sem perna pesada, então não atrapalha a corrida de quarta.",
-          "done": false
+          "title": "Força · sessão registrada",
+          "detail": "Sessão de 46 min registrada no Strava (esforço 6). O Strava não diz qual treino foi; a sequência segue a partir daqui.",
+          "done": true
         }
       ]
     },
@@ -100,8 +61,8 @@
       "items": [
         {
           "type": "run",
-          "title": "Corrida fácil · 25 min",
-          "detail": "Ritmo confortável, 5 min correndo e 1 min caminhando. Se sábado não aconteceu, esta vira a primeira: 20 min com pausas.",
+          "title": "Primeira corrida de volta · 20 min",
+          "detail": "Bem fácil, em Z2, dando para conversar. Alterne 4 min correndo e 1 min caminhando. Sem olhar pace. Se não der, vira quinta e o resto da janela se ajusta.",
           "done": false
         }
       ]
@@ -113,8 +74,8 @@
       "items": [
         {
           "type": "strength",
-          "title": "Treino C · pernas",
-          "detail": "Programa completo. Corrida fácil de 25 min no dia anterior; sem long run nem qualidade no protocolo, então a perna pesada pode entrar.",
+          "title": "Treino B",
+          "detail": "Programa completo. Sem perna pesada, então não atrapalha a corrida do dia anterior nem a de sábado.",
           "done": false
         }
       ]
@@ -127,20 +88,60 @@
         {
           "type": "rest",
           "title": "Descanso · ou caminhada leve",
-          "detail": "Dia depois da perna pesada de quinta. Sem corrida para não empilhar carga na perna.",
+          "detail": "Dia livre antes da segunda corrida. Opcional: pedal ou caminhada em Z2.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-21",
+      "weekday": "Sáb",
+      "status": "planned",
+      "items": [
+        {
+          "type": "run",
+          "title": "Corrida fácil · 25 min",
+          "detail": "Ritmo confortável, 5 min correndo e 1 min caminhando. Segunda corrida do protocolo, sem pace, long run ou tiro.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-22",
+      "weekday": "Dom",
+      "status": "planned",
+      "items": [
+        {
+          "type": "strength",
+          "title": "Treino C · pernas",
+          "detail": "Programa completo, com amplitude controlada. Corrida fácil na véspera; sem long run nem qualidade no protocolo, então a perna pesada pode entrar.",
+          "done": false
+        }
+      ]
+    },
+    {
+      "date": "2026-11-23",
+      "weekday": "Seg",
+      "status": "planned",
+      "items": [
+        {
+          "type": "rest",
+          "title": "Descanso · ou caminhada leve",
+          "detail": "Dia depois da perna pesada de domingo. O treino A (pernas) espera até terça ou depois, para ficar 48 horas longe do C.",
           "done": false
         }
       ]
     }
   ],
   "adaptations": [
-    "Sem atividade nova desde 12/11. A sexta (13/11) era descanso planejado, então não conta como falta. A primeira corrida segue em sábado (14/11).",
-    "Sequência de força: A na segunda, B na terça e C na quinta, com a corrida de quarta no meio. Perna pesada fica 48 horas depois da corrida de sábado e nunca no dia da corrida.",
-    "Sexta (20/11) fica sem corrida porque vem depois da perna pesada de quinta. Nenhum sinal de dados pede descanso obrigatório (ACWR sem dados, esforço agudo 7 contra p90 de 79).",
+    "A janela estava parada em 14/11: o plano anterior não deslizou em 15 e 16/11. Regerado a partir de hoje (17/11).",
+    "Força de segunda (16/11) não saiu; a sessão de hoje (17/11) foi registrada. A primeira corrida, planejada para sábado (14/11), também não aconteceu e foi para quarta (18/11), 58 dias depois da última.",
+    "Sequência de força: B na quinta e C no domingo, com corridas na quarta e no sábado. Perna pesada nunca no dia da corrida e o A (pernas) só depois de 48 horas do C.",
+    "Nenhum sinal de dados pede descanso obrigatório (ACWR sem dados, esforço agudo 6 contra p90 de 79). Os dois descansos (sexta e segunda) seguem a lógica de véspera de corrida e dia após perna pesada.",
     "Apple Health sem leitura nova (último export cobre até 28/06): a decisão usa o Strava e os guardrails."
   ],
   "coaches": {
-    "running": "O protocolo de volta segue: 20 min no sábado e 25 na quarta, alternando corrida e caminhada, sem pace, long run ou tiro. Corrida de sábado ainda não registrada; o plano se ajusta se ela escorregar para domingo.",
-    "strength": "Força em 3 sessões na janela (A, B, C), sempre longe do dia da corrida. O hábito segue firme; o programa base venceu em setembro, vale pedir um programa novo na academia."
+    "running": "O protocolo de volta segue: 20 min na quarta e 25 no sábado, alternando corrida e caminhada, sem pace, long run ou tiro. É a segunda vez que a primeira corrida escorrega; vale tratar a de amanhã como o item mais importante da janela.",
+    "strength": "Duas sessões na semana até agora e mais duas planejadas (B e C), sempre longe do dia da corrida. O programa base venceu em setembro, vale pedir um programa novo na academia."
   }
 }
